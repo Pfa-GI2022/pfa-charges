@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(model.activitePedagogique);
+      this.hasMany(models.activitePedagogique);
     }
   };
   groupe.init({

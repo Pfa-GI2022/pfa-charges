@@ -25,13 +25,13 @@ module.exports = {
       grade: {
         type: Sequelize.STRING
       },
-      // depID : {
-      //   type : Sequelize.INTEGER,
-      //   references : {
-      //     model : 'departements',
-      //     key : 'id'
-      //   }
-      // },
+      depID : {
+        type : Sequelize.INTEGER,
+        references : {
+          model : 'departements',
+          key : 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

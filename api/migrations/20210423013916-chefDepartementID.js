@@ -12,8 +12,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-   await queryInterface.removeColumn('departements','chefDepartementID');
-
-   
+   await queryInterface.removeColumn('departements','chefDepartementID'); 
   }
 };
