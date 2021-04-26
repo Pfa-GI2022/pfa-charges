@@ -1,29 +1,27 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const db = require('../models/index');
+const db = require("../models/index");
+const chargeRouter = require("./charges");
 const prof = db.professeur;
 
-//getting all departemnts
-router.get('/' , (req ,res) => {
+//GET ALL
+router.get("/", (req, res) => {
+  res.send("ALL profs");
 });
 
-//getting a departement based on the name
-router.get('/:name' , (req ,res) => {
-   
+//GET ONE
+router.get("/:name", (req, res) => {
+  var name = req.params.name;
+  res.send(`Prof ${name}`);
 });
 
-//creating a departement
-router.post('/', (req ,res) => {
+router.use("/:name/charge", chargeRouter);
+//CREATE
+router.post("/", (req, res) => {});
 
-});
+//UPDATE
+router.put("/:name", (req, res) => {});
 
-//updating a departement
-router.put('/:name' , (req,res) => {
-
-});
-
-//deleting a departement
-router.delete('/:name' , (req,res) => {
-
-});
+//DELETE
+router.delete("/:name", (req, res) => {});
 module.exports = router;
