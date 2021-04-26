@@ -1,6 +1,9 @@
 # dependencies
 /node_modules
 
+#config file
+
+/api/config/config.json
+
 #env
 .env
-
