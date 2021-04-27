@@ -1,0 +1,67 @@
+GET Routes:
+
+    GET /departements
+    GET /departements/new
+    GET /departements/:id
+    GET /departements/:id/edit
+
+    GET /professeurs
+    GET /professeurs/new
+    GET /professeurs?[filter]={criteria}
+    GET /professeurs/:id
+    GET /professeurs/:id/edit
+    GET /professeurs/:id/charge
+    
+    GET /modules
+    GET /modules/new
+    GET /modules?[filter]={criteria}
+    GET /modules/:id
+    GET /modules/:id/edit
+    
+    GET /matieres
+    GET /matieres/new
+    GET /matieres?[filter]={criteria}
+    GET /matieres/:id
+    GET /matieres/:id/edit
+    
+    GET /filieres
+    GET /filieres/new
+    GET /filieres/:id
+    GET /filieres/:id/edit
+
+
+POST Routes:
+
+    POST /departements
+
+    POST /professeurs
+
+    POST /modules
+
+    POSt /matieres
+
+    POST /filieres
+
+PATCH/PUT Routes:
+
+    PUT /departements/:id
+    
+    PUT /professeurs/:id
+
+    PUT /modules/:id
+
+    PUT /matieres/:id
+
+    PUT /filieres/:id
+
+DELETE Routes:
+
+    DELETE /departements/:id
+
+    DELETE /professeurs/:id
+
+    DELETE /modules/:id
+
+    DELETE /matieres/:id
+
+    DELETE /filieres/:id
