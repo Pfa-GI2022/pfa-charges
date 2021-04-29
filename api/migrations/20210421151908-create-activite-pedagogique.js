@@ -1,39 +1,40 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('activitepedagogiques', {
+    await queryInterface.createTable("activitepedagogiques", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       nature: {
         type: Sequelize.STRING,
-        allowNull : false
+        allowNull: false,
       },
       volumeHoraire: {
         type: Sequelize.DOUBLE,
-        allowNull : false
+        allowNull: false,
       },
-      groupeID : {
-        type : Sequelize.INTEGER,
-        references : {
-          model : 'activitepedagogiques',
-          key : 'id'
-        }
+      groupeID: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "activitepedagogiques",
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('activitepedagogiques');
-  }
+    await queryInterface.dropTable("activitepedagogiques");
+  },
 };

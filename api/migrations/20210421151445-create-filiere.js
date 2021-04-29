@@ -1,47 +1,48 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('filieres', {
+    await queryInterface.createTable("filieres", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       nom: {
         type: Sequelize.STRING,
-        allowNull : false
+        allowNull: false,
       },
       nbreGroupesTd: {
         type: Sequelize.INTEGER,
-        allowNull : false
+        allowNull: false,
       },
       nbreGroupeTp: {
         type: Sequelize.INTEGER,
-        allowNull : false
+        allowNull: false,
       },
       nbreGroupePFA: {
         type: Sequelize.INTEGER,
-        allowNull : false
+        allowNull: false,
       },
-      chefFiliereID : {
-        type : Sequelize.INTEGER,
-        references : {
-          model : 'professeurs',
-          key : 'id'
-        }
+      chefFiliereID: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "professeurs",
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('filieres');
-  }
+    await queryInterface.dropTable("filieres");
+  },
 };
