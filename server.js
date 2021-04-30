@@ -1,12 +1,16 @@
 const express = require("express");
 const app = express();
 
+//
+app.use(express.json())
+
 //importing the routes
 const departementRoutes = require("./api/routes/departements");
 const professeurRoutes = require("./api/routes/professeurs");
 const modulesRoutes = require("./api/routes/modules");
 const matieresRoutes = require("./api/routes/matieres");
 const filieresRoutes = require("./api/routes/filieres");
+const { use } = require("./api/routes/departements");
 
 app.use("/departements", departementRoutes);
 app.use("/professeurs", professeurRoutes);
