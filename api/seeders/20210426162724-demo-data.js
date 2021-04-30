@@ -63,7 +63,47 @@ module.exports = {
       ],
       {}
     );
+    await queryInterface.bulkInsert(
+      "modules",
+      [
+        {
+          nom: "Lina BILAL",
+          semestre: 2,
+          depID : 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
 
+    await queryInterface.bulkInsert(
+      "matieres",
+      [
+        {
+          nom: "Meryem Elhalfa",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
+
+    await queryInterface.bulkInsert(
+      "filiere",
+      [
+        {
+          nom: "lah ihssn l3wan",
+          nbreGroupesTd : 4,
+          nbreGroupesTP : 2,
+          nbreGroupesPFA : 5,
+          chefFiliereID :2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
     await queryInterface.bulkInsert(
       "charges",
       [

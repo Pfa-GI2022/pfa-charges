@@ -3,29 +3,23 @@ const bodyParser = require("body-parser");
 const router = express.Router();
 const Sequelize = require("sequelize");
 const db = require("../models/index");
+const controller = require("../controllers/filieres.controller");
 const filieres = db.filiere;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 //GET ALL
-router.get("/", (req, res) => {
-  res.send("ALL filieres");
-});
+router.get("/", controller.getAllFilieres);
 
 //GET ONE
-router.get("/:name", (req, res) => {
-  var name = req.params.name;
-  res.send(`filiere ${name}`);
+router.get("/:id", (req, res) => {
+  var name = req.params.id;
+  res.send(`filiere ${id}`);
 });
 
 //CREATE
-router.post("/", (req, res) => {
-  let info = req.body.info;
-  let someInfo = req.body.someInfo;
-  let someOtherInfo = req.body.someOtherInfo;
+router.post("/", controller.createFiliere);
 
-  res.send(`Field 1: ${info}, Field 2: ${someInfo}, Field 3: ${someOtherInfo}`);
-});
 
 //UPDATE
 router.put("/:name", (req, res) => {});
