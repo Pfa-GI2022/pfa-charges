@@ -4,34 +4,23 @@ const router = express.Router();
 const Sequelize = require("sequelize");
 const db = require("../models/index");
 const departement = db.departement;
+const professeur = db.professeur;
+const controller = require("../controllers/departements.controller");
 
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: true }));
 
 //GET ALL
-router.get("/", (req, res) => {
-  res.send("ALL deps");
-  models.departement.findAll().then((deps) => res.status(200).json({ deps }));
-});
+router.get("/", (req, res) => controller.getAllDepartements(req ,res));
 
 //GET ONE
-router.get("/:name", (req, res) => {
-  var name = req.params.name;
-  res.send(`Dep ${name}`);
-});
+router.get("/:id", (req, res) => controller.getOneDepartementByID(req ,res));
 
 //CREATE
-router.post("/", (req, res) => {
-  let info = req.body.info;
-  let someInfo = req.body.someInfo;
-  let someOtherInfo = req.body.someOtherInfo;
-
-  res.send(`Field 1: ${info}, Field 2: ${someInfo}, Field 3: ${someOtherInfo}`);
-});
+router.post("/", (req, res) => controller.createDepartement(req ,res));
 
 //UPDATE
-router.put("/:name", (req, res) => {});
+router.put("/:id", (req, res) => controller.updateDepartement(req ,res));
 
 //DELETE
-router.delete("/:name", (req, res) => {});
+router.delete("/:id", (req, res) => controller.deleteDepartementByID(req,res));
+
 module.exports = router;
