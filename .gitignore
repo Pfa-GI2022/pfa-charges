@@ -2,7 +2,7 @@
 /node_modules
 
 # DB Config
-/api/config/congif.json
+/api/config/config.json
 
 #env
 .env
