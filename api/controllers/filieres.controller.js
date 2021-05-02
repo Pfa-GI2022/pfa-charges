@@ -1,6 +1,7 @@
 const models = require("../models/index.js");
 const professeur = models.professeur;
 const filiere = models.filiere;
+const mod = models.module;
 
 const createFiliere = async (req, res, next) => {
   try {
@@ -19,11 +20,12 @@ const getAllFilieres = async (req, res, next) => {
     const filieres = await filiere.findAll({
       include: [
         {
-          model: module,
+          model: mod,
         },
         {
           model: professeur,
-        },
+        }
+        
       ],
     });
     console.log("inside getAllMatieres ");
