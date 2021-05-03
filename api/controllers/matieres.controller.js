@@ -1,6 +1,6 @@
 const models = require("../models/index.js");
 const matiere = models.matiere;
-
+const mod = models.module;
 
 const createMatiere = async (req, res, next) => {
   try {
@@ -20,7 +20,7 @@ const getAllMatieres = async (req, res, next) => {
       include: [
        
         {
-          model: module,
+          model: mod,
         },
        
       ],

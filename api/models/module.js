@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.belongsTo(models.departement,{foreignKey : 'depID'});
+      this.belongsToMany(models.filiere, { through: 'modulefiliere' });
+      this.belongsToMany(models.matiere, { through: 'modulematiere' });
+
+
     }
   };
   module.init({
