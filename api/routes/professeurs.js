@@ -13,18 +13,15 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.get("/", controller.getAllProfs);
 
 //GET ONE
-router.get("/:name", (req, res) => {
-  var name = req.params.name;
-  res.send(`Prof ${name}`);
-});
+router.get("/:id", controller.getProfById);
 
-router.use("/:name/charge", chargeRouter);
+router.use("/:id/charge", chargeRouter);
 //CREATE
 router.post("/", controller.createProf);
 
 //UPDATE
-router.put("/:name", (req, res) => {});
+router.put("/:id", controller.updateProf);
 
 //DELETE
-router.delete("/:name", (req, res) => {});
+router.delete("/:id", controller.deleteProf);
 module.exports = router;

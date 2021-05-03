@@ -1,6 +1,7 @@
 "use strict";
 const { system } = require("faker");
 const faker = require("faker");
+const departement = require("../models/departement");
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     console.log("seed invoked");

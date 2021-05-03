@@ -1,20 +1,19 @@
 const express = require("express");
-const chargeRouter = express.Router({ mergeParams: true });
+const router = express.Router({ mergeParams: true });
 const db = require("../models/index");
+const controller = require("../controllers/charges.controller");
 const charges = db.charge;
 
 //GET ALL
-chargeRouter.get("/", (req, res) => {
-  let profName = req.params.name;
-  res.send(`Charge ${profName}`);
-});
+router.get("/", controller.getCharge);
 
-// //CREATE
-// router.post("/", (req, res) => {});
+//CREATE
+router.post("/", controller.createCharge);
 
-// //UPDATE
-// router.put("/:name", (req, res) => {});
+//UPDATE
+router.put("/", controller.updateCharge);
 
-// //DELETE
-// router.delete("/:name", (req, res) => {});
-module.exports = chargeRouter;
+//DELETE
+router.delete("/", controller.deleteCharge);
+
+module.exports = router;

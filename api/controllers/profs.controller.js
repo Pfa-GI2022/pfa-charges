@@ -38,7 +38,50 @@ const getAllProfs = async (req, res, next) => {
   }
 };
 
+const getProfById = async (req, res, next) => {
+  try {
+    const prof = await professeur.findByPk(req.params.id);
+    return res.status(200).json({ prof });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
+const updateProf = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const [updated] = await professeur.update(req.body, {
+      where: { id: id },
+    });
+    if (updated) {
+      const updatedProf = await professeur.findOne({ where: { id: id } });
+      return res.status(200).json({ prof: updatedProf });
+    }
+    throw new Error("Prof not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
+const deleteProf = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await professeur.destroy({
+      where: { id: id },
+    });
+    if (deleted) {
+      return res.status(204).send("Prof deleted");
+    }
+    throw new Error("Prof not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
 module.exports = {
   createProf,
   getAllProfs,
+  getProfById,
+  updateProf,
+  deleteProf,
 };
