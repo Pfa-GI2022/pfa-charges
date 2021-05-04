@@ -9,21 +9,21 @@ const modules = db.module;
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
+
 //GET ALL
 router.get("/", controller.getAllModules);
 
 //GET ONE
-router.get("/:name", (req, res) => {
-  var name = req.params.name;
-  res.send(`module ${name}`);
-});
+router.get("/:id", (req, res) => controller.getModuleByID(req ,res));
 
 //CREATE
 router.post("/", controller.createModule);
 
 //UPDATE
-router.put("/:name", (req, res) => {});
+router.put("/:id", (req, res) => controller.updateModule(req ,res));
 
 //DELETE
-router.delete("/:name", (req, res) => {});
+router.delete("/:id", (req, res) => controller.deleteModuleByID(req,res));
+
+
 module.exports = router;
