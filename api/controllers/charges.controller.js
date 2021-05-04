@@ -1,9 +1,5 @@
-const charge = require("../models/charge.js");
 const models = require("../models/index.js");
-const professeur = models.professeur;
 const Charge = models.charge;
-
-//TODO: Fix confirmation messages
 
 const getCharge = async (req, res, next) => {
   try {
@@ -16,7 +12,7 @@ const getCharge = async (req, res, next) => {
 
 const createCharge = async (req, res, next) => {
   try {
-    const charge = Charge.create(req.body);
+    const charge = await Charge.create(req.body);
     return res.status(200).json({ charge });
   } catch (error) {
     return res.status(500).send(error.message);
@@ -47,6 +43,7 @@ const deleteCharge = async (req, res) => {
       where: { profID: id },
     });
     if (deleted) {
+      console.log("Charge deleted");
       return res.status(204).send("Charge deleted");
     }
     throw new Error("Charge not found");
