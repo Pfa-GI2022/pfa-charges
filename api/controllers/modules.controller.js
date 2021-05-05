@@ -8,7 +8,7 @@ const modulee = models.module;
 const createModule = async (req, res, next) => {
   try {
     console.log("inside createModules");
-    const mod = await module.create(req.body);
+    const mod = await modulee.create(req.body);
     console.log("Module created");
     return res.status(200).json({ mod });
   } catch (error) {

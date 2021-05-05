@@ -5,7 +5,7 @@ const mod = models.module;
 const createMatiere = async (req, res, next) => {
   try {
     console.log("inside createMatiere");
-    const mat = await module.create(req.body);
+    const mat = await matiere.create(req.body);
     console.log("Matiere created");
     return res.status(200).json({ mat });
   } catch (error) {

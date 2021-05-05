@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       // this.belongsToMany(models.activitePedagogique, { through: 'activiteMatiere' });
       this.belongsToMany(models.module, { through: 'modulematiere' });
+      this.hasMany(models.activitePedagogique);
     }
   };
   matiere.init({

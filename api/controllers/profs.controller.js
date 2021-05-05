@@ -3,6 +3,8 @@ const professeur = models.professeur;
 const departement = models.departement;
 const filiere = models.filiere;
 const charge = models.charge;
+const activite = models.activitePedagogique;
+
 
 const createProf = async (req, res, next) => {
   try {
@@ -28,6 +30,9 @@ const getAllProfs = async (req, res, next) => {
         },
         {
           model: charge,
+        },
+        {
+          model: activite,
         },
       ],
     });
