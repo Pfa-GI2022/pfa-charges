@@ -1,10 +1,10 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": null,
     "database": "gestionDeCharges",
     "host": "127.0.0.1",
-    "port": "3305",
+    "port": "3306",
     "dialect": "mysql"
   },
   "test": {

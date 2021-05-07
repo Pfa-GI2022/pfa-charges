@@ -30,10 +30,7 @@ const getAllProfs = async (req, res, next) => {
         },
         {
           model: charge,
-        },
-        {
-          model: activite,
-        },
+        }
       ],
     });
     console.log("inside getAllProfs 2");

@@ -23,7 +23,7 @@ module.exports = {
           model: "activitepedagogiques",
           key: "id",
         }},
-      profID: {
+        professeurId : {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

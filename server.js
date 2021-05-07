@@ -11,7 +11,7 @@ const modulesRoutes = require("./api/routes/modules");
 const matieresRoutes = require("./api/routes/matieres");
 const filieresRoutes = require("./api/routes/filieres");
 const activitesRoutes = require("./api/routes/activitepedagogiques");
-const { use } = require("./api/routes/departements");
+const groupesRoutes = require("./api/routes/groupe");
 
 app.use("/departements", departementRoutes);
 app.use("/professeurs", professeurRoutes);
@@ -19,7 +19,7 @@ app.use("/modules", modulesRoutes);
 app.use("/matieres", matieresRoutes);
 app.use("/filieres", filieresRoutes);
 app.use("/activitepedagogiques", activitesRoutes);
-
+app.use("/groupes", groupesRoutes);
 
 //not found routes
 app.use((req, res, next) => {
