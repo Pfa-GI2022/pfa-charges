@@ -20,19 +20,14 @@ const getAllActivities = async (req, res, next) => {
   try {
     console.log("inside getAllActivities");
     const activities = await activite.findAll({
-      include: [
-       
+      include : [
         {
-          model: groupe,
+          model : matiere
         },
         {
-            model: professeur,
-          },
-          {
-            model: matiere,
-          },
-       
-      ],
+          model : groupe
+        }
+      ]
     });
     console.log("inside getAllActivities ");
     return res.status(200).json({ activities });
@@ -44,9 +39,11 @@ const getAllActivities = async (req, res, next) => {
 const getActivityByID = async (req, res) => {
   const id = req.params.id;
   await activite.findByPk(id , {
-  include : [{
+  include : [
+    {
     model : mod
-  }]
+  }
+]
 }).then(actped => res.send(actped))
   .catch(err => res.status(500).send({error : err}));
 }

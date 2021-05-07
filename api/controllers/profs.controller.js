@@ -27,10 +27,7 @@ const getAllProfs = async (req, res, next) => {
         },
         {
           model: charge,
-        },
-        {
-          model: activite,
-        },
+        }
       ],
     });
 
