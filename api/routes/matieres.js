@@ -11,19 +11,16 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 //GET ALL
 router.get("/", controller.getAllMatieres);
-
 //GET ONE
-router.get("/:name", (req, res) => {
-  var name = req.params.name;
-  res.send(`matiere ${name}`);
-});
+router.get("/:id", (req, res) => controller.getOneMatiereByID(req ,res));
 
 //CREATE
 router.post("/", controller.createMatiere);
 
 //UPDATE
-router.put("/:name", (req, res) => {});
+router.put("/:id", (req, res) => controller.updateMatiere(req ,res));
 
 //DELETE
-router.delete("/:name", (req, res) => {});
+router.delete("/:id", (req, res) => controller.deleteMatiereByID(req,res));
+
 module.exports = router;

@@ -8,22 +8,20 @@ const filieres = db.filiere;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
+
+
 //GET ALL
 router.get("/", controller.getAllFilieres);
 
 //GET ONE
-router.get("/:id", (req, res) => {
-  var name = req.params.id;
-  res.send(`filiere ${id}`);
-});
+router.get("/:id", (req, res) => controller.getOneFiliereByID(req ,res));
 
 //CREATE
 router.post("/", controller.createFiliere);
 
-
 //UPDATE
-router.put("/:name", (req, res) => {});
+router.put("/:id", (req, res) => controller.updateFiliere(req ,res));
 
 //DELETE
-router.delete("/:name", (req, res) => {});
+router.delete("/:id", (req, res) => controller.deleteFiliereByID(req,res));
 module.exports = router;
