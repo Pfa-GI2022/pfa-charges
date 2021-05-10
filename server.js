@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
-
+const cors = require('cors');
 //
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 
 //importing the routes
 const departementRoutes = require("./api/routes/departements");
@@ -13,6 +14,7 @@ const filieresRoutes = require("./api/routes/filieres");
 const activitesRoutes = require("./api/routes/activitepedagogiques");
 const groupesRoutes = require("./api/routes/groupe");
 
+
 app.use("/departements", departementRoutes);
 app.use("/professeurs", professeurRoutes);
 app.use("/modules", modulesRoutes);
@@ -21,12 +23,13 @@ app.use("/filieres", filieresRoutes);
 app.use("/activitepedagogiques", activitesRoutes);
 app.use("/groupes", groupesRoutes);
 
-//not found routes
+//not found route
 app.use((req, res, next) => {
   const error = new Error("Not found");
   error.status = 404;
   next(error);
 });
+
 
 app.use((error, req, res, next) => {
   res.status(error.status || 500);

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models/index");
 const controller = require("../controllers/groupes.controller");
-
+//
 
 //GET ALL
 router.get("/", (req, res) => controller.getAllGroupes(req ,res));
