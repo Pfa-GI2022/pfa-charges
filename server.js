@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const cors = require('cors');
+const cors = require("cors");
 //
 app.use(express.json());
 app.use(cors());
@@ -13,7 +13,8 @@ const matieresRoutes = require("./api/routes/matieres");
 const filieresRoutes = require("./api/routes/filieres");
 const activitesRoutes = require("./api/routes/activitepedagogiques");
 const groupesRoutes = require("./api/routes/groupe");
-
+const authRoutes = require("./api/routes/auth.routes");
+const userRoutes = require("./api/routes/user.routes");
 
 app.use("/departements", departementRoutes);
 app.use("/professeurs", professeurRoutes);
@@ -22,6 +23,8 @@ app.use("/matieres", matieresRoutes);
 app.use("/filieres", filieresRoutes);
 app.use("/activitepedagogiques", activitesRoutes);
 app.use("/groupes", groupesRoutes);
+app.use("/api", userRoutes);
+app.use("/api/auth", authRoutes);
 
 //not found route
 app.use((req, res, next) => {
@@ -29,7 +32,6 @@ app.use((req, res, next) => {
   error.status = 404;
   next(error);
 });
-
 
 app.use((error, req, res, next) => {
   res.status(error.status || 500);
