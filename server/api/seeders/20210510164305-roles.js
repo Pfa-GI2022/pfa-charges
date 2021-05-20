@@ -28,6 +28,32 @@ module.exports = {
       ],
       {}
     );
+     await queryInterface.bulkInsert(
+      "roles",
+      [
+        {
+          name: "admin",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "professeur",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "chefDeFiliere",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "chefDeDepartement",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
   },
 
   down: async (queryInterface, Sequelize) => {
