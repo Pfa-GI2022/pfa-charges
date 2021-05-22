@@ -1,0 +1,5 @@
+<div *ngFor="let p of professeurs">
+  <ng-container *ngIf="p.filiere">
+      {{ p | json }}
+  </ng-container>
+</div>

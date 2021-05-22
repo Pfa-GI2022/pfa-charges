@@ -12,8 +12,11 @@ router.use(bodyParser.urlencoded({ extended: true }));
 //GET ALL
 router.get("/", controller.getAllProfs);
 
-//GET ONE
+//GET ONE BY ID
 router.get("/:id", controller.getProfById);
+
+//GET BY DEP ID
+router.get("/departement/:id", controller.getProfByDepartementId);
 
 router.use("/:id/charge", chargeRouter);
 //CREATE
@@ -24,4 +27,5 @@ router.put("/:id", controller.updateProf);
 
 //DELETE
 router.delete("/:id", controller.deleteProf);
+
 module.exports = router;
