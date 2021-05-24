@@ -3,7 +3,7 @@ const professeur = models.professeur;
 const departement = models.departement;
 
 const createDepartement = async (req, res) => {
-  const {nom ,chefDepartementID,professeur} = req.body;
+  const {nom ,professeur} = req.body;
   console.log('insidde create departement');
   departement.create({
     nom : nom,

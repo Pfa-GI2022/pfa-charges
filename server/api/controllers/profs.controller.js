@@ -7,12 +7,34 @@ const activite = models.activitePedagogique;
 
 
 const createProf = async (req, res, next) => {
-  try {
-    const prof = await professeur.create(req.body);
-    return res.status(200).json({ prof });
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
+  // try {
+  //   const prof = await professeur.create(req.body);
+  //   return res.status(200).json({ prof });
+  // } catch (error) {
+  //   return res.status(500).send(error.message);
+  // }
+  const {nom ,prenom,avatar,charge} = req.body;
+
+  professeur.create({
+    nom : nom,
+    prenom : prenom,
+    avatar : avatar,
+    createdAt : new Date(),
+    updatedAt : new Date(),
+    charge : charge
+  } , {
+    include : [
+      {
+        association: professeur.charge
+      }
+    ]
+  }).then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(404).send({error : err.message});
+
+    });
 };
 
 const getAllProfs = async (req, res, next) => {
