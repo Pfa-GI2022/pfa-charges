@@ -14,7 +14,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.get("/", controller.getAllFilieres);
 
 //GET ONE
-router.get("/:id", (req, res) => controller.getOneFiliereByID(req ,res));
+router.get("/:id", (req, res) => controller.getFiliereByID(req, res));
 
 //CREATE
 router.post("/", controller.createFiliere);

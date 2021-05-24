@@ -15,11 +15,11 @@ export class ListeProfesseursComponent implements OnInit {
   constructor(private professeurService: ProfesseurService) { }
 
   ngOnInit(): void {
-
+    this.onGetAllPros();
   }
 
   onGetAllPros(): void{
-    this.professeurService.getAllProfesseurs().subscribe( data => console.log(data));
+    this.professeurService.getAllProfesseurs().subscribe( data => this.professeurs = data);
   }
 
   onGetProfById(id:number){
