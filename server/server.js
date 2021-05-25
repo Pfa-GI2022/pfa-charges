@@ -1,9 +1,16 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 const cors = require("cors");
 //
 app.use(express.json());
-app.use(cors());
+
+var corsOptions = {
+  origin: "http://localhost:3000",
+};
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //importing the routes
 const departementRoutes = require("./api/routes/departements");
@@ -13,8 +20,8 @@ const matieresRoutes = require("./api/routes/matieres");
 const filieresRoutes = require("./api/routes/filieres");
 const activitesRoutes = require("./api/routes/activitepedagogiques");
 const groupesRoutes = require("./api/routes/groupe");
-const authRoutes = require("./api/routes/auth.routes");
-const userRoutes = require("./api/routes/user.routes");
+require("./api/routes/auth.routes")(app);
+require("./api/routes/user.routes")(app);
 
 app.use("/departements", departementRoutes);
 app.use("/professeurs", professeurRoutes);
@@ -23,8 +30,7 @@ app.use("/matieres", matieresRoutes);
 app.use("/filieres", filieresRoutes);
 app.use("/activitepedagogiques", activitesRoutes);
 app.use("/groupes", groupesRoutes);
-app.use("/api", userRoutes);
-app.use("/api/auth", authRoutes);
+//app.use("/api", [userRoutes, authRoutes]);
 
 //not found route
 app.use((req, res, next) => {

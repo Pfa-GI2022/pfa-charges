@@ -1,4 +1,4 @@
-const { authJwt } = require("../middlewares/authJwt");
+const authJwt = require("../middlewares/authJwt");
 const controller = require("../controllers/user.controller");
 
 module.exports = function (app) {
@@ -12,9 +12,21 @@ module.exports = function (app) {
 
   app.get("/api/test/all", controller.allAccess);
 
-  app.get("/api/test/prof", [authJwt.verifyToken], controller.profBoard);
-  app.get("/api/test/chefDep", [authJwt.verifyToken], controller.depBoard);
-  app.get("/api/test/chefFil", [authJwt.verifyToken], controller.filBoard);
+  app.get(
+    "/api/test/prof",
+    [authJwt.verifyToken, authJwt.isProf],
+    controller.profBoard
+  );
+  app.get(
+    "/api/test/chefDep",
+    [authJwt.verifyToken, authJwt.isChefDep],
+    controller.chefBoard
+  );
+  app.get(
+    "/api/test/chefFil",
+    [authJwt.verifyToken, authJwt.isChefFil],
+    controller.filBoard
+  );
 
   app.get(
     "/api/test/admin",

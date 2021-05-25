@@ -42,5 +42,5 @@ Object.keys(db).forEach((modelName) => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-db.ROLES = ["admin", "prof", "chefDep", "chefFil"];
+db.ROLES = ["admin", "professeur", "chefDeDepartement", "chefDeFilieres"];
 module.exports = db;
