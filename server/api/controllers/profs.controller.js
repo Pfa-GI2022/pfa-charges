@@ -7,12 +7,34 @@ const activite = models.activitePedagogique;
 
 
 const createProf = async (req, res, next) => {
-  try {
-    const prof = await professeur.create(req.body);
-    return res.status(200).json({ prof });
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
+  // try {
+  //   const prof = await professeur.create(req.body);
+  //   return res.status(200).json({ prof });
+  // } catch (error) {
+  //   return res.status(500).send(error.message);
+  // }
+  const {nom ,prenom,avatar,charge} = req.body;
+
+  professeur.create({
+    nom : nom,
+    prenom : prenom,
+    avatar : avatar,
+    createdAt : new Date(),
+    updatedAt : new Date(),
+    charge : charge
+  } , {
+    include : [
+      {
+        association: professeur.charge
+      }
+    ]
+  }).then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(404).send({error : err.message});
+
+    });
 };
 
 const getAllProfs = async (req, res, next) => {
@@ -31,7 +53,7 @@ const getAllProfs = async (req, res, next) => {
       ],
     });
 
-    return res.status(200).json({ profs });
+    return res.status(200).send(profs);
   } catch (error) {
     return res.status(500).send(error.message);
   }
@@ -39,7 +61,19 @@ const getAllProfs = async (req, res, next) => {
 
 const getProfById = async (req, res, next) => {
   try {
-    const prof = await professeur.findByPk(req.params.id);
+    const prof = await professeur.findByPk( req.params.id,{
+      include: [
+        {
+          model: filiere,
+        },
+        {
+          model: departement,
+        },
+        {
+          model: charge,
+        }
+        ]
+    });
     return res.status(200).json({ prof });
   } catch (error) {
     return res.status(500).send(error.message);
@@ -78,10 +112,37 @@ const deleteProf = async (req, res) => {
   }
 };
 
+const getProfByDepartementId = async (req ,res) => {
+  const { id } = req.params;
+
+  try {
+    const profs = await professeur.findAll({
+      include: [
+        {
+          model: filiere,
+        },
+        {
+          attributes : [],
+          model: departement,
+          where : {id}
+        },
+        {
+          model: charge,
+        }
+      ],
+    });
+
+    return res.status(200).send(profs);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+
 module.exports = {
   createProf,
   getAllProfs,
   getProfById,
   updateProf,
   deleteProf,
+  getProfByDepartementId
 };

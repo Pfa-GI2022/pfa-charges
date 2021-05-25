@@ -3,17 +3,30 @@ const professeur = models.professeur;
 const departement = models.departement;
 
 const createDepartement = async (req, res) => {
-  const {nom ,chefDepartementID} = req.body;
-  dep = {
+  const {nom ,professeur} = req.body;
+  console.log('insidde create departement');
+  departement.create({
     nom : nom,
     createdAt : new Date(),
     updatedAt : new Date(),
-    chefDepartementID : chefDepartementID
-  };
+    professeur : professeur
+  },{
+    include : [
+      {association: departement.prof}
+    ]
+  }
+ 
+  )
+    .then(data => {
+      res.send(data);
+      console.log('inside the then of create depart')
+    
+    })
+    .catch(err => {
+      res.status(err);
+      console.log(err.message)
 
-  departement.create(dep)
-    .then(data => res.send(data))
-    .catch(err => res.status(err));
+      });
 };
 
 

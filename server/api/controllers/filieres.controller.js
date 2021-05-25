@@ -48,9 +48,12 @@ const getFiliereByID = async (req, res) => {
     model : mod
   },
 ]
-}).then(filieree => res.send(filieree))
-  .catch(err => res.status(500).send({error : err}));
-}
+}).then(filiere => res.send(filiere))
+  .catch(err => {
+    console.log('insied the catch of getFiliereByID');
+    res.status(500).send({error : err})
+  });
+};
 
 const updateFiliere = async (req ,res) => {
 const id = req.params.id;

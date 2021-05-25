@@ -1,5 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
+const charge = require("./charge");
+
 module.exports = (sequelize, DataTypes) => {
   class professeur extends Model {
     /**
@@ -17,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasOne(models.filiere, {
         foreignKey: "chefFiliereID",
       });
-      this.hasOne(models.charge, {
+      professeur.charge = this.hasOne(models.charge, {
         foreignKey: "profID",
       });
       this.hasOne(models.departement, { foreignKey: "chefDepartementID" });
