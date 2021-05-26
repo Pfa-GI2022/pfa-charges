@@ -5,12 +5,13 @@ const controller = require("../controllers/profs.controller");
 const db = require("../models/index");
 const chargeRouter = require("./charges");
 const prof = db.professeur;
+const authJwt = require("../middlewares/authJwt");
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 //GET ALL
-router.get("/", controller.getAllProfs);
+router.get("/" ,controller.getAllProfs);
 
 //GET ONE BY ID
 router.get("/:id", controller.getProfById);
