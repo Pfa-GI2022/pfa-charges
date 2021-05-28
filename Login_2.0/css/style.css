@@ -72,11 +72,16 @@ form {
   margin-top: 0;
 }
 
+.login-content .input-div .div {
+  border-radius: 0 12px 12px 0;
+}
+
 .i {
   color: #d9d9d9;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 12px 0 0 12px;
 }
 
 .i i {
@@ -170,11 +175,11 @@ a:hover {
   display: block;
   width: 100%;
   height: 50px;
-  border-radius: 25px;
+  border-radius: 12px;
   outline: none;
   border: none;
   background-color: #02e079;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #fff;
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
@@ -231,28 +236,28 @@ section .wave {
   background-size: 1000px 100px;
 }
 section .wave.wave1 {
-  animation: animate 30s linear;
+  animation: animate 13s linear infinite;
   z-index: 1000;
   opacity: 1;
   animation-delay: 0s;
   bottom: 0;
 }
 section .wave.wave2 {
-  animation: animate2 15s linear;
+  animation: animate2 8s linear infinite;
   z-index: fff;
   opacity: 0.5;
   animation-delay: -5s;
   bottom: 10px;
 }
 section .wave.wave3 {
-  animation: animate 30s linear;
+  animation: animate 11s linear infinite;
   z-index: 998;
   opacity: 0.2;
   animation-delay: -2s;
   bottom: 15px;
 }
 section .wave.wave4 {
-  animation: animate2 5s linear;
+  animation: animate2 5s linear infinite;
   z-index: 997;
   opacity: 0.7;
   animation-delay: -5s;
