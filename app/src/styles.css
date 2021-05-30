@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
 
 
 .cards-wrapper{
@@ -41,3 +42,8 @@
 } 
 
 
+=======
+body {
+  margin: 0;
+}
+>>>>>>> 92f28e120ca3c2a1978059757c5bdf0a1d9316c5

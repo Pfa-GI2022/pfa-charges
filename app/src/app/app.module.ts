@@ -14,6 +14,8 @@ import { CarteProfesseurComponent } from './components/carte-professeur/carte-pr
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { CreateProfComponent } from './components/create-prof/create-prof.component';
 import { ProfDetailsComponent } from './components/prof-details/prof-details.component';
+import { LoginComponent } from './components/login/login.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
  
 //just for test
@@ -46,4 +48,4 @@ const routes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
