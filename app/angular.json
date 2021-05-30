@@ -19,19 +19,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-<<<<<<< HEAD
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css",
-              "node_modules/semantic-ui-css/semantic.min.css"
-            ],
-=======
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.css"],
->>>>>>> 92f28e120ca3c2a1978059757c5bdf0a1d9316c5
             "scripts": []
           },
           "configurations": {
