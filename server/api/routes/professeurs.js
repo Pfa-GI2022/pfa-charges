@@ -11,7 +11,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 //GET ALL
-router.get("/" ,controller.getAllProfs);
+router.get("/", controller.getAllProfs);
 
 //GET ONE BY ID
 router.get("/:id", controller.getProfById);
