@@ -24,4 +24,11 @@ export class ProfesseurService {
     const host = environment.host;
     return this.http.delete(`${host}/professeurs/${id}`);
   }
+
+  createProfesseur(body:Professeur){
+    const host = environment.host;
+    console.log('create prof')
+    return this.http.post(`${host}/professeurs`,body);  
+
+  }
 }

@@ -1,11 +1,32 @@
-<ul>
-  <li *ngFor="let prof of professeurs">
-    <h1>{{ prof.nom }}</h1>
-    <h1> {{ prof.prenom}}</h1>
-    <ul>
-      <li *ngIf="prof.charge">
-        {{ prof.charge.chargeTotal }}
-      </li>
-    </ul>
-  </li>
-</ul>
+<div class="liste-profs">
+  <div class="search-bar">
+    <div class="ui fluid category search">
+      <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="rechercher un prof" (input)="onSearch($event.target.value)">
+        <i class="search icon"></i>
+      </div>
+    </div>  
+    <div class="ui selection dropdown ">
+      <input type="hidden" name="gender">
+      <i class="dropdown icon"></i>
+      <div class="default text">Gender</div>
+      <div class="menu">
+        <div class="item" data-value="1">Male</div>
+        <div class="item" data-value="0">Female</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-wrapper">
+    <app-carte-professeur 
+      *ngFor="let p of professeurs | searchFilter : term"
+      [professeur]="p"
+    >
+  </app-carte-professeur>
+  </div>
+
+  <a class="add-btn" routerLink="/newProf" data-tooltip="ajouter un professeur" data-position="left center">
+    +
+  </a>
+</div>
+

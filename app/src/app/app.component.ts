@@ -11,12 +11,8 @@ export class AppComponent implements OnInit{
   filiere :any;
   modules = [];
   chefDeFiliere = {};
-  constructor(private filiereService:FiliereService){}
-  ngOnInit(){
-    this.filiereService.getFiliereById(2).subscribe((data: any) =>{ 
-      this.filiere = data;
-      this.modules = data.modules;
-    });
+  constructor(){}
+  ngOnInit(){}
   
-  }
+  
 }

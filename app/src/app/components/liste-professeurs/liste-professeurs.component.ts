@@ -11,21 +11,29 @@ import { Professeur} from "../../models/professeur.model";
 export class ListeProfesseursComponent implements OnInit {
 
   professeurs: Professeur[];
+  term = '';
+  selectedProf : Professeur;
 
   constructor(private professeurService: ProfesseurService) { }
 
   ngOnInit(): void {
-    this.onGetAllPros();
+    this.onGetAllProfs();
   }
 
-  onGetAllPros(): void{
-    this.professeurService.getAllProfesseurs().subscribe( data => this.professeurs = data);
+  onGetAllProfs(): void{
+    this.professeurService.getAllProfesseurs().subscribe( data => {
+      this.professeurs = data;
+      console.log(data);
+    });
   }
 
   onGetProfById(id:number){
     this.professeurService.getProfesseurByID(id).subscribe(data => console.log(data));
   }
 
+  onSearch(term:string):void{
+    this.term = term;
+  }
 
 
 
