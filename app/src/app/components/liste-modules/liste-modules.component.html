@@ -1,0 +1,32 @@
+<div class="liste-modules">
+  <div class="search-bar">
+    <div class="ui fluid category search">
+      <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="Search for Modules" (input)="onSearch($event.target.value)">
+        <i class="search icon"></i>
+      </div>
+    </div>  
+    <div class="ui selection dropdown ">
+      <input type="hidden" name="Filiere">
+      <i class="dropdown icon"></i>
+      <div class="default text">Filiere</div>
+      <div class="menu">
+        <div class="item" data-value="0">Genie informatique</div>
+        <div class="item" data-value="1">Genie informatique</div>
+        <div class="item" data-value="2">Genie informatique</div>
+        <div class="item" data-value="3">Genie informatique</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-wrapper">
+    <app-carte-module>
+      
+    </app-carte-module>
+  </div>
+
+  <a class="add-btn" routerLink="/newModule" data-tooltip="Ajouter un nouveau module" data-position="left center">
+    +
+  </a>
+</div>
+
