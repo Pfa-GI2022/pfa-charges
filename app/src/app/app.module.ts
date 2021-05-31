@@ -16,16 +16,14 @@ import { CreateProfComponent } from './components/create-prof/create-prof.compon
 import { ProfDetailsComponent } from './components/prof-details/prof-details.component';
 import { LoginComponent } from './components/login/login.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { ListeModulesComponent } from './components/liste-modules/liste-modules.component';
+import { CreateModulesComponent } from './components/create-modules/create-modules.component';
+import { SousModulesComponent } from './components/sous-modules/sous-modules.component';
+import { ActiviteComponent } from './components/activite/activite.component';
+import { CarteModuleComponent } from './components/carte-module/carte-module.component';
+import { AppRoutingModule } from './app-routing.module';
 
  
-//just for test
-const routes: Routes = [
-  { path : 'newProf', component : CreateProfComponent},
-  { path : 'profDetails', component : ProfDetailsComponent},
-  { path : 'liste' , component : ListeProfesseursComponent},
-  { path : '' , component : ListeProfesseursComponent},
-  { path : '**' , component : ListeProfesseursComponent}
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,14 +32,19 @@ const routes: Routes = [
     SearchFilterPipe,
     CreateProfComponent,
     ProfDetailsComponent,
+    ListeModulesComponent,
+    CreateModulesComponent,
+    SousModulesComponent,
+    ActiviteComponent,
+    CarteModuleComponent,
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    AppRoutingModule
   ],
   providers: [
     FiliereService
