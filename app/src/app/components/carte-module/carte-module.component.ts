@@ -12,7 +12,7 @@ export class CarteModuleComponent implements OnInit {
   ngOnInit(): void {
   }
   /*la connexion avec la base de donnees
-  execution la fonction pour recuperer modules 
+  execution de la fonction pour recuperer modules 
   delarer la variable modules : table
   */
 }

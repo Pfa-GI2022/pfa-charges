@@ -23,7 +23,7 @@ export class ListeModulesComponent implements OnInit {
     });
   }
 
-  onGetProfById(id:number){
+  onGetModuleById(id:number){
     this.moduleService.getModuleByID(id).subscribe(data => console.log(data));
   }
 
