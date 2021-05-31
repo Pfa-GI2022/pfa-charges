@@ -1,49 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
-<<<<<<< HEAD
+@import url(../node_modules/semantic-ui-css/semantic.min.css);
 
-
-.cards-wrapper{
-    display : grid;
-    grid-template-columns: repeat(4 , 1fr);
-    padding: 20px 50px;
-    grid-gap : 20px ;
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px 50px;
+  grid-gap: 20px;
 }
 
-.ui.card{
-    margin: 0;
+.ui.card {
+  margin: 0;
 }
 
+@media (max-width: 1200px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 
+@media (max-width: 800px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+  }
+}
 
+@media (max-width: 600px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr;
+  }
 
-@media (max-width: 1200px){
-    .cards-wrapper{
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-} 
+  .ui.card {
+    width: 100%;
+  }
+}
 
-@media (max-width: 800px){
-    .cards-wrapper{
-        grid-template-columns: 1fr 1fr;
-        padding: 10px;
-    }
-
-    
-} 
-
-@media (max-width: 600px){
-    .cards-wrapper{
-        grid-template-columns: 1fr;
-    }
-
-    .ui.card{
-        width: 100%;
-    }
-} 
-
-
-=======
 body {
   margin: 0;
 }
->>>>>>> 92f28e120ca3c2a1978059757c5bdf0a1d9316c5

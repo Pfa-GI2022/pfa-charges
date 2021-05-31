@@ -15,16 +15,16 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { CreateProfComponent } from './components/create-prof/create-prof.component';
 import { ProfDetailsComponent } from './components/prof-details/prof-details.component';
 import { LoginComponent } from './components/login/login.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { NavComponent } from './components/nav/nav.component';
 
- 
 //just for test
 const routes: Routes = [
-  { path : 'newProf', component : CreateProfComponent},
-  { path : 'profDetails', component : ProfDetailsComponent},
-  { path : 'liste' , component : ListeProfesseursComponent},
-  { path : '' , component : ListeProfesseursComponent},
-  { path : '**' , component : ListeProfesseursComponent}
+  { path: 'newProf', component: CreateProfComponent },
+  { path: 'profDetails', component: ProfDetailsComponent },
+  { path: 'liste', component: ListeProfesseursComponent },
+  { path: 'home', component: NavComponent },
+  { path: '', component: LoginComponent },
+  { path: '**', component: ListeProfesseursComponent },
 ];
 @NgModule({
   declarations: [
@@ -34,6 +34,7 @@ const routes: Routes = [
     SearchFilterPipe,
     CreateProfComponent,
     ProfDetailsComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,11 +42,9 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
-  providers: [
-    FiliereService
-  ],
-  bootstrap: [AppComponent]
+  providers: [FiliereService],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
