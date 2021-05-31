@@ -5,6 +5,7 @@ import { CreateProfComponent } from './components/create-prof/create-prof.compon
 import { ListeModulesComponent } from './components/liste-modules/liste-modules.component';
 import { ListeProfesseursComponent } from './components/liste-professeurs/liste-professeurs.component';
 import { ProfDetailsComponent } from './components/prof-details/prof-details.component';
+import { SousModulesComponent } from './components/sous-modules/sous-modules.component';
 
 /*la bonne pratique pour routing !!*/
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path : 'newModule', component :  CreateModulesComponent},
   { path : 'profDetails', component : ProfDetailsComponent},
   { path : 'liste' , component : ListeProfesseursComponent},
+  { path : 'sousModule' , component : SousModulesComponent},
   { path : 'module', component : ListeModulesComponent}
 ];
 
