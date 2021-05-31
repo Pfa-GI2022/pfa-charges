@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-<<<<<<< HEAD
 @import url(../node_modules/semantic-ui-css/semantic.min.css);
 
 .cards-wrapper {
@@ -7,15 +6,6 @@
   grid-template-columns: repeat(4, 1fr);
   padding: 20px 50px;
   grid-gap: 20px;
-=======
-@import url("../node_modules/semantic-ui-css/semantic.css");
-
-.cards-wrapper{
-    display : grid;
-    grid-template-columns: repeat(4 , 1fr);
-    padding: 20px 50px;
-    grid-gap : 20px ;
->>>>>>> 1b710bafa0da34a541612fc0e096376609ee00a0
 }
 
 .ui.card {

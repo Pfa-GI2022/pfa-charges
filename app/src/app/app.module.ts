@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'profDetails', component: ProfDetailsComponent },
   { path: 'liste', component: ListeProfesseursComponent },
   { path: 'home', component: NavComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', component: LoginComponent },
   { path: '**', component: ListeProfesseursComponent },
 ];
@@ -50,6 +51,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
