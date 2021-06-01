@@ -21,9 +21,8 @@ export class CreateModulesComponent implements OnInit {
   initForm() {
     this.moduleForm = this.formBuilder.group({
       nom : new FormControl('',[Validators.required,Validators.minLength(5),Validators.pattern("[a-zA-Z\s]*")]),
-      semestre : new FormControl('',[Validators.required,Validators.minLength(5),Validators.pattern("[a-zA-Z\s]*")]),
+      semestre : new FormControl('',[Validators.required,Validators.minLength(5)]),
       filiere : new FormControl('',[Validators.required,Validators.minLength(5),Validators.pattern("[a-zA-Z\s]*")]),
-      matiere : new FormControl('',[Validators.required,Validators.minLength(5),Validators.pattern("[a-zA-Z\s]*")]),
 
     });
   }

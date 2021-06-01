@@ -6,20 +6,33 @@
         <i class="search icon"></i>
       </div>
     </div>  
-    <div class="ui selection dropdown ">
-      <input type="hidden" name="gender">
-      <i class="dropdown icon"></i>
-      <div class="default text">Gender</div>
-      <div class="menu">
-        <div class="item" data-value="1">Male</div>
-        <div class="item" data-value="0">Female</div>
-      </div>
+    <div 
+    class="ui selection dropdown "
+    [ngClass]="{'active' : open}"    
+    (click)="toggleOpen()"
+>
+
+    <input type="hidden" name="gender">
+    <i class="dropdown icon"></i>
+    <div class="default text">{{selectedOption.label}}</div>
+    <div 
+        class="menu"
+        [ngClass]="{'transition visible' : open}"    
+    >
+
+      <div 
+        *ngFor="let option of options"
+        class="item"
+        (click)="onSelection(option)"
+        >{{option.value}}</div>
     </div>
+  </div>
+
   </div>
 
   <div class="cards-wrapper">
     <app-carte-professeur 
-      *ngFor="let p of professeurs | searchFilter : term"
+      *ngFor="let p of professeurs | searchFilter : term | chargeFilter : selectedOption.value"
       [professeur]="p"
     >
   </app-carte-professeur>
@@ -29,4 +42,3 @@
     +
   </a>
 </div>
-

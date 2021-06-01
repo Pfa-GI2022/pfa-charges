@@ -13,6 +13,15 @@ export class ListeProfesseursComponent implements OnInit {
   professeurs: Professeur[];
   term = '';
   selectedProf : Professeur;
+  options = [
+    {label : 'all',value : 'all'},
+    {label : 'charge atteinte',value : 'charge atteinte'},
+    {label : 'charge presque atteinte',value : 'charge presque atteinte'},
+    {label : 'charge non atteinte',value : 'charge non atteinte'}
+  ];
+  selectedOption = this.options[0];
+  open = false;
+
 
   constructor(private professeurService: ProfesseurService) { }
 
@@ -23,7 +32,6 @@ export class ListeProfesseursComponent implements OnInit {
   onGetAllProfs(): void{
     this.professeurService.getAllProfesseurs().subscribe( data => {
       this.professeurs = data;
-      console.log(data);
     });
   }
 
@@ -35,6 +43,11 @@ export class ListeProfesseursComponent implements OnInit {
     this.term = term;
   }
 
+  onSelection(option: any){
+    this.selectedOption = option;
+  }
 
-
+  toggleOpen(){
+    this.open = !this.open;
+  }
 }

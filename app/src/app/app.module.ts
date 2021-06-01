@@ -11,6 +11,7 @@ import { ListeProfesseursComponent } from './components/liste-professeurs/liste-
 import { FiliereService } from './services/filiere.service';
 import { CarteProfesseurComponent } from './components/carte-professeur/carte-professeur.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { ChargeFilterPipe } from './pipes/charge-filter.pipe';
 import { CreateProfComponent } from './components/create-prof/create-prof.component';
 import { ProfDetailsComponent } from './components/prof-details/prof-details.component';
 import { LoginComponent } from './components/login/login.component';
@@ -36,6 +37,7 @@ import { AppRoutingModule } from './app-routing.module';
     SousModulesComponent,
     ActiviteComponent,
     CarteModuleComponent,
+    ChargeFilterPipe
   ],
   imports: [
     BrowserModule,
