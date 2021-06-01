@@ -15,7 +15,7 @@ import { ChargeFilterPipe } from './pipes/charge-filter.pipe';
 import { CreateProfComponent } from './components/create-prof/create-prof.component';
 import { ProfDetailsComponent } from './components/prof-details/prof-details.component';
 import { LoginComponent } from './components/login/login.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { NavComponent } from './components/nav/nav.component';
 import { ListeModulesComponent } from './components/liste-modules/liste-modules.component';
 import { CreateModulesComponent } from './components/create-modules/create-modules.component';
 import { SousModulesComponent } from './components/sous-modules/sous-modules.component';
@@ -23,7 +23,17 @@ import { ActiviteComponent } from './components/activite/activite.component';
 import { CarteModuleComponent } from './components/carte-module/carte-module.component';
 import { AppRoutingModule } from './app-routing.module';
 
- 
+//just for test
+const routes: Routes = [
+  { path: 'newProf', component: CreateProfComponent },
+  { path: 'profDetails', component: ProfDetailsComponent },
+  { path: 'liste', component: ListeProfesseursComponent },
+  { path: 'home', component: NavComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
+  { path: '**', component: ListeProfesseursComponent },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +42,7 @@ import { AppRoutingModule } from './app-routing.module';
     SearchFilterPipe,
     CreateProfComponent,
     ProfDetailsComponent,
+    NavComponent,
     ListeModulesComponent,
     CreateModulesComponent,
     SousModulesComponent,
@@ -41,15 +52,14 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  providers: [
-    FiliereService
-  ],
-  bootstrap: [AppComponent]
+  providers: [FiliereService],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

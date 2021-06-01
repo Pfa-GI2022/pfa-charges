@@ -77,8 +77,8 @@ form {
 .input-div > div > h5 {
   position: absolute;
   left: 10px;
-  top: 69%;
-  transform: translateY(-80%);
+  top: 60%;
+  transform: translateY(-75%);
   color: #fff;
   font-size: 0.9rem;
   transition: 0.3s;
@@ -130,7 +130,7 @@ form {
   background: none;
   padding: 0.5rem 0.7rem;
   font-size: 1.2rem;
-  color: #555;
+  color: #fff;
   font-family: "Poppins", sans-serif;
 }
 
