@@ -19,24 +19,15 @@ module.exports = {
       groupeID: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: "activitepedagogiques",
-          key: "id",
-        }},
-        professeurId : {
+      },
+      professeurId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: "professeurs",
-          key: "id",
-          }},
+      },
       matiereID: {
         type: Sequelize.INTEGER,
-          allowNull: false,
-           references: {
-             model: "matieres",
-            key: "id",
-            }},
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

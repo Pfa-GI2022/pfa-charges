@@ -9,21 +9,19 @@ const modules = db.module;
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-
 //GET ALL
 router.get("/", controller.getAllActivities);
 
 //GET ONE
-router.get("/:id", (req, res) => controller.getActivityByID(req ,res));
+router.get("/:id", controller.getActivityByID);
 
 //CREATE
 router.post("/", controller.createActivity);
 
 //UPDATE
-router.put("/:id", (req, res) => controller.updateActivity(req ,res));
+router.put("/:id", controller.updateActivity);
 
 //DELETE
-router.delete("/:id", (req, res) => controller.deleteActivityByID(req,res));
-
+router.delete("/:id", controller.deleteActivityByID);
 
 module.exports = router;

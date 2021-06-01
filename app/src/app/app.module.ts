@@ -24,15 +24,6 @@ import { CarteModuleComponent } from './components/carte-module/carte-module.com
 import { AppRoutingModule } from './app-routing.module';
 
 //just for test
-const routes: Routes = [
-  { path: 'newProf', component: CreateProfComponent },
-  { path: 'profDetails', component: ProfDetailsComponent },
-  { path: 'liste', component: ListeProfesseursComponent },
-  { path: 'home', component: NavComponent },
-  { path: 'login', component: LoginComponent },
-  { path: '', component: LoginComponent },
-  { path: '**', component: ListeProfesseursComponent },
-];
 
 @NgModule({
   declarations: [
@@ -48,11 +39,10 @@ const routes: Routes = [
     SousModulesComponent,
     ActiviteComponent,
     CarteModuleComponent,
-    ChargeFilterPipe
+    ChargeFilterPipe,
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
