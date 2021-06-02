@@ -11,10 +11,13 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
 
       this.belongsTo(models.professeur, {
-        foreignKey: "professeurID",
+        foreignKey: "professeurId",
       });
       this.belongsTo(models.matiere, {
         foreignKey: "matiereID",
+      });
+      this.belongsTo(models.groupe, {
+        foreignKey: "groupeID",
       });
     }
   }

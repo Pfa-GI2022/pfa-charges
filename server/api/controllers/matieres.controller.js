@@ -1,3 +1,4 @@
+const activitepedagogique = require("../models/activitepedagogique.js");
 const models = require("../models/index.js");
 const matiere = models.matiere;
 const mod = models.module;
@@ -18,11 +19,12 @@ const getAllMatieres = async (req, res, next) => {
     console.log("inside getAllMatieres");
     const matieres = await matiere.findAll({
       include: [
-       
         {
-          model: mod,
+          model: models.module,
         },
-       
+        {
+          model: models.activitePedagogique,
+        },
       ],
     });
     console.log("inside getAllMatieres ");
@@ -34,47 +36,58 @@ const getAllMatieres = async (req, res, next) => {
 
 const getOneMatiereByID = async (req, res) => {
   const id = req.params.id;
-  await matiere.findByPk(id , {
-  include : [{
-    model : mod
-  }]
-}).then(mats => res.send(mats))
-  .catch(err => res.status(500).send({error : err}));
-}
+  await matiere
+    .findByPk(id, {
+      include: [
+        {
+          model: models.module,
+        },
+        {
+          model: models.activitePedagogique,
+        },
+      ],
+    })
+    .then((mats) => res.send(mats))
+    .catch((err) => res.status(500).send({ error: err }));
+};
 
 const getOneMatiereByName = async (req, res) => {
-const name = req.params.name;
+  const name = req.params.name;
 
-matiere.findOne({
-  where : {
-    nom : 'Mecanique de point'
-  }
-}).then(mats => res.send(mats))
-  .catch(err => res.status(500).send({error : err}));
-}
+  matiere
+    .findOne({
+      where: {
+        nom: "Mecanique de point",
+      },
+    })
+    .then((mats) => res.send(mats))
+    .catch((err) => res.status(500).send({ error: err }));
+};
 
-const updateMatiere = async (req ,res) => {
-const id = req.params.id;
-const updatedData = req.body;
-console.log(id);
-console.log(`updatedData ${updatedData}`);
+const updateMatiere = async (req, res) => {
+  const id = req.params.id;
+  const updatedData = req.body;
+  console.log(id);
+  console.log(`updatedData ${updatedData}`);
 
-matiere.update(updatedData , {where : {id}})
-  .then(updatedMat => res.status(200).send(updatedMat))
-  .catch(err => res.status(500).send({error : err}))
-}
+  matiere
+    .update(updatedData, { where: { id } })
+    .then((updatedMat) => res.status(200).send(updatedMat))
+    .catch((err) => res.status(500).send({ error: err }));
+};
 
-const deleteMatiereByID = async (req ,res) => {
-const id = parseInt(req.params.id, 10);
-if (Number.isNaN(id)) return res.status(400).end();
+const deleteMatiereByID = async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (Number.isNaN(id)) return res.status(400).end();
 
-matiere.destroy({
- where: {id}
-}).then(() => {
- res.status(204).end();
-});}
-
-
+  matiere
+    .destroy({
+      where: { id },
+    })
+    .then(() => {
+      res.status(204).end();
+    });
+};
 
 module.exports = {
   createMatiere,
@@ -82,5 +95,5 @@ module.exports = {
   getOneMatiereByID,
   getOneMatiereByName,
   updateMatiere,
-  deleteMatiereByID
+  deleteMatiereByID,
 };

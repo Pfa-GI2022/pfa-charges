@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.activitePedagogique, {
+        foreignKey: "groupeID",
+      });
     }
   }
   groupe.init(

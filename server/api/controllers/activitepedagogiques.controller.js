@@ -19,16 +19,7 @@ const createActivity = async (req, res, next) => {
 const getAllActivities = async (req, res, next) => {
   try {
     console.log("inside getAllActivities");
-    const activities = await activite.findAll({
-      include: [
-        {
-          model: matiere,
-        },
-        {
-          model: groupe,
-        },
-      ],
-    });
+    const activities = await activite.findAll();
     console.log("inside getAllActivities ");
     return res.status(200).json({ activities });
   } catch (error) {

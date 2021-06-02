@@ -26,8 +26,7 @@ const getAllFilieres = async (req, res, next) => {
         },
         {
           model: professeur,
-        }
-        
+        },
       ],
     });
     console.log("inside getAllFilieres ");
@@ -39,49 +38,53 @@ const getAllFilieres = async (req, res, next) => {
 
 const getFiliereByID = async (req, res) => {
   const id = req.params.id;
-  await filiere.findByPk(id , {
-  include : [
-    {
-    model : professeur
-  },
-  {
-    model : mod
-  },
-]
-}).then(filiere => res.send(filiere))
-  .catch(err => {
-    console.log('insied the catch of getFiliereByID');
-    res.status(500).send({error : err})
-  });
+  await filiere
+    .findByPk(id, {
+      include: [
+        {
+          model: mod,
+        },
+        {
+          model: professeur,
+        },
+      ],
+    })
+    .then((filiere) => res.send(filiere))
+    .catch((err) => {
+      console.log("insied the catch of getFiliereByID");
+      res.status(500).send({ error: err });
+    });
 };
 
-const updateFiliere = async (req ,res) => {
-const id = req.params.id;
-const updatedData = req.body;
-console.log(id);
-console.log(`updatedData ${updatedData}`);
+const updateFiliere = async (req, res) => {
+  const id = req.params.id;
+  const updatedData = req.body;
+  console.log(id);
+  console.log(`updatedData ${updatedData}`);
 
-filiere.update(updatedData , {where : {id}})
-  .then(updatedFiliere => res.status(200).send(updatedFiliere))
-  .catch(err => res.status(500).send({error : err}))
-}
+  filiere
+    .update(updatedData, { where: { id } })
+    .then((updatedFiliere) => res.status(200).send(updatedFiliere))
+    .catch((err) => res.status(500).send({ error: err }));
+};
 
-const deleteFiliereByID = async (req ,res) => {
-const id = parseInt(req.params.id, 10);
-if (Number.isNaN(id)) return res.status(400).end();
+const deleteFiliereByID = async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (Number.isNaN(id)) return res.status(400).end();
 
-filiere.destroy({
- where: {id}
-}).then(() => {
- res.status(204).end();
-});}
-
-
+  filiere
+    .destroy({
+      where: { id },
+    })
+    .then(() => {
+      res.status(204).end();
+    });
+};
 
 module.exports = {
   createFiliere,
   getAllFilieres,
   getFiliereByID,
   updateFiliere,
-  deleteFiliereByID
+  deleteFiliereByID,
 };

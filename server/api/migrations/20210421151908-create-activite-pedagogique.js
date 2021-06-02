@@ -16,17 +16,21 @@ module.exports = {
         type: Sequelize.DOUBLE,
         allowNull: false,
       },
-      groupeID: {
+      professeurID: {
         type: Sequelize.INTEGER,
         allowNull: false,
-      },
-      professeurId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+        references: {
+          model: "professeurs",
+          key: "id",
+        },
       },
       matiereID: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "matieres",
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,

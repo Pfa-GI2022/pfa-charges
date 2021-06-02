@@ -22,6 +22,9 @@ const getAllModules = async (req, res, next) => {
         {
           model: matiere,
         },
+        {
+          model: filiere,
+        },
       ],
     })
     .then((mods) => res.status(200).send(mods));
