@@ -27,14 +27,7 @@ export class ListeProfesseursComponent implements OnInit {
 
   ngOnInit(): void {
     this.onGetAllProfs();
-    const user = {
-      username : "am",
-      email : "am@gmail.com",
-      password : "test"
-    }
-    this.authService.register(user).subscribe( data => {
-      console.log(data);
-    })
+
   }
 
   onGetAllProfs(): void{
