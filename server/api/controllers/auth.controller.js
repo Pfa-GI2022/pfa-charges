@@ -2,6 +2,7 @@ const db = require("../models");
 const config = require("../config/auth.config");
 const User = db.user;
 const Role = db.role;
+const Prof = db.professeur;
 
 const Op = db.Sequelize.Op;
 
@@ -66,7 +67,11 @@ const signin = (req, res) => {
       var token = jwt.sign({ id: user.id }, config.secret, {
         expiresIn: 86400, // 24 hours
       });
-
+      var ProfAcc = Prof.findOne({
+        where: {
+          mail: user.email,
+        },
+      });
       var authorities = [];
       user.getRoles().then((roles) => {
         for (let i = 0; i < roles.length; i++) {
@@ -78,6 +83,7 @@ const signin = (req, res) => {
           email: user.email,
           roles: authorities,
           accessToken: token,
+          accountOwner: ProfAcc,
         });
       });
     })

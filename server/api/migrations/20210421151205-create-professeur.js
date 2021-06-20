@@ -16,6 +16,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      mail: {
+        type: Sequelize.STRING,
+      },
       avatar: {
         type: Sequelize.STRING,
       },
@@ -31,6 +34,12 @@ module.exports = {
           model: "departements",
           key: "id",
         },
+      },
+      createdAt: {
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
       },
     });
   },

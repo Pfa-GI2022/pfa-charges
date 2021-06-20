@@ -12,13 +12,14 @@ const createProf = async (req, res, next) => {
   // } catch (error) {
   //   return res.status(500).send(error.message);
   // }
-  const { nom, prenom, avatar, charge, depID } = req.body;
+  const { nom, prenom, mail, avatar, charge, depID } = req.body;
 
   professeur
     .create(
       {
         nom: nom,
         prenom: prenom,
+        mail: mail,
         avatar: avatar,
         depID: depID,
         charge: charge,
