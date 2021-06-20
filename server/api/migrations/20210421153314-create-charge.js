@@ -11,6 +11,7 @@ module.exports = {
       chargeTotal: {
         type: Sequelize.DOUBLE,
         allowNull: false,
+        defaultValue: 0,
       },
       profID: {
         type: Sequelize.INTEGER,
