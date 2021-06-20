@@ -9,8 +9,6 @@ const createDepartement = async (req, res) => {
     .create(
       {
         nom: nom,
-        createdAt: new Date(),
-        updatedAt: new Date(),
         professeur: professeur,
       },
       {
