@@ -20,8 +20,6 @@ const createProf = async (req, res, next) => {
         nom: nom,
         prenom: prenom,
         avatar: avatar,
-        createdAt: new Date(),
-        updatedAt: new Date(),
         depID: depID,
         charge: charge,
       },

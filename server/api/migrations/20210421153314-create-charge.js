@@ -11,6 +11,7 @@ module.exports = {
       chargeTotal: {
         type: Sequelize.DOUBLE,
         allowNull: false,
+        defaultValue: 0,
       },
       profID: {
         type: Sequelize.INTEGER,
@@ -18,14 +19,6 @@ module.exports = {
           model: "professeurs",
           key: "id",
         },
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
       },
     });
   },
