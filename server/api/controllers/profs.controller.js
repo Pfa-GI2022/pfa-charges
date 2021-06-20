@@ -12,7 +12,7 @@ const createProf = async (req, res, next) => {
   // } catch (error) {
   //   return res.status(500).send(error.message);
   // }
-  const { nom, prenom, avatar, charge } = req.body;
+  const { nom, prenom, avatar, charge, depID } = req.body;
 
   professeur
     .create(
@@ -22,6 +22,7 @@ const createProf = async (req, res, next) => {
         avatar: avatar,
         createdAt: new Date(),
         updatedAt: new Date(),
+        depID: depID,
         charge: charge,
       },
       {
@@ -77,6 +78,9 @@ const getProfById = async (req, res, next) => {
         },
         {
           model: charge,
+        },
+        {
+          model: activite,
         },
       ],
     });
