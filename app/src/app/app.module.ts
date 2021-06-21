@@ -22,6 +22,7 @@ import { SousModulesComponent } from './components/sous-modules/sous-modules.com
 import { ActiviteComponent } from './components/activite/activite.component';
 import { CarteModuleComponent } from './components/carte-module/carte-module.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DepartementComponent } from './components/departement/departement.component';
 
 //just for test
 
@@ -40,6 +41,7 @@ import { AppRoutingModule } from './app-routing.module';
     ActiviteComponent,
     CarteModuleComponent,
     ChargeFilterPipe,
+    DepartementComponent,
   ],
   imports: [
     BrowserModule,

@@ -38,3 +38,16 @@
 body {
   margin: 0;
 }
+
+#main {
+  transition: margin-left 0.5s; /* If you want a transition effect */
+  padding-top: 50px;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}

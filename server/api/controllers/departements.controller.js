@@ -3,7 +3,7 @@ const professeur = models.professeur;
 const departement = models.departement;
 
 const createDepartement = async (req, res) => {
-  const { nom, professeur } = req.body;
+  const { nom, professeur,charge } = req.body;
   console.log("insidde create departement");
   departement
     .create(
@@ -12,7 +12,7 @@ const createDepartement = async (req, res) => {
         professeur: professeur,
       },
       {
-        include: [{ association: departement.prof }],
+        include: [{ association : departement.prof, }],
       }
     )
     .then((data) => {
