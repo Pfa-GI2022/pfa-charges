@@ -27,7 +27,6 @@ export class ListeProfesseursComponent implements OnInit {
 
   ngOnInit(): void {
     this.onGetAllProfs();
-
   }
 
   onGetAllProfs(): void{
