@@ -1,0 +1,27 @@
+<a routerLink="/profDetails" 
+    class="ui card"
+    [ngClass]="{'charge-atteinte': professeur.charge.chargeTotal >= 180,
+                'charge-presque': professeur.charge.chargeTotal < 180 && professeur.charge.chargeTotal >= 120,
+                'charge-non-atteinte': professeur.charge.chargeTotal < 120}"
+>
+    <div class="image">
+      <img src="" alt="" srcset="">
+    </div>
+    <div class="content">
+      <a class="header">{{ professeur.nom | uppercase }} {{ professeur.prenom | titlecase }}</a>
+      <div class="meta">
+        <span>professeur <span *ngIf="professeur.grade"> grade : {{ professeur.grade }} </span></span>
+      </div>
+      <div class="description" >
+        <i class="icon hourglass half"></i>
+        <span *ngIf="professeur.charge">
+                  charge horaire : {{ professeur.charge.chargeTotal }}
+        </span>
+    </div>
+    <div class="right aligned author details">
+      <img class="ui big avatar  image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg"> 
+
+    </div>
+    </div>
+
+  </a>

@@ -1,28 +1,10 @@
-  
-  <div class="tabs effect-1">
-    <!-- tab-title -->
-  
-    <input type="radio" id="tab-2" name="tab-effect-1">
-    <span>Cours</span>
-
-    <input type="radio" id="tab-3" name="tab-effect-1">
-    <span>TD</span>
-    <input type="radio" id="tab-4" name="tab-effect-1">
-        <span>TP</span>
-        
-    <!-- tab-content -->
-    <div class="tab-content">
-        
-        <section id="tab-item-2">
-            <h1>Cours</h1>
-        </section>
-        <section id="tab-item-3">
-            <h1>TD</h1>
-        </section>
-        <section id="tab-item-4">
-            <h1>TP</h1>
-        </section>
-        
+<div class="ui container">
+    <div class="ui secondary pointing menu">
+        <a routerLink="/sousModule/cours" routerLinkActive="active" class="item">Cours</a>
+        <a routerLink="/sousModule/td" routerLinkActive="active" class="item">TD</a>
+        <a routerLink="/sousModule/tp" routerLinkActive="active" class="item">TP</a>
+    </div>
+    <div class="ui segment">
+        <router-outlet ></router-outlet>
     </div>
 </div>
-

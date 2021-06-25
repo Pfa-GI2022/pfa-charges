@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.departement,{foreignKey : 'depID'});
       this.belongsToMany(models.filiere, { through: 'modulefiliere' });
       this.belongsToMany(models.matiere, { through: 'modulematiere' });
-
+//this.belongsTo(models.filiere, {foreignKey : 'filiereID'});a
 
     }
   };

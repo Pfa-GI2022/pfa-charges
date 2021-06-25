@@ -9,7 +9,7 @@ const createFiliere = async (req, res, next) => {
     console.log("inside createFiliere");
     const fil = await filiere.create(req.body);
     console.log("Module created");
-    return res.status(200).json({ fil });
+    return res.status(200).send({ fil });
   } catch (error) {
     return res.status(500).send(error.message);
   }
@@ -27,11 +27,10 @@ const getAllFilieres = async (req, res, next) => {
         {
           model: professeur,
         }
-        
       ],
     });
     console.log("inside getAllFilieres ");
-    return res.status(200).json({ filieres });
+    return res.status(200).send( filieres );
   } catch (error) {
     return res.status(500).send(error.message);
   }

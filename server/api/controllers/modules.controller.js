@@ -33,7 +33,7 @@ const getAllModules = async (req, res, next) => {
       ],
     });
     console.log("inside getAllModules ");
-    return res.status(200).json({ modules });
+    return res.status(200).send(modules);
   } catch (error) {
     return res.status(500).send(error.message);
   }
