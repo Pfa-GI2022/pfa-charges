@@ -15,6 +15,13 @@ module.exports = {
         key: "id",
       },
     });
+    await queryInterface.addColumn("professeurs", "filID", {
+      type: Sequelize.INTEGER,
+      references: {
+        model: "filieres",
+        key: "id",
+      },
+    });
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -25,5 +32,6 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
     await queryInterface.removeColumn("modules", "filID");
+    await queryInterface.removeColumn("professeurs", "filID");
   },
 };

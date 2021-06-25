@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.departement, {
         foreignKey: "depID",
       });
+      this.belongsTo(models.filiere, {
+        foreignKey: "filID",
+      });
       this.hasOne(models.filiere, {
         foreignKey: "chefFiliereID",
       });
