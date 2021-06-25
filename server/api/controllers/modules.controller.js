@@ -26,17 +26,8 @@ const getAllModules = async (req, res, next) => {
           model: filiere,
         },
       ],
-<<<<<<< HEAD
-    });
-    console.log("inside getAllModules ");
-    return res.status(200).send(modules);
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
-=======
     })
     .then((mods) => res.status(200).send(mods));
->>>>>>> d853f9518c1da8769bfc743afd8553b1723214be
 };
 
 const getModuleByID = async (req, res) => {

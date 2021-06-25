@@ -9,8 +9,10 @@ export class CarteModuleComponent implements OnInit {
 
   @Input() module;
  
-  constructor() { }
 
+constructor() {
+
+}
   ngOnInit(): void {
   }
   

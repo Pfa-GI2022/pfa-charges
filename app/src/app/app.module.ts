@@ -23,6 +23,7 @@ import { ActiviteComponent } from './components/activite/activite.component';
 import { CarteModuleComponent } from './components/carte-module/carte-module.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DepartementComponent } from './components/departement/departement.component';
+import { SearchFilterModulesPipe } from './pipes/search-filter-modules.pipe';
 
 //just for test
 
@@ -43,6 +44,7 @@ import { DepartementComponent } from './components/departement/departement.compo
     CarteModuleComponent,
     ChargeFilterPipe,
     DepartementComponent,
+    SearchFilterModulesPipe,
   ],
   imports: [
     BrowserModule,

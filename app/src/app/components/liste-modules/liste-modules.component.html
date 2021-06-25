@@ -10,10 +10,10 @@
   </div>
 
   <div class="cards-wrapper">
-    <app-carte-module *ngFor="let m of modules" [module]="m">
+    <app-carte-module *ngFor="let m of modules| searchFilter : term " [module]="m">
     </app-carte-module>
   </div>
-
+  
   <a class="add-btn" routerLink="/newModule" data-tooltip="ajouter un Module" data-position="left center">
     +
   </a>
