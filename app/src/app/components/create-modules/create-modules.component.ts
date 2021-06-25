@@ -20,9 +20,9 @@ export class CreateModulesComponent implements OnInit {
   }
   initForm() {
     this.moduleForm = this.formBuilder.group({
-      nom : new FormControl('',[Validators.required,Validators.minLength(5),Validators.pattern("[a-zA-Z\s]*")]),
-      semestre : new FormControl('',[Validators.required,Validators.minLength(5)]),
-      filiere : new FormControl('',[Validators.required,Validators.minLength(5),Validators.pattern("[a-zA-Z\s]*")]),
+      nom : new FormControl('',[Validators.required,Validators.minLength(5),Validators.pattern("[a-zA-Z \s]*")]),
+      semestre: new FormControl('', [Validators.required, Validators.pattern("^S+[0-9]$"), Validators.minLength(2), Validators.maxLength(2)]),
+      filiere: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern("[a-zA-Z \s]*")]),
 
     });
   }

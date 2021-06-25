@@ -13,4 +13,5 @@ export class SearchFilterPipe implements PipeTransform {
     return professeurs.filter((p) => p.nom.toLowerCase().includes(term.toLowerCase()))
 }
 
+
 }

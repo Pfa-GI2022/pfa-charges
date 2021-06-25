@@ -25,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DepartementComponent } from './components/departement/departement.component';
 import { DoughnutChartComponent } from './components/doughnut-chart/doughnut-chart.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { SearchFilterModulesPipe } from './pipes/search-filter-modules.pipe';
 
 //just for test
 
@@ -37,6 +38,7 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
     CreateProfComponent,
     ProfDetailsComponent,
     NavComponent,
+    LoginComponent,
     ListeModulesComponent,
     CreateModulesComponent,
     SousModulesComponent,
@@ -46,6 +48,7 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
     DepartementComponent,
     DoughnutChartComponent,
     ProfileCardComponent,
+    SearchFilterModulesPipe,
   ],
   imports: [
     BrowserModule,

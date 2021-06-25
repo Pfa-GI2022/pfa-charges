@@ -1,19 +1,18 @@
-<p>carte-module works!</p>
+
 <div class="ui cards" >
         
-    <div class="card" ><!--*ngFor="let module of modules" -->
+    <div class="card" >
         <div class="content">
-          <div class="header">
-            <!-- {{ module.name }} -->Interconnexion Reseau 
-          </div>
           
-          <div class="description">
-              <!-- {{ module.description }} --> Enseigne par :   Prof. SABER Mohammed
+          <a class="header">{{ module.nom | uppercase }} </a>
+          
+          <div class="description"> 
+             Filiere : {{module.filiere}}
           </div>
         </div>
         <div class="extra content">
           <div class="ui two buttons">
-            <div class="ui basic red button">View Course</div>
+ <a class="ui basic red button" routerLink="/departement/sousModule">View course </a>
           </div>
         </div>
     </div>

@@ -9,25 +9,26 @@ body {
   z-index: 1; /* Stay on top */
   top: 0;
   left: 0;
-  background-color: #111; /* Black*/
+  background-color: rgb(17, 17, 17); /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  padding-top: 50px; /* Place content 60px from the top */
+  transition: 0.5s;
 }
 
 /* The sidebar links */
 .sidebar a {
-  padding: 8px 8px 8px 32px;
+  padding: 20px;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
   display: block;
-  transition: 0.3s;
+  /* transition: 0.3s; */
+  border-bottom: 0.5px solid #555;
+  font-size: 18px;
+  color: #eee;
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidebar a:hover {
-  color: #f1f1f1;
+  background-color: #555;
 }
 
 /* Position and style the close button (top right corner) */
@@ -42,13 +43,13 @@ body {
 /* The button used to open the sidebar */
 .navbar {
   width: 100%;
-  background-color: white;
-  border-bottom: 1px solid black;
+  background-color: rgb(255, 255, 255);
   height: 50px;
   position: absolute;
   top: 0;
   z-index: 5;
 }
+
 .profile {
   padding-left: 1000px;
 }
@@ -56,7 +57,7 @@ body {
 .togglebtn {
   font-size: 20px;
   cursor: pointer;
-  background-color: #fff;
+  background-color: transparent;
   color: #111;
   padding: 10px 15px;
   border: none;
