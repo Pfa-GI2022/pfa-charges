@@ -9,11 +9,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.groupe, { foreignKey: "groupeID" });
+
       this.belongsTo(models.professeur, {
-        foreignKey: "professeurID",
+        foreignKey: "professeurId",
       });
-      this.belongsTo(models.matiere, { foreignKey: "matiereID" });
+      this.belongsTo(models.matiere, {
+        foreignKey: "matiereID",
+      });
+      this.belongsTo(models.groupe, {
+        foreignKey: "groupeID",
+      });
     }
   }
   activitePedagogique.init(

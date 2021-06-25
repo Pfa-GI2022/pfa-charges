@@ -5,7 +5,6 @@ const filiere = models.filiere;
 const charge = models.charge;
 const activite = models.activitePedagogique;
 
-
 const createProf = async (req, res, next) => {
   // try {
   //   const prof = await professeur.create(req.body);
@@ -13,27 +12,31 @@ const createProf = async (req, res, next) => {
   // } catch (error) {
   //   return res.status(500).send(error.message);
   // }
-  const {nom ,prenom,avatar,charge} = req.body;
+  const { nom, prenom, mail, avatar, charge, depID } = req.body;
 
-  professeur.create({
-    nom : nom,
-    prenom : prenom,
-    avatar : avatar,
-    createdAt : new Date(),
-    updatedAt : new Date(),
-    charge : charge
-  } , {
-    include : [
+  professeur
+    .create(
       {
-        association: professeur.charge
+        nom: nom,
+        prenom: prenom,
+        mail: mail,
+        avatar: avatar,
+        depID: depID,
+        charge: charge,
+      },
+      {
+        include: [
+          {
+            association: professeur.charge,
+          },
+        ],
       }
-    ]
-  }).then(data => {
-    res.send(data);
-  })
-  .catch(err => {
-    res.status(404).send({error : err.message});
-
+    )
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(404).send({ error: err.message });
     });
 };
 
@@ -49,7 +52,10 @@ const getAllProfs = async (req, res, next) => {
         },
         {
           model: charge,
-        }
+        },
+        {
+          model: activite,
+        },
       ],
     });
 
@@ -61,7 +67,7 @@ const getAllProfs = async (req, res, next) => {
 
 const getProfById = async (req, res, next) => {
   try {
-    const prof = await professeur.findByPk( req.params.id,{
+    const prof = await professeur.findByPk(req.params.id, {
       include: [
         {
           model: filiere,
@@ -71,8 +77,11 @@ const getProfById = async (req, res, next) => {
         },
         {
           model: charge,
-        }
-        ]
+        },
+        {
+          model: activite,
+        },
+      ],
     });
     return res.status(200).json({ prof });
   } catch (error) {
@@ -112,7 +121,7 @@ const deleteProf = async (req, res) => {
   }
 };
 
-const getProfByDepartementId = async (req ,res) => {
+const getProfByDepartementId = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -122,13 +131,13 @@ const getProfByDepartementId = async (req ,res) => {
           model: filiere,
         },
         {
-          attributes : [],
+          attributes: [],
           model: departement,
-          where : {id}
+          where: { id },
         },
         {
           model: charge,
-        }
+        },
       ],
     });
 
@@ -136,7 +145,7 @@ const getProfByDepartementId = async (req ,res) => {
   } catch (error) {
     return res.status(500).send(error.message);
   }
-}
+};
 
 module.exports = {
   createProf,
@@ -144,5 +153,5 @@ module.exports = {
   getProfById,
   updateProf,
   deleteProf,
-  getProfByDepartementId
+  getProfByDepartementId,
 };
