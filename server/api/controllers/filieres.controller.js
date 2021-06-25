@@ -26,11 +26,7 @@ const getAllFilieres = async (req, res, next) => {
         },
         {
           model: professeur,
-<<<<<<< HEAD
-        }
-=======
         },
->>>>>>> d853f9518c1da8769bfc743afd8553b1723214be
       ],
     });
     console.log("inside getAllFilieres ");
