@@ -29,13 +29,15 @@ const getAllDepartements = async (req, res) => {
   console.log("getAllDeps");
   await departement
     .findAll({
-      include: {
-        model: professeur,
-        as: "Professeurs",
-      },
-      include: {
-        model: models.module,
-      },
+      include: [
+        {
+          model: professeur,
+          as: "Professeurs",
+        },
+        {
+          model: models.module,
+        },
+      ],
     })
     .then((deps) => res.status(200).send(deps));
 };
