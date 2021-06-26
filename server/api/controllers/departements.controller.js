@@ -33,6 +33,9 @@ const getAllDepartements = async (req, res) => {
         model: professeur,
         as: "Professeurs",
       },
+      include: {
+        model: models.module,
+      },
     })
     .then((deps) => res.status(200).send(deps));
 };
