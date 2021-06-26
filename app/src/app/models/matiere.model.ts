@@ -1,8 +1,6 @@
-export interface Module {
+export interface Matiere {
     nom: string,
     semestre: string,
-    matieres?: any,
     filiere?: any,
     departement?: any
-  }
-  
+}

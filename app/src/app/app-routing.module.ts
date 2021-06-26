@@ -21,7 +21,7 @@ const routes: Routes = [
     children : [
       {path : '' , component: ListeProfesseursComponent},
       { path : 'newProf', component : CreateProfComponent},
-      { path : 'sousModule' , component : SousModulesComponent,
+      { path : 'modules/:id' , component : SousModulesComponent,
         children: [
               {
                 path: 'tp',
