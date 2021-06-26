@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ProfesseurService } from '../../services/professeur.service';
-import { Professeur } from '../../models/professeur.model';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-profile-card',
@@ -8,16 +6,8 @@ import { Professeur } from '../../models/professeur.model';
   styleUrls: ['./profile-card.component.css'],
 })
 export class ProfileCardComponent implements OnInit {
-  Prof: Professeur;
-  constructor(private professeurService: ProfesseurService) {}
+  @Input() Prof;
+  constructor() {}
 
-  ngOnInit(): void {
-    this.onGetProfById(1);
-  }
-
-  onGetProfById(id: number) {
-    this.professeurService
-      .getProfesseurByID(id)
-      .subscribe((data) => (this.Prof = data));
-  }
+  ngOnInit(): void {}
 }

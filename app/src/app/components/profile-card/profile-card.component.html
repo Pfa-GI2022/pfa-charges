@@ -1,14 +1,16 @@
- <div class="ui card left" style="height:100%;">
+ <div class="ui card" [ngClass]="{'charge-atteinte': Prof.charge.chargeTotal >= 180,
+                'charge-presque': Prof.charge.chargeTotal < 180 && Prof.charge.chargeTotal>= 120,
+                'charge-non-atteinte': Prof.charge.chargeTotal < 120}" style="height:100%;">
    <div class="image">
      <img src="https://picsum.photos/300/200">
    </div>
    <div class="content">
-     <a class="header">{{Prof.nom}} Prenom</a>
+     <a class="header">{{Prof.nom}} {{Prof.prenom}}</a>
      <div class="meta">
-       <span class="date">Role/Grade</span>
+       <span class="date">Role/{{Prof.grade}}</span>
      </div>
      <div class="description">
-       Email@mail.com
+       {{Prof.mail}}
      </div>
    </div>
    <div class="extra content">
@@ -21,7 +23,7 @@
      <div class="ui horizontal statistic">
 
        <div class="value">
-         120
+         {{Prof.charge.chargeTotal}}
        </div>
        <div class="label">
          Heures
