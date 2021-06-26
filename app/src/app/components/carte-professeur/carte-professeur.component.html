@@ -1,4 +1,4 @@
-<a routerLink="/departement/profDetails" 
+<a [routerLink]="Route" 
     class="ui card"
     [ngClass]="{'charge-atteinte': professeur.charge.chargeTotal >= 180,
                 'charge-presque': professeur.charge.chargeTotal < 180 && professeur.charge.chargeTotal >= 120,

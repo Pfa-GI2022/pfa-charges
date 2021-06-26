@@ -1,6 +1,6 @@
 export interface Matiere {
     nom: string,
-    semestre: string,
-    filiere?: any,
-    departement?: any
+    modulId?:number,
+    module?: any,
+    activitePedagogiques?: any
 }

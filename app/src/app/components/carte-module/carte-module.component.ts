@@ -8,12 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CarteModuleComponent implements OnInit {
 
   @Input() module;
- 
+ Route:String;
 
 constructor() {
 
 }
   ngOnInit(): void {
+    this.Route=`/departement/modules/${this.module.id}`;
   }
   
 }

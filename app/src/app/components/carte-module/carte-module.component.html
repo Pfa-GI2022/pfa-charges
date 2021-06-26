@@ -7,12 +7,12 @@
           <a class="header">{{ module.nom | uppercase }} </a>
           
           <div class="description"> 
-             Filiere : {{module.filiere}}
+             Filiere : {{module.filiere.nom}}
           </div>
         </div>
         <div class="extra content">
           <div class="ui two buttons">
- <a class="ui basic red button" routerLink="/departement/sousModule">View course </a>
+ <a class="ui basic red button" [routerLink]="Route" >View course </a>
           </div>
         </div>
     </div>

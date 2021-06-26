@@ -38,7 +38,7 @@ const routes: Routes = [
             ]},
       {path : 'profs' , component: ListeProfesseursComponent},
       {path : 'modules' , component : ListeModulesComponent},
-      {path : 'profDetails' , component : ProfDetailsComponent},
+      {path : 'profs/:id' , component : ProfDetailsComponent},
       {path : '**' , component : ListeModulesComponent}
     ]
   },

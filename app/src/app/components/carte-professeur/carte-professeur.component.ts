@@ -7,8 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CarteProfesseurComponent implements OnInit {
   @Input() professeur;
-
+  Route:String;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.Route=`/departement/profs/${this.professeur.id}`;
+  }
 }
