@@ -12,7 +12,7 @@ body {
   background-color: rgb(17, 17, 17); /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 50px; /* Place content 60px from the top */
-  transition: 0.5s; 
+  transition: 0.5s;
 }
 
 /* The sidebar links */
@@ -21,11 +21,10 @@ body {
   text-decoration: none;
   display: block;
   /* transition: 0.3s; */
-  border-bottom: 0.5px solid #555; 
+  border-bottom: 0.5px solid #555;
   font-size: 18px;
-  color : #eee
+  color: #eee;
 }
-
 
 /* When you mouse over the navigation links, change their color */
 .sidebar a:hover {
@@ -65,10 +64,25 @@ body {
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+.item {
+  width: 100%;
+  background-color: #1a1818;
+}
 
+.sidebar a {
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+  border-bottom: 1px solid #555;
+  color: #eee;
+}
 
-
-
+.sidebar a {
+  display: inline-block;
+  padding: 20px 10px;
+  width: 100%;
+  border-bottom: 1px solid #555;
+}
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidebar {

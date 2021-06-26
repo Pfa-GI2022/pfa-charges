@@ -1,3 +1,6 @@
+const models = require("../models/index");
+const user = models.user;
+
 exports.allAccess = (req, res) => {
   res.status(200).send("<h1>All access</h1>");
 };
@@ -14,4 +17,8 @@ exports.filBoard = (req, res) => {
 
 exports.adminBoard = (req, res) => {
   res.status(200).send("Admin Content.");
+};
+
+exports.getAllUsers = async (req, res) => {
+  await user.findAll().then((users) => res.status(200).send(users));
 };

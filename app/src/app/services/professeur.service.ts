@@ -1,35 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Professeur } from "../models/professeur.model";
+import { Professeur } from '../models/professeur.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfesseurService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getAllProfesseurs():Observable<Professeur[]>{
+  getAllProfesseurs(): Observable<Professeur[]> {
     const host = environment.host;
     return this.http.get<Professeur[]>(`${host}/professeurs`);
   }
 
-  getProfesseurByID(id:number):Observable<Professeur>{
+  getProfesseurByID(id: number): Observable<Professeur> {
     const host = environment.host;
-    return this.http.get<Professeur>(`${host}/professeurs/ ${id}`);
+    return this.http.get<Professeur>(`${host}/professeurs/${id}`);
   }
 
-  deleteProfesseur(id:number){
+  deleteProfesseur(id: number) {
     const host = environment.host;
     return this.http.delete(`${host}/professeurs/${id}`);
   }
 
-  createProfesseur(body:Professeur){
+  createProfesseur(body: Professeur) {
     const host = environment.host;
-    console.log('create prof')
-    return this.http.post(`${host}/professeurs`,body);  
-
+    console.log('create prof');
+    return this.http.post(`${host}/professeurs`, body);
   }
 }

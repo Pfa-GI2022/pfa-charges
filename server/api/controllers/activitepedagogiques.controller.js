@@ -19,7 +19,9 @@ const createActivity = async (req, res, next) => {
 const getAllActivities = async (req, res, next) => {
   try {
     console.log("inside getAllActivities");
-    const activities = await activite.findAll();
+    const activities = await activite.findAll({
+      include: [{ model: professeur }, { model: groupe }, { model: matiere }],
+    });
     console.log("inside getAllActivities ");
     return res.status(200).json({ activities });
   } catch (error) {
@@ -31,11 +33,7 @@ const getActivityByID = async (req, res) => {
   const id = req.params.id;
   await activite
     .findByPk(id, {
-      include: [
-        {
-          model: mod,
-        },
-      ],
+      include: [{ model: professeur }, { model: groupe }, { model: matiere }],
     })
     .then((actped) => res.send(actped))
     .catch((err) => res.status(500).send({ error: err }));

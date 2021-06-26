@@ -1,0 +1,33 @@
+ <div class="ui card" [ngClass]="{'charge-atteinte': Prof.charge.chargeTotal >= 180,
+                'charge-presque': Prof.charge.chargeTotal < 180 && Prof.charge.chargeTotal>= 120,
+                'charge-non-atteinte': Prof.charge.chargeTotal < 120}" style="height:100%;">
+   <div class="image">
+     <img src="https://picsum.photos/300/200">
+   </div>
+   <div class="content">
+     <a class="header">{{Prof.nom}} {{Prof.prenom}}</a>
+     <div class="meta">
+       <span class="date">Role/{{Prof.grade}}</span>
+     </div>
+     <div class="description">
+       {{Prof.mail}}
+     </div>
+   </div>
+   <div class="extra content">
+     <a>
+       <i class="user icon"></i>
+       Departement
+     </a>
+   </div>
+   <div class="extra content">
+     <div class="ui horizontal statistic">
+
+       <div class="value">
+         {{Prof.charge.chargeTotal}}
+       </div>
+       <div class="label">
+         Heures
+       </div>
+     </div>
+   </div>
+ </div>

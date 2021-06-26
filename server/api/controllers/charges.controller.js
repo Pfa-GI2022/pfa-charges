@@ -12,7 +12,8 @@ const getCharge = async (req, res, next) => {
 
 const createCharge = async (req, res, next) => {
   try {
-    const charge = await Charge.create(req.body);
+    const {chargeTotal}=req.body;
+    const charge = await Charge.create({chargeTotal:chargeTotal,profID:req.params.id});
     return res.status(200).json({ charge });
   } catch (error) {
     return res.status(500).send(error.message);

@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.module, {
         foreignKey: "filID",
       });
+      this.hasMany(models.professeur, {
+        foreignKey: "filID",
+      });
     }
   }
   filiere.init(

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { HighchartsChartModule } from 'highcharts-angular';
 import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
@@ -23,6 +23,8 @@ import { ActiviteComponent } from './components/activite/activite.component';
 import { CarteModuleComponent } from './components/carte-module/carte-module.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DepartementComponent } from './components/departement/departement.component';
+import { DoughnutChartComponent } from './components/doughnut-chart/doughnut-chart.component';
+import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import { SearchFilterModulesPipe } from './pipes/search-filter-modules.pipe';
 
 //just for test
@@ -44,6 +46,8 @@ import { SearchFilterModulesPipe } from './pipes/search-filter-modules.pipe';
     CarteModuleComponent,
     ChargeFilterPipe,
     DepartementComponent,
+    DoughnutChartComponent,
+    ProfileCardComponent,
     SearchFilterModulesPipe,
   ],
   imports: [
@@ -53,6 +57,7 @@ import { SearchFilterModulesPipe } from './pipes/search-filter-modules.pipe';
     FormsModule,
     SharedModule,
     AppRoutingModule,
+    HighchartsChartModule,
   ],
   providers: [FiliereService],
   bootstrap: [AppComponent],
