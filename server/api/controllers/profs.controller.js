@@ -83,7 +83,7 @@ const getProfById = async (req, res, next) => {
         },
       ],
     });
-    return res.status(200).json({ prof });
+    return res.status(200).send(prof);
   } catch (error) {
     return res.status(500).send(error.message);
   }
