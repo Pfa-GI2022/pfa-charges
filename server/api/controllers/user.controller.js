@@ -20,5 +20,7 @@ exports.adminBoard = (req, res) => {
 };
 
 exports.getAllUsers = async (req, res) => {
-  await user.findAll().then((users) => res.status(200).send(users));
+  await user.findAll({ include: models.role }).then((users) => {
+    res.status(200).send(users);
+  });
 };

@@ -11,22 +11,27 @@ module.exports = {
       nom: {
         type: Sequelize.STRING,
         allowNull: false,
+        defaultValue: "",
       },
       prenom: {
         type: Sequelize.STRING,
         allowNull: false,
+        defaultValue: "",
       },
       mail: {
         type: Sequelize.STRING,
+        defaultValue: "",
       },
       avatar: {
         type: Sequelize.STRING,
+        defaultValue: "",
       },
       dateNaissance: {
         type: Sequelize.DATE,
       },
       grade: {
         type: Sequelize.STRING,
+        defaultValue: "",
       },
       depID: {
         type: Sequelize.INTEGER,

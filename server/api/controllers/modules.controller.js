@@ -6,16 +6,18 @@ const modulee = models.module;
 
 const createModule = async (req, res, next) => {
   try {
-    console.log("inside createModules");
+    console.log("Creating Module");
     const mod = await modulee.create(req.body);
-    console.log("Module created");
-    return res.status(200).json({ mod });
+    console.log("Module Created Successfully");
+    return res.status(200).send(mod);
   } catch (error) {
+    console.log("Creating Module Failed");
     return res.status(500).send(error.message);
   }
 };
 
 const getAllModules = async (req, res, next) => {
+  console.log("Fetching All Modules");
   await modulee
     .findAll({
       include: [
@@ -30,11 +32,19 @@ const getAllModules = async (req, res, next) => {
         },
       ],
     })
-    .then((mods) => res.status(200).send(mods));
+    .then((mods) => {
+      console.log("Modules Fetched Successfully");
+      res.status(200).send(mods);
+    })
+    .catch((err) => {
+      console.log("Fetching Modules Failed");
+      res.status(500).send(err);
+    });
 };
 
 const getModuleByID = async (req, res) => {
   const id = req.params.id;
+  console.log("Fetching Module");
   await modulee
     .findByPk(id, {
       include: [
@@ -49,32 +59,48 @@ const getModuleByID = async (req, res) => {
         },
       ],
     })
-    .then((mod) => res.send(mod))
-    .catch((err) => res.status(500).send({ error: err }));
+    .then((mod) => {
+      console.log("Module Fetched Successfully");
+      res.send(mod);
+    })
+    .catch((err) => {
+      console.log("Fetching Module Failed");
+      res.status(500).send({ error: err });
+    });
 };
 
 const updateModule = async (req, res) => {
   const id = req.params.id;
   const updatedData = req.body;
-  console.log(id);
-  console.log(`updatedData ${updatedData}`);
+  console.log("Updating Module");
 
   modulee
     .update(updatedData, { where: { id } })
-    .then((updatedModule) => res.status(200).send(updatedModule))
-    .catch((err) => res.status(500).send({ error: err }));
+    .then((updatedModule) => {
+      console.log("Module Updated Successfully");
+      res.status(200).send(updatedModule);
+    })
+    .catch((err) => {
+      console.log("Updating Module Failed");
+      res.status(500).send({ error: err });
+    });
 };
 
 const deleteModuleByID = async (req, res) => {
   const id = parseInt(req.params.id, 10);
   if (Number.isNaN(id)) return res.status(400).end();
-
+  console.log("Deleting Module");
   modulee
     .destroy({
       where: { id },
     })
     .then(() => {
+      console.log("Module Deleted Successfully");
       res.status(204).end();
+    })
+    .catch((err) => {
+      console.log("Deleting Module Failed");
+      res.status(500).send(err);
     });
 };
 

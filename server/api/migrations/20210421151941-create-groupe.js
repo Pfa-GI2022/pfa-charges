@@ -10,6 +10,7 @@ module.exports = {
       },
       nom: {
         type: Sequelize.STRING,
+        defaultValue: "",
       },
       createdAt: {
         type: Sequelize.DATE,

@@ -11,10 +11,12 @@ module.exports = {
       nature: {
         type: Sequelize.STRING,
         allowNull: false,
+        defaultValue: "",
       },
       volumeHoraire: {
         type: Sequelize.DOUBLE,
         allowNull: false,
+        defaultValue: 0,
       },
       professeurID: {
         type: Sequelize.INTEGER,
