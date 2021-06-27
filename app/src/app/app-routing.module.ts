@@ -11,7 +11,10 @@ import { TpComponent } from './components/sous-modules/tp/tp.component';
 import { TdComponent } from './components/sous-modules/td/td.component';
 import { CoursComponent } from './components/sous-modules/cours/cours.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
+import { RolesGuard } from './guards/roles.guard';
 
+import { role } from './models/role.model';
 /*la bonne pratique pour routing !!*/
 
 
@@ -19,6 +22,7 @@ const routes: Routes = [
   { path : '' , component : ListeProfesseursComponent},
   //departement
   {path : 'departement', component : DepartementComponent,
+
     children : [
       {path : '' , component: ListeProfesseursComponent},
       { path : 'newProf', component : CreateProfComponent},

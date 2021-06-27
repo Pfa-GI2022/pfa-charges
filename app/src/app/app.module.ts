@@ -26,6 +26,7 @@ import { DepartementComponent } from './components/departement/departement.compo
 import { DoughnutChartComponent } from './components/doughnut-chart/doughnut-chart.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import { SearchFilterModulesPipe } from './pipes/search-filter-modules.pipe';
+import { LogoutComponent } from './components/logout/logout.component';
 
 //just for test
 
@@ -49,6 +50,7 @@ import { SearchFilterModulesPipe } from './pipes/search-filter-modules.pipe';
     DoughnutChartComponent,
     ProfileCardComponent,
     SearchFilterModulesPipe,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
