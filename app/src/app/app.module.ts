@@ -26,6 +26,8 @@ import { DepartementComponent } from './components/departement/departement.compo
 import { DoughnutChartComponent } from './components/doughnut-chart/doughnut-chart.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import { SearchFilterModulesPipe } from './pipes/search-filter-modules.pipe';
+import { ListeSousModulesComponent } from './components/liste-sous-modules/liste-sous-modules.component';
+import { CarteMatiereComponent } from './components/carte-matiere/carte-matiere.component';
 
 //just for test
 
@@ -49,6 +51,8 @@ import { SearchFilterModulesPipe } from './pipes/search-filter-modules.pipe';
     DoughnutChartComponent,
     ProfileCardComponent,
     SearchFilterModulesPipe,
+    ListeSousModulesComponent,
+    CarteMatiereComponent,
   ],
   imports: [
     BrowserModule,
