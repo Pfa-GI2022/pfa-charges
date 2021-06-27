@@ -1,0 +1,22 @@
+<div class="container">
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">Username</div>
+      <div class="col col-2">Password</div>
+      <div class="col col-3">Email</div>
+      <div class="col col-4">Role</div>
+    </li>
+    <div class="users">
+      <li class="table-row" *ngFor="let u of Users">
+        <div class="col col-1" data-label="Username"> {{u.username}} </div>
+        <div class="col col-2" data-label="Password">••••••</div>
+        <div class="col col-3" data-label="Email">{{u.email}}</div>
+        <div class="col col-4" data-label="Role">Role</div>
+      </li>
+
+    </div>
+  </ul>
+  <a class="add-btn" routerLink="/departement/newProf" data-tooltip="ajouter un professeur" data-position="left center">
+    +
+  </a>
+</div>
