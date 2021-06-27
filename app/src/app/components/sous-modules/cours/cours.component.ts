@@ -10,10 +10,15 @@ import { SelectedModuleService } from 'src/app/services/selected-module.service'
 
 export class CoursComponent implements OnInit {
   @Input() matiere;
-
+  
   constructor(private moduleService: ModuleService,private selectedModuleService: SelectedModuleService) { }
 
   ngOnInit(): void {
+    console.log("cours component int ----------------------")
+    this.selectedModuleService.nextMessage("test");
+    this.selectedModuleService.sharedMessage.subscribe(message => console.log(message));
+    this.selectedModuleService.currentDeparetement.subscribe(dep => console.log(dep))
+    
   }
 
  

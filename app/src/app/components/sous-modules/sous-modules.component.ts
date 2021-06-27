@@ -14,12 +14,13 @@ export class SousModulesComponent implements OnInit {
     this.route.params.subscribe(params =>{
       this.moduleService.getModuleByID(params.id).subscribe(data => {
         this.module = data;
-        console.log(this.module.matieres);
-      })
+      });
+    
     });
     
   }
   ngOnInit(): void {
+    
   }
 
 }
