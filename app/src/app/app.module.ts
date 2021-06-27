@@ -28,6 +28,7 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
 import { SearchFilterModulesPipe } from './pipes/search-filter-modules.pipe';
 import { ListeSousModulesComponent } from './components/liste-sous-modules/liste-sous-modules.component';
 import { CarteMatiereComponent } from './components/carte-matiere/carte-matiere.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 //just for test
 
@@ -53,6 +54,7 @@ import { CarteMatiereComponent } from './components/carte-matiere/carte-matiere.
     SearchFilterModulesPipe,
     ListeSousModulesComponent,
     CarteMatiereComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
