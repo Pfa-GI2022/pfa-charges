@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfesseurService } from '../../services/professeur.service';
 import { Professeur } from '../../models/professeur.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { TokenStorageService } from 'src/app/services/token-storage-service.service';
 @Component({
   selector: 'app-liste-professeurs',
   templateUrl: './liste-professeurs.component.html',
@@ -22,13 +23,20 @@ export class ListeProfesseursComponent implements OnInit {
 
   constructor(
     private professeurService: ProfesseurService,
-    private authService: AuthService
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService
   ) {}
 
   ngOnInit(): void {
     this.onGetAllProfs();
-    this.authService.register({}).subscribe((data) => {
+    this.authService.login({username : 'test',password : 'test'}).subscribe((data) => {
+      this.tokenStorage.saveToken(data.accessToken);
+      this.tokenStorage.saveUser(data);
+      console.log(data.accessToken)
+      console.log(this.tokenStorage.getUser().roles);
+
       console.log(data);
+      
     });
   }
 
