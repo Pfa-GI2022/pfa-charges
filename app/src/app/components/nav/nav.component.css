@@ -48,6 +48,10 @@ body {
   position: absolute;
   top: 0;
   z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
 .profile {

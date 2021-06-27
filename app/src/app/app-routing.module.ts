@@ -13,7 +13,11 @@ import { CoursComponent } from './components/sous-modules/cours/cours.component'
 import { LoginComponent } from './components/login/login.component';
 import { ListeUsersComponent } from './components/liste-users/liste-users.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ListeSousModulesComponent } from './components/liste-sous-modules/liste-sous-modules.component';
+import { AuthGuard } from './guards/auth.guard';
+import { RolesGuard } from './guards/roles.guard';
 
+import { role } from './models/role.model';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
@@ -22,27 +26,16 @@ const routes: Routes = [
   {
     path: 'departement',
     component: DepartementComponent,
+
     children: [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newProf', component: CreateProfComponent },
       {
         path: 'modules/:id',
-        component: SousModulesComponent,
-        children: [
-          {
-            path: 'tp',
-            component: TpComponent,
-          },
-          {
-            path: 'td',
-            component: TdComponent,
-          },
-          {
-            path: 'cours',
-            component: CoursComponent,
-          },
-        ],
+        component: ListeSousModulesComponent,
+        children: [{ path: 'sousModule', component: SousModulesComponent }],
       },
+
       { path: 'profs', component: ListeProfesseursComponent },
       { path: 'modules', component: ListeModulesComponent },
       { path: 'profs/:id', component: ProfDetailsComponent },
@@ -75,6 +68,13 @@ const routes: Routes = [
     component: AdminComponent,
     children: [{ path: '', component: ListeUsersComponent }],
   },
+  { path: 'newProf', component: CreateProfComponent },
+  { path: 'newModule', component: CreateModulesComponent },
+  { path: 'profDetails', component: ProfDetailsComponent },
+  { path: 'liste', component: ListeProfesseursComponent },
+
+  { path: 'module', component: ListeModulesComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
