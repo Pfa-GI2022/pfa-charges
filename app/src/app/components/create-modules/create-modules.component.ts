@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { ModuleService } from '../../services/module.service';
 import { FormControl, FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
+import { Module } from '../../models/module.model';
+import { FiliereService } from 'src/app/services/filiere.service';
 
 
 @Component({
@@ -12,7 +14,12 @@ export class CreateModulesComponent implements OnInit {
 
   alert = false;
   moduleForm : FormGroup;
-  constructor(private formBuilder: FormBuilder,private moduleService: ModuleService) { }
+  @Input() filiere;
+  @Input() module;
+  Route:String;
+
+  open = false;
+  constructor(private formBuilder: FormBuilder,private moduleService: ModuleService, private filiereService : FiliereService) { }
 
   ngOnInit(): void 
   {
@@ -41,6 +48,12 @@ export class CreateModulesComponent implements OnInit {
   closeAlert(){
     this.alert = false;
   }
+ 
+  toggleOpen() {
+    this.open = !this.open;
+  }
+
+
 
 
 }
