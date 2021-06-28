@@ -28,10 +28,13 @@ export class ListeSousModulesComponent implements OnInit {
     console.log(this.matieres)
 
   }
+
+  onGetMatiereById(id: number) {
+    this.matiereService.getMatiereByID(id).subscribe(data => console.log(data));
+  }
   
 
   ngOnInit(): void {
-   
   }
 
 }

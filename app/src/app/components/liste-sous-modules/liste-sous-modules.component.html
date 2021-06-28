@@ -5,7 +5,7 @@
       <div class="ui two column grid" style="padding: 25px;">
         <div class="row" >
           <div class="column" *ngFor="let m of module.matieres">
-            <app-carte-matiere [matieres]="m"></app-carte-matiere>
+            <app-carte-matiere [module] = module [matieres]="m"></app-carte-matiere>
           </div>
         </div>
         <router-outlet></router-outlet>
