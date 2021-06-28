@@ -21,10 +21,18 @@ import { role } from './models/role.model';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
-  
+
+  //home
+  {path : '', component: ProfDetailsComponent},
+  { path: 'login', component: LoginComponent },
+
   //departement
   {
     path: 'departement',component: DepartementComponent,
+    canActivate: [RolesGuard], 
+    data: { 
+      expectedRole: role.chefDeDepartement
+    },
     children: [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newProf', component: CreateProfComponent },
@@ -37,21 +45,22 @@ const routes: Routes = [
       { path: '**', component: ListeModulesComponent },
     ],
   },
-
-
-  { path: 'login', component: LoginComponent },
+  //admin
   {
     path: 'admin',
+    canActivate: [RolesGuard], 
+    data: { 
+      expectedRole: role.admin
+    },
     component: AdminComponent,
     children: [{ path: '', component: ListeUsersComponent }],
   },
-  { path: 'newProf', component: CreateProfComponent },
-  { path: 'newModule', component: CreateModulesComponent },
-  { path: 'profDetails', component: ProfDetailsComponent },
-  { path: 'liste', component: ListeProfesseursComponent },
 
-  { path: 'module', component: ListeModulesComponent },
-  { path: 'login', component: LoginComponent },
+
+  //login
+
+
+  { path: '**', redirectTo : ''},
 ];
 
 @NgModule({
