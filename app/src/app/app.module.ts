@@ -49,6 +49,7 @@ import { SearchFilterModulesPipe } from './pipes/search-filter-modules.pipe';
     DoughnutChartComponent,
     ProfileCardComponent,
     SearchFilterModulesPipe,
+    
   ],
   imports: [
     BrowserModule,
