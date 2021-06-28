@@ -23,18 +23,19 @@ import { role } from './models/role.model';
 const routes: Routes = [
 
   //home
-  {path : '', component: ProfDetailsComponent},
-  { path: 'login', component: LoginComponent },
+ // {path : '', component: ProfDetailsComponent},
+ // { path: 'login', component: LoginComponent },
 
   //departement
   {
     path: 'departement',component: DepartementComponent,
-    canActivate: [RolesGuard], 
-    data: { 
-      expectedRole: role.chefDeDepartement
-    },
+  //  canActivate: [RolesGuard], 
+  //  data: { 
+  //    expectedRole: role.chefDeDepartement
+   // },
     children: [
       { path: '', component: ListeProfesseursComponent },
+      { path: 'newModule', component: CreateModulesComponent },
       { path: 'newProf', component: CreateProfComponent },
       { path: 'modules',component: ListeModulesComponent,},
       { path: 'modules/:id', component: ListeSousModulesComponent,
