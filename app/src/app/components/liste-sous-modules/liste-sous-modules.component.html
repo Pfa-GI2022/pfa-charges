@@ -3,18 +3,9 @@
     <div style="padding: 25px;">
       <h1>{{module.nom}}</h1>
       <div class="ui two column grid" style="padding: 25px;">
-        <div class="row">
-          <div class="column">
-            <app-carte-matiere></app-carte-matiere>
-          </div>
-          <div class="column">
-            <app-carte-matiere></app-carte-matiere>
-          </div>
-          <div class="column">
-            <app-carte-matiere></app-carte-matiere>
-          </div>
-          <div class="column">
-            <app-carte-matiere></app-carte-matiere>
+        <div class="row" >
+          <div class="column" *ngFor="let m of module.matieres">
+            <app-carte-matiere [matieres]="m"></app-carte-matiere>
           </div>
         </div>
         <router-outlet></router-outlet>

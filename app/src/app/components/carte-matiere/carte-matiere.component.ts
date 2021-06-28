@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-carte-matiere',
@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarteMatiereComponent implements OnInit {
   Route: String;
+  @Input() matieres;
   constructor() {}
-
   ngOnInit(): void {
     this.Route = 'sousModules';
   }

@@ -28,8 +28,9 @@ const routes: Routes = [
     children: [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newProf', component: CreateProfComponent },
-      {path: 'modules',component: ListeModulesComponent,},
-      { path: 'modules/:id', component: ListeSousModulesComponent ,children: [
+      { path: 'modules',component: ListeModulesComponent,},
+      { path: 'modules/:id', component: ListeSousModulesComponent,
+        children: [
         { path: 'sousModules/:id', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},
       ]},
       { path: 'profs', component: ListeProfesseursComponent },
