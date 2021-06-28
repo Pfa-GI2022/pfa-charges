@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SharedModule } from './shared/shared.module';
-
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { ListeProfesseursComponent } from './components/liste-professeurs/liste-professeurs.component';
 import { FiliereService } from './services/filiere.service';
@@ -18,7 +18,6 @@ import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ListeModulesComponent } from './components/liste-modules/liste-modules.component';
 import { CreateModulesComponent } from './components/create-modules/create-modules.component';
-import { SousModulesComponent } from './components/sous-modules/sous-modules.component';
 import { ActiviteComponent } from './components/activite/activite.component';
 import { CarteModuleComponent } from './components/carte-module/carte-module.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +30,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ListeSousModulesComponent } from './components/liste-sous-modules/liste-sous-modules.component';
 import { CarteMatiereComponent } from './components/carte-matiere/carte-matiere.component';
 import { LogoutComponent } from './components/logout/logout.component';
-
+import { SousModuleModule } from './components/sous-modules/sous-modules.module';
 //just for test
 
 @NgModule({
@@ -46,7 +45,6 @@ import { LogoutComponent } from './components/logout/logout.component';
     LoginComponent,
     ListeModulesComponent,
     CreateModulesComponent,
-    SousModulesComponent,
     ActiviteComponent,
     CarteModuleComponent,
     ChargeFilterPipe,
@@ -68,6 +66,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     SharedModule,
     AppRoutingModule,
     HighchartsChartModule,
+    SousModuleModule,
+    CommonModule
   ],
   providers: [FiliereService],
   bootstrap: [AppComponent],

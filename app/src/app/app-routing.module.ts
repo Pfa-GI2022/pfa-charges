@@ -21,73 +21,24 @@ import { role } from './models/role.model';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
-  { path: '', component: ListeProfesseursComponent },
+  
   //departement
   {
-    path: 'departement',
-    component: DepartementComponent,
-
+    path: 'departement',component: DepartementComponent,
     children: [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newProf', component: CreateProfComponent },
-      {
-        path: 'modules',
-        component: ListeModulesComponent,
-
-        // children: [
-        //   {
-        //     path: 'sousModule',
-        //     component: SousModulesComponent,
-        //     children: [
-        //       { path: 'tp', component: TpComponent },
-        //       {
-        //         path: 'td',
-        //         component: TdComponent,
-        //       },
-        //       { path: 'cours', component: CoursComponent },
-        //     ],
-        //   },
-        // ],
-      },
-      { path: 'modules/:id', component: ListeSousModulesComponent },
-      {
-        path: 'modules/:id/sousModules/:id',
-        component: SousModulesComponent,
-        children: [
-          { path: 'tp', component: TpComponent },
-          {
-            path: 'td',
-            component: TdComponent,
-          },
-          { path: 'cours', component: CoursComponent },
-        ],
-      },
-
+      {path: 'modules',component: ListeModulesComponent,},
+      { path: 'modules/:id', component: ListeSousModulesComponent ,children: [
+        { path: 'sousModules/:id', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},
+      ]},
       { path: 'profs', component: ListeProfesseursComponent },
       { path: 'profs/:id', component: ProfDetailsComponent },
       { path: '**', component: ListeModulesComponent },
     ],
   },
-  //filiere /filiere ///
 
-  //admin   /admin/....
-  { path: 'newProf', component: CreateProfComponent },
-  { path: 'newModule', component: CreateModulesComponent },
-  { path: 'profDetails', component: ProfDetailsComponent },
-  { path: 'liste', component: ListeProfesseursComponent },
-  {
-    path: 'sousModule',
-    component: SousModulesComponent,
-    children: [
-      { path: 'tp', component: TpComponent },
-      {
-        path: 'td',
-        component: TdComponent,
-      },
-      { path: 'cours', component: CoursComponent },
-    ],
-  },
-  { path: 'module', component: ListeModulesComponent },
+
   { path: 'login', component: LoginComponent },
   {
     path: 'admin',
