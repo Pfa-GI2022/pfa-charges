@@ -31,6 +31,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ListeSousModulesComponent } from './components/liste-sous-modules/liste-sous-modules.component';
 import { CarteMatiereComponent } from './components/carte-matiere/carte-matiere.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserSearchPipe } from './pipes/user-search.pipe';
 
 //just for test
 
@@ -59,6 +61,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     ListeSousModulesComponent,
     CarteMatiereComponent,
     LogoutComponent,
+    AddUserComponent,
+    UserSearchPipe,
   ],
   imports: [
     BrowserModule,

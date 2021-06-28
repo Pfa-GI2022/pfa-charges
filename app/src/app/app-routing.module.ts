@@ -18,6 +18,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { RolesGuard } from './guards/roles.guard';
 
 import { role } from './models/role.model';
+import { AddUserComponent } from './components/add-user/add-user.component';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
@@ -92,7 +93,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
-    children: [{ path: '', component: ListeUsersComponent }],
+    children: [
+      { path: 'users', component: ListeUsersComponent },
+      { path: 'add', component: AddUserComponent },
+    ],
   },
   { path: 'newProf', component: CreateProfComponent },
   { path: 'newModule', component: CreateModulesComponent },

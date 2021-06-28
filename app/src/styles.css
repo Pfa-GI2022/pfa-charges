@@ -68,3 +68,14 @@ a.add-btn {
   align-items: center;
   font-size: 30px;
 }
+
+/* Search and Filter Bar*/
+
+.search-bar {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+}
