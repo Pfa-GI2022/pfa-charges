@@ -22,89 +22,49 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
-  { path: '', component: ListeProfesseursComponent },
+
+  //home
+  {path : '', component: ProfDetailsComponent},
+  { path: 'login', component: LoginComponent },
+
   //departement
   {
-    path: 'departement',
-    component: DepartementComponent,
-
+    path: 'departement',component: DepartementComponent,
+    canActivate: [RolesGuard], 
+    data: { 
+      expectedRole: role.chefDeDepartement
+    },
     children: [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newProf', component: CreateProfComponent },
-      {
-        path: 'modules',
-        component: ListeModulesComponent,
-
-        // children: [
-        //   {
-        //     path: 'sousModule',
-        //     component: SousModulesComponent,
-        //     children: [
-        //       { path: 'tp', component: TpComponent },
-        //       {
-        //         path: 'td',
-        //         component: TdComponent,
-        //       },
-        //       { path: 'cours', component: CoursComponent },
-        //     ],
-        //   },
-        // ],
-      },
-      { path: 'modules/:id', component: ListeSousModulesComponent },
-      {
-        path: 'modules/:id/sousModules/:id',
-        component: SousModulesComponent,
-        children: [
-          { path: 'tp', component: TpComponent },
-          {
-            path: 'td',
-            component: TdComponent,
-          },
-          { path: 'cours', component: CoursComponent },
-        ],
-      },
-
+      {path: 'modules',component: ListeModulesComponent,},
+      { path: 'modules/:id', component: ListeSousModulesComponent ,children: [
+        { path: 'sousModules/:id', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},
+      ]},
       { path: 'profs', component: ListeProfesseursComponent },
       { path: 'profs/:id', component: ProfDetailsComponent },
       { path: '**', component: ListeModulesComponent },
     ],
   },
-  //filiere /filiere ///
-
-  //admin   /admin/....
-  { path: 'newProf', component: CreateProfComponent },
-  { path: 'newModule', component: CreateModulesComponent },
-  { path: 'profDetails', component: ProfDetailsComponent },
-  { path: 'liste', component: ListeProfesseursComponent },
-  {
-    path: 'sousModule',
-    component: SousModulesComponent,
-    children: [
-      { path: 'tp', component: TpComponent },
-      {
-        path: 'td',
-        component: TdComponent,
-      },
-      { path: 'cours', component: CoursComponent },
-    ],
-  },
-  { path: 'module', component: ListeModulesComponent },
-  { path: 'login', component: LoginComponent },
+  //admin
   {
     path: 'admin',
+    canActivate: [RolesGuard], 
+    data: { 
+      expectedRole: role.admin
+    },
     component: AdminComponent,
     children: [
       { path: 'users', component: ListeUsersComponent },
       { path: 'add', component: AddUserComponent },
     ],
   },
-  { path: 'newProf', component: CreateProfComponent },
-  { path: 'newModule', component: CreateModulesComponent },
-  { path: 'profDetails', component: ProfDetailsComponent },
-  { path: 'liste', component: ListeProfesseursComponent },
 
-  { path: 'module', component: ListeModulesComponent },
-  { path: 'login', component: LoginComponent },
+
+  //login
+
+
+  { path: '**', redirectTo : ''},
 ];
 
 @NgModule({

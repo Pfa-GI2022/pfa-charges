@@ -1,5 +1,6 @@
 import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router'
 import { FormControl, FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage-service.service';
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
     private elementRef: ElementRef
     ,private formBuilder: FormBuilder,
     private auhService:AuthService,
-    private tokenStorage:TokenStorageService
+    private tokenStorage:TokenStorageService,
+    private router:Router
     ) {}
   ngOnInit(): void {
     this.initForm();
@@ -44,7 +46,8 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        this.authenticateUser(this.roles);
+
       },
       err => {
         this.errorMessage = err.error.message;
@@ -52,6 +55,17 @@ export class LoginComponent implements OnInit {
       }
       );
     
+  }
+
+
+  authenticateUser(userRoles:string[]){
+    if(userRoles.includes("admin")){
+      this.router.navigate(['/admin']);
+    } else if(userRoles.includes("chefDeDepartement")){
+      this.router.navigate(['/departement']);
+    } else {
+      this.router.navigate(['/'])
+    }
   }
 
   ngAfterViewInit() {
