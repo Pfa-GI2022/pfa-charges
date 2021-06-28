@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { SousModulesRoutingModule } from './sous-modules-routing.module';
@@ -6,8 +5,7 @@ import { SousModulesComponent } from './sous-modules.component';
 import { TpComponent } from './tp/tp.component';
 import { TdComponent } from './td/td.component';
 import { CoursComponent } from './cours/cours.component';
-
-
+//
 @NgModule({
   declarations: [
     SousModulesComponent,
@@ -15,11 +13,9 @@ import { CoursComponent } from './cours/cours.component';
     TdComponent,
     CoursComponent,
   ],
-  imports: [
-    BrowserModule,
-    SousModulesRoutingModule
-  ],
+  imports: [ SousModulesRoutingModule],
   providers: [],
-  bootstrap: [SousModulesComponent]
+  bootstrap: [SousModulesComponent],
+  exports : [TdComponent,TpComponent,CoursComponent,SousModulesComponent]
 })
-export class SousModuleModule { }
+export class SousModuleModule {}

@@ -1,21 +1,20 @@
+<div class="ui cards">
 
-<div class="ui cards" >
-        
-    <div class="card" >
-        <div class="content">
-          
-          <a class="header">{{ module.nom | uppercase }} </a>
-          
-          <div class="description"> 
-             Filiere : {{module.filiere.nom}}
-          </div>
-        </div>
-        <div class="extra content">
-          <div class="ui two buttons">
- <a class="ui basic red button" [routerLink]="Route" >View course </a>
-          </div>
-        </div>
+  <div class="card">
+    <div class="content">
+
+      <a class="header">{{ module.nom | uppercase }} </a>
+
+      <div class="description">
+        Filiere : {{module.filiere.nom}}
+      </div>
     </div>
-       
+    <div class="extra content">
+      <div class="ui two buttons">
+        <a class="ui basic red button" [routerLink]="Route">View course </a>
+
+      </div>
+    </div>
+  </div>
+
 </div>
-      

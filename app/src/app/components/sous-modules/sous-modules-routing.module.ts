@@ -7,28 +7,27 @@ import { CoursComponent } from './cours/cours.component';
 
 const routes: Routes = [
   {
-    path: '', component : SousModulesComponent 
-  ,
-  children : [
-    {
-      path: 'tp',
-      component: TpComponent
-    },
-    {
-      path : 'td',
-      component: TdComponent
-    },
-    {
-      path: 'cours',
-      component: CoursComponent
-    }
-  ]
-}
-
- ];
+    path: '',
+    component: SousModulesComponent,
+    children: [
+      {
+        path: 'tp',
+        component: TpComponent,
+      },
+      {
+        path: 'td',
+        component: TdComponent,
+      },
+      {
+        path: 'cours',
+        component: CoursComponent,
+      },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SousModulesRoutingModule { }
+export class SousModulesRoutingModule {}

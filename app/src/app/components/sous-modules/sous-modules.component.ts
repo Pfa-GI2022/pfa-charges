@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { Matiere } from 'src/app/models/Matiere.model';
-import { MatiereService } from 'src/app/services/Matiere.service';
+import { MatiereService } from 'src/app/services/matiere.service';
 
 @Component({
   selector: 'app-sous-modules',
@@ -16,7 +16,6 @@ export class SousModulesComponent implements OnInit {
       this.matiereService.getMatiereByID(params.id).subscribe(data => {
         this.matiere = data;
       });
-
     });
   }
   ngOnInit(): void {

@@ -1,28 +1,24 @@
 <div class="liste-modules">
-    <div class="ui container">
-     
-        <div style="padding: 25px;">
-            <h1>{{module.nom}}</h1>
-            <div class="ui two column grid" style="padding: 25px;">
-                <div class="row" >
-                    <div class="column">
-                        <app-carte-matiere ></app-carte-matiere>
-                    </div>
-                    <div class="column">
-                        <app-carte-matiere></app-carte-matiere>
-                    </div>
-                    <div class="column">
-                        <app-carte-matiere></app-carte-matiere>
-                    </div>
-                    <div class="column">
-                        <app-carte-matiere></app-carte-matiere>
-                    </div>
-                    <div class="column">
-                        <app-carte-matiere></app-carte-matiere>
-                    </div>
-                </div>
-                
-            </div>
+  <div class="ui container">
+    <div style="padding: 25px;">
+      <h1>{{module.nom}}</h1>
+      <div class="ui two column grid" style="padding: 25px;">
+        <div class="row">
+          <div class="column">
+            <app-carte-matiere></app-carte-matiere>
+          </div>
+          <div class="column">
+            <app-carte-matiere></app-carte-matiere>
+          </div>
+          <div class="column">
+            <app-carte-matiere></app-carte-matiere>
+          </div>
+          <div class="column">
+            <app-carte-matiere></app-carte-matiere>
+          </div>
         </div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
 
-</div>
+  </div>
