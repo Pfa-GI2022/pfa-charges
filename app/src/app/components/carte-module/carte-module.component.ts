@@ -3,19 +3,14 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-carte-module',
   templateUrl: './carte-module.component.html',
-  styleUrls: ['./carte-module.component.css']
+  styleUrls: ['./carte-module.component.css'],
 })
 export class CarteModuleComponent implements OnInit {
-
   @Input() module;
- Route:String;
+  Route: String;
 
-constructor() {
-
-}
+  constructor() {}
   ngOnInit(): void {
-    this.Route = `/departement/modules/${this.module.id}/sousModule`;
-
+    this.Route = `/departement/modules/${this.module.id}`;
   }
-  
 }

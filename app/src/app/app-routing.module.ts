@@ -31,13 +31,39 @@ const routes: Routes = [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newProf', component: CreateProfComponent },
       {
-        path: 'modules/:id',
-        component: ListeSousModulesComponent,
-        children: [{ path: 'sousModule', component: SousModulesComponent }],
+        path: 'modules',
+        component: ListeModulesComponent,
+
+        // children: [
+        //   {
+        //     path: 'sousModule',
+        //     component: SousModulesComponent,
+        //     children: [
+        //       { path: 'tp', component: TpComponent },
+        //       {
+        //         path: 'td',
+        //         component: TdComponent,
+        //       },
+        //       { path: 'cours', component: CoursComponent },
+        //     ],
+        //   },
+        // ],
+      },
+      { path: 'modules/:id', component: ListeSousModulesComponent },
+      {
+        path: 'modules/:id/sousModules/:id',
+        component: SousModulesComponent,
+        children: [
+          { path: 'tp', component: TpComponent },
+          {
+            path: 'td',
+            component: TdComponent,
+          },
+          { path: 'cours', component: CoursComponent },
+        ],
       },
 
       { path: 'profs', component: ListeProfesseursComponent },
-      { path: 'modules', component: ListeModulesComponent },
       { path: 'profs/:id', component: ProfDetailsComponent },
       { path: '**', component: ListeModulesComponent },
     ],
