@@ -44,10 +44,27 @@ body {
   padding-top: 50px;
 }
 
-li{
+li {
   list-style: none;
 }
 
-a{
+a {
   text-decoration: none;
+}
+
+/* Add Button */
+a.add-btn {
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+  background-color: #fff;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
 }

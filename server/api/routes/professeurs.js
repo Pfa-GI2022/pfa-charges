@@ -17,7 +17,6 @@ router.get("/", controller.getAllProfs);
 router.get("/:id", controller.getProfById);
 
 //GET BY DEP ID
-router.get("/departement/:id", controller.getProfByDepartementId);
 
 router.use("/:id/charge", chargeRouter);
 //CREATE

@@ -15,6 +15,7 @@ module.exports = {
       semestre: {
         type: Sequelize.STRING,
         allowNull: false,
+        defaultValue: 0,
       },
       depID: {
         type: Sequelize.INTEGER,

@@ -11,6 +11,7 @@ module.exports = {
       nom: {
         type: Sequelize.STRING,
         allowNull: false,
+        defaultValue: "",
       },
       moduleID: {
         type: Sequelize.INTEGER,

@@ -14,7 +14,8 @@ constructor() {
 
 }
   ngOnInit(): void {
-    this.Route=`/departement/modules/${this.module.id}`;
+    this.Route = `/departement/modules/${this.module.id}/sousModule`;
+
   }
   
 }

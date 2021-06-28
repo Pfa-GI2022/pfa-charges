@@ -4,7 +4,7 @@ const departement = models.departement;
 
 const createDepartement = async (req, res) => {
   const { nom, professeur, charge } = req.body;
-  console.log("insidde create departement");
+  console.log("Creating Department");
   departement
     .create(
       {
@@ -16,17 +16,18 @@ const createDepartement = async (req, res) => {
       }
     )
     .then((data) => {
+      console.log("Department Created Successfully");
       res.send(data);
-      console.log("inside the then of create depart");
     })
     .catch((err) => {
+      console.log("Creating Department Failed");
       res.status(err);
       console.log(err.message);
     });
 };
 
 const getAllDepartements = async (req, res) => {
-  console.log("getAllDeps");
+  console.log("Fetching All Departments");
   await departement
     .findAll({
       include: [
@@ -39,11 +40,19 @@ const getAllDepartements = async (req, res) => {
         },
       ],
     })
-    .then((deps) => res.status(200).send(deps));
+    .then((deps) => {
+      console.log("Departments Fetched Successfully");
+      res.status(200).send(deps);
+    })
+    .catch((err) => {
+      console.log("Fetching All Departments Failed");
+      res.status(500).send(err);
+    });
 };
 
 const getOneDepartementByID = async (req, res) => {
   const id = req.params.id;
+  console.log("Fetching Department");
   await departement
     .findByPk(id, {
       include: [
@@ -53,45 +62,48 @@ const getOneDepartementByID = async (req, res) => {
         },
       ],
     })
-    .then((dep) => res.send(dep))
-    .catch((err) => res.status(500).send({ error: err }));
-};
-
-const getOneDepartementByName = async (req, res) => {
-  const name = req.params.name;
-
-  departement
-    .findOne({
-      where: {
-        nom: "mecanique et math",
-      },
+    .then((dep) => {
+      console.log("Department Fetched Succesfully");
+      res.send(dep);
     })
-    .then((dep) => res.send(dep))
-    .catch((err) => res.status(500).send({ error: err }));
+    .catch((err) => {
+      console.log("Fetching Department Failed");
+      res.status(500).send({ error: err });
+    });
 };
 
 const updateDepartement = async (req, res) => {
   const id = req.params.id;
   const updatedData = req.body;
-  console.log(id);
-  console.log(`updatedData ${updatedData}`);
+  console.log("Updating Department");
 
   departement
     .update(updatedData, { where: { id } })
-    .then((updatedDep) => res.status(200).send(updatedDep))
-    .catch((err) => res.status(500).send({ error: err }));
+    .then((updatedDep) => {
+      console.log("Department Updated Successfully");
+      res.status(200).send(updatedDep);
+    })
+    .catch((err) => {
+      console.log("Updating Department Failed");
+      res.status(500).send({ error: err });
+    });
 };
 
 const deleteDepartementByID = async (req, res) => {
   const id = parseInt(req.params.id, 10);
   if (Number.isNaN(id)) return res.status(400).end();
-
+  console.log("Deleting Department");
   departement
     .destroy({
       where: { id },
     })
     .then(() => {
+      console.log("Department Deleted Successfully");
       res.status(204).end();
+    })
+    .catch((err) => {
+      console.log("Deleting Department Failed");
+      res.status(500).send(err);
     });
 };
 

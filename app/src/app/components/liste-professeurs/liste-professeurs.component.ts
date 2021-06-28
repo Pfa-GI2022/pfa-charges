@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfesseurService } from '../../services/professeur.service';
 import { Professeur } from '../../models/professeur.model';
-import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-liste-professeurs',
   templateUrl: './liste-professeurs.component.html',
@@ -20,16 +19,10 @@ export class ListeProfesseursComponent implements OnInit {
   selectedOption = this.options[0];
   open = false;
 
-  constructor(
-    private professeurService: ProfesseurService,
-    private authService: AuthService
-  ) {}
+  constructor(private professeurService: ProfesseurService) {}
 
   ngOnInit(): void {
     this.onGetAllProfs();
-    this.authService.register({}).subscribe((data) => {
-      console.log(data);
-    });
   }
 
   onGetAllProfs(): void {

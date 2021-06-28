@@ -11,18 +11,22 @@ module.exports = {
       nom: {
         type: Sequelize.STRING,
         allowNull: false,
+        defaultValue: "",
       },
       nbreGroupesTd: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        defaultValue: 0,
       },
       nbreGroupeTp: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        defaultValue: 0,
       },
       nbreGroupePFA: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        defaultValue: 0,
       },
       chefFiliereID: {
         type: Sequelize.INTEGER,

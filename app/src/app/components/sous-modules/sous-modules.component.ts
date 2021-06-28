@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { Module } from 'src/app/models/module.model';
-import { ModuleService } from 'src/app/services/module.service';
+import { Matiere } from 'src/app/models/Matiere.model';
+import { MatiereService } from 'src/app/services/Matiere.service';
+
 @Component({
   selector: 'app-sous-modules',
   templateUrl: './sous-modules.component.html',
@@ -9,17 +10,17 @@ import { ModuleService } from 'src/app/services/module.service';
 })
 export class SousModulesComponent implements OnInit {
 
-  module : Module;
-  constructor(private route: ActivatedRoute,private moduleService: ModuleService) {
-    this.route.params.subscribe(params =>{
-      this.moduleService.getModuleByID(params.id).subscribe(data => {
-        this.module = data;
-        console.log(this.module.matieres);
-      })
+  matiere: Matiere;
+  constructor(private route: ActivatedRoute, private matiereService: MatiereService) {
+    this.route.params.subscribe(params => {
+      this.matiereService.getMatiereByID(params.id).subscribe(data => {
+        this.matiere = data;
+      });
+
     });
-    
   }
   ngOnInit(): void {
+    
   }
 
 }

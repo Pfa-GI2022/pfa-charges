@@ -10,65 +10,75 @@ import { SousModulesComponent } from './components/sous-modules/sous-modules.com
 import { TpComponent } from './components/sous-modules/tp/tp.component';
 import { TdComponent } from './components/sous-modules/td/td.component';
 import { CoursComponent } from './components/sous-modules/cours/cours.component';
+import { LoginComponent } from './components/login/login.component';
+import { ListeUsersComponent } from './components/liste-users/liste-users.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ListeSousModulesComponent } from './components/liste-sous-modules/liste-sous-modules.component';
+import { AuthGuard } from './guards/auth.guard';
+import { RolesGuard } from './guards/roles.guard';
 
+import { role } from './models/role.model';
 /*la bonne pratique pour routing !!*/
 
-
 const routes: Routes = [
-  { path : '' , component : ListeProfesseursComponent},
+  { path: '', component: ListeProfesseursComponent },
   //departement
-  {path : 'departement', component : DepartementComponent,
-    children : [
-      {path : '' , component: ListeProfesseursComponent},
-      { path : 'newProf', component : CreateProfComponent},
-      { path : 'modules/:id' , component : SousModulesComponent,
-        children: [
-              {
-                path: 'tp',
-                component: TpComponent
-              },
-              {
-                path: 'td',
-                component: TdComponent
-              },
-              {
-                path: 'cours',
-                component: CoursComponent
-              }
-            ]},
-      {path : 'profs' , component: ListeProfesseursComponent},
-      {path : 'modules' , component : ListeModulesComponent},
-      {path : 'profs/:id' , component : ProfDetailsComponent},
-      {path : '**' , component : ListeModulesComponent}
-    ]
+  {
+    path: 'departement',
+    component: DepartementComponent,
+
+    children: [
+      { path: '', component: ListeProfesseursComponent },
+      { path: 'newProf', component: CreateProfComponent },
+      {
+        path: 'modules/:id',
+        component: ListeSousModulesComponent,
+        children: [{ path: 'sousModule', component: SousModulesComponent }],
+      },
+
+      { path: 'profs', component: ListeProfesseursComponent },
+      { path: 'modules', component: ListeModulesComponent },
+      { path: 'profs/:id', component: ProfDetailsComponent },
+      { path: '**', component: ListeModulesComponent },
+    ],
   },
   //filiere /filiere ///
 
-
   //admin   /admin/....
-  { path : 'newProf', component : CreateProfComponent},
-  { path : 'newModule', component :  CreateModulesComponent},
-  { path : 'profDetails', component : ProfDetailsComponent},
-  { path : 'liste' , component : ListeProfesseursComponent},
-  { path : 'sousModule' , component : SousModulesComponent,
+  { path: 'newProf', component: CreateProfComponent },
+  { path: 'newModule', component: CreateModulesComponent },
+  { path: 'profDetails', component: ProfDetailsComponent },
+  { path: 'liste', component: ListeProfesseursComponent },
+  {
+    path: 'sousModule',
+    component: SousModulesComponent,
     children: [
-      { path: 'tp', 
-      component: TpComponent },
+      { path: 'tp', component: TpComponent },
       {
         path: 'td',
-        component: TdComponent
+        component: TdComponent,
       },
-      { path : 'cours',
-        component: CoursComponent
-      }
-    ]
+      { path: 'cours', component: CoursComponent },
+    ],
   },
-  { path : 'module', component : ListeModulesComponent}
-];
+  { path: 'module', component: ListeModulesComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [{ path: '', component: ListeUsersComponent }],
+  },
+  { path: 'newProf', component: CreateProfComponent },
+  { path: 'newModule', component: CreateModulesComponent },
+  { path: 'profDetails', component: ProfDetailsComponent },
+  { path: 'liste', component: ListeProfesseursComponent },
 
+  { path: 'module', component: ListeModulesComponent },
+  { path: 'login', component: LoginComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
