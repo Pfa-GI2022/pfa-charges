@@ -96,6 +96,7 @@ form {
   transition: 0.4s;
 }
 
+.input-div
 .input-div:before {
   right: 50%;
 }
@@ -109,6 +110,10 @@ form {
   width: 50%;
 }
 
+.danger{
+  color : red;
+  background-color: red;
+}
 .input-div.focus > div > h5 {
   top: -5px;
   font-size: 15px;
@@ -161,7 +166,7 @@ a:hover {
   border-radius: 12px;
   outline: none;
   border: none;
-  background-color: #02e079;
+  background-color: #1c794d;
   font-size: 1.1rem;
   color: #fff;
   font-family: "Poppins", sans-serif;
@@ -169,6 +174,12 @@ a:hover {
   margin: 1rem 0;
   cursor: pointer;
   transition: 0.5s;
+}
+
+.btn:disabled,
+.btn[disabled]{
+  background-color: #02e079;
+
 }
 
 .btn:hover {

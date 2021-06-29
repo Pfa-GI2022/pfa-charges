@@ -8,9 +8,9 @@
     <form [formGroup]="moduleForm" class="ui form" (ngSubmit)="onSubmit()">
       <app-input [control]="moduleForm.get('nom')" label="Nom" type="text"></app-input>
       <app-input [control]="moduleForm.get('semestre')" label="Semestre" type="text"></app-input>
-      <div class="field">
+      <div class="field" >
       <label class="label">Filiere</label>
-      <div 
+      <div
     class="ui selection dropdown "
     [ngClass]="{'active' : open}"    
     (click)="toggleOpen()"
@@ -23,11 +23,11 @@
         class="menu"
         [ngClass]="{'transition visible' : open}"    
     >
-
       <div 
         *ngFor="let f of filiere"
         class="item"
         (click)="onSelection(f)" >{{f.nom}}
+
       </div>
     </div>
   </div>

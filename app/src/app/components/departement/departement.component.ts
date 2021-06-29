@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartementService } from 'src/app/services/departement.service';
 import { Departement } from '../../models/departement.model'
-import { SelectedModuleService } from 'src/app/services/selected-module.service';
-
+import { SharedService } from 'src/app/services/shared.service';
+import { TokenStorageService } from 'src/app/services/token-storage-service.service';
+import { User } from 'src/app/models/user.model';
 @Component({
   selector: 'app-departement',
   templateUrl: './departement.component.html',
@@ -10,8 +11,21 @@ import { SelectedModuleService } from 'src/app/services/selected-module.service'
 })
 export class DepartementComponent implements OnInit {
 
+  user : User;
+  depID: number;
   departement = {};
-  constructor(private departementService:DepartementService,private sharedService:SelectedModuleService) { 
+  constructor(
+      private departementService:DepartementService,
+      private sharedService:SharedService,
+      private tokenStorage:TokenStorageService
+      ) { 
+        this.user = this.tokenStorage.getUser();
+        if(this.user){
+          if(this.user.accountOwner){
+            this.depID = this.user.accountOwner.depID;
+            console.log(this.depID)
+          }
+        }
     this.onGetDepByID();
   }
 
@@ -20,9 +34,8 @@ export class DepartementComponent implements OnInit {
   }
 
 
-
   onGetDepByID(): void{
-    this.departementService.getDepByID(1).subscribe( data => {
+    this.departementService.getDepByID(this.depID).subscribe( data => {
       this.departement = data;
       this.sharedService.setDepartement(this.departement)
     });

@@ -4,7 +4,8 @@ import { FormControl, FormBuilder, FormGroup, Validator, Validators } from '@ang
 import { Module } from '../../models/module.model';
 import { Filiere } from '../../models/filiere.model';
 import { FiliereService } from 'src/app/services/filiere.service';
-
+import { SharedService } from 'src/app/services/shared.service';
+import { SelectedModuleService } from 'src/app/services/selected-module.service';
 
 @Component({
   selector: 'app-create-modules',
@@ -17,12 +18,20 @@ export class CreateModulesComponent implements OnInit {
   moduleForm : FormGroup;
   filiere :  Filiere [];
   selected : '';
+  fildID : number;
+  depID : number;
 
   @Input() module;
   Route:String;
 
   open = false;
-  constructor(private formBuilder: FormBuilder,private moduleService: ModuleService, private filiereService : FiliereService) { }
+  constructor(
+      private formBuilder: FormBuilder,
+      private moduleService: ModuleService,
+      private filiereService : FiliereService, 
+      private sharedService:SharedService,
+      private selectedModule: SelectedModuleService
+      ) { }
 
   onGetAllFilieres(): void {
     this.filiereService.getAllFilieres().subscribe(data => {
@@ -30,10 +39,18 @@ export class CreateModulesComponent implements OnInit {
       console.log(data);
     });
   }
+
+  onGetDepID(){
+    this.sharedService.currentDeparetement.subscribe(dep => {
+      if(dep)
+      this.depID = dep.id
+    }) 
+  }
   ngOnInit(): void 
   {
     this.initForm();
     this.onGetAllFilieres();
+    this.onGetDepID();
   }
   initForm() {
     this.moduleForm = this.formBuilder.group({
@@ -44,8 +61,10 @@ export class CreateModulesComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.moduleForm.value);
-    this.moduleService.createModule(this.moduleForm.value).subscribe(
+    let newModule = this.moduleForm.value;
+    newModule.filID = this.fildID;
+    newModule.depID = this.depID;
+    this.moduleService.createModule(newModule).subscribe(
       response => {
         console.log(response);
         this.moduleForm.reset({});
@@ -64,7 +83,8 @@ export class CreateModulesComponent implements OnInit {
 
   onSelection(option: any) {
     this.selected = option.nom;
-    console.log(option)
+    this.fildID = option.id;
+    console.log(this.fildID)
   }
 
 }
