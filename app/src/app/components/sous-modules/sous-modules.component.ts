@@ -13,8 +13,9 @@ export class SousModulesComponent implements OnInit {
   matiere: Matiere;
   constructor(private route: ActivatedRoute, private matiereService: MatiereService) {
     this.route.params.subscribe(params => {
-      this.matiereService.getMatiereByID(params.id).subscribe(data => {
+      this.matiereService.getMatiereByID(params.id2).subscribe(data => {
         this.matiere = data;
+        console.log(data);
       });
     });
   }

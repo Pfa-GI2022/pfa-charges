@@ -40,7 +40,7 @@ const routes: Routes = [
       { path: 'modules',component: ListeModulesComponent,},
       { path: 'modules/:id', component: ListeSousModulesComponent,
         children: [
-        { path: 'sousModules/:id', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},
+        { path: 'sousModules/:id2', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},
       ]},
       { path: 'profs', component: ListeProfesseursComponent },
       { path: 'profs/:id', component: ProfDetailsComponent },
