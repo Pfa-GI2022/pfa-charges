@@ -9,7 +9,15 @@ import { Module} from "../../models/module.model";
 })
 export class ListeModulesComponent implements OnInit {
   modules: Module[];
+  options = [
+    { label: 'Filieres', value: 'Filieres' },
+    { label: 'Genie informatique', value: 'Genie informatique' },
+    { label: 'Genie informatique', value: 'Genie informatique' },
+    
+  ];
+  selectedOption = this.options[0];
   term = '';
+  open = false;
   selectedMod : Module;
   constructor(private moduleService: ModuleService) { }
 
@@ -31,6 +39,11 @@ export class ListeModulesComponent implements OnInit {
     this.term = term;
   }
 
-  
+  onSelection(option: any) {
+    this.selectedOption = option;
+  }
+  toggleOpen() {
+    this.open = !this.open;
+  }
 
 }

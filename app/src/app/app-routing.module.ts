@@ -18,24 +18,29 @@ import { AuthGuard } from './guards/auth.guard';
 import { RolesGuard } from './guards/roles.guard';
 
 import { role } from './models/role.model';
+import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
+import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
 
   //home
-  {path : '', component: ProfDetailsComponent},
-  { path: 'login', component: LoginComponent },
+ // {path : '', component: ProfDetailsComponent},
+ // { path: 'login', component: LoginComponent },
 
   //departement
   {
     path: 'departement',component: DepartementComponent,
-    canActivate: [RolesGuard], 
-    data: { 
-      expectedRole: role.chefDeDepartement
-    },
+    //canActivate: [RolesGuard], 
+   // data: { 
+    //  expectedRole: role.chefDeDepartement
+  //  },
     children: [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newProf', component: CreateProfComponent },
+      { path: 'newFiliere', component: CreateFiliereComponent },
+      { path: 'newDepartement', component: CreateDepartementComponent },
+      { path: 'newModule', component: CreateModulesComponent },
       {path: 'modules',component: ListeModulesComponent,},
       { path: 'modules/:id', component: ListeSousModulesComponent ,children: [
         { path: 'sousModules/:id', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},

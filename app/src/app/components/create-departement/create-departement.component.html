@@ -1,0 +1,42 @@
+<div class="ui container  create-departement-container">
+    <div class="ui attached message">
+      <div class="ui huge header">
+        Ajouter un nouveau departement
+      </div>
+      <br>
+    </div>
+    <form [formGroup]="departementForm" class="ui form" (ngSubmit)="onSubmit()">
+      <app-input [control]="departementForm.get('nom')" label="Nom" type="text"></app-input>
+      <br/> <br/>
+      <label type="text" name="chef de departement"></label>
+      <div 
+    class="ui selection dropdown " [ngClass]="{'active' : open}"   (click)="toggleOpen()">
+
+    <input type="hidden" name="gender">
+    
+    <i class="dropdown icon"></i>
+    <div class="default text">Chef de departement</div>
+    <div 
+        class="menu"
+        [ngClass]="{'transition visible' : open}"    
+    >
+
+      <div 
+        *ngFor="let p of professeur"
+        class="item"
+        >{{p.nom}}</div>
+    </div>
+  </div>
+  <br/> <br/>
+      <button [disabled]="departementForm.invalid" type="submit" class="ui submit button">submit</button>
+    </form>
+    <div class="ui success message" *ngIf="alert"> 
+      <i class="close icon" (click)="closeAlert()"></i>
+      <div class="header">
+        Nouveau departement ajoute
+      </div>
+      <p>Vous pouvez maintenant le visualiser en consultant les departements/p>
+    </div>
+    </div>
+    
+    

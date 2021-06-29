@@ -31,6 +31,9 @@ import { ListeSousModulesComponent } from './components/liste-sous-modules/liste
 import { CarteMatiereComponent } from './components/carte-matiere/carte-matiere.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { SousModuleModule } from './components/sous-modules/sous-modules.module';
+import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
+import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
+import { FiliereFilterModulesPipe } from './pipes/filiere-filter-modules.pipe';
 //just for test
 
 @NgModule({
@@ -57,6 +60,9 @@ import { SousModuleModule } from './components/sous-modules/sous-modules.module'
     ListeSousModulesComponent,
     CarteMatiereComponent,
     LogoutComponent,
+    CreateDepartementComponent,
+    CreateFiliereComponent,
+    FiliereFilterModulesPipe,
   ],
   imports: [
     BrowserModule,
