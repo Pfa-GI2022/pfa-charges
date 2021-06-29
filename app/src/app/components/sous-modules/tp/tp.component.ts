@@ -13,7 +13,7 @@ import { activitePedagogiques } from 'src/app/models/activite.model';
 export class TpComponent implements OnInit {
 
   matiere: Matiere;
-  activite: activitePedagogiques;
+  activite=[];
   constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService) {
     this.route.parent.params.subscribe(params => {
       this.matiereService.getMatiereByID(params.id2).subscribe(data => {
@@ -22,8 +22,8 @@ export class TpComponent implements OnInit {
         this.matiere.activitePedagogiques.forEach(m => {
           this.activiteService.getActivityByID(m.id).subscribe(data => {
             if (m.nature == "tp") {
-              this.activite = data;
-              console.log(this.activite);
+              this.activite.push(data) ;
+              console.log(this.activite.length);
             }
           });
         });
