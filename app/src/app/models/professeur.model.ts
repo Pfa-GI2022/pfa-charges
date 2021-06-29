@@ -1,4 +1,6 @@
+import { Departement } from "./departement.model";
 export interface Professeur {
+  id: number;
   nom: string;
   prenom: string;
   avatar?: string;
@@ -7,4 +9,7 @@ export interface Professeur {
   filiere?: any;
   charge?: any;
   mail?: string;
+  depID?:number;
+  filID?:number;
+  departement?: Departement
 }

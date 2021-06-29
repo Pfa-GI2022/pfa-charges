@@ -9,7 +9,7 @@ body {
   z-index: 1; /* Stay on top */
   top: 0;
   left: 0;
-  background-color: rgb(17, 17, 17); /* Black*/
+  background-color: #013243; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 50px; /* Place content 60px from the top */
   transition: 0.5s;
@@ -17,18 +17,19 @@ body {
 
 /* The sidebar links */
 .sidebar a {
-  padding: 20px;
   text-decoration: none;
-  display: block;
-  /* transition: 0.3s; */
-  border-bottom: 0.5px solid #555;
+  transition: 0.3s;
   font-size: 18px;
   color: #eee;
+  display: inline-block;
+  padding: 20px 10px;
+  width: 100%;
+  border-bottom: 1px solid #555;
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidebar a:hover {
-  background-color: #555;
+  background-color: #18637c;
 }
 
 /* Position and style the close button (top right corner) */
@@ -73,20 +74,7 @@ body {
   background-color: #1a1818;
 }
 
-.sidebar a {
-  display: inline-block;
-  padding: 10px;
-  width: 100%;
-  border-bottom: 1px solid #555;
-  color: #eee;
-}
 
-.sidebar a {
-  display: inline-block;
-  padding: 20px 10px;
-  width: 100%;
-  border-bottom: 1px solid #555;
-}
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidebar {

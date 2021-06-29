@@ -31,7 +31,11 @@
         <div class="col col-1" data-label="Username"> {{u.username}} </div>
         <div class="col col-2" data-label="Password">••••••</div>
         <div class="col col-3" data-label="Email">{{u.email}}</div>
-        <div class="col col-4" data-label="Role">Role</div>
+        <div class="col col-4" data-label="Role">
+          <ng-container *ngFor="let role of u.roles">
+            {{role.name}}
+          </ng-container>
+        </div>
       </li>
 
     </div>
