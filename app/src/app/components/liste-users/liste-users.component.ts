@@ -8,6 +8,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ListeUsersComponent implements OnInit {
   Users: User[];
+  options = [
+    { label: 'all', value: 'all' },
+    { label: 'Admin', value: 'Admin' },
+    { label: 'Professeur', value: 'Professeur' },
+    { label: 'Chef De Departement', value: 'Chef De Departement' },
+    { label: 'Chef De Filiere', value: 'Chef De Filiere' },
+  ];
+  selectedOption = this.options[0];
+  open = false;
+  term = '';
   constructor(private UserService: UserService) {}
 
   ngOnInit(): void {
@@ -18,5 +28,16 @@ export class ListeUsersComponent implements OnInit {
       this.Users = data;
       console.log(this.Users);
     });
+  }
+  onSearch(term: string): void {
+    this.term = term;
+  }
+
+  onSelection(option: any) {
+    this.selectedOption = option;
+  }
+
+  toggleOpen() {
+    this.open = !this.open;
   }
 }

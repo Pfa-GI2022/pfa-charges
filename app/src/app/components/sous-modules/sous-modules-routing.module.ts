@@ -11,6 +11,10 @@ const routes: Routes = [
     component: SousModulesComponent,
     children: [
       {
+        path: '',
+        component: CoursComponent,
+      },
+      {
         path: 'tp',
         component: TpComponent,
       },

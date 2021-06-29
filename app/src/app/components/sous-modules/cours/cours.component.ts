@@ -1,7 +1,10 @@
 import { Component, OnInit ,Input} from '@angular/core';
-import { ModuleService } from '../../../services/module.service';
+import { MatiereService } from '../../../services/matiere.service';
 import { Matiere } from "../../../models/matiere.model";
-import { SelectedModuleService } from 'src/app/services/selected-module.service';
+import { ActivatedRoute } from '@angular/router';
+import { ActiviteService } from 'src/app/services/activite.service';
+import { activitePedagogiques } from 'src/app/models/activite.model';
+
 @Component({
   selector: 'app-cours',
   templateUrl: './cours.component.html',
@@ -9,17 +12,27 @@ import { SelectedModuleService } from 'src/app/services/selected-module.service'
 })
 
 export class CoursComponent implements OnInit {
-  @Input() matiere;
-  
-  constructor(private moduleService: ModuleService,private selectedModuleService: SelectedModuleService) { }
+
+  matiere : Matiere;
+  activite : activitePedagogiques;
+  constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService : ActiviteService) {
+    this.route.parent.params.subscribe(params => {
+      this.matiereService.getMatiereByID(params.id2).subscribe(data => {
+        this.matiere = data;
+        console.log(data);
+        this.matiere.activitePedagogiques.forEach(m => {
+          this.activiteService.getActivityByID(m.id).subscribe(data => {
+            if( m.nature == "cours"){
+              this.activite= data;
+              console.log(this.activite);
+            }
+          });
+        });
+      });
+    });
+}
 
   ngOnInit(): void {
-    console.log("cours component int ----------------------")
-    this.selectedModuleService.nextMessage("test");
-    this.selectedModuleService.sharedMessage.subscribe(message => console.log(message));
-    this.selectedModuleService.currentDeparetement.subscribe(dep => console.log(dep))
-    
   }
-
  
 }

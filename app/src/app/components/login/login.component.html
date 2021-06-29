@@ -1,6 +1,6 @@
 <div class="login-page-container">
   <div class="login-content">
-    <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()"> >
+    <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()"> 
 
       <h2 class="title">Sign in</h2>
       <div class="input-div one">
@@ -21,10 +21,14 @@
           <input  type="password" class="input" formControlName="password">
         </div>
       </div>
+      <<ng-container *ngIf="isLoginFailed">
+        <h1>Login failed</h1>
+      </ng-container>
       <!-- <a href="#">Forgot Password?</a> -->
       <input [disabled]="loginForm.invalid" type="submit" class="btn" value="Login">
     </form>
   </div>
+  
 </div>
 <footer>
   <section>

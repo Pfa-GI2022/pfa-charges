@@ -20,13 +20,19 @@ import { RolesGuard } from './guards/roles.guard';
 import { role } from './models/role.model';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
 import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
 
   //home
+<<<<<<< HEAD
  // {path : '', component: ProfDetailsComponent},
  // { path: 'login', component: LoginComponent },
+=======
+ //{path : '', component: ProfDetailsComponent},
+ //{ path: 'login', component: LoginComponent },
+>>>>>>> 0b1362666d77e03896a6e08edac40f66d58eb3f2
 
   //departement
   {
@@ -35,8 +41,13 @@ const routes: Routes = [
    // data: { 
     //  expectedRole: role.chefDeDepartement
   //  },
+  // canActivate: [RolesGuard], 
+  // data: { 
+    // expectedRole: role.chefDeDepartement
+  // },
     children: [
       { path: '', component: ListeProfesseursComponent },
+      { path: 'newModule', component: CreateModulesComponent },
       { path: 'newProf', component: CreateProfComponent },
       { path: 'newFiliere', component: CreateFiliereComponent },
       { path: 'newDepartement', component: CreateDepartementComponent },
@@ -44,6 +55,10 @@ const routes: Routes = [
       {path: 'modules',component: ListeModulesComponent,},
       { path: 'modules/:id', component: ListeSousModulesComponent ,children: [
         { path: 'sousModules/:id', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},
+      { path: 'modules',component: ListeModulesComponent,},
+      { path: 'modules/:id', component: ListeSousModulesComponent,
+        children: [
+        { path: 'sousModules/:id2', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},
       ]},
       { path: 'profs', component: ListeProfesseursComponent },
       { path: 'profs/:id', component: ProfDetailsComponent },
@@ -58,7 +73,10 @@ const routes: Routes = [
       expectedRole: role.admin
     },
     component: AdminComponent,
-    children: [{ path: '', component: ListeUsersComponent }],
+    children: [
+      { path: 'users', component: ListeUsersComponent },
+      { path: 'add', component: AddUserComponent },
+    ],
   },
 
 

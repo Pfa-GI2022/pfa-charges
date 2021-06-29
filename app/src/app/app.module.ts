@@ -30,6 +30,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ListeSousModulesComponent } from './components/liste-sous-modules/liste-sous-modules.component';
 import { CarteMatiereComponent } from './components/carte-matiere/carte-matiere.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserSearchPipe } from './pipes/user-search.pipe';
+
 import { SousModuleModule } from './components/sous-modules/sous-modules.module';
 import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
@@ -63,6 +66,8 @@ import { FiliereFilterModulesPipe } from './pipes/filiere-filter-modules.pipe';
     CreateDepartementComponent,
     CreateFiliereComponent,
     FiliereFilterModulesPipe,
+    AddUserComponent,
+    UserSearchPipe,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +78,7 @@ import { FiliereFilterModulesPipe } from './pipes/filiere-filter-modules.pipe';
     AppRoutingModule,
     HighchartsChartModule,
     SousModuleModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [FiliereService],
   bootstrap: [AppComponent],

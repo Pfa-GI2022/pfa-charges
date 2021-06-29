@@ -25,9 +25,8 @@ export class UserService {
   //   return this.http.delete(`${host}/professeurs/${id}`);
   // }
 
-  // createUser(body: Professeur) {
-  //   const host = environment.host;
-  //   console.log('create prof');
-  //   return this.http.post(`${host}/professeurs`, body);
-  // }
+  createUser(body: User) {
+    const host = environment.host;
+    return this.http.post(`${host}/api/auth/signin`, body);
+  }
 }
