@@ -28,8 +28,8 @@ import { DepartementResolverService } from './services/departement-resolver.serv
 const routes: Routes = [
 
   //home
-//  {path : '', component: ProfDetailsComponent},
- { path: 'login', component: LoginComponent },
+ {path : '', component: ProfDetailsComponent},
+//  { path: 'login', component: LoginComponent },
 
   //departement
   {
@@ -62,7 +62,7 @@ const routes: Routes = [
   },
   //admin
   {
-    // path: 'admin',
+    path: 'admin',
     // canActivate: [RolesGuard], 
     // data: { 
     //   expectedRole: role.admin
