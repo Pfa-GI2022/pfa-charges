@@ -9,15 +9,16 @@ import { ProfesseurService } from '../../services/professeur.service';
   styleUrls: ['./create-filiere.component.css']
 })
 export class CreateFiliereComponent implements OnInit {
-
+  
   alert = false;
   open = false;
-
+  selected : '';
+  profnom : string;
   @Input() professeur;
 
   filiereForm : FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private filiereService: FiliereService,private professeurService : ProfesseurService) { }
+  constructor(private formBuilder: FormBuilder, private filiereService: FiliereService,private professeurService : ProfesseurService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -31,6 +32,11 @@ export class CreateFiliereComponent implements OnInit {
       nbreGroupePFA : new FormControl('', [Validators.required, Validators.pattern("^[0-9]$"), Validators.minLength(1), Validators.maxLength(1)]),
       chefFiliere : new FormControl('',[Validators.required,Validators.minLength(5),Validators.pattern("[a-zA-Z\s]*")]),
     });
+    }
+    onGetAllProfs(): void {
+      this.professeurService.getAllProfesseurs().subscribe((data) => {
+        this.professeur = data;
+      });
     }
 
   onSubmit(){
@@ -47,7 +53,14 @@ export class CreateFiliereComponent implements OnInit {
   closeAlert(){
     this.alert = false;
   }
+ 
   toggleOpen() {
     this.open = !this.open;
+  }
+
+  onSelection(option: any) {
+    this.selected = option.nom;
+    this.profnom = option.nom;
+    console.log(this.profnom)
   }
 }

@@ -10,7 +10,7 @@
   
   <div class="ui selection dropdown " [ngClass]="{'active' : open}" (click)="toggleOpen()">
 
-    <input type="hidden" name="gender">
+    <input type="hidden">
     <i class="dropdown icon"></i>
     <div class="default text">{{selectedOption.label}}</div>
     <div class="menu" [ngClass]="{'transition visible' : open}">
@@ -22,7 +22,7 @@
 
 
   <div class="cards-wrapper">
-    <app-carte-module *ngFor="let m of modules| searchFilter : term | filiereFilterModules : selectedOption.value" [module]="m">
+    <app-carte-module *ngFor="let m of modules | searchFilter : term " [module]="m">
 
     </app-carte-module>
   </div>

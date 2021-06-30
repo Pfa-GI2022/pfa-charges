@@ -8,25 +8,30 @@
     <form [formGroup]="filiereForm" class="ui form" (ngSubmit)="onSubmit()">
       <app-input [control]="filiereForm.get('nom')" label="Nom" type="text"></app-input>
       <br/> <br/>
+      <label class="label">Filiere</label>
       <label type="text" name="chef de filiere"></label>
+      <div
+      class="ui selection dropdown "
+      [ngClass]="{'active' : open}"    
+      (click)="toggleOpen()"
+  >
+      
+      <input type="hidden" label="Filiere" name="gender">
+      <i class="dropdown icon"></i>
+      <div class="default text">{{selected}}</div>
       <div 
-    class="ui selection dropdown " [ngClass]="{'active' : open}"   (click)="toggleOpen()">
-
-    <input type="hidden" name="gender">
-    
-    <i class="dropdown icon"></i>
-    <div class="default text">Chef de filiere</div>
-    <div 
-        class="menu"
-        [ngClass]="{'transition visible' : open}"    
-    >
-
-      <div 
-        *ngFor="let p of professeur"
-        class="item"
-        >{{p.nom}}</div>
+          class="menu"
+          [ngClass]="{'transition visible' : open}"    
+      >
+        <div 
+          *ngFor="let p of professeur"
+          class="item"
+          (click)="onSelection(p)" >{{<p></p>.nom}}
+  
+        </div>
+      </div>
     </div>
-  </div>
+    
   <br/> <br/>
       <app-input [control]="filiereForm.get('nbreGroupesTd')" label="Nombre de groupes des TD" type="text"></app-input>
       <app-input [control]="filiereForm.get('nbreGroupeTp')" label="Nombre de groupes des TP" type="text"></app-input>

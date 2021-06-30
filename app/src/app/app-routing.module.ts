@@ -26,21 +26,12 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 const routes: Routes = [
 
   //home
-<<<<<<< HEAD
- // {path : '', component: ProfDetailsComponent},
- // { path: 'login', component: LoginComponent },
-=======
  //{path : '', component: ProfDetailsComponent},
  //{ path: 'login', component: LoginComponent },
->>>>>>> 0b1362666d77e03896a6e08edac40f66d58eb3f2
 
   //departement
   {
     path: 'departement',component: DepartementComponent,
-    //canActivate: [RolesGuard], 
-   // data: { 
-    //  expectedRole: role.chefDeDepartement
-  //  },
   // canActivate: [RolesGuard], 
   // data: { 
     // expectedRole: role.chefDeDepartement
@@ -52,9 +43,6 @@ const routes: Routes = [
       { path: 'newFiliere', component: CreateFiliereComponent },
       { path: 'newDepartement', component: CreateDepartementComponent },
       { path: 'newModule', component: CreateModulesComponent },
-      {path: 'modules',component: ListeModulesComponent,},
-      { path: 'modules/:id', component: ListeSousModulesComponent ,children: [
-        { path: 'sousModules/:id', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},
       { path: 'modules',component: ListeModulesComponent,},
       { path: 'modules/:id', component: ListeSousModulesComponent,
         children: [
