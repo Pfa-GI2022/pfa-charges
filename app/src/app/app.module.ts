@@ -37,6 +37,9 @@ import { SousModuleModule } from './components/sous-modules/sous-modules.module'
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { UserFilterPipe } from './pipes/user-filter.pipe';
 import { RoleFilterPipe } from './pipes/role-filter.pipe';
+import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
+import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
+import { FiliereFilterModulesPipe } from './pipes/filiere-filter-modules.pipe';
 //just for test
 
 @NgModule({
@@ -63,6 +66,9 @@ import { RoleFilterPipe } from './pipes/role-filter.pipe';
     ListeSousModulesComponent,
     CarteMatiereComponent,
     LogoutComponent,
+    CreateDepartementComponent,
+    CreateFiliereComponent,
+    FiliereFilterModulesPipe,
     AddUserComponent,
     UserSearchPipe,
     UserCardComponent,

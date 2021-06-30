@@ -5,6 +5,8 @@ import { SousModulesComponent } from './sous-modules.component';
 import { TpComponent } from './tp/tp.component';
 import { TdComponent } from './td/td.component';
 import { CoursComponent } from './cours/cours.component';
+import { CommonModule } from '@angular/common'; 
+
 //
 @NgModule({
   declarations: [
@@ -13,7 +15,7 @@ import { CoursComponent } from './cours/cours.component';
     TdComponent,
     CoursComponent,
   ],
-  imports: [ SousModulesRoutingModule],
+  imports: [ SousModulesRoutingModule,CommonModule,],
   providers: [],
   bootstrap: [SousModulesComponent],
   exports : [TdComponent,TpComponent,CoursComponent,SousModulesComponent]

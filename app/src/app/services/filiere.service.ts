@@ -18,4 +18,15 @@ export class FiliereService {
     const host = environment.host;
     return this.http.get<Filiere[]>(`${host}/filieres`);
   }
+  deleteFiliereid(id: number) {
+    const host = environment.host;
+    return this.http.delete(`${host}/filieres/${id}`);
+  }
+
+  createFiliere(body:Filiere) {
+    const host = environment.host;
+    console.log('create filiere')
+    return this.http.post(`${host}/filieres`, body);
+
+  }
 }
