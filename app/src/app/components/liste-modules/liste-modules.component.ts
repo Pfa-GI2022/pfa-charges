@@ -11,6 +11,7 @@ import { SharedService } from 'src/app/services/shared.service';
 export class ListeModulesComponent implements OnInit {
   modules: Module[];
   options = [
+    { label: 'all', value: 'all' },
     { label: 'Filieres', value: 'Filieres' },
     { label: 'Genie informatique', value: 'Genie informatique' },
     { label: 'Genie informatique', value: 'Genie informatique' },
