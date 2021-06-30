@@ -22,7 +22,7 @@
 
 
   <div class="cards-wrapper">
-    <app-carte-module *ngFor="let m of modules| searchFilter : term | filiereFilterModules : selectedOption.value" [module]="m">
+    <app-carte-module *ngFor="let m of modules| searchFilter : term " [module]="m">
 
     </app-carte-module>
   </div>

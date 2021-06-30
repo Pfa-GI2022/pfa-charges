@@ -4,6 +4,7 @@ import { Departement } from '../../models/departement.model'
 import { SharedService } from 'src/app/services/shared.service';
 import { TokenStorageService } from 'src/app/services/token-storage-service.service';
 import { User } from 'src/app/models/user.model';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-departement',
   templateUrl: './departement.component.html',
@@ -17,29 +18,14 @@ export class DepartementComponent implements OnInit {
   constructor(
       private departementService:DepartementService,
       private sharedService:SharedService,
-      private tokenStorage:TokenStorageService
-      ) { 
-        this.user = this.tokenStorage.getUser();
-        if(this.user){
-          if(this.user.accountOwner){
-            this.depID = this.user.accountOwner.depID;
-            console.log(this.depID)
-          }
-        }
-    this.onGetDepByID();
-  }
+      private tokenStorage:TokenStorageService,
+      private route: ActivatedRoute
+      ) {}
 
   ngOnInit(): void {
-    
+    this.route.data.subscribe(data => this.sharedService.setDepartement(data.Departement))
   }
 
-
-  onGetDepByID(): void{
-    this.departementService.getDepByID(this.depID).subscribe( data => {
-      this.departement = data;
-      this.sharedService.setDepartement(this.departement)
-    });
-  }
 
 
 

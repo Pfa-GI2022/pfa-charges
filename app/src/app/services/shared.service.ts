@@ -17,4 +17,6 @@ export class SharedService {
   setDepartement(departement: any){
     this.departement.next(departement);
   }
+
+  
 }

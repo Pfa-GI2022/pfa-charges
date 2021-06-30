@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModuleService} from '../../services/module.service';
 import { Module} from "../../models/module.model";
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-liste-modules',
@@ -13,16 +14,23 @@ export class ListeModulesComponent implements OnInit {
     { label: 'Filieres', value: 'Filieres' },
     { label: 'Genie informatique', value: 'Genie informatique' },
     { label: 'Genie informatique', value: 'Genie informatique' },
-    
   ];
   selectedOption = this.options[0];
   term = '';
   open = false;
   selectedMod : Module;
-  constructor(private moduleService: ModuleService) { }
+  constructor(private moduleService: ModuleService,private sharedService:SharedService) { }
 
   ngOnInit(): void {
     this.onGetAllModules();
+  }
+
+  onGetDepModules(){
+    this.sharedService.currentDeparetement.subscribe(dep => {
+      if(dep){
+        
+      }
+    })
   }
   onGetAllModules(): void{
     this.moduleService.getAllModules().subscribe( data => {

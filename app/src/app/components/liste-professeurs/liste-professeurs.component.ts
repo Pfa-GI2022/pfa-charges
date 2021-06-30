@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ProfesseurService } from '../../services/professeur.service';
 import { Professeur } from '../../models/professeur.model';
 import { SharedService } from 'src/app/services/shared.service';
+import { ThrowStmt } from '@angular/compiler';
 @Component({
   selector: 'app-liste-professeurs',
   templateUrl: './liste-professeurs.component.html',
   styleUrls: ['./liste-professeurs.component.css'],
 })
 export class ListeProfesseursComponent implements OnInit {
-  professeurs: Professeur[];
+  professeurs : Professeur[];
   term = '';
   selectedProf: Professeur;
   options = [
@@ -23,7 +24,7 @@ export class ListeProfesseursComponent implements OnInit {
   constructor(private professeurService: ProfesseurService,private sharedService:SharedService) {}
 
   ngOnInit(): void {
-    this.getDepProfs();
+    this.onGetAllProfs();
   }
 
   onGetAllProfs(): void {
@@ -34,14 +35,8 @@ export class ListeProfesseursComponent implements OnInit {
 
   getDepProfs(){
     this.sharedService.currentDeparetement.subscribe(dep => {
-      if(dep)
         this.professeurs = dep.Professeurs;
     })
-  }
-  onGetProfById(id: number) {
-    this.professeurService
-      .getProfesseurByID(id)
-      .subscribe((data) => console.log(data));
   }
 
   onSearch(term: string): void {

@@ -21,57 +21,52 @@ import { role } from './models/role.model';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
 import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { Departement } from './models/departement.model';
+import { DepartementResolverService } from './services/departement-resolver.service';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
 
   //home
-<<<<<<< HEAD
- // {path : '', component: ProfDetailsComponent},
- // { path: 'login', component: LoginComponent },
-=======
- //{path : '', component: ProfDetailsComponent},
- //{ path: 'login', component: LoginComponent },
->>>>>>> 0b1362666d77e03896a6e08edac40f66d58eb3f2
+//  {path : '', component: ProfDetailsComponent},
+ { path: 'login', component: LoginComponent },
 
   //departement
   {
     path: 'departement',component: DepartementComponent,
-    //canActivate: [RolesGuard], 
-   // data: { 
-    //  expectedRole: role.chefDeDepartement
+  //   canActivate: [RolesGuard],
+  //   resolve : {
+  //     Departement : DepartementResolverService
+  //   },
+  //  data: { 
+  //    expectedRole: role.chefDeDepartement
   //  },
-  // canActivate: [RolesGuard], 
-  // data: { 
-    // expectedRole: role.chefDeDepartement
-  // },
-    children: [
-      { path: '', component: ListeProfesseursComponent },
-      { path: 'newModule', component: CreateModulesComponent },
-      { path: 'newProf', component: CreateProfComponent },
-      { path: 'newFiliere', component: CreateFiliereComponent },
-      { path: 'newDepartement', component: CreateDepartementComponent },
-      { path: 'newModule', component: CreateModulesComponent },
-      {path: 'modules',component: ListeModulesComponent,},
-      { path: 'modules/:id', component: ListeSousModulesComponent ,children: [
-        { path: 'sousModules/:id', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},
-      { path: 'modules',component: ListeModulesComponent,},
-      { path: 'modules/:id', component: ListeSousModulesComponent,
-        children: [
-        { path: 'sousModules/:id2', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},
-      ]},
-      { path: 'profs', component: ListeProfesseursComponent },
-      { path: 'profs/:id', component: ProfDetailsComponent },
-      { path: '**', component: ListeModulesComponent },
-    ],
+  children: [
+    { path: '', component: ListeProfesseursComponent },
+    { path: 'newModule', component: CreateModulesComponent },
+    { path: 'newProf', component: CreateProfComponent },
+    { path: 'newDepartement', component: CreateDepartementComponent },
+    { path: 'newModule', component: CreateModulesComponent },
+    { path: 'newFiliere', component: CreateFiliereComponent },
+    { path: 'modules', component: ListeModulesComponent, },
+    {
+      path: 'modules/:id', component: ListeSousModulesComponent,
+      children: [
+        { path: 'sousModules/:id2', loadChildren: () => import('./components/sous-modules/sous-modules.module').then(m => m.SousModuleModule) },
+      ]
+    },
+    { path: 'profs', component: ListeProfesseursComponent },
+    { path: 'profs/:id', component: ProfDetailsComponent },
+    { path: '**', component: ListeModulesComponent },
+  ],
   },
   //admin
   {
-    path: 'admin',
-    canActivate: [RolesGuard], 
-    data: { 
-      expectedRole: role.admin
-    },
+    // path: 'admin',
+    // canActivate: [RolesGuard], 
+    // data: { 
+    //   expectedRole: role.admin
+    // },
     component: AdminComponent,
     children: [
       { path: 'users', component: ListeUsersComponent },
