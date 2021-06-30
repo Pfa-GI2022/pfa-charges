@@ -34,6 +34,9 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { UserSearchPipe } from './pipes/user-search.pipe';
 
 import { SousModuleModule } from './components/sous-modules/sous-modules.module';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { UserFilterPipe } from './pipes/user-filter.pipe';
+import { RoleFilterPipe } from './pipes/role-filter.pipe';
 //just for test
 
 @NgModule({
@@ -62,6 +65,9 @@ import { SousModuleModule } from './components/sous-modules/sous-modules.module'
     LogoutComponent,
     AddUserComponent,
     UserSearchPipe,
+    UserCardComponent,
+    UserFilterPipe,
+    RoleFilterPipe,
   ],
   imports: [
     BrowserModule,

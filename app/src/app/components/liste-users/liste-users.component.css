@@ -21,20 +21,22 @@ h2 small {
   margin-bottom: 25px;
 }
 .responsive-table .table-header {
-  background-color: #95a5a6;
-  font-size: 14px;
-  text-transform: uppercase;
+  background-color: #013243;
+  font-size: 17px;
+  font-weight: bold;
   letter-spacing: 0.03em;
+  color: #fff;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
 }
 .responsive-table .table-row {
   background-color: #fff;
   box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
 }
 .responsive-table .col-1 {
-  flex-basis: 10%;
+  flex-basis: 25%;
 }
 .responsive-table .col-2 {
-  flex-basis: 40%;
+  flex-basis: 25%;
 }
 .responsive-table .col-3 {
   flex-basis: 25%;

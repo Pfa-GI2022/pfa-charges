@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ListeUsersComponent implements OnInit {
   Users: User[];
   options = [
-    { label: 'all', value: 'all' },
+    { label: 'All', value: 'All' },
     { label: 'Admin', value: 'Admin' },
     { label: 'Professeur', value: 'Professeur' },
     { label: 'Chef De Departement', value: 'Chef De Departement' },
@@ -21,9 +21,9 @@ export class ListeUsersComponent implements OnInit {
   constructor(private UserService: UserService) {}
 
   ngOnInit(): void {
-    this.onGetAllProfs();
+    this.onGetAllUsers();
   }
-  onGetAllProfs(): void {
+  onGetAllUsers(): void {
     this.UserService.getAllUsers().subscribe((data) => {
       this.Users = data;
       console.log(this.Users);
