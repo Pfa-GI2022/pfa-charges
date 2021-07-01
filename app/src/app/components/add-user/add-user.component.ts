@@ -6,9 +6,12 @@ import {
   Validator,
   Validators,
   FormArray,
+  FormGroupDirective,
 } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
-
+import { ProfesseurService } from '../../services/professeur.service';
+import { DepartementService } from 'src/app/services/departement.service';
+import { Departement } from 'src/app/models/departement.model';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -17,38 +20,84 @@ import { UserService } from 'src/app/services/user.service';
 export class AddUserComponent implements OnInit {
   alert = false;
   UserForm: FormGroup;
+  AccountData: FormGroup;
+  PersonalData: FormGroup;
+  Deps: Departement[];
   Roles = ['admin', 'professeur', 'chefDeDepartement', 'chefDeFiliere'];
   constructor(
     private formBuilder: FormBuilder,
-    private UserService: UserService
-  ) {}
+    private UserService: UserService,
+    private ProfService: ProfesseurService,
+    private DepService: DepartementService
+  ) {
+    DepService.getAllDeps().subscribe((data) => (this.Deps = data));
+  }
 
   ngOnInit(): void {
     this.initForm();
   }
 
   initForm() {
-    this.UserForm = this.formBuilder.group({
-      Username: new FormControl('', [
+    //AccountData Form Builder
+    this.AccountData = this.formBuilder.group({
+      username: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
         Validators.pattern('[a-zA-Zs]*'),
       ]),
-      Password: new FormControl('', [
+      password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
         Validators.pattern('[a-zA-Z0-9._%+-s]*'),
       ]),
-      Email: new FormControl('', [
+      email: new FormControl('', [
         Validators.required,
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ]),
+    });
+
+    //PersonalData Form Builder
+    this.PersonalData = this.formBuilder.group({
+      nom: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern('[a-zA-Zs]*'),
+      ]),
+      prenom: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern('[a-zA-Zs]*'),
+      ]),
+      email: new FormControl(''),
+      dateNaissance: new FormControl('', [Validators.required]),
+      grade: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[a-zA-Z]*'),
+      ]),
+      depID: new FormControl(),
+    });
+
+    //Form Builder
+    this.UserForm = this.formBuilder.group({
+      accountData: this.AccountData,
+      personalData: this.PersonalData,
     });
   }
 
   onSubmit() {
     console.log(this.UserForm.value);
-    this.UserService.createUser(this.UserForm.value).subscribe((response) => {
+    this.UserService.createUser(this.UserForm.value.accountData).subscribe(
+      (response) => {
+        console.log(response);
+        this.UserForm.reset({});
+        this.alert = true;
+      }
+    );
+    this.PersonalData.value.email = this.AccountData.value.email;
+    console.log(this.PersonalData.value.depID);
+    this.ProfService.createProfesseur(
+      this.UserForm.value.personalData
+    ).subscribe((response) => {
       console.log(response);
       this.UserForm.reset({});
       this.alert = true;
@@ -57,5 +106,11 @@ export class AddUserComponent implements OnInit {
 
   closeAlert() {
     this.alert = false;
+  }
+
+  changeDep(e) {
+    this.PersonalData.value.deps.setValue(e.target.value, {
+      onlySelf: true,
+    });
   }
 }

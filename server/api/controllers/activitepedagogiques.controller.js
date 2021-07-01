@@ -7,8 +7,7 @@ const activite = models.activitePedagogique;
 const createActivity = async (req, res, next) => {
   try {
     console.log("Creating activity");
-
-    const acp = await activite.create(req.body);
+    const acp = await activite.create(req.body, { include: { model: groupe } });
     console.log("Activity created");
     return res.status(200).send(acp);
   } catch (error) {

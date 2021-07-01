@@ -21,64 +21,72 @@ import { role } from './models/role.model';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
 import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { AdminDepComponent } from './components/admin-dep/admin-dep.component';
+import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
 import { Departement } from './models/departement.model';
 import { DepartementResolverService } from './services/departement-resolver.service';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
-
   //home
- {path : '', component: ProfDetailsComponent},
-//  { path: 'login', component: LoginComponent },
+  { path: '', component: ProfDetailsComponent },
+  { path: 'login', component: LoginComponent },
 
   //departement
   {
-    path: 'departement',component: DepartementComponent,
-  //   canActivate: [RolesGuard],
-  //   resolve : {
-  //     Departement : DepartementResolverService
-  //   },
-  //  data: { 
-  //    expectedRole: role.chefDeDepartement
-  //  },
-  children: [
-    { path: '', component: ListeProfesseursComponent },
-    { path: 'newModule', component: CreateModulesComponent },
-    { path: 'newProf', component: CreateProfComponent },
-    { path: 'newDepartement', component: CreateDepartementComponent },
-    { path: 'newModule', component: CreateModulesComponent },
-    { path: 'newFiliere', component: CreateFiliereComponent },
-    { path: 'modules', component: ListeModulesComponent, },
-    {
-      path: 'modules/:id', component: ListeSousModulesComponent,
-      children: [
-        { path: 'sousModules/:id2', loadChildren: () => import('./components/sous-modules/sous-modules.module').then(m => m.SousModuleModule) },
-      ]
+    path: 'departement',
+    component: DepartementComponent,
+    canActivate: [RolesGuard],
+    data: {
+      expectedRole: role.chefDeDepartement,
     },
-    { path: 'profs', component: ListeProfesseursComponent },
-    { path: 'profs/:id', component: ProfDetailsComponent },
-    { path: '**', component: ListeModulesComponent },
-  ],
+    children: [
+      { path: '', component: ListeProfesseursComponent },
+      { path: 'newModule', component: CreateModulesComponent },
+      { path: 'newProf', component: CreateProfComponent },
+      { path: 'newFiliere', component: CreateFiliereComponent },
+      { path: 'newDepartement', component: CreateDepartementComponent },
+      { path: 'newModule', component: CreateModulesComponent },
+      { path: 'modules', component: ListeModulesComponent },
+      {
+        path: 'modules/:id',
+        component: ListeSousModulesComponent,
+        children: [
+          {
+            path: 'sousModules/:id2',
+            loadChildren: () =>
+              import('./components/sous-modules/sous-modules.module').then(
+                (m) => m.SousModuleModule
+              ),
+          },
+        ],
+      },
+      { path: 'profs', component: ListeProfesseursComponent },
+      { path: 'profs/:id', component: ProfDetailsComponent },
+      { path: '**', component: ListeModulesComponent },
+    ],
   },
   //admin
   {
     path: 'admin',
-    // canActivate: [RolesGuard], 
-    // data: { 
-    //   expectedRole: role.admin
-    // },
+    canActivate: [RolesGuard],
+    data: {
+      expectedRole: role.admin,
+    },
     component: AdminComponent,
     children: [
       { path: 'users', component: ListeUsersComponent },
-      { path: 'add', component: AddUserComponent },
+      { path: 'adduser', component: AddUserComponent },
+      { path: 'departement', component: AdminDepComponent },
+      { path: 'filiere', component: AdminFilComponent },
+      { path: 'adddepartement', component: CreateDepartementComponent },
+      { path: 'addfiliere', component: CreateFiliereComponent },
     ],
   },
 
-
   //login
 
-
-  { path: '**', redirectTo : ''},
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
