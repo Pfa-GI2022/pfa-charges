@@ -1,6 +1,7 @@
 const models = require("../models/index.js");
 const professeur = models.professeur;
 const departement = models.departement;
+const charge = models.charge;
 
 const createDepartement = async (req, res) => {
   const { nom, professeur, charge } = req.body;
@@ -59,6 +60,15 @@ const getOneDepartementByID = async (req, res) => {
         {
           model: professeur,
           as: "Professeurs",
+          include : [
+            {
+              model : charge
+
+            }
+          ]
+        },
+        {
+          model: models.module,
         },
       ],
     })

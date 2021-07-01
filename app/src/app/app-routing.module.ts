@@ -23,6 +23,8 @@ import { CreateDepartementComponent } from './components/create-departement/crea
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AdminDepComponent } from './components/admin-dep/admin-dep.component';
 import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
+import { Departement } from './models/departement.model';
+import { DepartementResolverService } from './services/departement-resolver.service';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [

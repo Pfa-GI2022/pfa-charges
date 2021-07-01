@@ -2,32 +2,27 @@
     <div class="ui attached message">
       <div class="ui huge header">
         Ajouter un nouveau departement
-      </div>
-      <br>
+      </div>    
     </div>
+      <br />
     <form [formGroup]="departementForm" class="ui form" (ngSubmit)="onSubmit()">
       <app-input [control]="departementForm.get('nom')" label="Nom" type="text"></app-input>
-      <br/> <br/>
-      <label type="text" name="chef de departement"></label>
-      <div 
-    class="ui selection dropdown " [ngClass]="{'active' : open}"   (click)="toggleOpen()">
-
-    <input type="hidden" name="gender">
-    
-    <i class="dropdown icon"></i>
-    <div class="default text">Chef de departement</div>
-    <div 
-        class="menu"
-        [ngClass]="{'transition visible' : open}"    
-    >
-
-      <div 
-        *ngFor="let p of professeur"
-        class="item"
-        >{{p.nom}}</div>
-    </div>
+      <br/> 
+    <div class="field">
+      <label class="label">Chef de département</label>
+<div class="combobox">
+  <input type="text" [(ngModel)]="inputItem" [ngModelOptions]="{standalone: true}" (ngModelChange)="getFilteredList()"
+    class="combobox-input" (keyup)="onKeyPress($event)" (blur)="toggleListDisplay(0)" (focus)="toggleListDisplay(1)"
+    placeholder="Chercher un professeur" [ngClass]="{'error': showError}">
+  <span *ngIf="showError" class="error-text"><i>Invalid Selection.</i></span>
+  <div class="combobox-options" *ngIf="!listHidden">
+    <list-item *ngFor="let item of filteredList;let i = index" (click)="selectItem(i)"
+      [ngClass]="{'selected': i===selectedIndex}">{{item}}</list-item>
   </div>
-  <br/> <br/>
+</div>
+    </div>
+   
+  <br/> 
       <button [disabled]="departementForm.invalid" type="submit" class="ui submit button">submit</button>
     </form>
     <div class="ui success message" *ngIf="alert"> 

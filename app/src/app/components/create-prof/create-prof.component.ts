@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ProfesseurService } from '../../services/professeur.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-create-prof',
@@ -16,12 +17,15 @@ import { ProfesseurService } from '../../services/professeur.service';
 export class CreateProfComponent implements OnInit {
   alert = false;
   profForm: FormGroup;
+  depID = 1;
   constructor(
     private formBuilder: FormBuilder,
-    private professeurService: ProfesseurService
+    private professeurService: ProfesseurService,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit(): void {
+    this.getDepId();
     this.initForm();
   }
 
@@ -50,6 +54,9 @@ export class CreateProfComponent implements OnInit {
 
   onSubmit() {
     console.log(this.profForm.value);
+
+    let newDep = this.profForm.value;
+    newDep.depID = this.depID;
     this.professeurService
       .createProfesseur(this.profForm.value)
       .subscribe((response) => {
@@ -58,6 +65,12 @@ export class CreateProfComponent implements OnInit {
         this.alert = true;
       });
   }
+
+  getDepId(){
+    this.sharedService.currentDeparetement.subscribe(dep => {
+      this.depID = dep.id;
+    }) 
+    }
 
   closeAlert() {
     this.alert = false;
