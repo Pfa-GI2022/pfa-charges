@@ -21,21 +21,23 @@ import { role } from './models/role.model';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
 import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { AdminDepComponent } from './components/admin-dep/admin-dep.component';
+import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
-
   //home
- //{path : '', component: ProfDetailsComponent},
- //{ path: 'login', component: LoginComponent },
+  { path: '', component: ProfDetailsComponent },
+  { path: 'login', component: LoginComponent },
 
   //departement
   {
-    path: 'departement',component: DepartementComponent,
-  // canActivate: [RolesGuard], 
-  // data: { 
-    // expectedRole: role.chefDeDepartement
-  // },
+    path: 'departement',
+    component: DepartementComponent,
+    canActivate: [RolesGuard],
+    data: {
+      expectedRole: role.chefDeDepartement,
+    },
     children: [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newModule', component: CreateModulesComponent },
@@ -43,11 +45,20 @@ const routes: Routes = [
       { path: 'newFiliere', component: CreateFiliereComponent },
       { path: 'newDepartement', component: CreateDepartementComponent },
       { path: 'newModule', component: CreateModulesComponent },
-      { path: 'modules',component: ListeModulesComponent,},
-      { path: 'modules/:id', component: ListeSousModulesComponent,
+      { path: 'modules', component: ListeModulesComponent },
+      {
+        path: 'modules/:id',
+        component: ListeSousModulesComponent,
         children: [
-        { path: 'sousModules/:id2', loadChildren : () => import('./components/sous-modules/sous-modules.module').then(m=> m.SousModuleModule )},
-      ]},
+          {
+            path: 'sousModules/:id2',
+            loadChildren: () =>
+              import('./components/sous-modules/sous-modules.module').then(
+                (m) => m.SousModuleModule
+              ),
+          },
+        ],
+      },
       { path: 'profs', component: ListeProfesseursComponent },
       { path: 'profs/:id', component: ProfDetailsComponent },
       { path: '**', component: ListeModulesComponent },
@@ -56,22 +67,24 @@ const routes: Routes = [
   //admin
   {
     path: 'admin',
-    canActivate: [RolesGuard], 
-    data: { 
-      expectedRole: role.admin
+    canActivate: [RolesGuard],
+    data: {
+      expectedRole: role.admin,
     },
     component: AdminComponent,
     children: [
       { path: 'users', component: ListeUsersComponent },
-      { path: 'add', component: AddUserComponent },
+      { path: 'adduser', component: AddUserComponent },
+      { path: 'departement', component: AdminDepComponent },
+      { path: 'filiere', component: AdminFilComponent },
+      { path: 'adddepartement', component: CreateDepartementComponent },
+      { path: 'addfiliere', component: CreateFiliereComponent },
     ],
   },
 
-
   //login
 
-
-  { path: '**', redirectTo : ''},
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

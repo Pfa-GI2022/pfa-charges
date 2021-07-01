@@ -35,6 +35,7 @@ export class ListeUsersComponent implements OnInit {
 
   onSelection(option: any) {
     this.selectedOption = option;
+    console.log(this.selectedOption);
   }
 
   toggleOpen() {

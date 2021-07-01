@@ -28,12 +28,12 @@
     </li>
 
 
-    <app-user-card *ngFor="let u of Users | userSearch : term " [User]="u">
+    <app-user-card *ngFor="let u of Users | userSearch : term | userFilter : selectedOption.value" [User]="u">
     </app-user-card>
 
 
   </ul>
-  <a class="add-btn" routerLink="/admin/add" data-tooltip="Ajouter un utilisateur" data-position="left center">
+  <a class="add-btn" routerLink="/admin/adduser" data-tooltip="Ajouter un utilisateur" data-position="left center">
     +
   </a>
 </div>

@@ -27,6 +27,6 @@ export class UserService {
 
   createUser(body: User) {
     const host = environment.host;
-    return this.http.post(`${host}/api/auth/signin`, body);
+    return this.http.post(`${host}/api/auth/signup`, body);
   }
 }
