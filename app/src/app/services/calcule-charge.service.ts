@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { Module } from '../models/module.model';
 import { Matiere } from '../models/Matiere.model';
 
@@ -38,9 +37,7 @@ export class CalculeChargeService {
         }
       }
     });
-
     VH.total = VH.cours + VH.td + VH.tp;
-
     return VH
   }
 

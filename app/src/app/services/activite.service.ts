@@ -30,4 +30,8 @@ deleteActivityByid(id: number){
   console.log('Create activity')
     return this.http.post(`${host}/activitepedagogiques`, body);
 }
+
+  updateActivity(body :any,id:number){
+    const host = environment.host;
+    return this.http.put(`${host}/activitepedagogiques/${id}`,body)  }
 }

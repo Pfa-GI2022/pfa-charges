@@ -12,10 +12,15 @@ import { activitePedagogiques } from 'src/app/models/activite.model';
 })
 export class TdComponent implements OnInit {
 
+  moduleID: number;
+  matiereID:number;
   matiere: Matiere;
   activite=[];
+  Route = '';
   constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService) {
     this.route.parent.params.subscribe(params => {
+      console.log('------------------- matiere id', params.id2)
+      this.matiereID = params.id2;
       this.matiereService.getMatiereByID(params.id2).subscribe(data => {
         this.matiere = data;
         console.log(data);
@@ -30,9 +35,17 @@ export class TdComponent implements OnInit {
         });
       });
     });
+
+    this.route.parent.parent.parent.params.subscribe(params => {
+      this.moduleID = params.id
+    })
+
+    this.Route = `/departement/modules/${this.moduleID}/sousModules/${this.matiereID}/td`
+    
   }
 
   ngOnInit(): void {
+  
   }
 
 }

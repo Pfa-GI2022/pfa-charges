@@ -26,6 +26,7 @@ import { AdminDepComponent } from './components/admin-dep/admin-dep.component';
 import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
 import { Departement } from './models/departement.model';
 import { DepartementResolverService } from './services/departement-resolver.service';
+import { AffectationComponent } from './components/affectation/affectation.component';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
@@ -50,11 +51,10 @@ const routes: Routes = [
     { path: 'newDepartement', component: CreateDepartementComponent },
     { path: 'newModule', component: CreateModulesComponent },
     { path: 'newFiliere', component: CreateFiliereComponent },
+    { path : 'modules/:id/sousModules/:id2/td/:id3',component : AffectationComponent},
     { path: 'modules', component: ListeModulesComponent, },
     {
-
       path: 'modules/:id', component: ListeSousModulesComponent,
-      
       children: [
         { path: 'sousModules/:id2', loadChildren: () => import('./components/sous-modules/sous-modules.module').then(m => m.SousModuleModule) },
         { path: 'newSousModule', component : CreateMatiereComponent},
@@ -64,6 +64,7 @@ const routes: Routes = [
       { path: 'profs', component: ListeProfesseursComponent },
       { path: 'profs/:id', component: ProfDetailsComponent },
       { path: '**', component: ListeModulesComponent },
+      
     ],
   },
   //admin

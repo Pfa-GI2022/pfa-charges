@@ -74,7 +74,7 @@ export class CreateMatiereComponent implements OnInit {
       console.log("<0")
     }
 
-    if(this.matiereForm.value.VHTp >0){
+    if(this.matiereForm.value.VHTp > 0){
       for(let i=0;i<this.nbreGroupeTp ;i++){
         let activite = {
           volumeHoraire : this.matiereForm.value.VHTp,
