@@ -3,8 +3,9 @@
 
     <p *ngIf="activite.professeur; else elseBlock">Prof de cours : {{activite.professeur.nom}}</p>
     <ng-template #elseBlock>
-        prof de cours : pas encore affecte
-      </ng-template>
+      <a [routerLink]="[Route , activite.id]">affecter un prof</a>     
+    </ng-template>
+      <br>
     <p>Volume Horaire : {{activite.volumeHoraire}}h</p>
 </ng-container>
 

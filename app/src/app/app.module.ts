@@ -46,6 +46,7 @@ import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
 import { DepCardComponent } from './components/dep-card/dep-card.component';
 import { FilCardComponent } from './components/fil-card/fil-card.component';
 import { AffectationComponent } from './components/affectation/affectation.component';
+import { AffectationCarteComponent } from './components/affectation-carte/affectation-carte.component';
 //just for test
 
 @NgModule({
@@ -86,6 +87,7 @@ import { AffectationComponent } from './components/affectation/affectation.compo
     DepCardComponent,
     FilCardComponent,
     AffectationComponent,
+    AffectationCarteComponent,
   ],
   imports: [
     BrowserModule,

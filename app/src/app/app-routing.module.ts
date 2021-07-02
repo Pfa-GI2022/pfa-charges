@@ -52,6 +52,8 @@ const routes: Routes = [
     { path: 'newModule', component: CreateModulesComponent },
     { path: 'newFiliere', component: CreateFiliereComponent },
     { path : 'modules/:id/sousModules/:id2/td/:id3',component : AffectationComponent},
+    { path : 'modules/:id/sousModules/:id2/tp/:id3',component : AffectationComponent},
+    { path : 'modules/:id/sousModules/:id2/cours/:id3',component : AffectationComponent},
     { path: 'modules', component: ListeModulesComponent, },
     {
       path: 'modules/:id', component: ListeSousModulesComponent,

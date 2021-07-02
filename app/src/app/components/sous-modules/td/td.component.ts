@@ -19,17 +19,13 @@ export class TdComponent implements OnInit {
   Route = '';
   constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService) {
     this.route.parent.params.subscribe(params => {
-      console.log('------------------- matiere id', params.id2)
       this.matiereID = params.id2;
       this.matiereService.getMatiereByID(params.id2).subscribe(data => {
         this.matiere = data;
-        console.log(data);
         this.matiere.activitePedagogiques.forEach(m => {
           this.activiteService.getActivityByID(m.id).subscribe(data => {
             if (m.nature == "td") {
               this.activite.push(data) ;
-              console.log(data);
-              console.log(this.activite.length);
             }
           });
         });

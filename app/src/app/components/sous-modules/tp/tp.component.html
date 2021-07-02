@@ -13,7 +13,7 @@
     <tr *ngFor="let a of activite">
       <td data-label="Name" *ngIf="a.professeur; else elseBlock">{{a.professeur.nom}} </td>
       <ng-template #elseBlock>
-        <td data-label="name"> <a routerLink={{a.id}}>affecter un prof</a></td>
+        <td data-label="name"> <a [routerLink]="[Route , a.id]">affecter un prof</a></td>
       </ng-template>
       <td data-label="Age">{{a.groupe.nom}}</td>
       <td data-label="Job">{{a.volumeHoraire}}h</td>
