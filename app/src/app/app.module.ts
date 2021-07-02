@@ -40,10 +40,13 @@ import { RoleFilterPipe } from './pipes/role-filter.pipe';
 import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
 import { FiliereFilterModulesPipe } from './pipes/filiere-filter-modules.pipe';
+import { CreateMatiereComponent } from './components/create-matiere/create-matiere.component';
 import { AdminDepComponent } from './components/admin-dep/admin-dep.component';
 import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
 import { DepCardComponent } from './components/dep-card/dep-card.component';
 import { FilCardComponent } from './components/fil-card/fil-card.component';
+import { AffectationComponent } from './components/affectation/affectation.component';
+import { AffectationCarteComponent } from './components/affectation-carte/affectation-carte.component';
 //just for test
 
 @NgModule({
@@ -75,6 +78,7 @@ import { FilCardComponent } from './components/fil-card/fil-card.component';
     FiliereFilterModulesPipe,
     AddUserComponent,
     UserSearchPipe,
+    CreateMatiereComponent,
     UserCardComponent,
     UserFilterPipe,
     RoleFilterPipe,
@@ -82,6 +86,8 @@ import { FilCardComponent } from './components/fil-card/fil-card.component';
     AdminFilComponent,
     DepCardComponent,
     FilCardComponent,
+    AffectationComponent,
+    AffectationCarteComponent,
   ],
   imports: [
     BrowserModule,

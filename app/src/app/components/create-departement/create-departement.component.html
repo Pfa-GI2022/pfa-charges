@@ -1,37 +1,49 @@
 <div class="ui container  create-departement-container">
-    <div class="ui attached message">
-      <div class="ui huge header">
-        Ajouter un nouveau departement
-      </div>    
+  <div class="ui attached message">
+    <div class="ui huge header">
+      Ajouter un nouveau departement
     </div>
-      <br />
-    <form [formGroup]="departementForm" class="ui form" (ngSubmit)="onSubmit()">
-      <app-input [control]="departementForm.get('nom')" label="Nom" type="text"></app-input>
-      <br/> 
-    <div class="field">
+  </div>
+  <br />
+  <form [formGroup]="departementForm" class="ui form" (ngSubmit)="onSubmit()">
+    <app-input [control]="departementForm.get('nom')" label="Nom" type="text"></app-input>
+    <br />
+    <!-- <div class="field">
       <label class="label">Chef de département</label>
-<div class="combobox">
-  <input type="text" [(ngModel)]="inputItem" [ngModelOptions]="{standalone: true}" (ngModelChange)="getFilteredList()"
-    class="combobox-input" (keyup)="onKeyPress($event)" (blur)="toggleListDisplay(0)" (focus)="toggleListDisplay(1)"
-    placeholder="Chercher un professeur" [ngClass]="{'error': showError}">
-  <span *ngIf="showError" class="error-text"><i>Invalid Selection.</i></span>
-  <div class="combobox-options" *ngIf="!listHidden">
-    <list-item *ngFor="let item of filteredList;let i = index" (click)="selectItem(i)"
-      [ngClass]="{'selected': i===selectedIndex}">{{item}}</list-item>
+      <div class="combobox">
+        <input type="text" [(ngModel)]="inputItem" [ngModelOptions]="{standalone: true}"
+          (ngModelChange)="getFilteredList()" class="combobox-input" (keyup)="onKeyPress($event)"
+          (blur)="toggleListDisplay(0)" (focus)="toggleListDisplay(1)" placeholder="Chercher un professeur"
+          [ngClass]="{'error': showError}">
+        <span *ngIf="showError" class="error-text"><i>Invalid Selection.</i></span>
+        <div class="combobox-options" *ngIf="!listHidden">
+          <list-item *ngFor="let item of filteredList;let i = index" (click)="selectItem(i)"
+            [ngClass]="{'selected': i===selectedIndex}">{{item}}</list-item>
+        </div>
+      </div>
+    </div> -->
+    <span>CHEF DEP</span>
+    <div [formGroup]="AccountData">
+      <app-input [control]="AccountData.get('username')" label="Username" type="text"></app-input>
+      <app-input [control]="AccountData.get('password')" label="Password" type="password"></app-input>
+      <app-input [control]="AccountData.get('email')" label="Email" type="text"></app-input>
+    </div>
+    <div [formGroup]="PersonalData">
+      <app-input [control]="PersonalData.get('nom')" label="Nom" type="text"></app-input>
+      <app-input [control]="PersonalData.get('prenom')" label="Prenom" type="text"></app-input>
+      <app-input [control]="PersonalData.get('grade')" label="Grade" type="text"></app-input>
+      <app-input [control]="PersonalData.get('dateNaissance')" label="Date de Naissance" type="date"></app-input>
+
+    </div>
+
+    <br />
+    <button [disabled]="departementForm.invalid" type="submit" class="ui submit button">submit</button>
+  </form>
+  <div class="ui success message" *ngIf="alert">
+    <i class="close icon" (click)="closeAlert()"></i>
+    <div class="header">
+      Nouveau departement ajoute
+    </div>
+    <p>Vous pouvez maintenant le visualiser en consultant les departements/p>
   </div>
 </div>
-    </div>
-   
-  <br/> 
-      <button [disabled]="departementForm.invalid" type="submit" class="ui submit button">submit</button>
-    </form>
-    <div class="ui success message" *ngIf="alert"> 
-      <i class="close icon" (click)="closeAlert()"></i>
-      <div class="header">
-        Nouveau departement ajoute
-      </div>
-      <p>Vous pouvez maintenant le visualiser en consultant les departements/p>
-    </div>
-    </div>
-    
-    

@@ -1,0 +1,25 @@
+<div class="ui container  create-module-container">
+    <div class="ui attached message">
+      <div class="ui huge header">
+        Ajouter un nouveau sous-module
+      </div>
+      <br>
+    </div>
+    <form [formGroup]="matiereForm" class="ui form" (ngSubmit)="onSubmit()">
+      <app-input [control]="matiereForm.get('nom')" label="Nom" type="text"></app-input>
+      <app-input [control]="matiereForm.get('VHCours')" label="VHCours" type="number"></app-input>
+      <app-input [control]="matiereForm.get('VHTp')" label="VHTp" type="number"></app-input>
+      <app-input [control]="matiereForm.get('VHTd')" label="VHtd" type="number"></app-input>
+      <br>
+      <button [disabled]="matiereForm.invalid" type="submit" class="ui submit button">Submit</button>
+    </form>
+    <div class="ui success message" *ngIf="alert"> 
+      <i class="close icon" (click)="closeAlert()"></i>
+      <div class="header">
+        You have succesfully added sous module.
+      </div>
+      <p>You may now visualize your new sous module.</p>
+    </div>
+    </div>
+    
+    

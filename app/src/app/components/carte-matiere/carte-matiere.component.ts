@@ -9,12 +9,10 @@ export class CarteMatiereComponent implements OnInit {
   Route: String;
   @Input() module;
   @Input() matieres;
-  ChargeTotal: number;
-  activités = [];
-
+  @Input() VH;
   constructor() {}
 
-  calculChargeTotal() {
+ /* calculChargeTotal() {
     this.ChargeTotal=0;
     this.activités = this.matieres.activitePedagogiques;
     console.log("-----------matieres ------------");
@@ -22,7 +20,7 @@ export class CarteMatiereComponent implements OnInit {
     this.activités.forEach( act => {
       this.ChargeTotal += act.volumeHoraire;
     })
-  }
+  }*/
 
     ngOnInit(): void {
    //   this.calculChargeTotal();

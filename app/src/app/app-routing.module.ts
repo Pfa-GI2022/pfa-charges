@@ -17,6 +17,7 @@ import { ListeSousModulesComponent } from './components/liste-sous-modules/liste
 import { AuthGuard } from './guards/auth.guard';
 import { RolesGuard } from './guards/roles.guard';
 
+import { CreateMatiereComponent } from './components/create-matiere/create-matiere.component';
 import { role } from './models/role.model';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
 import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
@@ -25,6 +26,7 @@ import { AdminDepComponent } from './components/admin-dep/admin-dep.component';
 import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
 import { Departement } from './models/departement.model';
 import { DepartementResolverService } from './services/departement-resolver.service';
+import { AffectationComponent } from './components/affectation/affectation.component';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
@@ -34,6 +36,7 @@ const routes: Routes = [
 
   //departement
   {
+<<<<<<< HEAD
     path: 'departement',
     component: DepartementComponent,
   //  canActivate: [RolesGuard],
@@ -60,10 +63,39 @@ const routes: Routes = [
               ),
           },
         ],
+=======
+    path: 'departement',component: DepartementComponent,
+  //   canActivate: [RolesGuard],
+  //   resolve : {
+  //     Departement : DepartementResolverService
+  //   },
+  //  data: { 
+  //    expectedRole: role.chefDeDepartement
+  //  },
+  children: [
+    { path: '', component: ListeProfesseursComponent },
+    { path: 'newModule', component: CreateModulesComponent },
+    { path: 'newProf', component: CreateProfComponent },
+    { path: 'newDepartement', component: CreateDepartementComponent },
+    { path: 'newModule', component: CreateModulesComponent },
+    { path: 'newFiliere', component: CreateFiliereComponent },
+    { path : 'modules/:id/sousModules/:id2/td/:id3',component : AffectationComponent},
+    { path : 'modules/:id/sousModules/:id2/tp/:id3',component : AffectationComponent},
+    { path : 'modules/:id/sousModules/:id2/cours/:id3',component : AffectationComponent},
+    { path: 'modules', component: ListeModulesComponent, },
+    {
+      path: 'modules/:id', component: ListeSousModulesComponent,
+      children: [
+        { path: 'sousModules/:id2', loadChildren: () => import('./components/sous-modules/sous-modules.module').then(m => m.SousModuleModule) },
+        { path: 'newSousModule', component : CreateMatiereComponent},
+
+      ]
+>>>>>>> 87d15e6c854ed31b9457a671a19a5cbfd2854f21
       },
       { path: 'profs', component: ListeProfesseursComponent },
       { path: 'profs/:id', component: ProfDetailsComponent },
       { path: '**', component: ListeModulesComponent },
+      
     ],
   },
   //admin
