@@ -35,32 +35,31 @@ const routes: Routes = [
 
   //departement
   {
-    path: 'departement',
-    component: DepartementComponent,
-    canActivate: [RolesGuard],
-    data: {
-      expectedRole: role.chefDeDepartement,
-    },
-    children: [
-      { path: '', component: ListeProfesseursComponent },
-      { path: 'newModule', component: CreateModulesComponent },
-      { path: 'newProf', component: CreateProfComponent },
-      { path: 'newFiliere', component: CreateFiliereComponent },
-      { path: 'newDepartement', component: CreateDepartementComponent },
-      { path: 'newModule', component: CreateModulesComponent },
-      { path: 'modules', component: ListeModulesComponent },
-      {
-        path: 'modules/:id',
-        component: ListeSousModulesComponent,
-        children: [
-          {
-            path: 'sousModules/:id2',
-            loadChildren: () =>
-              import('./components/sous-modules/sous-modules.module').then(
-                (m) => m.SousModuleModule
-              ),
-          },
-        ],
+    path: 'departement',component: DepartementComponent,
+  //   canActivate: [RolesGuard],
+  //   resolve : {
+  //     Departement : DepartementResolverService
+  //   },
+  //  data: { 
+  //    expectedRole: role.chefDeDepartement
+  //  },
+  children: [
+    { path: '', component: ListeProfesseursComponent },
+    { path: 'newModule', component: CreateModulesComponent },
+    { path: 'newProf', component: CreateProfComponent },
+    { path: 'newDepartement', component: CreateDepartementComponent },
+    { path: 'newModule', component: CreateModulesComponent },
+    { path: 'newFiliere', component: CreateFiliereComponent },
+    { path: 'modules', component: ListeModulesComponent, },
+    {
+
+      path: 'modules/:id', component: ListeSousModulesComponent,
+      
+      children: [
+        { path: 'sousModules/:id2', loadChildren: () => import('./components/sous-modules/sous-modules.module').then(m => m.SousModuleModule) },
+        { path: 'newSousModule', component : CreateMatiereComponent},
+
+      ]
       },
       { path: 'profs', component: ListeProfesseursComponent },
       { path: 'profs/:id', component: ProfDetailsComponent },

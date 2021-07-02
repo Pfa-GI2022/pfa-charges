@@ -54,23 +54,56 @@ export class CreateMatiereComponent implements OnInit {
    
     this.matiereService.createMatiere(newMatiere).subscribe( response => {
       this.matiere = response;
-          
-    for(let i=0;i<this.nbreGroupeTd ;i++){
-      let activite = {
-        volumeHoraire : this.matiereForm.value.VHTd,
-        matiereID : this.matiere.id,
-        nature : 'td',
-        groupe : {
-          nom : this.groupe[i]
-        },
-        professeurID : null
+    if(this.matiereForm.value.VHTd > 0){
+      for(let i=0;i<this.nbreGroupeTd ;i++){
+        let activite = {
+          volumeHoraire : this.matiereForm.value.VHTd,
+          matiereID : this.matiere.id,
+          nature : 'td',
+          groupe : {
+            nom : this.groupe[i]
+          },
+          professeurID : null
+        }
+        console.log(activite)
+        this.activiteService.createActivity(activite).subscribe(data => console.log(data)
+        
+        )
       }
-      console.log(activite)
-      this.activiteService.createActivity(activite).subscribe(data => console.log(data)
-      
-      )
+    }else {
+      console.log("<0")
     }
-    })
+
+    if(this.matiereForm.value.VHTp >0){
+      for(let i=0;i<this.nbreGroupeTp ;i++){
+        let activite = {
+          volumeHoraire : this.matiereForm.value.VHTp,
+          matiereID : this.matiere.id,
+          nature : 'tp',
+          groupe : {
+            nom : this.groupe[i]
+          },
+          professeurID : null
+        }
+        console.log(activite)
+        this.activiteService.createActivity(activite).subscribe(data => console.log(data)
+        )
+      }
+    }
+
+
+    let activite = {
+      volumeHoraire : this.matiereForm.value.VHCours,
+      matiereID : this.matiere.id,
+      nature : 'cours',
+      groupe : {
+        nom : this.groupe[0]
+      },
+      professeurID : null
+    }
+    this.activiteService.createActivity(activite).subscribe(data => console.log(data))    
+    }
+    )
 
     //
 
