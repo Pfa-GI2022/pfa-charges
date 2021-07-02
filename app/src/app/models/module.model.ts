@@ -1,8 +1,7 @@
 export interface Module {
-    nom: string,
-    semestre: string,
-    matieres?: any,
-    filiere?: any,
-    departement?: any
-  }
-  
+  nom: string;
+  semestre: string;
+  matieres?: any;
+  filiere?: any;
+  departement?: any;
+}

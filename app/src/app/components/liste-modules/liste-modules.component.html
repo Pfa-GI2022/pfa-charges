@@ -15,14 +15,15 @@
       <div class="default text">{{selectedOption.label}}</div>
       <div class="menu" [ngClass]="{'transition visible' : open}">
 
-        <div *ngFor="let option of options" class="item" (click)="onSelection(option)">{{option.value}}</div>
+        <div *ngFor="let option of options" class="item" (click)="onSelection(option)">{{option.label}}</div>
       </div>
     </div>
   </div>
 
 
   <div class="cards-wrapper">
-    <app-carte-module *ngFor="let m of modules | searchFilter : term " [module]="m">
+    <app-carte-module *ngFor="let m of modules | searchFilter : term | filiereFilterModules:selectedOption.value"
+      [module]="m">
 
     </app-carte-module>
   </div>
