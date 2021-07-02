@@ -17,6 +17,7 @@ import { ListeSousModulesComponent } from './components/liste-sous-modules/liste
 import { AuthGuard } from './guards/auth.guard';
 import { RolesGuard } from './guards/roles.guard';
 
+import { CreateMatiereComponent } from './components/create-matiere/create-matiere.component';
 import { role } from './models/role.model';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
 import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
@@ -50,9 +51,13 @@ const routes: Routes = [
     { path: 'newFiliere', component: CreateFiliereComponent },
     { path: 'modules', component: ListeModulesComponent, },
     {
+
       path: 'modules/:id', component: ListeSousModulesComponent,
+      
       children: [
         { path: 'sousModules/:id2', loadChildren: () => import('./components/sous-modules/sous-modules.module').then(m => m.SousModuleModule) },
+        { path: 'newSousModule', component : CreateMatiereComponent},
+
       ]
     },
     { path: 'profs', component: ListeProfesseursComponent },

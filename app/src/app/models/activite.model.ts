@@ -1,5 +1,5 @@
 export interface activitePedagogiques {
-    id : number,
+    id?: number,
     nature: string,
     volumeHoraire: number,
     professeurID?: any,

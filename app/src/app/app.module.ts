@@ -37,6 +37,7 @@ import { SousModuleModule } from './components/sous-modules/sous-modules.module'
 import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
 import { FiliereFilterModulesPipe } from './pipes/filiere-filter-modules.pipe';
+import { CreateMatiereComponent } from './components/create-matiere/create-matiere.component';
 //just for test
 
 @NgModule({
@@ -68,6 +69,7 @@ import { FiliereFilterModulesPipe } from './pipes/filiere-filter-modules.pipe';
     FiliereFilterModulesPipe,
     AddUserComponent,
     UserSearchPipe,
+    CreateMatiereComponent,
   ],
   imports: [
     BrowserModule,

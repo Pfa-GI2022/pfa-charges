@@ -1,9 +1,9 @@
 export interface Filiere {
     id:number,
     nom: string,
-    nbreGroupesTd: string,
-    nbreGroupesTp: string,
-    nbreGroupesPfa: string,
+    nbreGroupesTd: number,
+    nbreGroupeTp: number,
+    nbreGroupesPfa: number,
     chefFiliereID?: any,
   }
   

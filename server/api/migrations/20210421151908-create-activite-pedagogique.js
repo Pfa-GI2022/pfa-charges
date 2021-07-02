@@ -20,7 +20,6 @@ module.exports = {
       },
       professeurID: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
           model: "professeurs",
           key: "id",
