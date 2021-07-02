@@ -3,7 +3,7 @@ import {
   FormControl,
   FormBuilder,
   FormGroup,
-  Validator,
+
   Validators,
 } from '@angular/forms';
 import { ProfesseurService } from '../../services/professeur.service';
@@ -56,7 +56,8 @@ export class CreateProfComponent implements OnInit {
     console.log(this.profForm.value);
 
     let newDep = this.profForm.value;
-    newDep.depID = this.depID;
+    //newDep.depID = this.depID;
+    console.log(newDep)
     this.professeurService
       .createProfesseur(this.profForm.value)
       .subscribe((response) => {

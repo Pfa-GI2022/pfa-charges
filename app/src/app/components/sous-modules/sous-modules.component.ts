@@ -19,6 +19,7 @@ export class SousModulesComponent implements OnInit {
       });
     });
   }
+  
   ngOnInit(): void {
     
   }

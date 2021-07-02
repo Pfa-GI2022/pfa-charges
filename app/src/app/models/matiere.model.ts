@@ -3,4 +3,5 @@ export interface Matiere {
     modulId?:number,
     module?: any,
     activitePedagogiques?: any
+    
 }
