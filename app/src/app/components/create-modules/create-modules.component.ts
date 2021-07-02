@@ -6,7 +6,6 @@ import { Filiere } from '../../models/filiere.model';
 import { FiliereService } from 'src/app/services/filiere.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { SelectedModuleService } from 'src/app/services/selected-module.service';
-
 @Component({
   selector: 'app-create-modules',
   templateUrl: './create-modules.component.html',

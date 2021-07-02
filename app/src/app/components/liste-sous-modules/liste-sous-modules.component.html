@@ -1,15 +1,23 @@
 <div class="liste-modules">
   <div class="ui container">
-    <div style="padding: 25px;">
-      <h1>{{module.nom}}</h1>
-      <div class="ui two column grid" style="padding: 25px;">
-        <div class="row" >
-          <div class="column" *ngFor="let m of module.matieres">
-            <app-carte-matiere [module] = module [matieres]="m"></app-carte-matiere>
+    <div class="ui container">
+      <div style="padding: 25px;" *ngIf="!hide">
+        <h1>{{module.nom}}</h1>
+        <div class="ui two column grid" style="padding: 25px;">
+          <div class="row" >
+            <div class="column" *ngFor="let m of module.matieres">
+              <app-carte-matiere [module] = module [matieres]="m"></app-carte-matiere>
+            </div>
           </div>
         </div>
-        <router-outlet></router-outlet>
       </div>
-    </div>
+      <router-outlet></router-outlet>
 
+    </div>
+  
+
+
+    <a class="add-btn" routerLink="newSousModule" data-tooltip="ajouter une matiere" data-position="left center">
+      +
+    </a>
   </div>

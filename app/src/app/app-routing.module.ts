@@ -17,6 +17,7 @@ import { ListeSousModulesComponent } from './components/liste-sous-modules/liste
 import { AuthGuard } from './guards/auth.guard';
 import { RolesGuard } from './guards/roles.guard';
 
+import { CreateMatiereComponent } from './components/create-matiere/create-matiere.component';
 import { role } from './models/role.model';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
 import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
