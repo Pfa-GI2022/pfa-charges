@@ -51,8 +51,8 @@ const updateActivity = async (req, res) => {
   const id = req.params.id;
   const updatedData = req.body;
   console.log("Updating activity");
-  matiere
-    .update(updatedData, { where: { id } })
+  activite
+    .update(updatedData, { where: { id: id } })
     .then((updatedActivity) => {
       res.status(200).send(updatedActivity);
       console.log("Activity updated");
