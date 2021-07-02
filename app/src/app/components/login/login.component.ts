@@ -1,7 +1,13 @@
 import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router'
-import { FormControl, FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import {
+  FormControl,
+  FormBuilder,
+  FormGroup,
+  Validator,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage-service.service';
 @Component({
@@ -10,36 +16,42 @@ import { TokenStorageService } from 'src/app/services/token-storage-service.serv
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  
-  loginForm : FormGroup;
+  loginForm: FormGroup;
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
 
   constructor(
-    private elementRef: ElementRef
-    ,private formBuilder: FormBuilder,
-    private auhService:AuthService,
-    private tokenStorage:TokenStorageService,
-    private router:Router
-    ) {}
+    private elementRef: ElementRef,
+    private formBuilder: FormBuilder,
+    private auhService: AuthService,
+    private tokenStorage: TokenStorageService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.initForm();
   }
 
-
   initForm() {
     this.loginForm = this.formBuilder.group({
-      username : new FormControl('',[Validators.required,Validators.minLength(3),Validators.pattern("[a-zA-Z\s]*")]),
-      password : new FormControl('',[Validators.required,Validators.minLength(3),Validators.pattern("[a-zA-Z\s]*")]),
+      username: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern('[a-zA-Zs]*'),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern('[a-zA-Zs]*'),
+      ]),
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.loginForm.value);
     this.auhService.login(this.loginForm.value).subscribe(
-      data => {
+      (data) => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
 
@@ -47,24 +59,21 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         this.authenticateUser(this.roles);
-
       },
-      err => {
+      (err) => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
-      );
-    
+    );
   }
 
-
-  authenticateUser(userRoles:string[]){
-    if(userRoles.includes("admin")){
+  authenticateUser(userRoles: string[]) {
+    if (userRoles.includes('admin')) {
       this.router.navigate(['/admin']);
-    } else if(userRoles.includes("chefDeDepartement")){
+    } else if (userRoles.includes('chefDeDepartement')) {
       this.router.navigate(['/departement']);
     } else {
-      this.router.navigate(['/'])
+      this.router.navigate(['/']);
     }
   }
 
@@ -77,5 +86,4 @@ export class LoginComponent implements OnInit {
   reloadPage(): void {
     window.location.reload();
   }
-
 }

@@ -6,14 +6,14 @@ const charge = models.charge;
 const activite = models.activitePedagogique;
 
 const createProf = async (req, res, next) => {
-  const { nom, prenom, mail, avatar, charge, depID } = req.body;
+  const { nom, prenom, email, avatar, charge, depID } = req.body;
   console.log("Creating Prof");
   professeur
     .create(
       {
         nom: nom,
         prenom: prenom,
-        mail: mail,
+        email: email,
         avatar: avatar,
         depID: depID,
         charge: charge,

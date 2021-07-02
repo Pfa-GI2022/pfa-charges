@@ -45,6 +45,9 @@ h2 small {
   flex-basis: 25%;
 }
 @media all and (max-width: 767px) {
+  .responsive-table {
+    padding: 0;
+  }
   .responsive-table .table-header {
     display: none;
   }
