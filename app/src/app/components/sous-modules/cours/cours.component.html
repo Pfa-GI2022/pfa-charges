@@ -1,7 +1,7 @@
 <h1>{{matiere.nom}}</h1>
 <ng-container *ngIf="activite">
 
-    <p *ngIf="activite.professeur; else elseBlock">Prof de cours : {{activite.professeur.nom}}</p>
+    <p *ngIf="activite.professeur; else elseBlock">Prof de cours : {{activite.professeur.nom | uppercase}} {{activite.professeur.prenom | titlecase}} </p>
     <ng-template #elseBlock>
       <a [routerLink]="[Route , activite.id]">affecter un prof</a>     
     </ng-template>

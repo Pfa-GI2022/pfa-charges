@@ -32,18 +32,18 @@ import { AffectationComponent } from './components/affectation/affectation.compo
 const routes: Routes = [
   //home
  // { path: '', component: ProfDetailsComponent },
- // { path: 'login', component: LoginComponent },
+ { path: 'login', component: LoginComponent },
 
   //departement
   {
     path: 'departement',component: DepartementComponent,
-  //   canActivate: [RolesGuard],
+    canActivate: [RolesGuard],
   //   resolve : {
   //     Departement : DepartementResolverService
   //   },
-  //  data: { 
-  //    expectedRole: role.chefDeDepartement
-  //  },
+   data: { 
+     expectedRole: role.chefDeDepartement
+   },
   children: [
     { path: '', component: ListeProfesseursComponent },
     { path: 'newModule', component: CreateModulesComponent },
