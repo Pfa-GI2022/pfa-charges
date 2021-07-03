@@ -9,7 +9,6 @@ import { ProfesseurService } from 'src/app/services/professeur.service';
 })
 export class ProfileCardComponent implements OnInit {
   @Input() professeur;
-  activite=[];
   constructor(private professeurService: ProfesseurService ,private route: ActivatedRoute,) {
     this.route.params.subscribe(params =>{
       this.onGetProfById(params.id);
@@ -20,7 +19,6 @@ export class ProfileCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // events
   onGetProfById(id: number) {
     this.professeurService.getProfesseurByID(id).subscribe((data) => {
       console.log(data);

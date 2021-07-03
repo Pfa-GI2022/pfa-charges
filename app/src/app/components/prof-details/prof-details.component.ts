@@ -18,26 +18,26 @@ import { GroupedObservable } from 'rxjs';
 export class ProfDetailsComponent implements OnInit {
   @Input() professeur;
   matiere: Matiere;
+  activite:[];
   //groupe: Groupe;
-  constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService) {
+  constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService,private professeurService: ProfesseurService) {
     /* this.matiereService.getMatiereByID(this.professeur.activitePedagogiques.matiereID).subscribe(data=>{
       this.matiere = data;
       console.log(data);
     })  */
-    console.log(this.professeur.activitePedagogiques);
   
 }
 
   ngOnInit(): void {
     // this.onGetProfById();
   }
-}
-
-// events
-/*onGetProfById(id: number) {
-    this.profService.getProfesseurByID(id).subscribe((data) => {
+  onGetProfById(id: number) {
+    this.professeurService.getProfesseurByID(id).subscribe((data) => {
       console.log(data);
       this.professeur = data;
       console.log(this.professeur.grade);
     });
-  }*/
+  }
+}
+
+
