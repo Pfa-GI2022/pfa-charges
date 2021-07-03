@@ -36,7 +36,7 @@ import { AffectationComponent } from './components/affectation/affectation.compo
 const routes: Routes = [
   //home
   // { path: '', component: ProfDetailsComponent },
-  // { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
 
   //departement
   {

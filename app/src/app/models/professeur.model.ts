@@ -13,5 +13,5 @@ export interface Professeur {
   depID?: number;
   filID?: number;
   departement?: Departement;
-  activite?: activitePedagogiques[];
+  activitePedagogiques?: activitePedagogiques[];
 }

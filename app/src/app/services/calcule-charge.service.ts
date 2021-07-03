@@ -4,12 +4,13 @@ import { Module } from '../models/module.model';
 import { Matiere } from '../models/Matiere.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { ChargeService } from './charge.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CalculeChargeService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private ChargeService: ChargeService) {}
 
   //caclule du volume horaire d'une matiere
   getVHMatiere(matiere: Matiere) {
@@ -44,26 +45,30 @@ export class CalculeChargeService {
   }
 
   getVHModule() {}
+  getV;
   SetChargeProf(Prof: Professeur) {
     let Charge = 0;
-    Prof.activite.forEach((A) => {
+    console.log(Prof.activitePedagogiques);
+    Prof.activitePedagogiques.forEach((A) => {
       if (A.nature == 'cours') {
-        Charge += 1.2 * A.volumeHoraire;
+        Charge += 3.2 * A.volumeHoraire;
+        console.log(`Charge C: ${Charge}`);
       }
 
       if (A.nature == 'tp') {
-        Charge += 1 * A.volumeHoraire;
+        Charge += 1.8 * A.volumeHoraire;
+        console.log(`Charge TD: ${Charge}`);
       }
 
       if (A.nature == 'td') {
         Charge += 0.8 * A.volumeHoraire;
+        console.log(`Charge TP: ${Charge}`);
       }
     });
     console.log(Charge);
+    console.log(Prof.id);
     const host = environment.host;
-    console.log('create prof');
-    return this.http.put(`${host}/professeurs/${Prof.id}/charge`, {
-      chargeTotal: Charge,
-    });
+    console.log('Add Charge');
+    return this.ChargeService.updateCharge(Charge, Prof.id).subscribe();
   }
 }

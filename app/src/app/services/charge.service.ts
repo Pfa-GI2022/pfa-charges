@@ -1,9 +1,26 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Professeur } from '../models/professeur.model';
+import { Charge } from '../models/charge.model';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChargeService {
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  createCharge(body: Charge, ProfID: number) {
+    const host = environment.host;
+    console.log('create charge');
+    return this.http.post(`${host}/professeurs/${ProfID}/charge`, body);
+  }
+  updateCharge(chargeTotal: number, ProfID: number) {
+    const host = environment.host;
+    console.log('update charge');
+    return this.http.put(`${host}/professeurs/${ProfID}/charge`, {
+      chargeTotal: chargeTotal,
+    });
+  }
 }

@@ -2,7 +2,7 @@ import { activitePedagogiques } from './activite.model';
 export interface Matiere {
   id?: number;
   nom: string;
-  modulId?: number;
+  modulID?: number;
   module?: any;
   activitePedagogiques?: activitePedagogiques[];
 }
