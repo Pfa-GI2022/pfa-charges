@@ -3,9 +3,11 @@ import { ProfesseurService } from '../../services/professeur.service';
 import { MatiereService } from '../../services/matiere.service';
 import { Professeur } from '../../models/professeur.model';
 import { Matiere } from "../../models/matiere.model";
+//import { Groupe } from "../../models/groupe.model";
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute} from '@angular/router';
 import { ActiviteService } from 'src/app/services/activite.service';
+import { GroupedObservable } from 'rxjs';
 
 
 @Component({
@@ -16,10 +18,16 @@ import { ActiviteService } from 'src/app/services/activite.service';
 export class ProfDetailsComponent implements OnInit {
 
   @Input() professeur;
-    matiere: Matiere;
-  activite=[];
+  matiere: Matiere;
+  //groupe: Groupe;
   constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService) {
-    }
+    /* this.matiereService.getMatiereByID(this.professeur.activitePedagogiques.matiereID).subscribe(data=>{
+      this.matiere = data;
+      console.log(data);
+    })  */
+    console.log(this.professeur.activitePedagogiques);
+  
+}
 
   ngOnInit(): void {
   }
