@@ -36,34 +36,6 @@ const routes: Routes = [
 
   //departement
   {
-<<<<<<< HEAD
-    path: 'departement',
-    component: DepartementComponent,
-  //  canActivate: [RolesGuard],
- //   data: {
-  //    expectedRole: role.chefDeDepartement,
-  //  },
-    children: [
-      { path: '', component: ListeProfesseursComponent },
-      { path: 'newModule', component: CreateModulesComponent },
-      { path: 'newProf', component: CreateProfComponent },
-      { path: 'newFiliere', component: CreateFiliereComponent },
-      { path: 'newDepartement', component: CreateDepartementComponent },
-      { path: 'newModule', component: CreateModulesComponent },
-      { path: 'modules', component: ListeModulesComponent },
-      {
-        path: 'modules/:id',
-        component: ListeSousModulesComponent,
-        children: [
-          {
-            path: 'sousModules/:id2',
-            loadChildren: () =>
-              import('./components/sous-modules/sous-modules.module').then(
-                (m) => m.SousModuleModule
-              ),
-          },
-        ],
-=======
     path: 'departement',component: DepartementComponent,
   //   canActivate: [RolesGuard],
   //   resolve : {
@@ -90,7 +62,6 @@ const routes: Routes = [
         { path: 'newSousModule', component : CreateMatiereComponent},
 
       ]
->>>>>>> 87d15e6c854ed31b9457a671a19a5cbfd2854f21
       },
       { path: 'profs', component: ListeProfesseursComponent },
       { path: 'profs/:id', component: ProfDetailsComponent },

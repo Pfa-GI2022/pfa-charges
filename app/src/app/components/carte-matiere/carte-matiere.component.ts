@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
-
+import { Matiere } from 'src/app/models/Matiere.model';
+import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
 @Component({
   selector: 'app-carte-matiere',
   templateUrl: './carte-matiere.component.html',
@@ -9,21 +10,20 @@ export class CarteMatiereComponent implements OnInit {
   Route: String;
   @Input() module;
   @Input() matieres;
-  @Input() VH;
-  constructor() {}
+  TotalVH : number;
 
- /* calculChargeTotal() {
-    this.ChargeTotal=0;
-    this.activités = this.matieres.activitePedagogiques;
-    console.log("-----------matieres ------------");
-    console.log(this.matieres)
-    this.activités.forEach( act => {
-      this.ChargeTotal += act.volumeHoraire;
-    })
-  }*/
+  constructor( private calculCharge : CalculeChargeService) {
+ 
+   }
+
+   calculTotalCharge(){
+     this.TotalVH = this.calculCharge.getVHMatiere(this.matieres).total;
+     console.log(this.TotalVH);
+   }
 
     ngOnInit(): void {
-   //   this.calculChargeTotal();
+      console.log(this.matieres)
+      this.calculTotalCharge();
       this.Route = `/departement/modules/${this.module.id}/sousModules/${this.matieres.id}`;
   }
 }
