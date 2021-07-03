@@ -1,7 +1,14 @@
-<a [routerLink]="Route"><div class="ui message" style="margin-bottom: 10px; border-bottom : 2px solid green;">
+<a [routerLink]="Route" (click)="getToActivity()">
+  <div class="ui message" 
+  [ngClass]="{
+      'affectee': matiereAffecte == true,
+      'non-affectee': matiereAffecte == false
+          }" 
+    style="margin-bottom: 10px; "
+          >
     <div class="header" >
       {{matieres.nom}}
       <br>
-      <p> Volume Horaire : {{TotalVH}} </p>
+      <p> cours : {{VHCours}} |  td : {{VHTd}} | tp : {{VHTp}} | total : {{TotalVH}} </p>
     </div>
 </div></a>

@@ -37,7 +37,9 @@ export class ListeSousModulesComponent implements OnInit {
     });    
   }
 
-  onGetMatiereById(id: number) {
+
+
+    onGetMatiereById(id: number) {
     this.matiereService.getMatiereByID(id).subscribe(data => console.log(data));
   }
   

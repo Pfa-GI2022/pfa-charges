@@ -6,24 +6,50 @@ import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
   templateUrl: './carte-matiere.component.html',
   styleUrls: ['./carte-matiere.component.css'],
 })
+
 export class CarteMatiereComponent implements OnInit {
   Route: String;
   @Input() module;
-  @Input() matieres;
+  @Input() matieres : Matiere;
   TotalVH : number;
-
+  VHCours : number;
+  VHTd : number;
+  VHTp : number;
+  matiereAffecte = false;
   constructor( private calculCharge : CalculeChargeService) {
- 
    }
+   
+
 
    calculTotalCharge(){
      this.TotalVH = this.calculCharge.getVHMatiere(this.matieres).total;
-     console.log(this.TotalVH);
+     this.VHCours = this.calculCharge.getVHMatiere(this.matieres).cours;
+     this.VHTd = this.calculCharge.getVHMatiere(this.matieres).td;
+     this.VHTp = this.calculCharge.getVHMatiere(this.matieres).tp;
+    
    }
 
     ngOnInit(): void {
-      console.log(this.matieres)
+      this.estAffectee()
       this.calculTotalCharge();
       this.Route = `/departement/modules/${this.module.id}/sousModules/${this.matieres.id}`;
+  }
+
+  estAffectee(){
+    this.matiereAffecte = true;
+    this.matieres.activitePedagogiques.forEach(a => {
+      if(a.professeurID == null){
+        this.matiereAffecte = false;
+      }
+    })
+  }
+
+  getToActivity(){
+    console.log("--------------------------------------------------------")
+    console.log("--------------------------------------------------------")
+    console.log("--------------------------------------------------------")
+    console.log("--------------------------------------------------------")
+    document.getElementById("activity").scrollIntoView({ behavior: 'smooth' });
+
   }
 }
