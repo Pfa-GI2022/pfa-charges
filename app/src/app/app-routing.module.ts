@@ -26,6 +26,10 @@ import { AdminDepComponent } from './components/admin-dep/admin-dep.component';
 import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
 import { Departement } from './models/departement.model';
 import { DepartementResolverService } from './services/departement-resolver.service';
+import { FiliereComponent } from './components/filiere/filiere.component';
+import { ListeModFilComponent } from './components/liste-mod-fil/liste-mod-fil.component';
+import { ListeSousModFilComponent } from './components/liste-sous-mod-fil/liste-sous-mod-fil.component';
+
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
@@ -84,7 +88,30 @@ const routes: Routes = [
       { path: 'addfiliere', component: CreateFiliereComponent },
     ],
   },
-
+  {
+    path: 'filiere',
+    canActivate: [RolesGuard],
+    data: {
+      expectedRole: role.chefDeFiliere,
+    },
+    component: FiliereComponent,
+    children: [
+      { path: 'modules', component: ListeModFilComponent },
+      {
+        path: 'modules/:id',
+        component: ListeSousModFilComponent,
+        children: [
+          {
+            path: 'sousModules/:id2',
+            loadChildren: () =>
+              import('./components/sous-mod-fil/sous-mod-fil.module').then(
+                (m) => m.SousModFilModule
+              ),
+          },
+        ],
+      },
+    ],
+  },
   //login
 
   { path: '**', redirectTo: '' },

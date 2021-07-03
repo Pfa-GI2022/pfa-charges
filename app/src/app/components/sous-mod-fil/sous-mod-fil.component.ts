@@ -4,22 +4,24 @@ import { Matiere } from 'src/app/models/Matiere.model';
 import { MatiereService } from 'src/app/services/matiere.service';
 
 @Component({
-  selector: 'app-sous-modules',
-  templateUrl: './sous-modules.component.html',
-  styleUrls: ['./sous-modules.component.css'],
+  selector: 'app-sous-mod-fil',
+  templateUrl: './sous-mod-fil.component.html',
+  styleUrls: ['./sous-mod-fil.component.css'],
 })
-export class SousModulesComponent implements OnInit {
+export class SousModFilComponent implements OnInit {
   matiere: Matiere;
   constructor(
     private route: ActivatedRoute,
     private matiereService: MatiereService
   ) {
     this.route.params.subscribe((params) => {
+      console.log(this.route);
       this.matiereService.getMatiereByID(params.id2).subscribe((data) => {
         this.matiere = data;
         console.log(data);
       });
     });
   }
+
   ngOnInit(): void {}
 }

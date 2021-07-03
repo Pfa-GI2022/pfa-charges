@@ -7,11 +7,11 @@ import { Matiere } from 'src/app/models/Matiere.model';
 import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
 import { Location } from '@angular/common';
 @Component({
-  selector: 'app-liste-sous-modules',
-  templateUrl: './liste-sous-modules.component.html',
-  styleUrls: ['./liste-sous-modules.component.css'],
+  selector: 'app-liste-sous-mod-fil',
+  templateUrl: './liste-sous-mod-fil.component.html',
+  styleUrls: ['./liste-sous-mod-fil.component.css'],
 })
-export class ListeSousModulesComponent implements OnInit {
+export class ListeSousModFilComponent implements OnInit {
   matieres = [];
   module: Module;
   listeSousModuleVisibility = true;
