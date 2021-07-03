@@ -29,19 +29,17 @@ export class CalculeChargeService {
 
       if (activite.nature == 'tp') {
         if (VH.tp == 0) {
-          VH.cours = activite.volumeHoraire;
+          VH.tp = activite.volumeHoraire;
         }
       }
 
       if (activite.nature == 'td') {
         if (VH.td == 0) {
-          VH.cours = activite.volumeHoraire;
+          VH.td = activite.volumeHoraire;
         }
       }
     });
-
     VH.total = VH.cours + VH.td + VH.tp;
-
     return VH;
   }
 

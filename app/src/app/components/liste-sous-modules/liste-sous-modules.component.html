@@ -2,7 +2,12 @@
   <div class="ui container">
     <div class="ui container">
       <div style="padding: 25px;" *ngIf="!hide">
-        <h1>{{module.nom}}</h1>
+        <div class="ui breadcrumb"> 
+              {{module.filiere.nom | titlecase}}
+          <div class="divider">/</div>
+          <span>{{module.nom | titlecase}}</span>
+
+        </div>
         <div class="ui two column grid" style="padding: 25px;">
           <div class="row">
             <div class="column" *ngFor="let m of module.matieres">
@@ -11,7 +16,10 @@
           </div>
         </div>
       </div>
-      <router-outlet></router-outlet>
+      <div id="activity">
+        <router-outlet></router-outlet>
+      </div>
+      
 
     </div>
 

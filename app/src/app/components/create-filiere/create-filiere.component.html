@@ -7,20 +7,16 @@
     </div>
     <form [formGroup]="filiereForm" class="ui form" (ngSubmit)="onSubmit()">
       <app-input [control]="filiereForm.get('nom')" label="Nom" type="text"></app-input>
-      <br/> 
-        <div class="field">
-          <label class="label">Chef de filiere</label>
-          <div class="combobox">
-            <input type="text" [(ngModel)]="inputItem" [ngModelOptions]="{standalone: true}" (ngModelChange)="getFilteredList()"
-              class="combobox-input" (keyup)="onKeyPress($event)" (blur)="toggleListDisplay(0)" (focus)="toggleListDisplay(1)"
-              placeholder="Chercher un professeur" [ngClass]="{'error': showError}" >
-            <span *ngIf="showError" class="error-text"><i>Invalid Selection.</i></span>
-            <div class="combobox-options" *ngIf="!listHidden">
-              <list-item *ngFor="let item of filteredList;let i = index" (click)="selectItem(i)"
-                [ngClass]="{'selected': i===selectedIndex}">{{item}}</list-item>
-            </div>
-          </div>
-        </div>
+<div class="field">
+  <label class="label">Chef de département</label>
+    <input class="prompt" type="text"  class="combobox-input" [(ngModel)]="inputItem " [ngModelOptions]="{standalone: true}" placeholder="rechercher un prof" (input)="onSearch($event.target.value)" (click)="hide=!hide">
+      <div class="combobox-options"  *ngIf = "hide==false">
+    <list-item  *ngFor="let p of professeurs | searchFilter : term " (click)="onSelection(p)">
+        {{p.nom}} {{p.prenom}}
+    </list-item>
+  </div>    
+</div>
+   
       <app-input [control]="filiereForm.get('nbreGroupesTd')" label="Nombre de groupes des TD" type="text"></app-input>
       <app-input [control]="filiereForm.get('nbreGroupeTp')" label="Nombre de groupes des TP" type="text"></app-input>
       <app-input [control]="filiereForm.get('nbreGroupePFA')" label="Nombre de groupes des PFA" type="text"></app-input>

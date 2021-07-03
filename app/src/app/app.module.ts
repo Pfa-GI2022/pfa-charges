@@ -50,6 +50,8 @@ import { ListeModFilComponent } from './components/liste-mod-fil/liste-mod-fil.c
 import { CarteModFilComponent } from './components/carte-mod-fil/carte-mod-fil.component';
 import { ListeSousModFilComponent } from './components/liste-sous-mod-fil/liste-sous-mod-fil.component';
 import { CarteMatiereFilComponent } from './components/carte-matiere-fil/carte-matiere-fil.component';
+import { AffectationComponent } from './components/affectation/affectation.component';
+import { AffectationCarteComponent } from './components/affectation-carte/affectation-carte.component';
 //just for test
 
 @NgModule({
@@ -94,6 +96,8 @@ import { CarteMatiereFilComponent } from './components/carte-matiere-fil/carte-m
     CarteModFilComponent,
     ListeSousModFilComponent,
     CarteMatiereFilComponent,
+    AffectationComponent,
+    AffectationCarteComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,6 +112,6 @@ import { CarteMatiereFilComponent } from './components/carte-matiere-fil/carte-m
   ],
   providers: [FiliereService],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

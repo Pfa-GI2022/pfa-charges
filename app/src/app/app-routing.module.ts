@@ -30,28 +30,44 @@ import { FiliereComponent } from './components/filiere/filiere.component';
 import { ListeModFilComponent } from './components/liste-mod-fil/liste-mod-fil.component';
 import { ListeSousModFilComponent } from './components/liste-sous-mod-fil/liste-sous-mod-fil.component';
 
+import { AffectationComponent } from './components/affectation/affectation.component';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
   //home
-  { path: '', component: ProfDetailsComponent },
-  { path: 'login', component: LoginComponent },
+  // { path: '', component: ProfDetailsComponent },
+  // { path: 'login', component: LoginComponent },
 
   //departement
   {
     path: 'departement',
     component: DepartementComponent,
-    canActivate: [RolesGuard],
-    data: {
-      expectedRole: role.chefDeDepartement,
-    },
+    //   canActivate: [RolesGuard],
+    //   resolve : {
+    //     Departement : DepartementResolverService
+    //   },
+    //  data: {
+    //    expectedRole: role.chefDeDepartement
+    //  },
     children: [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newModule', component: CreateModulesComponent },
       { path: 'newProf', component: CreateProfComponent },
-      { path: 'newFiliere', component: CreateFiliereComponent },
       { path: 'newDepartement', component: CreateDepartementComponent },
       { path: 'newModule', component: CreateModulesComponent },
+      { path: 'newFiliere', component: CreateFiliereComponent },
+      {
+        path: 'modules/:id/sousModules/:id2/td/:id3',
+        component: AffectationComponent,
+      },
+      {
+        path: 'modules/:id/sousModules/:id2/tp/:id3',
+        component: AffectationComponent,
+      },
+      {
+        path: 'modules/:id/sousModules/:id2/cours/:id3',
+        component: AffectationComponent,
+      },
       { path: 'modules', component: ListeModulesComponent },
       {
         path: 'modules/:id',
@@ -64,6 +80,7 @@ const routes: Routes = [
                 (m) => m.SousModuleModule
               ),
           },
+          { path: 'newSousModule', component: CreateMatiereComponent },
         ],
       },
       { path: 'profs', component: ListeProfesseursComponent },
