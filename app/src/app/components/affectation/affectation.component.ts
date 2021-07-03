@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ActiviteService } from 'src/app/services/activite.service';
 import { Professeur } from 'src/app/models/professeur.model';
 import { ProfesseurService } from 'src/app/services/professeur.service';
-
+import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
 @Component({
   selector: 'app-affectation',
   templateUrl: './affectation.component.html',
@@ -13,7 +13,7 @@ import { ProfesseurService } from 'src/app/services/professeur.service';
 export class AffectationComponent implements OnInit {
   professeurs : Professeur[];
   activiteID : number;
-  constructor(private route: ActivatedRoute,private activiteService:ActiviteService,private professeurService:ProfesseurService) { 
+  constructor(private route: ActivatedRoute,private activiteService:ActiviteService,private professeurService:ProfesseurService,private calculeChargeService:CalculeChargeService) { 
     this.route.params.subscribe(params => {
       this.activiteID = params.id3;
     })
@@ -30,6 +30,8 @@ export class AffectationComponent implements OnInit {
   }
 
   onClick(prof:Professeur){
-    this.activiteService.updateActivity({professeurID: prof.id},this.activiteID).subscribe(response => console.log(response))
+    this.activiteService.updateActivity({professeurID: prof.id},this.activiteID).subscribe(response => {
+      this.calculeChargeService.SetChargeProf(prof)
+    })
   }
 }

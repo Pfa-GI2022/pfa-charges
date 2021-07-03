@@ -1,0 +1,18 @@
+<div class="liste-modules">
+  <div class="search-bar">
+    <div class="ui fluid category search">
+      <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="rechercher un module" (input)="onSearch($event.target.value)">
+        <i class="search icon"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="cards-wrapper">
+    <app-carte-mod-fil *ngFor="let m of Fil.modules | searchFilter:term" [module]="m">
+
+    </app-carte-mod-fil>
+  </div>
+
+</div>

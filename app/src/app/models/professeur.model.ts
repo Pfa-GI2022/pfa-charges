@@ -1,7 +1,5 @@
-import { ActiviteComponent } from "../components/activite/activite.component";
-import { Departement } from "./departement.model";
-import { activitePedagogiques } from "./activite.model";
-
+import { activitePedagogiques } from './activite.model';
+import { Departement } from './departement.model';
 export interface Professeur {
   id: number;
   nom: string;
@@ -10,10 +8,10 @@ export interface Professeur {
   dateNaissance?: Date;
   grade: string;
   filiere?: any;
-  activitePedagogiques?: activitePedagogiques;
   charge?: any;
   mail?: string;
-  depID?:number;
-  filID?:number;
-  departement?: Departement
+  depID?: number;
+  filID?: number;
+  departement?: Departement;
+  activitePedagogiques?: activitePedagogiques[];
 }

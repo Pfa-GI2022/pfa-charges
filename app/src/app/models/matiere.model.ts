@@ -1,8 +1,8 @@
-import { activitePedagogiques } from "./activite.model";
+import { activitePedagogiques } from './activite.model';
 export interface Matiere {
-    id?:number,
-    nom: string,
-    modulId?:number,
-    module?: any,
-    activitePedagogiques?: activitePedagogiques[]
+  id?: number;
+  nom: string;
+  modulID?: number;
+  module?: any;
+  activitePedagogiques?: activitePedagogiques[];
 }

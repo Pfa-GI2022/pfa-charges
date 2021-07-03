@@ -11,6 +11,7 @@ import { ProfesseurService } from '../../services/professeur.service';
 import { Professeur } from 'src/app/models/professeur.model';
 import { Departement } from 'src/app/models/departement.model';
 import { UserService } from 'src/app/services/user.service';
+import { ChargeService } from 'src/app/services/charge.service';
 @Component({
   selector: 'app-create-departement',
   templateUrl: './create-departement.component.html',
@@ -35,7 +36,8 @@ export class CreateDepartementComponent implements OnInit {
     private formBuilder: FormBuilder,
     private departementService: DepartementService,
     private professeurService: ProfesseurService,
-    private userService: UserService
+    private userService: UserService,
+    private ChargeService: ChargeService
   ) {}
 
   onGetAllProfesseurs(): void {
@@ -115,6 +117,10 @@ export class CreateDepartementComponent implements OnInit {
             this.ChefDep.professeur.id
           )
           .subscribe();
+        this.ChargeService.createCharge(
+          {},
+          this.ChefDep.professeur.id
+        ).subscribe();
         this.departementForm.reset({});
         this.alert = true;
       });

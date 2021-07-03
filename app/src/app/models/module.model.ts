@@ -1,4 +1,3 @@
-import { Filiere } from './filiere.model';
 export interface Module {
   nom: string;
   semestre: string;

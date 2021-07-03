@@ -5,10 +5,10 @@ import { Professeur } from '../../models/professeur.model';
 import { Matiere } from "../../models/matiere.model";
 //import { Groupe } from "../../models/groupe.model";
 import { AuthService } from 'src/app/services/auth.service';
-import { ActivatedRoute} from '@angular/router';
+import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
+import { ActivatedRoute } from '@angular/router';
 import { ActiviteService } from 'src/app/services/activite.service';
 import { GroupedObservable } from 'rxjs';
-
 
 @Component({
   selector: 'app-prof-details',
@@ -16,7 +16,6 @@ import { GroupedObservable } from 'rxjs';
   styleUrls: ['./prof-details.component.css'],
 })
 export class ProfDetailsComponent implements OnInit {
-
   @Input() professeur;
   matiere: Matiere;
   //groupe: Groupe;
@@ -30,17 +29,15 @@ export class ProfDetailsComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    // this.onGetProfById();
   }
-
 }
 
-
-  // events
-  /*onGetProfById(id: number) {
+// events
+/*onGetProfById(id: number) {
     this.profService.getProfesseurByID(id).subscribe((data) => {
       console.log(data);
       this.professeur = data;
       console.log(this.professeur.grade);
     });
   }*/
-
