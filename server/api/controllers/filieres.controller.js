@@ -24,6 +24,9 @@ const getAllFilieres = async (req, res, next) => {
       include: [
         {
           model: mod,
+          include: {
+            model: models.matiere,
+          },
         },
         {
           model: professeur,
@@ -46,6 +49,9 @@ const getFiliereByID = async (req, res) => {
       include: [
         {
           model: mod,
+          include: {
+            model: models.matiere,
+          },
         },
         {
           model: professeur,
@@ -53,7 +59,7 @@ const getFiliereByID = async (req, res) => {
       ],
     })
     .then((filiere) => {
-      console.log("Filiere Created Successfully");
+      console.log("Filiere Fetched Successfully");
       res.send(filiere);
     })
     .catch((err) => {
