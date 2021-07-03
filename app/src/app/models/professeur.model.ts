@@ -1,15 +1,17 @@
-import { Departement } from "./departement.model";
+import { activitePedagogiques } from './activite.model';
+import { Departement } from './departement.model';
 export interface Professeur {
   id: number;
   nom: string;
   prenom: string;
   avatar?: string;
   dateNaissance?: Date;
-  grade?: string;
+  grade: string;
   filiere?: any;
   charge?: any;
   mail?: string;
-  depID?:number;
-  filID?:number;
-  departement?: Departement
+  depID?: number;
+  filID?: number;
+  departement?: Departement;
+  activitePedagogiques?: activitePedagogiques[];
 }

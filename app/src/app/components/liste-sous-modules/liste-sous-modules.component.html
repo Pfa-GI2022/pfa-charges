@@ -9,9 +9,9 @@
 
         </div>
         <div class="ui two column grid" style="padding: 25px;">
-          <div class="row" >
+          <div class="row">
             <div class="column" *ngFor="let m of module.matieres">
-              <app-carte-matiere [module] = module [matieres]="m"></app-carte-matiere>
+              <app-carte-matiere [module]=module [matieres]="m"></app-carte-matiere>
             </div>
           </div>
         </div>
@@ -22,7 +22,7 @@
       
 
     </div>
-  
+
 
 
     <a class="add-btn" routerLink="newSousModule" data-tooltip="ajouter une matiere" data-position="left center">

@@ -45,6 +45,11 @@ import { AdminDepComponent } from './components/admin-dep/admin-dep.component';
 import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
 import { DepCardComponent } from './components/dep-card/dep-card.component';
 import { FilCardComponent } from './components/fil-card/fil-card.component';
+import { FiliereComponent } from './components/filiere/filiere.component';
+import { ListeModFilComponent } from './components/liste-mod-fil/liste-mod-fil.component';
+import { CarteModFilComponent } from './components/carte-mod-fil/carte-mod-fil.component';
+import { ListeSousModFilComponent } from './components/liste-sous-mod-fil/liste-sous-mod-fil.component';
+import { CarteMatiereFilComponent } from './components/carte-matiere-fil/carte-matiere-fil.component';
 import { AffectationComponent } from './components/affectation/affectation.component';
 import { AffectationCarteComponent } from './components/affectation-carte/affectation-carte.component';
 //just for test
@@ -86,6 +91,11 @@ import { AffectationCarteComponent } from './components/affectation-carte/affect
     AdminFilComponent,
     DepCardComponent,
     FilCardComponent,
+    FiliereComponent,
+    ListeModFilComponent,
+    CarteModFilComponent,
+    ListeSousModFilComponent,
+    CarteMatiereFilComponent,
     AffectationComponent,
     AffectationCarteComponent,
   ],
@@ -102,6 +112,6 @@ import { AffectationCarteComponent } from './components/affectation-carte/affect
   ],
   providers: [FiliereService],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

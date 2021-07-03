@@ -39,7 +39,6 @@ export class ListeModulesComponent implements OnInit {
   onGetAllModules(): void {
     this.moduleService.getAllModules().subscribe((data) => {
       this.modules = data;
-      console.log(data);
     });
   }
 
@@ -52,7 +51,6 @@ export class ListeModulesComponent implements OnInit {
   }
 
   onSelection(option: any) {
-    console.log(option);
     this.selectedOption = option;
   }
   toggleOpen() {
@@ -60,14 +58,10 @@ export class ListeModulesComponent implements OnInit {
   }
   onGetOptions() {
     this.filService.getAllFilieres().subscribe((data) => {
-      console.log(data);
       this.Filieres = data;
       this.Filieres.forEach((f) => {
         this.options.push({ label: f.nom, value: f.nom });
-        console.log(this.options);
       });
     });
-
-    console.log(this.options);
   }
 }

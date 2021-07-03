@@ -1,7 +1,24 @@
-<div class="container" style="height: 90vh; padding: 5px; display: flex;">
-  <app-profile-card [Prof]="Prof">
+<div>
+  <app-profile-card [professeur]="professeur">
   </app-profile-card>
-  <!-- Layout -->
+  <div>
+    
+  
+   <table class="ui celled table">
+    <thead>
+      <tr><th>Matieres</th>
+      <th>Groupes</th>
+      <th>Volume Horaire</th>
+    </tr></thead>
+    <tbody>
+      <tr *ngFor="let a of activite">
+        <td data-label="Name">{{a.matiere.nom}} </td>
+        <td data-label="Age">{{a.groupe.nom}}</td>
+        <td data-label="Job"> {{a.volumeHoraire}} </td>
+      </tr>
+    </tbody>
+  </table>
+ 
 
 
 </div>
