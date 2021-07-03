@@ -1,3 +1,5 @@
+<ng-container *ngIf="activite.length>0 ">
+
 <h1>{{matiere.nom}}</h1>
 <table class="ui celled table">
   <thead>
@@ -9,10 +11,14 @@
   </thead>
   <tbody>
     <tr *ngFor="let a of activite">
-      <td data-label="Name">{{a.professeur.nom}}</td>
+      <td data-label="Name" *ngIf="a.professeur; else elseBlock">{{a.professeur.nom}} </td>
+      <ng-template #elseBlock>
+        <td data-label="name"> <a [routerLink]="[Route , a.id]">affecter un prof</a></td>
+      </ng-template>
       <td data-label="Age">{{a.groupe.nom}}</td>
       <td data-label="Job">{{a.volumeHoraire}}h</td>
     </tr>
 
   </tbody>
 </table>
+</ng-container>

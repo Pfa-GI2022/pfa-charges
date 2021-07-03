@@ -40,11 +40,13 @@ import { RoleFilterPipe } from './pipes/role-filter.pipe';
 import { CreateDepartementComponent } from './components/create-departement/create-departement.component';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
 import { FiliereFilterModulesPipe } from './pipes/filiere-filter-modules.pipe';
+import { CreateMatiereComponent } from './components/create-matiere/create-matiere.component';
 import { AdminDepComponent } from './components/admin-dep/admin-dep.component';
 import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
 import { DepCardComponent } from './components/dep-card/dep-card.component';
 import { FilCardComponent } from './components/fil-card/fil-card.component';
-import { ProfesseurDetailsComponent } from './components/professeur-details/professeur-details.component';
+import { AffectationComponent } from './components/affectation/affectation.component';
+import { AffectationCarteComponent } from './components/affectation-carte/affectation-carte.component';
 //just for test
 
 @NgModule({
@@ -76,6 +78,7 @@ import { ProfesseurDetailsComponent } from './components/professeur-details/prof
     FiliereFilterModulesPipe,
     AddUserComponent,
     UserSearchPipe,
+    CreateMatiereComponent,
     UserCardComponent,
     UserFilterPipe,
     RoleFilterPipe,
@@ -83,7 +86,8 @@ import { ProfesseurDetailsComponent } from './components/professeur-details/prof
     AdminFilComponent,
     DepCardComponent,
     FilCardComponent,
-    ProfesseurDetailsComponent,
+    AffectationComponent,
+    AffectationCarteComponent,
   ],
   imports: [
     BrowserModule,

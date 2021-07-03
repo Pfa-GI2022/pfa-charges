@@ -23,6 +23,9 @@ const getAllModules = async (req, res, next) => {
       include: [
         {
           model: matiere,
+          include:{
+            model: models.activitePedagogique,
+          }
         },
         {
           model: filiere,
@@ -50,6 +53,9 @@ const getModuleByID = async (req, res) => {
       include: [
         {
           model: matiere,
+           include:{
+            model: models.activitePedagogique,
+          }
         },
         {
           model: filiere,
