@@ -5,7 +5,7 @@ export interface Professeur {
   prenom: string;
   avatar?: string;
   dateNaissance?: Date;
-  grade?: string;
+  grade: string;
   filiere?: any;
   charge?: any;
   mail?: string;

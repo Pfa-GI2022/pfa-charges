@@ -25,6 +25,7 @@ import { AdminDepComponent } from './components/admin-dep/admin-dep.component';
 import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
 import { Departement } from './models/departement.model';
 import { DepartementResolverService } from './services/departement-resolver.service';
+import { ProfesseurDetailsComponent } from './components/professeur-details/professeur-details.component';
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
@@ -36,13 +37,14 @@ const routes: Routes = [
   {
     path: 'departement',
     component: DepartementComponent,
-    canActivate: [RolesGuard],
-    data: {
-      expectedRole: role.chefDeDepartement,
-    },
+   // canActivate: [RolesGuard],
+    //data: {
+      //expectedRole: role.chefDeDepartement,
+    //},
     children: [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newModule', component: CreateModulesComponent },
+      { path: 'professeurDetails', component: ProfesseurDetailsComponent },
       { path: 'newProf', component: CreateProfComponent },
       { path: 'newFiliere', component: CreateFiliereComponent },
       { path: 'newDepartement', component: CreateDepartementComponent },
