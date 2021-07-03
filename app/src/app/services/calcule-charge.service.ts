@@ -48,25 +48,19 @@ export class CalculeChargeService {
   getV;
   SetChargeProf(Prof: Professeur) {
     let Charge = 0;
-    console.log(Prof.activitePedagogiques);
     Prof.activitePedagogiques.forEach((A) => {
       if (A.nature == 'cours') {
         Charge += 3.2 * A.volumeHoraire;
-        console.log(`Charge C: ${Charge}`);
       }
 
       if (A.nature == 'tp') {
         Charge += 1.8 * A.volumeHoraire;
-        console.log(`Charge TD: ${Charge}`);
       }
 
       if (A.nature == 'td') {
         Charge += 0.8 * A.volumeHoraire;
-        console.log(`Charge TP: ${Charge}`);
       }
     });
-    console.log(Charge);
-    console.log(Prof.id);
     const host = environment.host;
     console.log('Add Charge');
     return this.ChargeService.updateCharge(Charge, Prof.id).subscribe();
