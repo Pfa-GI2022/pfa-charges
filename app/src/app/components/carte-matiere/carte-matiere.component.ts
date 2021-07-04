@@ -40,10 +40,6 @@ export class CarteMatiereComponent implements OnInit {
   }
 
   getToActivity() {
-    console.log('--------------------------------------------------------');
-    console.log('--------------------------------------------------------');
-    console.log('--------------------------------------------------------');
-    console.log('--------------------------------------------------------');
     document.getElementById('activity').scrollIntoView({ behavior: 'smooth' });
   }
 }

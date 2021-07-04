@@ -1,8 +1,8 @@
  <div class="ui card" [ngClass]="{'charge-atteinte': professeur.charge.chargeTotal >= 180,
                 'charge-presque': professeur.charge.chargeTotal < 180 && professeur.charge.chargeTotal>= 120,
-                'charge-non-atteinte': professeur.charge.chargeTotal < 120}" style="left:235px;width:70%;">
+                'charge-non-atteinte': professeur.charge.chargeTotal < 120}" style="left:150px;width:50%;">
    <div class="image">
-     <img src="https://picsum.photos/300/200">
+     <img src="https://publons.com/media/thumbs/academic/photos/758b7e29-526e-4847-9e26-96dbccf50203.png.200x200_q95_crop_detail_upscale.png">
      
    </div>
    
@@ -34,18 +34,25 @@
        </div>
      </div>
    </div>
-   <table class="ui celled table" style="left :100%px">
-    <thead>
-      <tr><th>Matieres</th>
-      <th>Groupes</th>
-      <th>Volume Horaire</th>
-    </tr></thead>
-    <tbody>
-  <!--    <tr *ngFor="let a of activite">
-        <td data-label="Matieres">{{a.matiere.nom}} </td>
-        <td data-label="Groupes">{{a.groupe.nom}}</td>
-        <td data-label="Volume"> {{a.volumeHoraire}} </td>
-      </tr>-->
-    </tbody>
-  </table>
+
+  <div>
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>Matieres</th>
+          <th>Groupes</th>
+          <th>Nature</th>
+          <th>Volume Horaire</th>
+        </tr>
+      </thead>
+      <tbody>
+           <tr *ngFor="let a of activites">
+          <td data-label="Matieres">{{a.matiere.nom}} </td>
+          <td data-label="Groupes">{{a.groupe.nom}}</td>
+          <td data-label="Volume Horaire"> {{a.nature | uppercase}} </td>
+          <td data-label="Volume Horaire"> {{a.volumeHoraire}} </td>
+        </tr>
+      </tbody>
+    </table>
+ </div>
  </div>

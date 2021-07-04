@@ -45,7 +45,6 @@ export class CreateDepartementComponent implements OnInit {
       this.professeurs = data;
       this.professeurs.forEach((prof) => {
         this.list.push(prof.nom);
-        console.log(prof.nom);
       });
     });
   }

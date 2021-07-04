@@ -35,7 +35,6 @@ export class CreateModulesComponent implements OnInit {
   onGetAllFilieres(): void {
     this.filiereService.getAllFilieres().subscribe(data => {
       this.filiere = data;
-      console.log(data);
     });
   }
 
@@ -65,7 +64,6 @@ export class CreateModulesComponent implements OnInit {
     newModule.depID = this.depID;
     this.moduleService.createModule(newModule).subscribe(
       response => {
-        console.log(response);
         this.moduleForm.reset({});
         this.alert = true;
       },
@@ -83,7 +81,6 @@ export class CreateModulesComponent implements OnInit {
   onSelection(option: any) {
     this.selected = option.nom;
     this.fildID = option.id;
-    console.log(this.fildID)
   }
 
 }

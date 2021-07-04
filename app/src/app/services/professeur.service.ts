@@ -27,13 +27,12 @@ export class ProfesseurService {
 
   createProfesseur(body: Professeur) {
     const host = environment.host;
-    console.log('create prof');
+   
     return this.http.post(`${host}/professeurs`, body);
   }
 
   updateProfesseur(body: any, id: number) {
     const host = environment.host;
-    console.log('update prof');
     return this.http.put(`${host}/professeurs/${id}`, body);
   }
 }

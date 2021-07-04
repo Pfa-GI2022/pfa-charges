@@ -18,12 +18,10 @@ export class TpComponent implements OnInit {
     this.route.parent.params.subscribe(params => {
       this.matiereService.getMatiereByID(params.id2).subscribe(data => {
         this.matiere = data;
-        console.log(data);
         this.matiere.activitePedagogiques.forEach(m => {
           this.activiteService.getActivityByID(m.id).subscribe(data => {
             if (m.nature == "tp") {
               this.activite.push(data) ;
-              console.log(this.activite.length);
             }
           });
         });

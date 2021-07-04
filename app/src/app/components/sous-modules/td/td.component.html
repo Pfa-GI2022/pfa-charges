@@ -1,4 +1,4 @@
-<ng-container *ngIf="activite.length > 0">
+<ng-container *ngIf="activite.length > 0; else elseBlock">
 <h1>{{matiere.nom}}</h1>
 <table class="ui celled table">
     <thead>
@@ -11,7 +11,7 @@
 
         <td data-label="Name" *ngIf="a.professeur; else elseBlock">{{a.professeur.nom | uppercase}} {{a.professeur.prenom | titlecase}} </td>
         <ng-template #elseBlock>
-        <td data-label="name"> <a [routerLink]="[Route , a.id]">affecter un prof</a></td>
+        <td data-label="name"> <a [routerLink]="[Route , a.id]">Affecter un prof</a></td>
 
         </ng-template>
 
@@ -22,3 +22,6 @@
     </tbody>
   </table>
 </ng-container>
+<ng-template #elseBlock>
+  Cette matiere ne contient pas de TD
+</ng-template>

@@ -18,7 +18,6 @@ export class AdminFilComponent implements OnInit {
   onGetAllFilieres(): void {
     this.FilService.getAllFilieres().subscribe((data) => {
       this.Filieres = data;
-      console.log(this.Filieres);
     });
   }
 }

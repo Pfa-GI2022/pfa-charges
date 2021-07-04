@@ -12,19 +12,18 @@ import { activitePedagogiques } from 'src/app/models/activite.model';
 })
 export class TdComponent implements OnInit {
 
+  existe = true;
   matiere: Matiere;
   activite=[];
   constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService) {
     this.route.parent.params.subscribe(params => {
       this.matiereService.getMatiereByID(params.id2).subscribe(data => {
         this.matiere = data;
-        console.log(data);
         this.matiere.activitePedagogiques.forEach(m => {
           this.activiteService.getActivityByID(m.id).subscribe(data => {
             if (m.nature == "td") {
               this.activite.push(data) ;
-              console.log(data);
-              console.log(this.activite.length);
+              
             }
           });
         });
