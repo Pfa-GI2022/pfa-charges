@@ -52,6 +52,9 @@ const getAllProfs = async (req, res, next) => {
         },
         {
           model: activite,
+          include:{
+            model:models.matiere
+          }
         },
       ],
     });
@@ -79,6 +82,9 @@ const getProfById = async (req, res, next) => {
         },
         {
           model: activite,
+          include:{
+            model:models.matiere
+          }
         },
       ],
     });

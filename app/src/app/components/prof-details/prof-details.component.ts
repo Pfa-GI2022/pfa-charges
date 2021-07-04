@@ -9,6 +9,7 @@ import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
 import { ActivatedRoute } from '@angular/router';
 import { ActiviteService } from 'src/app/services/activite.service';
 import { GroupedObservable } from 'rxjs';
+import { numberFormat } from 'highcharts';
 
 @Component({
   selector: 'app-prof-details',
@@ -16,11 +17,12 @@ import { GroupedObservable } from 'rxjs';
   styleUrls: ['./prof-details.component.css'],
 })
 export class ProfDetailsComponent implements OnInit {
-  @Input() professeur;
+  professeur : Professeur;
   matiere: Matiere;
   activite:[];
   //groupe: Groupe;
   constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService,private professeurService: ProfesseurService) {
+    
     /* this.matiereService.getMatiereByID(this.professeur.activitePedagogiques.matiereID).subscribe(data=>{
       this.matiere = data;
       console.log(data);
@@ -29,15 +31,28 @@ export class ProfDetailsComponent implements OnInit {
 }
 
   ngOnInit(): void {
-    // this.onGetProfById();
+    // console.log("prrrrrrrrrrrrrrrrrroooooooooooooofffffff");
+    // this.route.params.subscribe(params => {
+    //   // this.onGetProfById(params.id);
+    //   console.log(params.id)
+    // })
+
+    this.onGetProfById();    
   }
-  onGetProfById(id: number) {
-    this.professeurService.getProfesseurByID(id).subscribe((data) => {
-      console.log(data);
-      this.professeur = data;
-      console.log(this.professeur.grade);
-    });
+
+  onGetProfById() {
+    
+    this.route.params.subscribe(params => {
+      this.professeurService.getProfesseurByID(params.id).subscribe((data) => {
+        console.log("DATA");
+        console.log(data);
+        this.professeur = data;
+        console.log(this.professeur);
+      });
+    })
+    
   }
+
 }
 
 

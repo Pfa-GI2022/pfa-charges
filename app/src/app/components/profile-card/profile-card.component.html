@@ -1,6 +1,5 @@
- <div class="ui card" [ngClass]="{'charge-atteinte': professeur.charge.chargeTotal >= 180,
-                'charge-presque': professeur.charge.chargeTotal < 180 && professeur.charge.chargeTotal>= 120,
-                'charge-non-atteinte': professeur.charge.chargeTotal < 120}" style="height:100%;">
+ <div class="ui card" 
+  style="left: 235px;width:70%">
    <div class="image">
      <img src="https://picsum.photos/300/200">
      
@@ -33,4 +32,23 @@
        </div>
      </div>
    </div>
+
+  <div>
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>Matieres</th>
+          <th>Groupes</th>
+          <th>Volume Horaire</th>
+        </tr>
+      </thead>
+      <tbody>
+           <tr *ngFor="let a of professeur.activitePedagogiques">
+          <td data-label="Matieres">{{a.matiere.nom}} </td>
+          <!-- <td data-label="Groupes">{{a.groupe.nom}}</td> -->
+          <td data-label="Volume Horaire"> {{a.volumeHoraire}} </td>
+        </tr>
+      </tbody>
+    </table>
+ </div>
  </div>
