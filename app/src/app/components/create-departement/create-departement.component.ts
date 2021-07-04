@@ -105,7 +105,7 @@ export class CreateDepartementComponent implements OnInit {
   onSubmit() {
     this.PersonalData.value.email = this.AccountData.value.email;
     this.departementForm.value.professeur = this.PersonalData.value;
-
+    this.AccountData.value.roles = ['chefDeDepartement'];
     this.departementService
       .createDepartement(this.departementForm.value)
       .subscribe((response) => {
