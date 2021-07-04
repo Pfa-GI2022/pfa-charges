@@ -1,19 +1,30 @@
-<div class="ui container" style="width:60%;">
-  <div class="ui attached message">
-    <div class="ui huge header">
+<div class="ui container userform" style="width:50%;margin: 35px 15px;">
+  <div class="ui attached message" style="background-color:#fff">
+    <h2 class="ui huge header">
       Ajouter un nouveau utilisateur
-    </div>
+      <div class="sub header">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere delectus</div>
+    </h2>
     <br>
   </div>
   <form [formGroup]="UserForm" class="ui form" (ngSubmit)="onSubmit()">
-    <div [formGroup]="AccountData">
-      <app-input [control]="AccountData.get('username')" label="Username" type="text"></app-input>
-      <app-input [control]="AccountData.get('password')" label="Password" type="password"></app-input>
+    <div class="AccountData" [formGroup]="AccountData">
+      <h4 class="ui dividing large header" style="margin-bottom: 25px;">Informations Du Compte</h4>
+
+      <app-input [control]="AccountData.get('username')" label="Nom d'Utilisateur" type="text"></app-input>
+      <app-input [control]="AccountData.get('password')" label="Mot De Passe" type="password"></app-input>
       <app-input [control]="AccountData.get('email')" label="Email" type="text"></app-input>
     </div>
-    <div [formGroup]="PersonalData">
-      <app-input [control]="PersonalData.get('nom')" label="Nom" type="text"></app-input>
-      <app-input [control]="PersonalData.get('prenom')" label="Prenom" type="text"></app-input>
+    <br>
+    <div class="PersonalData" [formGroup]="PersonalData">
+      <h4 class="ui dividing large header" style="margin-bottom: 25px;">Informations Personnelles</h4>
+      <div class="two fields">
+        <div class="field">
+          <app-input [control]="PersonalData.get('nom')" label="Nom" type="text"></app-input>
+        </div>
+        <div class="field">
+          <app-input [control]="PersonalData.get('prenom')" label="Prenom" type="text"></app-input>
+        </div>
+      </div>
       <app-input [control]="PersonalData.get('grade')" label="Grade" type="text"></app-input>
       <app-input [control]="PersonalData.get('dateNaissance')" label="Date de Naissance" type="date"></app-input>
       <div class="field">
@@ -26,7 +37,14 @@
     </div>
 
     <br>
-    <button [disabled]="UserForm.invalid" type="submit" class="ui submit button">submit</button>
+
+    <button [disabled]="UserForm.invalid" type="submit" class="ui submit primary right floated animated button">
+      <div class="visible content">Submit</div>
+      <div class="hidden content">
+        <i class="right arrow icon"></i>
+      </div>
+    </button>
+    <br>
   </form>
   <div class="ui success message" *ngIf="alert">
     <i class="close icon" (click)="closeAlert()"></i>
@@ -35,4 +53,11 @@
     </div>
     <p>You may now log-in with the username you have chosen</p>
   </div>
+  <!-- <div class="ui negative message" *ngIf="alert">
+    <i class="close icon" (click)="closeAlert()"></i>
+    <div class="header">
+      Username Or Email Already in Use
+    </div>
+    <p>Please pick another Username or email address</p>
+  </div> -->
 </div>
