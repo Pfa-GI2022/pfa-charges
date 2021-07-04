@@ -53,15 +53,12 @@ export class CreateProfComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.profForm.value);
 
     let newDep = this.profForm.value;
     //newDep.depID = this.depID;
-    console.log(newDep)
     this.professeurService
       .createProfesseur(this.profForm.value)
       .subscribe((response) => {
-        console.log(response);
         this.profForm.reset({});
         this.alert = true;
       });

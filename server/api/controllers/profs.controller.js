@@ -52,12 +52,14 @@ const getAllProfs = async (req, res, next) => {
         },
         {
           model: activite,
-          include: [{
-            model: models.matiere,
-            
-          },{
-            model: models.groupe,
-          }]
+          include: [
+            {
+              model: models.matiere,
+            },
+            {
+              model: models.groupe,
+            },
+          ],
         },
       ],
     });
@@ -85,10 +87,14 @@ const getProfById = async (req, res, next) => {
         },
         {
           model: activite,
-          include: [{
-            model: models.matiere,
-            
-          },{model: models.groupe,}]
+          include: [
+            {
+              model: models.matiere,
+            },
+            {
+              model: models.groupe,
+            },
+          ],
         },
       ],
     });

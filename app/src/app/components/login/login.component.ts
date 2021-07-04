@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
     this.auhService.login(this.loginForm.value).subscribe(
       (data) => {
         this.tokenStorage.saveToken(data.accessToken);

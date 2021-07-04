@@ -29,7 +29,6 @@ export class ListeModFilComponent implements OnInit {
     this.FilService.getFiliereById(1).subscribe((data) => {
       this.Fil = data;
       this.Mod = this.Fil.modules;
-      console.log(this.Mod);
     });
   }
   onSearch(term: string): void {

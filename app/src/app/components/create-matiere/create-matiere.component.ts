@@ -65,13 +65,11 @@ export class CreateMatiereComponent implements OnInit {
           },
           professeurID : null
         }
-        console.log(activite)
         this.activiteService.createActivity(activite).subscribe(data => console.log(data)
         
         )
       }
     }else {
-      console.log("<0")
     }
 
     if(this.matiereForm.value.VHTp > 0){
@@ -85,7 +83,6 @@ export class CreateMatiereComponent implements OnInit {
           },
           professeurID : null
         }
-        console.log(activite)
         this.activiteService.createActivity(activite).subscribe(data => console.log(data)
         )
       }

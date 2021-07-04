@@ -28,7 +28,6 @@ export class MatiereService {
 
   createMatiere(body: Matiere) {
     const host = environment.host;
-    console.log('create matiere')
     return this.http.post(`${host}/matieres`, body);
 
   }

@@ -24,8 +24,6 @@ export class ProfileCardComponent implements OnInit {
         
   }
 
-  onGetProfById(id: number) {
-  }
 
 
 

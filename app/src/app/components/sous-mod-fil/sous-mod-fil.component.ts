@@ -15,10 +15,8 @@ export class SousModFilComponent implements OnInit {
     private matiereService: MatiereService
   ) {
     this.route.params.subscribe((params) => {
-      console.log(this.route);
       this.matiereService.getMatiereByID(params.id2).subscribe((data) => {
         this.matiere = data;
-        console.log(data);
       });
     });
   }

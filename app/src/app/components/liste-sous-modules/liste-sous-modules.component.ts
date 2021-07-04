@@ -35,8 +35,7 @@ export class ListeSousModulesComponent implements OnInit {
         });
       });
     });
-    console.log('HERE');
-    console.log(this.matieres);
+    
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         this.currentUrl =

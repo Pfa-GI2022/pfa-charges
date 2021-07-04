@@ -13,12 +13,10 @@ export class ChargeService {
 
   createCharge(body: Charge, ProfID: number) {
     const host = environment.host;
-    console.log('create charge');
     return this.http.post(`${host}/professeurs/${ProfID}/charge`, body);
   }
   updateCharge(chargeTotal: number, ProfID: number) {
     const host = environment.host;
-    console.log('update charge');
     return this.http.put(`${host}/professeurs/${ProfID}/charge`, {
       chargeTotal: chargeTotal,
     });

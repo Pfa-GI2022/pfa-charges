@@ -44,7 +44,6 @@ export class CreateFiliereComponent implements OnInit {
   onGetAllProfesseurs(): void {
     this.professeurService.getAllProfesseurs().subscribe(data => {
       this.professeurs = data;
-      console.log(data);
     });
   }
   
@@ -53,7 +52,6 @@ export class CreateFiliereComponent implements OnInit {
     newFiliere.filID = this.fildID;
     this.filiereService.createFiliere(newFiliere).subscribe(
       response => {
-        console.log(response);
         this.filiereForm.reset({});
         this.alert = true;
       },
@@ -74,7 +72,6 @@ export class CreateFiliereComponent implements OnInit {
     this.selectedProfesseur = p;
     this.inputItem  = p.nom;
     this.fildID = p.id;
-    console.log(this.fildID);
     this.hide = true;
     
   }

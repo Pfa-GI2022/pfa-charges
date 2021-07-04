@@ -26,7 +26,6 @@ export class ListeUsersComponent implements OnInit {
   onGetAllUsers(): void {
     this.UserService.getAllUsers().subscribe((data) => {
       this.Users = data;
-      console.log(this.Users);
     });
   }
   onSearch(term: string): void {
@@ -35,7 +34,6 @@ export class ListeUsersComponent implements OnInit {
 
   onSelection(option: any) {
     this.selectedOption = option;
-    console.log(this.selectedOption);
   }
 
   toggleOpen() {

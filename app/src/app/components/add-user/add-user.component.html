@@ -1,5 +1,5 @@
 <div class="ui container userform" style="width:50%;margin: 35px 15px;">
-  <div class="ui attached message" style="background-color:#013243">
+  <div class="ui attached message" style="background-color:#013243;border-radius: 3px;">
     <h2 class="ui huge header" style="color:#fff;">
       Ajouter un nouveau utilisateur
       <div class="sub header" style="color: #02e079;margin: 20px 0;">Lorem ipsum dolor sit amet consectetur adipisicing
@@ -30,9 +30,9 @@
       <app-input [control]="PersonalData.get('grade')" label="Grade" type="text"></app-input>
       <app-input [control]="PersonalData.get('dateNaissance')" label="Date de Naissance" type="date"></app-input>
       <div class="field">
-        <label class="label">Choose a Dep:</label>
+        <label class="label">Choisir un departement</label>
         <select class="ui dropdown" (change)="changeDep($event)" formControlName="depID">
-          <option selected disabled>Choose your Dep</option>
+          <option selected disabled>Choisir votre Departement</option>
           <option *ngFor="let dep of Deps" [ngValue]="dep.id">{{dep.nom}}</option>
         </select>
       </div>

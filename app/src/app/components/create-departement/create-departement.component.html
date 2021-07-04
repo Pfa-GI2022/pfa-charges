@@ -1,14 +1,15 @@
 <div class="ui container DepForm" style="width:50%;margin:35px 0;">
-  <div class="ui attached message" style="background-color:#fff">
-    <h2 class="ui huge header">
+  <div class="ui attached message" style="background-color:#013243;border-radius: 3px;">
+    <h2 class="ui huge header" style="color:#fff;">
       Ajouter un nouveau Departement
-      <div class="sub header">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere delectus</div>
+      <div class="sub header" style="color: #02e079;margin: 20px 0;">Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Quas facere delectus</div>
     </h2>
     <br>
   </div>
   <br />
   <form [formGroup]="departementForm" class="ui form" (ngSubmit)="onSubmit()">
-    <h4 class="ui dividing large header" style="margin-bottom: 25px;">Infos Du Departement</h4>
+    <h4 class="ui dividing large header" style="margin-bottom: 25px;">Informations Du Departement</h4>
     <app-input [control]="departementForm.get('nom')" label="Nom Du Departement" type="text"></app-input>
     <br />
 
@@ -37,7 +38,7 @@
 
     <br>
     <button [disabled]="departementForm.invalid" type="submit" class="ui submit primary right floated animated button">
-      <div class="visible content">Submit</div>
+      <div class="visible content">Valider</div>
       <div class="hidden content">
         <i class="right arrow icon"></i>
       </div>

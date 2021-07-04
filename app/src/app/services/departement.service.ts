@@ -27,7 +27,6 @@ export class DepartementService {
 
   createDepartement(body: Departement) {
     const host = environment.host;
-    console.log('create departement');
     return this.http.post(`${host}/departements`, body);
   }
 }

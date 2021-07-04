@@ -11,14 +11,14 @@
   <app-input [control]="profForm.get('grade')" label="Grade" type="text"></app-input>
   <app-input [control]="profForm.get('dateNaissance')" label="Date de Naissance" type="date"></app-input>
   <br>
-  <button [disabled]="profForm.invalid" type="submit" class="ui submit button">submit</button>
+  <button [disabled]="profForm.invalid" type="submit" class="ui submit button">Valider</button>
 </form>
 <div class="ui success message" *ngIf="alert"> 
   <i class="close icon" (click)="closeAlert()"></i>
   <div class="header">
-    Your user registration was successful.
+    Vous avez ajoute un nouveau professeur
   </div>
-  <p>You may now log-in with the username you have chosen</p>
+  <p>Vous pouvez maintenat vous connecter sous le username que vous venez de choisir</p>
 </div>
 </div>
 

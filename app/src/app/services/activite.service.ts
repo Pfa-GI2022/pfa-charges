@@ -27,7 +27,6 @@ deleteActivityByid(id: number){
 
   createActivity(body: activitePedagogiques){
   const host = environment.host;
-  console.log('Create activity')
     return this.http.post(`${host}/activitepedagogiques`, body);
 }
 
