@@ -65,7 +65,10 @@ export class CalculeChargeService {
     });
     return Charge;
   }
-  SetChargeProf(Charge: number, Prof: Professeur) {
-    return this.ChargeService.updateCharge(Charge, Prof.id).subscribe();
+  SetChargeProf(Prof: Professeur) {
+    return this.ChargeService.updateCharge(
+      this.GetChargeProf(Prof),
+      Prof.id
+    ).subscribe();
   }
 }
