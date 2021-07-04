@@ -42,10 +42,10 @@ const routes: Routes = [
   {
     path: 'departement',
     component: DepartementComponent,
-  //    canActivate: [RolesGuard],
-    //   resolve : {
-    //     Departement : DepartementResolverService
-    //   },
+     canActivate: [RolesGuard],
+      resolve : {
+        Departement : DepartementResolverService
+      },
      data: {
        expectedRole: role.chefDeDepartement
      },
@@ -97,6 +97,7 @@ const routes: Routes = [
     },
     component: AdminComponent,
     children: [
+      { path: '', component: ListeUsersComponent },
       { path: 'users', component: ListeUsersComponent },
       { path: 'adduser', component: AddUserComponent },
       { path: 'departement', component: AdminDepComponent },

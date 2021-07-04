@@ -1,0 +1,15 @@
+a{
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    color : #013243;
+    border : 1px solid #013243;
+}
+
+a:hover{
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    color : #eee;
+    background-color: #013243;
+}

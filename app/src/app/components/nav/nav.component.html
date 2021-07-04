@@ -2,17 +2,15 @@
   <div>
     <button class="togglebtn" onclick="toggleNav()">&#9776;</button>
     <span>LOGO</span>
-    
   </div>
 
-  <!-- <h3>Departement : {{depName}}</h3> -->
+  
+  <h3>{{title}}</h3>
   
   <app-logout></app-logout>
 </div>
 <div id="mySidebar" class="sidebar">
-       <a routerLink="profs">Liste des Profs</a>
-       <a routerLink="modules">Liste des modules</a>
-       <a routerLink="profs">infos chefDep</a>
+      <a *ngFor="let l of links" routerLink={{l.value}}>{{l.key}}</a>
 </div>
 
 
