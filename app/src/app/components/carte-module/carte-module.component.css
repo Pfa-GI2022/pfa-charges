@@ -1,8 +1,9 @@
-.ui.cards { 
+/* .ui.cards { 
     margin:20px;
      display:grid;
      grid-template-columns: repeat(4 , 1fr);
-}
-.ui.card{
+} */
+/* .card{
     margin: 0;
-}
+    width: 100%;
+} */

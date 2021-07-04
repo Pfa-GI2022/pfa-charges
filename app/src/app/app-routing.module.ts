@@ -30,7 +30,6 @@ import { FiliereComponent } from './components/filiere/filiere.component';
 import { ListeModFilComponent } from './components/liste-mod-fil/liste-mod-fil.component';
 import { ListeSousModFilComponent } from './components/liste-sous-mod-fil/liste-sous-mod-fil.component';
 
-import { ProfesseurDetailsComponent } from './components/professeur-details/professeur-details.component';
 import { AffectationComponent } from './components/affectation/affectation.component';
 /*la bonne pratique pour routing !!*/
 
@@ -43,13 +42,13 @@ const routes: Routes = [
   {
     path: 'departement',
     component: DepartementComponent,
-    //   canActivate: [RolesGuard],
+  //    canActivate: [RolesGuard],
     //   resolve : {
     //     Departement : DepartementResolverService
     //   },
-    //  data: {
-    //    expectedRole: role.chefDeDepartement
-    //  },
+     data: {
+       expectedRole: role.chefDeDepartement
+     },
     children: [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newModule', component: CreateModulesComponent },
