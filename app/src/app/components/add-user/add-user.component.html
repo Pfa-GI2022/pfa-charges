@@ -30,9 +30,9 @@
       <app-input [control]="PersonalData.get('grade')" label="Grade" type="text"></app-input>
       <app-input [control]="PersonalData.get('dateNaissance')" label="Date de Naissance" type="date"></app-input>
       <div class="field">
-        <label class="label">Choose a Dep:</label>
+        <label class="label">Choisir un departement</label>
         <select class="ui dropdown" (change)="changeDep($event)" formControlName="depID">
-          <option selected disabled>Choose your Dep</option>
+          <option selected disabled>Choisir votre Departement</option>
           <option *ngFor="let dep of Deps" [ngValue]="dep.id">{{dep.nom}}</option>
         </select>
       </div>

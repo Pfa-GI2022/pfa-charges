@@ -23,10 +23,10 @@ export class ProfDetailsComponent implements OnInit {
     //groupe: Groupe;
   constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService,private professeurService: ProfesseurService) {
     
-/*
+       /*
      this.matiereService.getMatiereByID(this.professeur.activitePedagogiques.matiereID).subscribe(data=>{
       this.matiere = data;
-      console.log(data);
+      
 
      });*/
     }
@@ -36,9 +36,9 @@ export class ProfDetailsComponent implements OnInit {
   }
   onGetProfById(id: number) {
     this.professeurService.getProfesseurByID(id).subscribe((data) => {
-      console.log(data);
+      
       this.professeur = data;
-      console.log(this.professeur.grade);
+      
     });
   }
 }

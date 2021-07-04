@@ -11,7 +11,7 @@
 
         <td data-label="Name" *ngIf="a.professeur; else elseBlock">{{a.professeur.nom | uppercase}} {{a.professeur.prenom | titlecase}} </td>
         <ng-template #elseBlock>
-        <td data-label="name"> <a [routerLink]="[Route , a.id]">affecter un prof</a></td>
+        <td data-label="name"> <a [routerLink]="[Route , a.id]">Affecter un prof</a></td>
 
         </ng-template>
 

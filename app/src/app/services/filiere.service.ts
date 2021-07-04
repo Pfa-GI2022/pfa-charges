@@ -24,7 +24,6 @@ export class FiliereService {
 
   createFiliere(body: Filiere) {
     const host = environment.host;
-    console.log('create filiere');
     return this.http.post(`${host}/filieres`, body);
   }
 }

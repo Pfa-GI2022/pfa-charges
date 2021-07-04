@@ -13,7 +13,6 @@ export class DepartementResolverService implements Resolve<Departement>{
   constructor(private departementService:DepartementService,private tokenStorage:TokenStorageService) { 
     if(this.tokenStorage.getUser()){
       this.depID = this.tokenStorage.getUser().accountOwner.depID;
-      console.log('resolver depID',this.depID)
     }
   }
 

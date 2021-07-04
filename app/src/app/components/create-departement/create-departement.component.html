@@ -9,7 +9,7 @@
   </div>
   <br />
   <form [formGroup]="departementForm" class="ui form" (ngSubmit)="onSubmit()">
-    <h4 class="ui dividing large header" style="margin-bottom: 25px;">Infos Du Departement</h4>
+    <h4 class="ui dividing large header" style="margin-bottom: 25px;">Informations Du Departement</h4>
     <app-input [control]="departementForm.get('nom')" label="Nom Du Departement" type="text"></app-input>
     <br />
 
@@ -38,7 +38,7 @@
 
     <br>
     <button [disabled]="departementForm.invalid" type="submit" class="ui submit primary right floated animated button">
-      <div class="visible content">Submit</div>
+      <div class="visible content">Valider</div>
       <div class="hidden content">
         <i class="right arrow icon"></i>
       </div>

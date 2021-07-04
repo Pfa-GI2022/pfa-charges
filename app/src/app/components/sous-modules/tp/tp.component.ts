@@ -23,12 +23,10 @@ export class TpComponent implements OnInit {
       this.matiereID = params.id2;
       this.matiereService.getMatiereByID(params.id2).subscribe(data => {
         this.matiere = data;
-        console.log(data);
         this.matiere.activitePedagogiques.forEach(m => {
           this.activiteService.getActivityByID(m.id).subscribe(data => {
             if (m.nature == "tp") {
               this.activite.push(data) ;
-              console.log(this.activite.length);
             }
           });
         });

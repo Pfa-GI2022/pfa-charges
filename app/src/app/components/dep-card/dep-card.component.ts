@@ -19,7 +19,6 @@ export class DepCardComponent implements OnInit {
   onGetChefDep(): void {
     this.ProfService.getProfesseurByID(this.Dep.chefDepartementID).subscribe(
       (data) => {
-        console.log(this.Dep.chefDepartementID);
         this.ChefDep = data;
       }
     );

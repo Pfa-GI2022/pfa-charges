@@ -12,7 +12,6 @@ export class ProfileCardComponent implements OnInit {
   constructor(private professeurService: ProfesseurService ,private route: ActivatedRoute,) {
     this.route.params.subscribe(params =>{
       this.onGetProfById(params.id);
-
       })
   }
 
@@ -21,9 +20,7 @@ export class ProfileCardComponent implements OnInit {
 
   onGetProfById(id: number) {
     this.professeurService.getProfesseurByID(id).subscribe((data) => {
-      console.log(data);
       this.professeur = data;
-      console.log(this.professeur.grade);
     });
   }
 }
