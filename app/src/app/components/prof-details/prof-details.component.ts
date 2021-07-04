@@ -9,6 +9,7 @@ import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
 import { ActivatedRoute } from '@angular/router';
 import { ActiviteService } from 'src/app/services/activite.service';
 import { GroupedObservable } from 'rxjs';
+import { activitePedagogiques } from 'src/app/models/activite.model';
 
 @Component({
   selector: 'app-prof-details',
@@ -18,16 +19,18 @@ import { GroupedObservable } from 'rxjs';
 export class ProfDetailsComponent implements OnInit {
   @Input() professeur;
   matiere: Matiere;
-  activite:[];
-  //groupe: Groupe;
+  activite : activitePedagogiques;
+    //groupe: Groupe;
   constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService,private professeurService: ProfesseurService) {
-    /* this.matiereService.getMatiereByID(this.professeur.activitePedagogiques.matiereID).subscribe(data=>{
+    
+/*
+     this.matiereService.getMatiereByID(this.professeur.activitePedagogiques.matiereID).subscribe(data=>{
       this.matiere = data;
       console.log(data);
-    })  */
-  
-}
 
+     });*/
+    }
+      
   ngOnInit(): void {
     // this.onGetProfById();
   }
