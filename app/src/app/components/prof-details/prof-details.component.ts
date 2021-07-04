@@ -19,40 +19,26 @@ import { activitePedagogiques } from 'src/app/models/activite.model';
 })
 export class ProfDetailsComponent implements OnInit {
   professeur : Professeur;
-  matiere: Matiere;
-  activite : activitePedagogiques;
-    //groupe: Groupe;
-  constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService,private professeurService: ProfesseurService) {
-    
-    /* this.matiereService.getMatiereByID(this.professeur.activitePedagogiques.matiereID).subscribe(data=>{
-/*
-     this.matiereService.getMatiereByID(this.professeur.activitePedagogiques.matiereID).subscribe(data=>{
-      this.matiere = data;
-      console.log(data);
+  activites : activitePedagogiques[];
 
-     });*/
+  constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService,private professeurService: ProfesseurService) {
     }
       
   ngOnInit(): void {
-    // console.log("prrrrrrrrrrrrrrrrrroooooooooooooofffffff");
-    // this.route.params.subscribe(params => {
-    //   // this.onGetProfById(params.id);
-    //   console.log(params.id)
-    // })
-
     this.onGetProfById();    
   }
 
   onGetProfById() {
     
     this.route.params.subscribe(params => {
-      this.professeurService.getProfesseurByID(params.id).subscribe((data) => {
-        console.log("DATA");
-        console.log(data);
-        this.professeur = data;
-        console.log(this.professeur);
+      this.professeurService.getProfesseurByID(params.id).subscribe((prof) => {
+        this.professeur = prof;
+        this.activites = this.professeur.activitePedagogiques.sort((a, b) => (a.matiere.nom > b.matiere.nom) ? 1 : -1)
+
+      })
+
       });
-    })
+    
     
   }
 
