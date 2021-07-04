@@ -1,4 +1,7 @@
-.is-danger{
-    border-color: red !important;
-    color : red !important;
+.is-danger {
+  border-color: red !important;
+  color: red !important;
+}
+* {
+  margin: 5px 0;
 }

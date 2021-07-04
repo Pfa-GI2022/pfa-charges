@@ -45,12 +45,12 @@ export class CalculeChargeService {
   }
 
   getVHModule() {}
-  getV;
-  SetChargeProf(Prof: Professeur) {
+
+  GetChargeProf(Prof: Professeur): number {
     let Charge = 0;
     Prof.activitePedagogiques.forEach((A) => {
-      console.log("----------------------")
-      console.log(A)
+      console.log('----------------------');
+      console.log(A);
       if (A.nature == 'cours') {
         Charge += 3.2 * A.volumeHoraire;
       }
@@ -63,8 +63,9 @@ export class CalculeChargeService {
         Charge += 0.8 * A.volumeHoraire;
       }
     });
-    const host = environment.host;
-    console.log('Add Charge');
+    return Charge;
+  }
+  SetChargeProf(Charge: number, Prof: Professeur) {
     return this.ChargeService.updateCharge(Charge, Prof.id).subscribe();
   }
 }

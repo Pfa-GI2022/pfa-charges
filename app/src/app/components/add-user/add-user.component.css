@@ -1,0 +1,14 @@
+.userform {
+  border-radius: 5px;
+  padding: 35px 35px;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.AccountData {
+  margin: 30px 0 10px;
+}
+
+.PersonalData {
+  margin: 30px 0 10px;
+}

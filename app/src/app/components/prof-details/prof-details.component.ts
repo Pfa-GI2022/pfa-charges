@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ActiviteService } from 'src/app/services/activite.service';
 import { GroupedObservable } from 'rxjs';
 import { numberFormat } from 'highcharts';
+import { activitePedagogiques } from 'src/app/models/activite.model';
 
 @Component({
   selector: 'app-prof-details',
@@ -19,17 +20,19 @@ import { numberFormat } from 'highcharts';
 export class ProfDetailsComponent implements OnInit {
   professeur : Professeur;
   matiere: Matiere;
-  activite:[];
-  //groupe: Groupe;
+  activite : activitePedagogiques;
+    //groupe: Groupe;
   constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService,private professeurService: ProfesseurService) {
     
     /* this.matiereService.getMatiereByID(this.professeur.activitePedagogiques.matiereID).subscribe(data=>{
+/*
+     this.matiereService.getMatiereByID(this.professeur.activitePedagogiques.matiereID).subscribe(data=>{
       this.matiere = data;
       console.log(data);
-    })  */
-  
-}
 
+     });*/
+    }
+      
   ngOnInit(): void {
     // console.log("prrrrrrrrrrrrrrrrrroooooooooooooofffffff");
     // this.route.params.subscribe(params => {
