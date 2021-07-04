@@ -18,7 +18,6 @@ export class AdminDepComponent implements OnInit {
   onGetAllDeps(): void {
     this.DepService.getAllDeps().subscribe((data) => {
       this.Deps = data;
-      console.log(this.Deps);
     });
   }
 }

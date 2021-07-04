@@ -17,7 +17,6 @@ export class SousModulesComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.matiereService.getMatiereByID(params.id2).subscribe((data) => {
         this.matiere = data;
-        console.log(data);
       });
     });
   }

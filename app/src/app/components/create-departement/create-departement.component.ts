@@ -45,7 +45,6 @@ export class CreateDepartementComponent implements OnInit {
       this.professeurs = data;
       this.professeurs.forEach((prof) => {
         this.list.push(prof.nom);
-        console.log(prof.nom);
       });
     });
   }
@@ -105,7 +104,7 @@ export class CreateDepartementComponent implements OnInit {
   onSubmit() {
     this.PersonalData.value.email = this.AccountData.value.email;
     this.departementForm.value.professeur = this.PersonalData.value;
-
+    this.AccountData.value.roles = ['chefDeDepartement'];
     this.departementService
       .createDepartement(this.departementForm.value)
       .subscribe((response) => {

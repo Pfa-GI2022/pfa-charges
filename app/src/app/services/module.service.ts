@@ -28,7 +28,6 @@ export class ModuleService {
 
   createModule(body:Module){
     const host = environment.host;
-    console.log('create module')
     return this.http.post(`${host}/modules`,body);  
 
   }

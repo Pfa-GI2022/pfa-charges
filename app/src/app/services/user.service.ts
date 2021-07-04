@@ -27,6 +27,14 @@ export class UserService {
 
   createUser(body: User) {
     const host = environment.host;
-    return this.http.post(`${host}/api/auth/signup`, body);
+    return this.http.post(`${host}/api/auth/signup`, body, {
+      observe: 'response',
+    });
+  }
+  updateUser(body: any, id: number) {
+    const host = environment.host;
+    return this.http.post(`${host}/api/admin/users/${id}`, body, {
+      observe: 'response',
+    });
   }
 }

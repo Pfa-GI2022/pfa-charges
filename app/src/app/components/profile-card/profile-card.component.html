@@ -1,10 +1,11 @@
  <div class="ui card" [ngClass]="{'charge-atteinte': professeur.charge.chargeTotal >= 180,
                 'charge-presque': professeur.charge.chargeTotal < 180 && professeur.charge.chargeTotal>= 120,
-                'charge-non-atteinte': professeur.charge.chargeTotal < 120}" style="height:100%;">
+                'charge-non-atteinte': professeur.charge.chargeTotal < 120}" style="left:150px;width:50%;">
    <div class="image">
-     <img src="https://picsum.photos/300/200">
+     <img src="https://publons.com/media/thumbs/academic/photos/758b7e29-526e-4847-9e26-96dbccf50203.png.200x200_q95_crop_detail_upscale.png">
      
    </div>
+   
    <div class="content">
     <h1>Informations Personnelles : </h1>
     <h3>Nom et prenom : {{professeur.nom}} {{professeur.prenom}}</h3>
@@ -22,7 +23,7 @@
    <div class="extra content">
      <a>
        <i class="user icon"></i>
-       Departement
+       Departement 
      </a>
    </div>
    <div class="extra content">
@@ -33,4 +34,25 @@
        </div>
      </div>
    </div>
+
+  <div>
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>Matieres</th>
+          <th>Groupes</th>
+          <th>Nature</th>
+          <th>Volume Horaire</th>
+        </tr>
+      </thead>
+      <tbody>
+           <tr *ngFor="let a of activites">
+          <td data-label="Matieres">{{a.matiere.nom}} </td>
+          <td data-label="Groupes">{{a.groupe.nom}}</td>
+          <td data-label="Volume Horaire"> {{a.nature | uppercase}} </td>
+          <td data-label="Volume Horaire"> {{a.volumeHoraire}} </td>
+        </tr>
+      </tbody>
+    </table>
+ </div>
  </div>

@@ -7,16 +7,20 @@ import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
 @Component({
   selector: 'app-affectation',
   templateUrl: './affectation.component.html',
-  styleUrls: ['./affectation.component.css']
+  styleUrls: ['./affectation.component.css'],
 })
-
 export class AffectationComponent implements OnInit {
-  professeurs : Professeur[];
-  activiteID : number;
-  constructor(private route: ActivatedRoute,private activiteService:ActiviteService,private professeurService:ProfesseurService,private calculeChargeService:CalculeChargeService) { 
-    this.route.params.subscribe(params => {
+  professeurs: Professeur[];
+  activiteID: number;
+  constructor(
+    private route: ActivatedRoute,
+    private activiteService: ActiviteService,
+    private professeurService: ProfesseurService,
+    private calculeChargeService: CalculeChargeService
+  ) {
+    this.route.params.subscribe((params) => {
       this.activiteID = params.id3;
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -29,13 +33,13 @@ export class AffectationComponent implements OnInit {
     });
   }
 
-  onClick(prof:Professeur){
-    this.activiteService.updateActivity({professeurID: prof.id},this.activiteID).subscribe(response => {
-      setTimeout(() => {
-        this.calculeChargeService.SetChargeProf(prof)
-      }, 500);
-    })
-    
-      
+  onClick(prof: Professeur) {
+    this.activiteService
+      .updateActivity({ professeurID: prof.id }, this.activiteID)
+      .subscribe((response) => {
+        // setTimeout(() => {
+        //   this.calculeChargeService.SetChargeProf(prof)
+        // }, 500);
+      });
   }
 }
