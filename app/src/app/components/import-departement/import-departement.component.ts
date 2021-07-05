@@ -1,10 +1,27 @@
-import { Component, VERSION, ViewChild, OnInit } from '@angular/core';
-import { DepartementService } from 'src/app/services/departement.service';
-import { ProfesseurService } from 'src/app/services/professeur.service';
-import { UserService } from 'src/app/services/user.service';
-import { Departement } from 'src/app/models/departement.model';
-import { Professeur } from 'src/app/models/professeur.model';
-import { ChargeService } from 'src/app/services/charge.service';
+import {
+  Component,
+  VERSION,
+  ViewChild,
+  OnInit
+} from '@angular/core';
+import {
+  DepartementService
+} from 'src/app/services/departement.service';
+import {
+  ProfesseurService
+} from 'src/app/services/professeur.service';
+import {
+  UserService
+} from 'src/app/services/user.service';
+import {
+  Departement
+} from 'src/app/models/departement.model';
+import {
+  Professeur
+} from 'src/app/models/professeur.model';
+import {
+  ChargeService
+} from 'src/app/services/charge.service';
 export class CsvData {
   public nomDep: any;
   public nomChefDep: any;
@@ -12,7 +29,7 @@ export class CsvData {
   public emailChefDep: any;
   public grade: any;
   public username: any;
-  
+
 }
 
 @Component({
@@ -27,16 +44,15 @@ export class ImportDepartementComponent implements OnInit {
   public records: any[] = [];
   @ViewChild('csvReader') csvReader: any;
   jsondatadisplay: any;
-  Dep:Departement;
-  Prof:Professeur;
-  CurrentDep:any;
-  ChefDep:any
+  Dep: Departement;
+  Prof: Professeur;
+  CurrentDep: any;
+  ChefDep: any
 
   ngOnInit() {
 
   }
-  constructor(private DepService:DepartementService,private ProfService:ProfesseurService, private UserService:UserService,private ChargeService:ChargeService
-    ) { 
+  constructor(private DepService: DepartementService, private ProfService: ProfesseurService, private UserService: UserService, private ChargeService: ChargeService) {
 
   }
   uploadListener($event: any): void {
@@ -51,27 +67,39 @@ export class ImportDepartementComponent implements OnInit {
       reader.readAsText(input.files[0]);
       console.log("reader", reader)
       reader.onload = () => {
-        let csvData = <string>reader.result;
+        let csvData = < string > reader.result;
         console.log()
         let csvRecordsArray = (csvData).split(/\r\n|\n/);
 
         let headersRow = this.getHeaderArray(csvRecordsArray);
         console.log(this.records);
         this.records = this.getDataRecordsArrayFromCSVFile(csvRecordsArray, headersRow.length);
-this.records.forEach((r)=>{
-  this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep }
-   this.Dep={nom:r.nomDep,professeur:this.Prof};
-  this.DepService.createDepartement(this.Dep).subscribe((response)=>{
-    this.CurrentDep=response;
-    this.ChefDep=this.CurrentDep.professeur;
-    this.ProfService.updateProfesseur({depID:this.CurrentDep.id},this.ChefDep.id).subscribe();
-    this.ChargeService.createCharge(
-      {},
-      this.ChefDep.id
-    ).subscribe();
-  });
-  this.UserService.createUser({ username: r.username, password: "pass", email: r.emailChefDep}).subscribe();
-})
+        this.records.forEach((r) => {
+          this.Prof = {
+            nom: r.nomChefDep,
+            prenom: r.prenomChefDep
+          }
+          this.Dep = {
+            nom: r.nomDep,
+            professeur: this.Prof
+          };
+          this.DepService.createDepartement(this.Dep).subscribe((response) => {
+            this.CurrentDep = response;
+            this.ChefDep = this.CurrentDep.professeur;
+            this.ProfService.updateProfesseur({
+              depID: this.CurrentDep.id
+            }, this.ChefDep.id).subscribe();
+            this.ChargeService.createCharge({},
+              this.ChefDep.id
+            ).subscribe();
+          });
+          this.UserService.createUser({
+            username: r.username,
+            password: "pass",
+            email: r.emailChefDep,
+            roles:["chefDeDepartement"]
+          }).subscribe();
+        })
         console.log(this.records, "after")
       };
 
