@@ -1,39 +1,40 @@
- <div class="ui card" [ngClass]="{'charge-atteinte': professeur.charge.chargeTotal >= 180,
+<div class="ui card" [ngClass]="{'charge-atteinte': professeur.charge.chargeTotal >= 180,
                 'charge-presque': professeur.charge.chargeTotal < 180 && professeur.charge.chargeTotal>= 120,
-                'charge-non-atteinte': professeur.charge.chargeTotal < 120}" style="left:150px;width:50%;">
-   <div class="image">
-     <img src="https://publons.com/media/thumbs/academic/photos/758b7e29-526e-4847-9e26-96dbccf50203.png.200x200_q95_crop_detail_upscale.png">
-     
-   </div>
-   
-   <div class="content">
+                'charge-non-atteinte': professeur.charge.chargeTotal < 120}" style="left:235px;width:50%;">
+  <div class="image">
+    <img
+      src="https://publons.com/media/thumbs/academic/photos/758b7e29-526e-4847-9e26-96dbccf50203.png.200x200_q95_crop_detail_upscale.png">
+
+  </div>
+
+  <div class="content">
     <h1>Informations Personnelles : </h1>
     <h3>Nom et prenom : {{professeur.nom}} {{professeur.prenom}}</h3>
     <div class="description">
-      Date de Naissance  :  {{professeur.dateNaissance}}
-     </div>
-     <div class="description">
-      Grade : {{professeur.grade}}
-     </div>
+      Date de Naissance : {{professeur.dateNaissance}}
+    </div>
     <div class="description">
-      Email :  {{professeur.email}}
-     </div>
-  
-   </div>
-   <div class="extra content">
-     <a>
-       <i class="user icon"></i>
-       Departement 
-     </a>
-   </div>
-   <div class="extra content">
-     <div class="ui horizontal statistic">
+      Grade : {{professeur.grade}}
+    </div>
+    <div class="description">
+      Email : {{professeur.email}}
+    </div>
 
-       <div class="value">
-         Charge: {{professeur.charge.chargeTotal}}heures
-       </div>
-     </div>
-   </div>
+  </div>
+  <div class="extra content">
+    <a>
+      <i class="user icon"></i>
+      Departement
+    </a>
+  </div>
+  <div class="extra content">
+    <div class="ui horizontal statistic">
+
+      <div class="value">
+        Charge: {{professeur.charge.chargeTotal}}heures
+      </div>
+    </div>
+  </div>
 
   <div>
     <table class="ui celled table">
@@ -46,7 +47,7 @@
         </tr>
       </thead>
       <tbody>
-           <tr *ngFor="let a of activites">
+        <tr *ngFor="let a of activites">
           <td data-label="Matieres">{{a.matiere.nom}} </td>
           <td data-label="Groupes">{{a.groupe.nom}}</td>
           <td data-label="Volume Horaire"> {{a.nature | uppercase}} </td>
@@ -54,5 +55,5 @@
         </tr>
       </tbody>
     </table>
- </div>
- </div>
+  </div>
+</div>
