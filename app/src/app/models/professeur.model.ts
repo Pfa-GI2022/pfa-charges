@@ -1,12 +1,12 @@
 import { activitePedagogiques } from './activite.model';
 import { Departement } from './departement.model';
 export interface Professeur {
-  id: number;
+  id?: number;
   nom: string;
   prenom: string;
   avatar?: string;
   dateNaissance?: Date;
-  grade: string;
+  grade?: string;
   filiere?: any;
   charge?: any;
   mail?: string;
