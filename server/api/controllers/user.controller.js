@@ -29,8 +29,8 @@ exports.updateUser = async (req, res) => {
   try {
     const { id } = req.params;
     console.log("Updating User");
-    const [updated] = await user.update(req.body, {
-      where: { id: id },
+    const [updated] = await models.user_roles.update(req.body, {
+      where: { userId: id },
     });
     if (updated) {
       const updatedUser = await user.findOne({ where: { id: id } });
