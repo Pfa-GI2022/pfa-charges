@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
     } else if (userRoles.includes('chefDeFiliere')) {
       this.router.navigate(['/filiere/modules']);
     } else {
-      this.router.navigate([`professeur/${this.userID}`]);
+      this.router.navigate([`/professeur`]);
     }
   }
 

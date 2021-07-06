@@ -87,6 +87,7 @@ export class ImportDepartementComponent implements OnInit {
             username: r.username,
             password: 'pass',
             email: r.emailChefDep,
+            roles : ["chefDeDepartement"]
           }).subscribe();
         });
         console.log(this.records, 'after');

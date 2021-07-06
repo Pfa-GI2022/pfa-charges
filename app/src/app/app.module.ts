@@ -60,6 +60,7 @@ import { ImportFilComponent } from './components/import-fil/import-fil.component
 import { ImportProfsComponent } from './components/import-profs/import-profs.component';
 import { ImportFiliereComponent } from './components/import-filiere/import-filiere.component';
 import { ImportProfesseursComponent } from './components/import-professeurs/import-professeurs.component';
+import { ProfesseursComponent } from './components/professeurs/professeurs.component';
 //just for test
 
 @NgModule({
@@ -115,6 +116,7 @@ import { ImportProfesseursComponent } from './components/import-professeurs/impo
     ImportProfsComponent,
     ImportFiliereComponent,
     ImportProfesseursComponent,
+    ProfesseursComponent,
   ],
   imports: [
     BrowserModule,
