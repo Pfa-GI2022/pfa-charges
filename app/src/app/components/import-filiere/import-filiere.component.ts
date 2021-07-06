@@ -1,27 +1,10 @@
-import {
-  Component,
-  VERSION,
-  ViewChild,
-  OnInit
-} from '@angular/core';
-import {
-  DepartementService
-} from 'src/app/services/departement.service';
-import {
-  ProfesseurService
-} from 'src/app/services/professeur.service';
-import {
-  UserService
-} from 'src/app/services/user.service';
-import {
-  Departement
-} from 'src/app/models/departement.model';
-import {
-  Professeur
-} from 'src/app/models/professeur.model';
-import {
-  ChargeService
-} from 'src/app/services/charge.service';
+import { Component, VERSION, ViewChild, OnInit } from '@angular/core';
+import { DepartementService } from 'src/app/services/departement.service';
+import { ProfesseurService } from 'src/app/services/professeur.service';
+import { UserService } from 'src/app/services/user.service';
+import { Departement } from 'src/app/models/departement.model';
+import { Professeur } from 'src/app/models/professeur.model';
+import { ChargeService } from 'src/app/services/charge.service';
 export class CsvData {
   public nomDep: any;
   public nomChefDep: any;
@@ -32,11 +15,11 @@ export class CsvData {
 }
 
 @Component({
-  selector: 'app-import-departement',
-  templateUrl: './import-departement.component.html',
-  styleUrls: ['./import-departement.component.css'],
+  selector: 'app-import-filiere',
+  templateUrl: './import-filiere.component.html',
+  styleUrls: ['./import-filiere.component.css'],
 })
-export class ImportDepartementComponent implements OnInit {
+export class ImportFiliereComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   public records: any[] = [];
   @ViewChild('csvReader') csvReader: any;

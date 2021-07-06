@@ -1,42 +1,26 @@
-import {
-  Component,
-  VERSION,
-  ViewChild,
-  OnInit
-} from '@angular/core';
-import {
-  DepartementService
-} from 'src/app/services/departement.service';
-import {
-  ProfesseurService
-} from 'src/app/services/professeur.service';
-import {
-  UserService
-} from 'src/app/services/user.service';
-import {
-  Departement
-} from 'src/app/models/departement.model';
-import {
-  Professeur
-} from 'src/app/models/professeur.model';
-import {
-  ChargeService
-} from 'src/app/services/charge.service';
+import { Component, VERSION, ViewChild, OnInit } from '@angular/core';
+import { DepartementService } from 'src/app/services/departement.service';
+import { ProfesseurService } from 'src/app/services/professeur.service';
+import { UserService } from 'src/app/services/user.service';
+import { Departement } from 'src/app/models/departement.model';
+import { Professeur } from 'src/app/models/professeur.model';
+import { ChargeService } from 'src/app/services/charge.service';
 export class CsvData {
-  public nomDep: any;
-  public nomChefDep: any;
-  public prenomChefDep: any;
-  public emailChefDep: any;
+  public nom: any;
+  public prenom: any;
+  public dateNaissance: any;
+  public email: any;
   public grade: any;
+  public depID: any;
   public username: any;
 }
 
 @Component({
-  selector: 'app-import-departement',
-  templateUrl: './import-departement.component.html',
-  styleUrls: ['./import-departement.component.css'],
+  selector: 'app-import-professeurs',
+  templateUrl: './import-professeurs.component.html',
+  styleUrls: ['./import-professeurs.component.css'],
 })
-export class ImportDepartementComponent implements OnInit {
+export class ImportProfesseursComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   public records: any[] = [];
   @ViewChild('csvReader') csvReader: any;
@@ -46,7 +30,9 @@ export class ImportDepartementComponent implements OnInit {
   CurrentDep: any;
   ChefDep: any;
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.Dep);
+  }
   constructor(
     private DepService: DepartementService,
     private ProfService: ProfesseurService,
@@ -71,24 +57,7 @@ export class ImportDepartementComponent implements OnInit {
           csvRecordsArray,
           headersRow.length
         );
-        this.records.forEach((r) => {
-          this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep };
-          this.Dep = { nom: r.nomDep, professeur: this.Prof };
-          this.DepService.createDepartement(this.Dep).subscribe((response) => {
-            this.CurrentDep = response;
-            this.ChefDep = this.CurrentDep.professeur;
-            this.ProfService.updateProfesseur(
-              { depID: this.CurrentDep.id },
-              this.ChefDep.id
-            ).subscribe();
-            this.ChargeService.createCharge({}, this.ChefDep.id).subscribe();
-          });
-          this.UserService.createUser({
-            username: r.username,
-            password: 'pass',
-            email: r.emailChefDep,
-          }).subscribe();
-        });
+
         console.log(this.records, 'after');
       };
 
@@ -108,12 +77,11 @@ export class ImportDepartementComponent implements OnInit {
       let curruntRecord = csvRecordsArray[i].split(',');
       if (curruntRecord.length == headerLength) {
         let csvRecord: CsvData = new CsvData();
-        csvRecord.nomDep = curruntRecord[0].trim();
-        csvRecord.nomChefDep = curruntRecord[1].trim();
-        csvRecord.prenomChefDep = curruntRecord[2].trim();
-        csvRecord.emailChefDep = curruntRecord[3].trim();
-        csvRecord.grade = curruntRecord[4].trim();
-        csvRecord.username = curruntRecord[5].trim();
+        csvRecord.nom = curruntRecord[0].trim();
+        csvRecord.prenom = curruntRecord[1].trim();
+        csvRecord.email = curruntRecord[2].trim();
+        csvRecord.grade = curruntRecord[3].trim();
+        csvRecord.username = curruntRecord[4].trim();
         csvArr.push(csvRecord);
       }
     }

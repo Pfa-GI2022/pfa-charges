@@ -29,6 +29,9 @@ import { AffectationComponent } from './components/affectation/affectation.compo
 import { ImportComponent } from './components/import/import.component';
 import { ImportDepartementComponent } from './components/import-departement/import-departement.component';
 import { FiliereResolverService } from './services/filiere-resolver.service';
+import { ImportInterfaceComponent } from './components/import-interface/import-interface.component';
+
+/*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
   //home
@@ -39,13 +42,13 @@ const routes: Routes = [
   {
     path: 'departement',
     component: DepartementComponent,
-     canActivate: [RolesGuard],
-      resolve : {
-        Departement : DepartementResolverService
-      },
-     data: {
-       expectedRole: role.chefDeDepartement
-     },
+    canActivate: [RolesGuard],
+    resolve: {
+      Departement: DepartementResolverService,
+    },
+    data: {
+      expectedRole: role.chefDeDepartement,
+    },
     children: [
       { path: '', component: ListeProfesseursComponent },
       { path: 'newModule', component: CreateModulesComponent },
@@ -102,6 +105,7 @@ const routes: Routes = [
       { path: 'filiere', component: AdminFilComponent },
       { path: 'adddepartement', component: CreateDepartementComponent },
       { path: 'addfiliere', component: CreateFiliereComponent },
+      { path: 'import', component: ImportInterfaceComponent },
     ],
   },
   {
@@ -145,8 +149,6 @@ const routes: Routes = [
   {path : 'import',component : ImportComponent},
   {path : 'importdepartement',component : ImportDepartementComponent},
   { path: '**', redirectTo: '' }
-
-
 ];
 
 @NgModule({

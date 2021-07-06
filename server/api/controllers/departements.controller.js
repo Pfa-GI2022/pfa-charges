@@ -63,12 +63,11 @@ const getOneDepartementByID = async (req, res) => {
         {
           model: professeur,
           as: "Professeurs",
-          include : [
+          include: [
             {
-              model : charge
-
-            }
-          ]
+              model: charge,
+            },
+          ],
         },
         {
           model: models.module,
