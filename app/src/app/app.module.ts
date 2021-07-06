@@ -54,6 +54,12 @@ import { AffectationComponent } from './components/affectation/affectation.compo
 import { AffectationCarteComponent } from './components/affectation-carte/affectation-carte.component';
 import { ImportComponent } from './components/import/import.component';
 import { ImportDepartementComponent } from './components/import-departement/import-departement.component';
+import { ImportInterfaceComponent } from './components/import-interface/import-interface.component';
+import { ImportDepComponent } from './components/import-dep/import-dep.component';
+import { ImportFilComponent } from './components/import-fil/import-fil.component';
+import { ImportProfsComponent } from './components/import-profs/import-profs.component';
+import { ImportFiliereComponent } from './components/import-filiere/import-filiere.component';
+import { ImportProfesseursComponent } from './components/import-professeurs/import-professeurs.component';
 //just for test
 
 @NgModule({
@@ -102,6 +108,13 @@ import { ImportDepartementComponent } from './components/import-departement/impo
     AffectationCarteComponent,
     ImportComponent,
     ImportDepartementComponent,
+
+    ImportInterfaceComponent,
+    ImportDepComponent,
+    ImportFilComponent,
+    ImportProfsComponent,
+    ImportFiliereComponent,
+    ImportProfesseursComponent,
   ],
   imports: [
     BrowserModule,

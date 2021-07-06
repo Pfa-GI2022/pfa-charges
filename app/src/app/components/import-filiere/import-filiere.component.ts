@@ -15,11 +15,11 @@ export class CsvData {
 }
 
 @Component({
-  selector: 'app-import-departement',
-  templateUrl: './import-departement.component.html',
-  styleUrls: ['./import-departement.component.css'],
+  selector: 'app-import-filiere',
+  templateUrl: './import-filiere.component.html',
+  styleUrls: ['./import-filiere.component.css'],
 })
-export class ImportDepartementComponent implements OnInit {
+export class ImportFiliereComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   public records: any[] = [];
   @ViewChild('csvReader') csvReader: any;

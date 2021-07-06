@@ -2,7 +2,7 @@
 
   <label class="ui button secondary" for="txtFileUpload">Importer</label>
 
-  <input type="file" #csvReader name="Upload CSV" style='display: none;' id="txtFileUpload"
+  <input type="file" #csvReader name="Upload CSV" style='visibility: hidden;' id="txtFileUpload"
     (change)="uploadListener($event)" accept=".csv" />
 
 
