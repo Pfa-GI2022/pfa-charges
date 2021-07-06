@@ -138,7 +138,7 @@ const routes: Routes = [
     ],
   },
   {
-    path : 'professeur',
+    path : 'professeur/:id',
     canActivate: [RolesGuard],
     data: {
       expectedRole: role.professeur,
