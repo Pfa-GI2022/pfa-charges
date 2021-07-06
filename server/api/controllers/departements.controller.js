@@ -38,6 +38,9 @@ const getAllDepartements = async (req, res) => {
         },
         {
           model: models.module,
+          include:{
+            model:models.filiere
+          }
         },
       ],
     })
@@ -68,6 +71,9 @@ const getOneDepartementByID = async (req, res) => {
         },
         {
           model: models.module,
+          include:{
+            model:models.filiere
+          }
         },
       ],
     })

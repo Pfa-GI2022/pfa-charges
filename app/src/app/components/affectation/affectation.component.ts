@@ -37,9 +37,9 @@ export class AffectationComponent implements OnInit {
     this.activiteService
       .updateActivity({ professeurID: prof.id }, this.activiteID)
       .subscribe((response) => {
-        // setTimeout(() => {
-        //   this.calculeChargeService.SetChargeProf(prof)
-        // }, 500);
+        setTimeout(() => {
+          this.calculeChargeService.SetChargeProf(prof)
+        }, 500);
       });
   }
 }

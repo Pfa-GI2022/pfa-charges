@@ -39,10 +39,10 @@ export class CreateModulesComponent implements OnInit {
   }
 
   onGetDepID(){
-    // this.sharedService.currentDeparetement.subscribe(dep => {
-    //   if(dep)
-    //   this.depID = dep.id
-    // }) 
+    this.sharedService.currentDeparetement.subscribe(dep => {
+      if(dep)
+      this.depID = dep.id
+    }) 
   }
   ngOnInit(): void 
   {

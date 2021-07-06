@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit,Input } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
 @Component({
   selector: 'app-nav',
@@ -6,19 +6,12 @@ import { SharedService } from 'src/app/services/shared.service';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
-  chefDepID : number;
-  depName = '';
+  @Input() links = [];
+  @Input() title = "";
   constructor(private elementRef: ElementRef,private sharedService:SharedService) {}
 
   ngOnInit(): void {
-    this.sharedService.currentDeparetement.subscribe(dep => {
-      if(dep){
-        if(dep.chefDepartementID){
-          this.chefDepID = dep.chefDepartementID
-          this.depName = dep.nom;
-        }
-        }
-    })
+
   }
   ngAfterViewInit() {
     var s = document.createElement('script');

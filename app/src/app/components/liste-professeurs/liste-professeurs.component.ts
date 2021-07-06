@@ -24,7 +24,7 @@ export class ListeProfesseursComponent implements OnInit {
   constructor(private professeurService: ProfesseurService,private sharedService:SharedService) {}
 
   ngOnInit(): void {
-    this.onGetAllProfs();
+    this.getDepProfs();
   }
 
   onGetAllProfs(): void {

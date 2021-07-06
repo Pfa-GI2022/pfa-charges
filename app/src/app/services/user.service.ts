@@ -33,7 +33,7 @@ export class UserService {
   }
   updateUser(body: any, id: number) {
     const host = environment.host;
-    return this.http.post(`${host}/api/admin/users/${id}`, body, {
+    return this.http.put(`${host}/api/admin/users/${id}`, body, {
       observe: 'response',
     });
   }

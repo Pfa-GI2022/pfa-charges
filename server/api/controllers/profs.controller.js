@@ -6,33 +6,37 @@ const charge = models.charge;
 const activite = models.activitePedagogique;
 
 const createProf = async (req, res, next) => {
-  const { nom, prenom, email, avatar, charge, depID } = req.body;
+  const {
+    nom,
+    prenom,
+    email,
+    avatar,
+    charge,
+    depID
+  } = req.body;
   console.log("Creating Prof");
   professeur
-    .create(
-      {
-        nom: nom,
-        prenom: prenom,
-        email: email,
-        avatar: avatar,
-        depID: depID,
-        charge: charge,
-      },
-      {
-        include: [
-          {
-            association: professeur.charge,
-          },
-        ],
-      }
-    )
+    .create({
+      nom: nom,
+      prenom: prenom,
+      email: email,
+      avatar: avatar,
+      depID: depID,
+      charge: charge,
+    }, {
+      include: [{
+        association: professeur.charge,
+      }, ],
+    })
     .then((data) => {
       res.send(data);
       console.log("Prof Created Successfully");
     })
     .catch((err) => {
       console.log("Creating Prof Failed");
-      res.status(404).send({ error: err.message });
+      res.status(404).send({
+        error: err.message
+      });
     });
 };
 
@@ -40,8 +44,7 @@ const getAllProfs = async (req, res, next) => {
   try {
     console.log("Fetching All Profs");
     const profs = await professeur.findAll({
-      include: [
-        {
+      include: [{
           model: filiere,
         },
         {
@@ -52,8 +55,7 @@ const getAllProfs = async (req, res, next) => {
         },
         {
           model: activite,
-          include: [
-            {
+          include: [{
               model: models.matiere,
             },
             {
@@ -74,9 +76,8 @@ const getAllProfs = async (req, res, next) => {
 const getProfById = async (req, res, next) => {
   try {
     console.log("Fetching Prof");
-    const prof = await professeur.findByPk(req.params.id, {
-      include: [
-        {
+    let prof = await professeur.findByPk(req.params.id, {
+      include: [{
           model: filiere,
         },
         {
@@ -87,8 +88,7 @@ const getProfById = async (req, res, next) => {
         },
         {
           model: activite,
-          include: [
-            {
+          include: [{
               model: models.matiere,
             },
             {
@@ -98,8 +98,28 @@ const getProfById = async (req, res, next) => {
         },
       ],
     });
+    const account = await models.user.findOne({
+      where: {
+        email: prof.email
+      }
+    });
     console.log("Prof Fetched Successfully");
-    return res.status(200).send(prof);
+    return res.status(200).send({
+      id: prof.id,
+      nom: prof.nom,
+      prenom: prof.prenom,
+      avatar: prof.avatar,
+      dateNaissance: prof.dateNaissance,
+      grade: prof.grade,
+      createdAt: prof.createdAt,
+      updatedAt: prof.updatedAt,
+      depID: prof.depID,
+      filID: prof.filID,
+      filiere: prof.filiere,
+      charge:prof.charge,
+      activitePedagogiques:prof.activitePedagogiques,
+      account:account
+    });
   } catch (error) {
     console.log("Fetching Prof Failed");
     return res.status(500).send(error.message);
@@ -108,15 +128,25 @@ const getProfById = async (req, res, next) => {
 
 const updateProf = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const {
+      id
+    } = req.params;
     console.log("Updating Prof");
     const [updated] = await professeur.update(req.body, {
-      where: { id: id },
+      where: {
+        id: id
+      },
     });
     if (updated) {
-      const updatedProf = await professeur.findOne({ where: { id: id } });
+      const updatedProf = await professeur.findOne({
+        where: {
+          id: id
+        }
+      });
       console.log("Prof Updated Successfully");
-      return res.status(200).json({ prof: updatedProf });
+      return res.status(200).json({
+        prof: updatedProf
+      });
     }
     throw new Error("Prof not found");
   } catch (error) {
@@ -127,10 +157,14 @@ const updateProf = async (req, res, next) => {
 
 const deleteProf = async (req, res) => {
   try {
-    const { id } = req.params;
+    const {
+      id
+    } = req.params;
     console.log("Deleting Prof");
     const deleted = await professeur.destroy({
-      where: { id: id },
+      where: {
+        id: id
+      },
     });
     if (deleted) {
       console.log("Prof Deleted Successfully");

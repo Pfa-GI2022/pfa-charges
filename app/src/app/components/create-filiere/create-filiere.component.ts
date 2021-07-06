@@ -1,4 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input
+} from '@angular/core';
 import {
   FormControl,
   FormBuilder,
@@ -6,10 +10,18 @@ import {
   Validator,
   Validators,
 } from '@angular/forms';
-import { FiliereService } from '../../services/filiere.service';
-import { ProfesseurService } from '../../services/professeur.service';
-import { Professeur } from 'src/app/models/professeur.model';
-import { UserService } from 'src/app/services/user.service';
+import {
+  FiliereService
+} from '../../services/filiere.service';
+import {
+  ProfesseurService
+} from '../../services/professeur.service';
+import {
+  Professeur
+} from 'src/app/models/professeur.model';
+import {
+  UserService
+} from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create-filiere',
@@ -84,6 +96,12 @@ export class CreateFiliereComponent implements OnInit {
       this.filiereForm.reset({});
       this.alert = true;
     });
+    this.professeurService.getProfesseurByID(this.fildID).subscribe((prof) => {
+      let userID = prof.account.id;
+      this.UserService.updateUser({
+        roleId: 3
+      }, userID).subscribe()
+    })
   }
 
   closeAlert() {

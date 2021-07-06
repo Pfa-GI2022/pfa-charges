@@ -31,6 +31,9 @@ import { ListeModFilComponent } from './components/liste-mod-fil/liste-mod-fil.c
 import { ListeSousModFilComponent } from './components/liste-sous-mod-fil/liste-sous-mod-fil.component';
 
 import { AffectationComponent } from './components/affectation/affectation.component';
+import { ImportComponent } from './components/import/import.component';
+import { ImportDepartementComponent } from './components/import-departement/import-departement.component';
+
 /*la bonne pratique pour routing !!*/
 
 const routes: Routes = [
@@ -42,10 +45,10 @@ const routes: Routes = [
   {
     path: 'departement',
     component: DepartementComponent,
-  //    canActivate: [RolesGuard],
-    //   resolve : {
-    //     Departement : DepartementResolverService
-    //   },
+     canActivate: [RolesGuard],
+      resolve : {
+        Departement : DepartementResolverService
+      },
      data: {
        expectedRole: role.chefDeDepartement
      },
@@ -97,6 +100,7 @@ const routes: Routes = [
     },
     component: AdminComponent,
     children: [
+      { path: '', component: ListeUsersComponent },
       { path: 'users', component: ListeUsersComponent },
       { path: 'adduser', component: AddUserComponent },
       { path: 'departement', component: AdminDepComponent },
@@ -129,8 +133,8 @@ const routes: Routes = [
       },
     ],
   },
-  //login
-
+  {path : 'import',component : ImportComponent},
+  {path : 'importdepartement',component : ImportDepartementComponent},
   { path: '**', redirectTo: '' },
 ];
 
