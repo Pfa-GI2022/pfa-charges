@@ -1,4 +1,4 @@
-<ng-container *ngIf="activite.length>0 ">
+<ng-container *ngIf="activite.length>0 ; else elseBlock">
 
 <h1>{{matiere.nom}}</h1>
 <table class="ui celled table">
@@ -22,3 +22,6 @@
   </tbody>
 </table>
 </ng-container>
+<ng-template #elseBlock>
+  Cette matiere ne contient pas de TP
+</ng-template>

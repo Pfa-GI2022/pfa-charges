@@ -1,20 +1,38 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
-import { FiliereService } from '../../services/filiere.service';
-import { ProfesseurService } from '../../services/professeur.service';
-import { Professeur } from 'src/app/models/professeur.model';
+import {
+  Component,
+  OnInit,
+  Input
+} from '@angular/core';
+import {
+  FormControl,
+  FormBuilder,
+  FormGroup,
+  Validator,
+  Validators,
+} from '@angular/forms';
+import {
+  FiliereService
+} from '../../services/filiere.service';
+import {
+  ProfesseurService
+} from '../../services/professeur.service';
+import {
+  Professeur
+} from 'src/app/models/professeur.model';
+import {
+  UserService
+} from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create-filiere',
   templateUrl: './create-filiere.component.html',
-  styleUrls: ['./create-filiere.component.css']
+  styleUrls: ['./create-filiere.component.css'],
 })
 export class CreateFiliereComponent implements OnInit {
-  
   alert = false;
   open = false;
   professeurs: Professeur[];
-  selectedProfesseur : Professeur;
+  selectedProfesseur: Professeur;
   filterdOptions = [];
   list = [{}];
   hide = true;
@@ -23,9 +41,14 @@ export class CreateFiliereComponent implements OnInit {
   term = '';
   inputItem = '';
 
-  filiereForm : FormGroup;
+  filiereForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private filiereService: FiliereService,private professeurService : ProfesseurService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private filiereService: FiliereService,
+    private professeurService: ProfesseurService,
+    private UserService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -34,50 +57,69 @@ export class CreateFiliereComponent implements OnInit {
 
   initForm() {
     this.filiereForm = this.formBuilder.group({
-      nom :  new FormControl('',[Validators.required,Validators.minLength(5),Validators.pattern("[a-zA-Z \s]*")]),
-      nbreGroupesTd : new FormControl('', [Validators.required, Validators.pattern("^[0-9]$"), Validators.minLength(1), Validators.maxLength(1)]),
-      nbreGroupeTp :new FormControl('', [Validators.required, Validators.pattern("^[0-9]$"), Validators.minLength(1), Validators.maxLength(1)]),
-      nbreGroupePFA : new FormControl('', [Validators.required, Validators.pattern("^[0-9]$"), Validators.minLength(1), Validators.maxLength(1)]),
+      nom: new FormControl('', [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.pattern('[a-zA-Z s]*'),
+      ]),
+      chefFiliereID: new FormControl(),
+      nbreGroupesTd: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]$'),
+        Validators.minLength(1),
+        Validators.maxLength(2),
+      ]),
+      nbreGroupeTp: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]$'),
+        Validators.minLength(1),
+        Validators.maxLength(2),
+      ]),
+      nbreGroupePFA: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]$'),
+        Validators.minLength(1),
+        Validators.maxLength(1),
+      ]),
     });
-    }
-    
+  }
+
   onGetAllProfesseurs(): void {
-    this.professeurService.getAllProfesseurs().subscribe(data => {
+    this.professeurService.getAllProfesseurs().subscribe((data) => {
       this.professeurs = data;
     });
   }
-  
-  onSubmit(){
-    let newFiliere = this.filiereForm.value;
-    newFiliere.filID = this.fildID;
-    this.filiereService.createFiliere(newFiliere).subscribe(
-      response => {
-        this.filiereForm.reset({});
-        this.alert = true;
-      },
-      )
+
+  onSubmit() {
+    this.filiereForm.value.chefFiliereID = this.fildID;
+    this.filiereService.createFiliere(this.filiereForm.value).subscribe(() => {
+      this.filiereForm.reset({});
+      this.alert = true;
+    });
+    this.professeurService.getProfesseurByID(this.fildID).subscribe((prof) => {
+      let userID = prof.account.id;
+      this.UserService.updateUser({
+        roleId: 3
+      }, userID).subscribe()
+    })
   }
 
-  closeAlert(){
+  closeAlert() {
     this.alert = false;
   }
- 
+
   toggleOpen() {
     this.open = !this.open;
   }
 
-
-
-  onSelection(p:any) {
+  onSelection(p: any) {
     this.selectedProfesseur = p;
-    this.inputItem  = p.nom;
+    this.inputItem = p.nom;
     this.fildID = p.id;
     this.hide = true;
-    
   }
 
   onSearch(term: string): void {
     this.term = term;
   }
-
 }

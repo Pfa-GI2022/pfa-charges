@@ -68,9 +68,11 @@ export class LoginComponent implements OnInit {
 
   authenticateUser(userRoles: string[]) {
     if (userRoles.includes('admin')) {
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/admin/users']);
     } else if (userRoles.includes('chefDeDepartement')) {
       this.router.navigate(['/departement']);
+    } else if (userRoles.includes('chefDeFiliere')) {
+      this.router.navigate(['/filiere/modules']);
     } else {
       this.router.navigate(['/']);
     }

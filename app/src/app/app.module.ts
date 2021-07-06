@@ -52,6 +52,8 @@ import { ListeSousModFilComponent } from './components/liste-sous-mod-fil/liste-
 import { CarteMatiereFilComponent } from './components/carte-matiere-fil/carte-matiere-fil.component';
 import { AffectationComponent } from './components/affectation/affectation.component';
 import { AffectationCarteComponent } from './components/affectation-carte/affectation-carte.component';
+import { ImportComponent } from './components/import/import.component';
+import { ImportDepartementComponent } from './components/import-departement/import-departement.component';
 //just for test
 
 @NgModule({
@@ -98,6 +100,8 @@ import { AffectationCarteComponent } from './components/affectation-carte/affect
     CarteMatiereFilComponent,
     AffectationComponent,
     AffectationCarteComponent,
+    ImportComponent,
+    ImportDepartementComponent,
   ],
   imports: [
     BrowserModule,

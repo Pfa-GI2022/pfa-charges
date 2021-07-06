@@ -51,15 +51,15 @@ export class CalculeChargeService {
     Prof.activitePedagogiques.forEach((A) => {
     
       if (A.nature == 'cours') {
-        Charge += 3.2 * A.volumeHoraire;
+        Charge += 1.5 * A.volumeHoraire;
       }
 
       if (A.nature == 'tp') {
-        Charge += 1.8 * A.volumeHoraire;
+        Charge += 1 * A.volumeHoraire;
       }
 
       if (A.nature == 'td') {
-        Charge += 0.8 * A.volumeHoraire;
+        Charge += 0.75 * A.volumeHoraire;
       }
     });
     return Charge;

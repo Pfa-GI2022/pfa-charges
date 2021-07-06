@@ -12,6 +12,7 @@ import { activitePedagogiques } from 'src/app/models/activite.model';
 })
 export class TdComponent implements OnInit {
 
+  existe = true;
   matiere: Matiere;
   activite=[];
   constructor(private route: ActivatedRoute, private matiereService: MatiereService, private activiteService: ActiviteService) {

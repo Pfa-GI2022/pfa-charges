@@ -1,3 +1,5 @@
+import { Matiere } from "./matiere.model";
+
 export interface activitePedagogiques {
     id?: number,
     nature: string,
@@ -6,5 +8,6 @@ export interface activitePedagogiques {
     professeur?:any,
     matiereID?: any,
     groupeID? :any,
+    matiere?: Matiere
     
 }

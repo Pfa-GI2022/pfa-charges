@@ -31,4 +31,10 @@ export class UserService {
       observe: 'response',
     });
   }
+  updateUser(body: any, id: number) {
+    const host = environment.host;
+    return this.http.put(`${host}/api/admin/users/${id}`, body, {
+      observe: 'response',
+    });
+  }
 }

@@ -54,6 +54,7 @@ export class AddUserComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ]),
+      roles: new FormControl(),
     });
 
     //PersonalData Form Builder
@@ -85,6 +86,7 @@ export class AddUserComponent implements OnInit {
   }
 
   onSubmit() {
+    this.AccountData.value.roles = ['professeur'];
     this.UserService.createUser(this.UserForm.value.accountData).subscribe(
       (response) => {
         this.UserForm.reset({});

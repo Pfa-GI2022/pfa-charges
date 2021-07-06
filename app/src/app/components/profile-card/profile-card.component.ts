@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatiereService } from 'src/app/services/matiere.service';
 import { ProfesseurService } from 'src/app/services/professeur.service';
 
 @Component({
@@ -9,19 +10,22 @@ import { ProfesseurService } from 'src/app/services/professeur.service';
 })
 export class ProfileCardComponent implements OnInit {
   @Input() professeur;
-  constructor(private professeurService: ProfesseurService ,private route: ActivatedRoute,) {
-    this.route.params.subscribe(params =>{
-      this.onGetProfById(params.id);
-      })
-  }
+  @Input() activites;
+  matieres:any;
+
+  constructor(private professeurService: ProfesseurService, private route: ActivatedRoute, private matiereService: MatiereService) {
+
+    
+}
+
 
   ngOnInit(): void {
+
+        
   }
 
-  onGetProfById(id: number) {
-    this.professeurService.getProfesseurByID(id).subscribe((data) => {
-      this.professeur = data;
-    });
-  }
+
+
+
 }
 

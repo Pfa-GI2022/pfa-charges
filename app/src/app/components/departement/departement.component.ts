@@ -11,9 +11,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./departement.component.css'],
 })
 export class DepartementComponent implements OnInit {
+
   user: User;
   depID: number;
-  departement = {};
+  departement : Departement;
+  navLinks : any;
+
   constructor(
     private departementService: DepartementService,
     private sharedService: SharedService,
@@ -22,8 +25,16 @@ export class DepartementComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.data.subscribe((data) =>
+    this.route.data.subscribe((data) =>{
+      this.departement = data.Departement;
       this.sharedService.setDepartement(data.Departement)
+    }
     );
+
+    this.navLinks = [
+      {key : 'Liste des Profs',value : 'profs'},
+      {key : 'Liste des modules',value : 'modules'},
+      {key : 'infos chefDep',value : `profs/${this.departement.chefDepartementID}`},
+    ];
   }
 }

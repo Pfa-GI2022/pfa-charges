@@ -26,8 +26,8 @@ export class ListeModulesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.onGetAllModules();
     this.onGetOptions();
+    this.getDepModules()
   }
 
   onGetDepModules() {
@@ -36,12 +36,18 @@ export class ListeModulesComponent implements OnInit {
       }
     });
   }
+
   onGetAllModules(): void {
     this.moduleService.getAllModules().subscribe((data) => {
-      this.modules = data;
+      console.log(data)
     });
   }
 
+  getDepModules(){
+    this.sharedService.currentDeparetement.subscribe(dep => {
+      this.modules = dep.modules
+    })
+  }
   onGetModuleById(id: number) {
     this.moduleService.getModuleByID(id).subscribe((data) => console.log(data));
   }
