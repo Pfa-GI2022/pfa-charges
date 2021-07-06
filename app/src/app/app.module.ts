@@ -54,6 +54,7 @@ import { AffectationComponent } from './components/affectation/affectation.compo
 import { AffectationCarteComponent } from './components/affectation-carte/affectation-carte.component';
 import { ImportComponent } from './components/import/import.component';
 import { ImportDepartementComponent } from './components/import-departement/import-departement.component';
+import { ProfesseurComponent } from './components/professeur/professeur.component';
 //just for test
 
 @NgModule({
@@ -102,6 +103,7 @@ import { ImportDepartementComponent } from './components/import-departement/impo
     AffectationCarteComponent,
     ImportComponent,
     ImportDepartementComponent,
+    ProfesseurComponent,
   ],
   imports: [
     BrowserModule,

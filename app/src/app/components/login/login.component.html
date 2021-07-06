@@ -3,7 +3,10 @@
     <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()"> 
 
       <h2 class="title">Connexion</h2>
-      <div class="input-div one">
+      <div 
+        class="input-div one"
+        [ngClass]="{error: isLoginFailed}"  
+      >
         <div class="i">
           <i class="fas fa-user"></i>
         </div>
@@ -12,7 +15,9 @@
           <input type="text" class="input" formControlName="username">
         </div>
       </div>
-      <div class="input-div pass">
+      <div class="input-div pass"         
+      [ngClass]="{error: isLoginFailed}"  
+      >
         <div class="i">
           <i class="fas fa-lock"></i>
         </div>
@@ -21,11 +26,13 @@
           <input  type="password" class="input" formControlName="password">
         </div>
       </div>
-      <<ng-container *ngIf="isLoginFailed">
-        <h1>Connexion echouee</h1>
+      <ng-container *ngIf="isLoginFailed">
+        <h3 class="errorMessage">{{errorMessage}} try again</h3>
       </ng-container>
       <!-- <a href="#">Forgot Password?</a> -->
-      <input [disabled]="loginForm.invalid" type="submit" class="btn" value="Login">
+      <input [disabled]="loginForm.invalid" type="submit" class="btn" value="Login"
+        [ngClass]="{error:isLoginFailed}"
+      >
     </form>
   </div>
   

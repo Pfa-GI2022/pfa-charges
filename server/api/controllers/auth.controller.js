@@ -69,7 +69,7 @@ const signin = (req, res) => {
         expiresIn: 86400, // 24 hours
       });
 
-      Prof.findOne({ where: { email: user.email } }).then((professeur) => {
+      Prof.findOne({ where: { email: user.email },include:{model:db.filiere} }).then((professeur) => {
         var authorities = [];
         user.getRoles().then((roles) => {
           for (let i = 0; i < roles.length; i++) {

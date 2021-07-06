@@ -6,10 +6,6 @@ import { DepartementComponent } from './components/departement/departement.compo
 import { ListeModulesComponent } from './components/liste-modules/liste-modules.component';
 import { ListeProfesseursComponent } from './components/liste-professeurs/liste-professeurs.component';
 import { ProfDetailsComponent } from './components/prof-details/prof-details.component';
-import { SousModulesComponent } from './components/sous-modules/sous-modules.component';
-import { TpComponent } from './components/sous-modules/tp/tp.component';
-import { TdComponent } from './components/sous-modules/td/td.component';
-import { CoursComponent } from './components/sous-modules/cours/cours.component';
 import { LoginComponent } from './components/login/login.component';
 import { ListeUsersComponent } from './components/liste-users/liste-users.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -24,7 +20,6 @@ import { CreateDepartementComponent } from './components/create-departement/crea
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AdminDepComponent } from './components/admin-dep/admin-dep.component';
 import { AdminFilComponent } from './components/admin-fil/admin-fil.component';
-import { Departement } from './models/departement.model';
 import { DepartementResolverService } from './services/departement-resolver.service';
 import { FiliereComponent } from './components/filiere/filiere.component';
 import { ListeModFilComponent } from './components/liste-mod-fil/liste-mod-fil.component';
@@ -33,8 +28,7 @@ import { ListeSousModFilComponent } from './components/liste-sous-mod-fil/liste-
 import { AffectationComponent } from './components/affectation/affectation.component';
 import { ImportComponent } from './components/import/import.component';
 import { ImportDepartementComponent } from './components/import-departement/import-departement.component';
-
-/*la bonne pratique pour routing !!*/
+import { FiliereResolverService } from './services/filiere-resolver.service';
 
 const routes: Routes = [
   //home
@@ -98,6 +92,7 @@ const routes: Routes = [
     data: {
       expectedRole: role.admin,
     },
+
     component: AdminComponent,
     children: [
       { path: '', component: ListeUsersComponent },
@@ -115,6 +110,9 @@ const routes: Routes = [
     data: {
       expectedRole: role.chefDeFiliere,
     },
+    resolve : {
+      Filiere : FiliereResolverService
+    },
     component: FiliereComponent,
     children: [
       { path: 'modules', component: ListeModFilComponent },
@@ -131,11 +129,24 @@ const routes: Routes = [
           },
         ],
       },
+      { path: 'profs/:id', component: ProfDetailsComponent },
+
     ],
+  },
+  {
+    path : 'professeur/:id',
+    canActivate: [RolesGuard],
+    data: {
+      expectedRole: role.professeur,
+    },
+    component : ProfDetailsComponent
+
   },
   {path : 'import',component : ImportComponent},
   {path : 'importdepartement',component : ImportDepartementComponent},
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: '' }
+
+
 ];
 
 @NgModule({

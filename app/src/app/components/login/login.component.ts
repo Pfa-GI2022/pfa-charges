@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
+  userID:number;
   roles: string[] = [];
 
   constructor(
@@ -57,10 +58,13 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
+        this.userID = this.tokenStorage.getUser().accountOwner.id;
+        console.log(this.userID,"user ID ------------")
         this.authenticateUser(this.roles);
       },
       (err) => {
         this.errorMessage = err.error.message;
+        console.log(this.errorMessage)
         this.isLoginFailed = true;
       }
     );
@@ -74,7 +78,7 @@ export class LoginComponent implements OnInit {
     } else if (userRoles.includes('chefDeFiliere')) {
       this.router.navigate(['/filiere/modules']);
     } else {
-      this.router.navigate(['/']);
+      this.router.navigate([`professeur/${this.userID}`]);
     }
   }
 

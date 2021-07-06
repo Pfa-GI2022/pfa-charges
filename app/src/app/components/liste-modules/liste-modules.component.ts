@@ -30,12 +30,6 @@ export class ListeModulesComponent implements OnInit {
     this.getDepModules()
   }
 
-  onGetDepModules() {
-    this.sharedService.currentDeparetement.subscribe((dep) => {
-      if (dep) {
-      }
-    });
-  }
 
   onGetAllModules(): void {
     this.moduleService.getAllModules().subscribe((data) => {

@@ -114,6 +114,7 @@ form {
   color : red;
   background-color: red;
 }
+
 .input-div.focus > div > h5 {
   top: -5px;
   font-size: 15px;
@@ -292,4 +293,29 @@ section .wave.wave4 {
   0% {
     background-position-x: -1000px;
   }
+}
+
+.input-div.error:before,
+.input-div.error:after {
+  background-color: red;
+}
+
+.input-div.focus.error > .i > i {
+  color: red;
+}
+
+.input-div.focus::before.error,
+.input-div.focus::before.error
+
+{
+  display: none;
+}
+
+.btn.error{
+  background-color: rgb(197, 19, 19);
+
+}
+
+.errorMessage{
+  color : red;
 }

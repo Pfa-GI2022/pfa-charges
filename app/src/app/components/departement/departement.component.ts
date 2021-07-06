@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DepartementService } from 'src/app/services/departement.service';
 import { Departement } from '../../models/departement.model';
 import { SharedService } from 'src/app/services/shared.service';
-import { TokenStorageService } from 'src/app/services/token-storage-service.service';
 import { User } from 'src/app/models/user.model';
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -18,9 +16,7 @@ export class DepartementComponent implements OnInit {
   navLinks : any;
 
   constructor(
-    private departementService: DepartementService,
     private sharedService: SharedService,
-    private tokenStorage: TokenStorageService,
     private route: ActivatedRoute
   ) {}
 

@@ -9,8 +9,10 @@ export class SharedService {
 
 
   private departement = new BehaviorSubject<Departement>(null);
+  private filiere = new BehaviorSubject<Departement>(null);
 
   currentDeparetement = this.departement.asObservable();
+  cuurentFiliere = this.filiere.asObservable();
 
   constructor() { }
 
@@ -18,5 +20,8 @@ export class SharedService {
     this.departement.next(departement);
   }
 
+  setFiliere(filiere: any){
+    this.filiere.next(filiere);
+  }
   
 }
