@@ -1,3 +1,4 @@
+import { NumberSymbol } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Departement } from 'src/app/models/departement.model';
 import { DepartementService } from 'src/app/services/departement.service';
@@ -8,16 +9,14 @@ import { DepartementService } from 'src/app/services/departement.service';
   styleUrls: ['./import-profs.component.css'],
 })
 export class ImportProfsComponent implements OnInit {
-  Dep: Departement;
   Deps: Departement[];
+  SelectedDepID: Number;
   constructor(private DepService: DepartementService) {
-    DepService.getAllDeps().subscribe((data) => (this.Deps = data));
+    this.DepService.getAllDeps().subscribe((data) => (this.Deps = data));
   }
 
   ngOnInit(): void {}
   changeDep(e) {
-    this.Dep = e.target.value;
-    console.log(e);
-    console.log(this.Dep);
+    console.log(this.SelectedDepID);
   }
 }

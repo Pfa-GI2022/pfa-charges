@@ -1,10 +1,10 @@
 <li class="table-row">
   <div class="col col-1" data-label="Import Dep"> Import Profs </div>
   <div class="col col-2 field">
-    <select class="ui dropdown" (change)="changeDep($event)">
+    <select class="ui dropdown" [(ngModel)]="SelectedDepID" (change)="changeDep($event)">
       <option selected disabled>Choisir votre Departement</option>
       <option *ngFor="let dep of Deps" [ngValue]="dep.id">{{dep.nom}}</option>
     </select>
   </div>
-  <app-import-professeurs></app-import-professeurs>
+  <app-import-professeurs [DepID]="SelectedDepID"></app-import-professeurs>
 </li>
