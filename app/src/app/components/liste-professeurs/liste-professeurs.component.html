@@ -21,7 +21,7 @@
     </div>
 
     <div class="cards-wrapper">
-      <app-carte-professeur *ngFor="let p of professeurs | searchFilter : term | chargeFilter : selectedOption.value"
+      <app-carte-professeur *ngFor="let p of professeurs | searchFilter : term | chargeFilter : selectedOption.value">
         [professeur]="p">
       </app-carte-professeur>
     </div>
