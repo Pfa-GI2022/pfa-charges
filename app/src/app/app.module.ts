@@ -56,9 +56,7 @@ import { ImportComponent } from './components/import/import.component';
 import { ImportDepartementComponent } from './components/import-departement/import-departement.component';
 import { ImportInterfaceComponent } from './components/import-interface/import-interface.component';
 import { ImportDepComponent } from './components/import-dep/import-dep.component';
-import { ImportFilComponent } from './components/import-fil/import-fil.component';
 import { ImportProfsComponent } from './components/import-profs/import-profs.component';
-import { ImportFiliereComponent } from './components/import-filiere/import-filiere.component';
 import { ImportProfesseursComponent } from './components/import-professeurs/import-professeurs.component';
 import { ProfesseursComponent } from './components/professeurs/professeurs.component';
 //just for test
@@ -112,9 +110,9 @@ import { ProfesseursComponent } from './components/professeurs/professeurs.compo
 
     ImportInterfaceComponent,
     ImportDepComponent,
-    ImportFilComponent,
+
     ImportProfsComponent,
-    ImportFiliereComponent,
+
     ImportProfesseursComponent,
     ProfesseursComponent,
   ],

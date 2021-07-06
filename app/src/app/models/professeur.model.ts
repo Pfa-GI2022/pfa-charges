@@ -10,10 +10,10 @@ export interface Professeur {
   grade?: string;
   filiere?: any;
   charge?: any;
-  mail?: string;
+  email?: string;
   depID?: number;
   filID?: number;
   departement?: Departement;
   activitePedagogiques?: activitePedagogiques[];
-  account?:User;
+  account?: User;
 }

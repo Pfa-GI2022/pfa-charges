@@ -1,4 +1,4 @@
-import { Component, VERSION, ViewChild, OnInit } from '@angular/core';
+import { Component, VERSION, ViewChild, OnInit, Input } from '@angular/core';
 import { DepartementService } from 'src/app/services/departement.service';
 import { ProfesseurService } from 'src/app/services/professeur.service';
 import { UserService } from 'src/app/services/user.service';
@@ -25,20 +25,21 @@ export class ImportProfesseursComponent implements OnInit {
   public records: any[] = [];
   @ViewChild('csvReader') csvReader: any;
   jsondatadisplay: any;
-  Dep: Departement;
   Prof: Professeur;
   CurrentDep: any;
   ChefDep: any;
-
-  ngOnInit() {
-    console.log(this.Dep);
-  }
+  Dep: Departement;
+  @Input() DepID;
+  Deps: Departement[];
+  ngOnInit() {}
   constructor(
     private DepService: DepartementService,
     private ProfService: ProfesseurService,
     private UserService: UserService,
     private ChargeService: ChargeService
-  ) {}
+  ) {
+    this.DepService.getAllDeps().subscribe((data) => (this.Deps = data));
+  }
   uploadListener($event: any): void {
     let text = [];
     let files = $event.srcElement.files;
@@ -57,8 +58,25 @@ export class ImportProfesseursComponent implements OnInit {
           csvRecordsArray,
           headersRow.length
         );
-
+        console.log(this.DepID);
         console.log(this.records, 'after');
+        this.records.forEach((r) => {
+          this.Prof = {
+            nom: r.nom,
+            prenom: r.prenom,
+            email: r.email,
+            dateNaissance: r.dateNaissance,
+            depID: r.depID,
+          };
+
+          this.ProfService.createProfesseur(this.Prof).subscribe();
+          this.UserService.createUser({
+            username: r.username,
+            password: 'pass',
+            email: r.email,
+            roles: ['professeur'],
+          }).subscribe();
+        });
       };
 
       reader.onerror = function () {
@@ -74,17 +92,20 @@ export class ImportProfesseursComponent implements OnInit {
     let csvArr = [];
 
     for (let i = 1; i < csvRecordsArray.length; i++) {
-      let curruntRecord = csvRecordsArray[i].split(',');
-      if (curruntRecord.length == headerLength) {
+      let currentRecord = csvRecordsArray[i].split(',');
+      if (currentRecord.length == headerLength) {
         let csvRecord: CsvData = new CsvData();
-        csvRecord.nom = curruntRecord[0].trim();
-        csvRecord.prenom = curruntRecord[1].trim();
-        csvRecord.email = curruntRecord[2].trim();
-        csvRecord.grade = curruntRecord[3].trim();
-        csvRecord.username = curruntRecord[4].trim();
+        csvRecord.nom = currentRecord[0].trim();
+        csvRecord.prenom = currentRecord[1].trim();
+        csvRecord.email = currentRecord[3].trim();
+        csvRecord.dateNaissance = currentRecord[2].trim();
+        csvRecord.grade = currentRecord[4].trim();
+        csvRecord.depID = this.DepID;
+        csvRecord.username = currentRecord[5].trim();
         csvArr.push(csvRecord);
       }
     }
+    console.log(csvArr);
     return csvArr;
   }
 

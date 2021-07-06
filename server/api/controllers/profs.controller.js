@@ -6,26 +6,16 @@ const charge = models.charge;
 const activite = models.activitePedagogique;
 
 const createProf = async (req, res, next) => {
-  const { nom, prenom, email, avatar, charge, depID } = req.body;
+  const prof = req.body;
   console.log("Creating Prof");
   professeur
-    .create(
-      {
-        nom: nom,
-        prenom: prenom,
-        email: email,
-        avatar: avatar,
-        depID: depID,
-        charge: charge,
-      },
-      {
-        include: [
-          {
-            association: professeur.charge,
-          },
-        ],
-      }
-    )
+    .create(prof, {
+      include: [
+        {
+          association: professeur.charge,
+        },
+      ],
+    })
     .then((data) => {
       res.send(data);
       console.log("Prof Created Successfully");

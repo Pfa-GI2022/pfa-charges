@@ -94,6 +94,7 @@ export class AddUserComponent implements OnInit {
       }
     );
     this.PersonalData.value.email = this.AccountData.value.email;
+    console.log(this.PersonalData.value);
     this.ProfService.createProfesseur(
       this.UserForm.value.personalData
     ).subscribe((response) => {
