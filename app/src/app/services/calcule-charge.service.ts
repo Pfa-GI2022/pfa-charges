@@ -66,6 +66,7 @@ export class CalculeChargeService {
   }
   
   SetChargeProf(Prof: Professeur) {
+    console.log(Prof,"charge ------>",this.GetChargeProf(Prof))
     return this.ChargeService.updateCharge(
       this.GetChargeProf(Prof),
       Prof.id

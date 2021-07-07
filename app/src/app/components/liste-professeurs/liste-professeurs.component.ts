@@ -22,7 +22,7 @@ export class ListeProfesseursComponent implements OnInit {
   open = false;
 
   constructor(private professeurService: ProfesseurService,private sharedService:SharedService) {}
-
+  
   ngOnInit(): void {
     this.getDepProfs();
   }
