@@ -11,6 +11,8 @@ export class AdminComponent implements OnInit {
     {key : 'gestion des departements',value : 'departement'},
     {key : 'gestion des filieres',value : 'filiere'},
     {key : 'gestion des utulisateurs',value : 'users'},
+    {key : 'imports' ,value : 'import'}
+
   ];
   constructor() { }
 

@@ -67,6 +67,7 @@ export class ImportProfesseursComponent implements OnInit {
             email: r.email,
             dateNaissance: r.dateNaissance,
             depID: r.depID,
+            charge:{}
           };
 
           this.ProfService.createProfesseur(this.Prof).subscribe();

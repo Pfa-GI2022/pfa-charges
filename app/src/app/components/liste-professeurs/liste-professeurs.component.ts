@@ -36,6 +36,7 @@ export class ListeProfesseursComponent implements OnInit {
   getDepProfs(){
     this.sharedService.currentDeparetement.subscribe(dep => {
         this.professeurs = dep.Professeurs;
+        console.log(this.professeurs)
     })
   }
 
