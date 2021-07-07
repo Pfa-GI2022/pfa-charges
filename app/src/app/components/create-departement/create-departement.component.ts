@@ -59,17 +59,17 @@ export class CreateDepartementComponent implements OnInit {
     this.AccountData = this.formBuilder.group({
       username: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
-        Validators.pattern('[a-zA-Zs]*'),
+        Validators.minLength(5),
+        Validators.pattern('[a-zA-Z \s]*'),
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(7),
         Validators.pattern('[a-zA-Z0-9._%+-s]*'),
       ]),
       email: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
       ]),
     });
 
@@ -78,18 +78,18 @@ export class CreateDepartementComponent implements OnInit {
       nom: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-        Validators.pattern('[a-zA-Zs]*'),
+        Validators.pattern('[a-zA-Z \s]*'),
       ]),
       prenom: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-        Validators.pattern('[a-zA-Zs]*'),
+        Validators.pattern('[a-zA-Z \s]*'),
       ]),
       email: new FormControl(''),
       dateNaissance: new FormControl('', [Validators.required]),
       grade: new FormControl('', [
         Validators.required,
-        Validators.pattern('[a-zA-Z]*'),
+        Validators.pattern('[a-zA-Z \s]*'),
       ]),
       depID: new FormControl(),
     });

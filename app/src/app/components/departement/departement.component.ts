@@ -30,9 +30,9 @@ export class DepartementComponent implements OnInit {
     );
 
     this.navLinks = [
-      {key : 'Liste des Profs',value : 'profs'},
+      {key : 'Liste des Professeurs',value : 'profs'},
       {key : 'Liste des modules',value : 'modules'},
-      {key : 'infos chefDep',value : `profs/${this.departement.chefDepartementID}`}
+      {key : 'Informations du chef du Départment',value : `profs/${this.departement.chefDepartementID}`}
       ];
   }
 }

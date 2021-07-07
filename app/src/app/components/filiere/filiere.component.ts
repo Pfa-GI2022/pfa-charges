@@ -26,7 +26,7 @@ export class FiliereComponent implements OnInit {
 
     this.navLinks = [
       {key : 'Liste des modules',value : 'modules'},
-      {key : 'infos chefDep',value : `profs/${this.filiere.chefFiliereID}`},
+      {key : 'Informations du chef de filière',value : `profs/${this.filiere.chefFiliereID}`},
     ];
     }
   }
