@@ -54,11 +54,11 @@ export class CalculeChargeService {
         Charge += 1.5 * A.volumeHoraire;
       }
 
-      if (A.nature == 'tp') {
+      if (A.nature == 'td') {
         Charge += 1 * A.volumeHoraire;
       }
 
-      if (A.nature == 'td') {
+      if (A.nature == 'tp') {
         Charge += 0.75 * A.volumeHoraire;
       }
     });

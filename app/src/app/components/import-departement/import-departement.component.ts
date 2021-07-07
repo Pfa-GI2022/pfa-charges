@@ -65,7 +65,7 @@ export class ImportDepartementComponent implements OnInit {
             roles: ['chefDeDepartement'],
           }).subscribe(
             () => {
-              this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep };
+              this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep, email:r.emailChefDep,grade:r.grade };
               this.Dep = { nom: r.nomDep, professeur: this.Prof };
               console.log(this.Dep, 'Create User Subscribe');
               this.DepService.createDepartement(this.Dep).subscribe(

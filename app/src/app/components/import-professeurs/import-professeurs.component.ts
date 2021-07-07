@@ -58,15 +58,7 @@ export class ImportProfesseursComponent implements OnInit {
           headersRow.length
         );
         this.records.forEach((r, index, arr) => {
-          this.Prof = {
-            nom: r.nom,
-            prenom: r.prenom,
-            email: r.email,
-            dateNaissance: r.dateNaissance,
-            depID: r.depID,
-            grade: r.grade,
-            charge: {},
-          };
+          
 
           this.UserService.createUser({
             username: r.username,
@@ -75,12 +67,22 @@ export class ImportProfesseursComponent implements OnInit {
             roles: ['professeur'],
           }).subscribe(
             () => {
+              this.Prof = {
+                nom: r.nom,
+                prenom: r.prenom,
+                email: r.email,
+                dateNaissance: new Date(r.dateNaissance),
+                depID: r.depID,
+                grade: r.grade,
+                charge: {},
+              };
               this.ProfService.createProfesseur(this.Prof).subscribe();
               if (index == arr.length - 1)
                 alert('Données Importées avec succés');
             },
             () => {
               if (index == arr.length - 1)
+              console.log("TNAKET")
                 alert("Import échoué. Nom d'utilisateur ou Email Dupliqué.");
             }
           );

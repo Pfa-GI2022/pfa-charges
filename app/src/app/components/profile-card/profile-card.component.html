@@ -11,7 +11,7 @@
     <h1>Informations Personnelles : </h1>
     <h3>Nom et prenom : {{professeur.nom}} {{professeur.prenom}}</h3>
     <div class="description">
-      Date de Naissance : {{professeur.dateNaissance}}
+      Date de Naissance : {{professeur.dateNaissance|date :"shortDate"}}
     </div>
     <div class="description">
       Grade : {{professeur.grade}}
