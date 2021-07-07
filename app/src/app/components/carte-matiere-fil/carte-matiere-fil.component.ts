@@ -27,7 +27,17 @@ export class CarteMatiereFilComponent implements OnInit {
   }
   constructor(private CalculeChargeService: CalculeChargeService) {}
   ngOnInit(): void {
+    this.estAffectee()
     this.Route = `/filiere/modules/${this.module.id}/sousModules/${this.matieres.id}`;
     this.calculTotalCharge();
+  }
+
+  estAffectee() {
+    this.matiereAffecte = true;
+    this.matieres.activitePedagogiques.forEach((a) => {
+      if (a.professeurID == null) {
+        this.matiereAffecte = false;
+      }
+    });
   }
 }

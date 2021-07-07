@@ -1,5 +1,10 @@
 <a [routerLink]="Route">
-  <div class="ui message" style="margin-bottom: 10px; border-bottom : 2px solid green;">
+  <div class="ui message" 
+  [ngClass]="{
+    'affectee': matiereAffecte == true,
+    'non-affectee': matiereAffecte == false
+        }" 
+      style="margin-bottom: 10px;">
     <div class="header">
       {{matieres.nom}}
       <br>

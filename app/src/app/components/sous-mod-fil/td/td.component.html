@@ -7,7 +7,10 @@
     </tr></thead>
     <tbody>
       <tr *ngFor="let a of activite">
-        <td data-label="Name">{{a.professeur.nom}} </td>
+        <td data-label="Name" *ngIf="a.professeur; else elseBlock">{{a.professeur.nom | uppercase}} {{a.professeur.prenom | titlecase}}  </td>
+        <ng-template #elseBlock>
+          <td data-label="name"> Prof non affecte</td>
+        </ng-template>
         <td data-label="Age">{{a.groupe.nom}}</td>
         <td data-label="Job"> {{a.volumeHoraire}}h </td>
       </tr>
