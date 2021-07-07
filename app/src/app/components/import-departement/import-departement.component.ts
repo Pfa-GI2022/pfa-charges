@@ -26,7 +26,7 @@ export class CsvData {
   public nomDep: any;
   public nomChefDep: any;
   public prenomChefDep: any;
-  public emailChefDep: any;
+  public emailChefDep: string;
   public grade: any;
   public username: any;
 }
@@ -72,7 +72,7 @@ export class ImportDepartementComponent implements OnInit {
           headersRow.length
         );
         this.records.forEach((r) => {
-          this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep };
+          this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep,email : r.emailChefDep,grade : r.grade };
           this.Dep = { nom: r.nomDep, professeur: this.Prof };
           this.DepService.createDepartement(this.Dep).subscribe((response) => {
             this.CurrentDep = response;

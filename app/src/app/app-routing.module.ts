@@ -146,8 +146,6 @@ const routes: Routes = [
     component : ProfesseursComponent
 
   },
-  {path : 'import',component : ImportComponent },
-  {path : 'importdepartement',component : ImportDepartementComponent },
   { path: '**', redirectTo: '' }
 ];
 
