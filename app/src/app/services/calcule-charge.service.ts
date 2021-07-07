@@ -64,6 +64,7 @@ export class CalculeChargeService {
     });
     return Charge;
   }
+  
   SetChargeProf(Prof: Professeur) {
     return this.ChargeService.updateCharge(
       this.GetChargeProf(Prof),

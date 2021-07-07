@@ -9,13 +9,13 @@ export class ChargeFilterPipe implements PipeTransform {
     if (!professeurs || !term) return professeurs;
     else {
       if (term === 'charge atteinte') {
-        return professeurs.filter((p) => p.charge.chargeTotal >= 180);
+        return professeurs.filter((p) => p.charge.chargeTotal >= 240);
       } else if (term === 'charge presque atteinte')
         return professeurs.filter(
-          (p) => p.charge.chargeTotal < 180 && p.charge.chargeTotal >= 120
+          (p) => p.charge.chargeTotal < 240 && p.charge.chargeTotal >= 200
         );
       else if (term === 'charge non atteinte')
-        return professeurs.filter((p) => p.charge.chargeTotal < 120);
+        return professeurs.filter((p) => p.charge.chargeTotal < 200);
       else return professeurs;
     }
   }

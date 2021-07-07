@@ -76,6 +76,7 @@ export class AddUserComponent implements OnInit {
         Validators.pattern('[a-zA-Z]*'),
       ]),
       depID: new FormControl(),
+      charge:new FormControl(),
     });
 
     //Form Builder
@@ -94,6 +95,7 @@ export class AddUserComponent implements OnInit {
       }
     );
     this.PersonalData.value.email = this.AccountData.value.email;
+    this.PersonalData.value.charge={};
     console.log(this.PersonalData.value);
     this.ProfService.createProfesseur(
       this.UserForm.value.personalData
