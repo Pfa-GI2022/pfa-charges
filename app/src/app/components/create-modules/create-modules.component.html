@@ -1,4 +1,4 @@
-<div class="ui container  create-module-container">
+<div class="ui container  moduleForm" style="width:50%;margin:35px 0;">
   <div class="ui attached message" style="background-color:#013243;border-radius: 3px;">
     <h2 class="ui huge header" style="color:#fff;">
       Ajouter un nouveau module
@@ -34,7 +34,11 @@
   </div>
   </div>
       <br>
-      <button [disabled]="moduleForm.invalid" type="submit" class="ui submit button">Submit</button>
+      <button [disabled]="moduleForm.invalid" type="submit" class="ui submit primary right floated animated button">
+        <div class="visible content">Submit</div>
+        <div class="hidden content">
+          <i class="right arrow icon"></i>
+        </div>     </button><br/>
     </form>
     <div class="ui success message" *ngIf="alert"> 
       <i class="close icon" (click)="closeAlert()"></i>

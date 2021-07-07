@@ -1,4 +1,4 @@
-<div class="ui container  create-module-container">
+<div class="ui container  matiereForm" style="width:50%;margin:35px 0;">
   <div class="ui attached message" style="background-color:#013243;border-radius: 3px;">
     <h2 class="ui huge header" style="color:#fff;">
       Ajouter une nouvelle matiere
@@ -6,20 +6,26 @@
     </h2>
     <br>
     </div>
+    <br/>
     <form [formGroup]="matiereForm" class="ui form" (ngSubmit)="onSubmit()">
       <app-input [control]="matiereForm.get('nom')" label="Nom" type="text"></app-input>
       <app-input [control]="matiereForm.get('VHCours')" label="VHCours" type="number"></app-input>
       <app-input [control]="matiereForm.get('VHTp')" label="VHTp" type="number"></app-input>
       <app-input [control]="matiereForm.get('VHTd')" label="VHtd" type="number"></app-input>
       <br>
-      <button [disabled]="matiereForm.invalid" type="submit" class="ui submit button">Submit</button>
-    </form>
+      <button [disabled]="matiereForm.invalid" type="submit" class="ui submit primary right floated animated button">
+        <div class="visible content">Submit</div>
+        <div class="hidden content">
+          <i class="right arrow icon"></i>
+        </div>
+      </button>
+      <br>    </form>
     <div class="ui success message" *ngIf="alert"> 
       <i class="close icon" (click)="closeAlert()"></i>
       <div class="header">
-        Vous avez ajoute un nouveau sous module.
+        Vous avez ajoute une nouvelle matiere.
       </div>
-      <p>Vous pouvez le visualiser maintenant.</p>
+      <p>Vous pouvez la visualiser maintenant.</p>
     </div>
     </div>
     
