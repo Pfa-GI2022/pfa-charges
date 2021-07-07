@@ -60,10 +60,6 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenStorage.getUser().roles;
         if (this.tokenStorage.getUser().accountOwner)
           this.userID = this.tokenStorage.getUser().accountOwner.id;
-<<<<<<< HEAD
-=======
-        console.log(this.userID, 'user ID ------------');
->>>>>>> d6b305c255b032cef27738dc2040736b0d811348
         this.authenticateUser(this.roles);
       },
       (err) => {

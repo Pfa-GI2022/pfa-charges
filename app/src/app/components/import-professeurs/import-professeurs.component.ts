@@ -60,7 +60,7 @@ export class ImportProfesseursComponent implements OnInit {
         );
         console.log(this.DepID);
         console.log(this.records, 'after');
-        this.records.forEach((r) => {
+        this.records.forEach((r, index, arr) => {
           this.Prof = {
             nom: r.nom,
             prenom: r.prenom,
@@ -79,10 +79,12 @@ export class ImportProfesseursComponent implements OnInit {
           }).subscribe(
             () => {
               this.ProfService.createProfesseur(this.Prof).subscribe();
-              alert('Données Importées avec succés');
+              if (index == arr.length - 1)
+                alert('Données Importées avec succés');
             },
             () => {
-              alert("Nom d'Utilisateur ou Adresse Mail déjà utilisé");
+              if (index == arr.length - 1)
+                alert("Import échoué. Nom d'utilisateur ou Email Dupliqué.");
             }
           );
         });

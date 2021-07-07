@@ -54,23 +54,42 @@ export class ImportDepartementComponent implements OnInit {
           csvRecordsArray,
           headersRow.length
         );
-        this.records.forEach((r) => {
-          this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep };
-          this.Dep = { nom: r.nomDep, professeur: this.Prof };
-          this.DepService.createDepartement(this.Dep).subscribe((response) => {
-            this.CurrentDep = response;
-            this.ChefDep = this.CurrentDep.professeur;
-            this.ProfService.updateProfesseur(
-              { depID: this.CurrentDep.id },
-              this.ChefDep.id
-            ).subscribe();
-            this.ChargeService.createCharge({}, this.ChefDep.id).subscribe();
-          });
+
+        console.log(this.records);
+        this.records.forEach((r, index, arr) => {
+          console.log(this.Dep);
           this.UserService.createUser({
             username: r.username,
             password: 'pass',
             email: r.emailChefDep,
-          }).subscribe();
+            roles: ['chefDeDepartement'],
+          }).subscribe(
+            () => {
+              this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep };
+              this.Dep = { nom: r.nomDep, professeur: this.Prof };
+              console.log(this.Dep, 'Create User Subscribe');
+              this.DepService.createDepartement(this.Dep).subscribe(
+                (response) => {
+                  this.CurrentDep = response;
+                  this.ChefDep = this.CurrentDep.professeur;
+                  this.ProfService.updateProfesseur(
+                    { depID: this.CurrentDep.id },
+                    this.ChefDep.id
+                  ).subscribe();
+                  this.ChargeService.createCharge(
+                    {},
+                    this.ChefDep.id
+                  ).subscribe();
+                }
+              );
+              if (index == arr.length - 1)
+                alert('Données Importées avec succés');
+            },
+            () => {
+              if (index == arr.length - 1)
+                alert("Import échoué. Nom d'utilisateur ou Email Dupliqué.");
+            }
+          );
         });
         console.log(this.records, 'after');
       };

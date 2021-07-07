@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input
-} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {
   FormControl,
   FormBuilder,
@@ -10,18 +6,10 @@ import {
   Validator,
   Validators,
 } from '@angular/forms';
-import {
-  FiliereService
-} from '../../services/filiere.service';
-import {
-  ProfesseurService
-} from '../../services/professeur.service';
-import {
-  Professeur
-} from 'src/app/models/professeur.model';
-import {
-  UserService
-} from 'src/app/services/user.service';
+import { FiliereService } from '../../services/filiere.service';
+import { ProfesseurService } from '../../services/professeur.service';
+import { Professeur } from 'src/app/models/professeur.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create-filiere',
@@ -32,6 +20,7 @@ export class CreateFiliereComponent implements OnInit {
   alert = false;
   open = false;
   professeurs: Professeur[];
+  allProfesseurs: Professeur[];
   selectedProfesseur: Professeur;
   filterdOptions = [];
   list = [{}];
@@ -60,7 +49,7 @@ export class CreateFiliereComponent implements OnInit {
       nom: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
-        Validators.pattern('[a-zA-Z \s]*'),
+        Validators.pattern('[a-zA-Z s]*'),
       ]),
       chefFiliereID: new FormControl(),
       nbreGroupesTd: new FormControl('2', [
@@ -86,7 +75,14 @@ export class CreateFiliereComponent implements OnInit {
 
   onGetAllProfesseurs(): void {
     this.professeurService.getAllProfesseurs().subscribe((data) => {
-      this.professeurs = data;
+      this.allProfesseurs = data;
+      this.professeurs = [];
+      console.log(this.allProfesseurs);
+      this.allProfesseurs.forEach((p) => {
+        if (p.filiere == null && p.departement == null)
+          this.professeurs.push(p);
+      });
+      console.log(this.professeurs);
     });
   }
 
@@ -98,10 +94,13 @@ export class CreateFiliereComponent implements OnInit {
     });
     this.professeurService.getProfesseurByID(this.fildID).subscribe((prof) => {
       let userID = prof.account.id;
-      this.UserService.updateUser({
-        roleId: 3
-      }, userID).subscribe()
-    })
+      this.UserService.updateUser(
+        {
+          roleId: 3,
+        },
+        userID
+      ).subscribe();
+    });
   }
 
   closeAlert() {
