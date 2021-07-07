@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class AdminComponent implements OnInit {
 
   navLinks = [
-    {key : 'gestion des departements',value : 'departement'},
-    {key : 'gestion des filieres',value : 'filiere'},
-    {key : 'gestion des utulisateurs',value : 'users'},
-    {key : 'imports' ,value : 'import'}
+    {key : 'Gestion des départements',value : 'departement'},
+    {key : 'Gestion des filières',value : 'filiere'},
+    {key : 'Gestion des utilisateurs',value : 'users'},
+    {key : 'Imports' ,value : 'import'}
 
   ];
   constructor() { }

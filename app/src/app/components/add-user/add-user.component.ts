@@ -42,12 +42,12 @@ export class AddUserComponent implements OnInit {
     this.AccountData = this.formBuilder.group({
       username: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(5),
         Validators.pattern('[a-zA-Zs]*'),
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(7),
         Validators.pattern('[a-zA-Z0-9._%+-s]*'),
       ]),
       email: new FormControl('', [
@@ -62,12 +62,12 @@ export class AddUserComponent implements OnInit {
       nom: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-        Validators.pattern('[a-zA-Zs]*'),
+        Validators.pattern('[a-zA-Z \s]*'),
       ]),
       prenom: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-        Validators.pattern('[a-zA-Zs]*'),
+        Validators.pattern('[a-zA-Z \s]*'),
       ]),
       email: new FormControl(''),
       dateNaissance: new FormControl('', [Validators.required]),

@@ -2,13 +2,12 @@
   <div class="ui attached message" style="background-color:#013243;border-radius: 3px;">
     <h2 class="ui huge header" style="color:#fff;">
       Ajouter une nouvelle Filiere
-      <div class="sub header" style="color: #02e079;margin: 20px 0;">Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Quas facere delectus</div>
+      <div class="sub header" style="color: #02e079;margin: 20px 0;">Veuillez entrer les informations de la filiere.</div>
     </h2>
     <br>
   </div>
   <form [formGroup]="filiereForm" class="ui form formContent" (ngSubmit)="onSubmit()">
-    <app-input [control]="filiereForm.get('nom')" label="Nom" type="text"></app-input>
+    <app-input required [control]="filiereForm.get('nom')" label="Nom" type="text"></app-input>
     <div class="field">
       <label class="label">Chef de département</label>
       <input class="prompt" type="text" class="combobox-input" [(ngModel)]="inputItem "
@@ -22,14 +21,14 @@
     </div>
     <div class="three fields">
       <div class="field">
-        <app-input [control]="filiereForm.get('nbreGroupesTd')" label="Nombre de groupes des TD" type="text">
+        <app-input [control]="filiereForm.get('nbreGroupesTd')" label="Nombre de groupes des TD" type="number">
         </app-input>
       </div>
       <div class="field">
-        <app-input [control]="filiereForm.get('nbreGroupeTp')" label="Nombre de groupes des TP" type="text"></app-input>
+        <app-input [control]="filiereForm.get('nbreGroupeTp')" label="Nombre de groupes des TP" type="number"></app-input>
       </div>
       <div class="field">
-        <app-input [control]="filiereForm.get('nbreGroupePFA')" label="Nombre de groupes des PFA" type="text">
+        <app-input [control]="filiereForm.get('nbreGroupePFA')" label="Nombre de groupes des PFA" type="number">
         </app-input>
       </div>
     </div>
