@@ -38,9 +38,11 @@ module.exports = function (app) {
     // [authJwt.verifyToken, authJwt.isAdmin],
     controller.getAllUsers
   );
-  
-  app.put(
-    "/api/admin/users/:id",
-    controller.updateUser
-  );
+
+  app.put("/api/admin/users/:id", controller.updateUser);
+
+  app.post("/api/users/verify", [
+    verifySignUp.checkDuplicateUsernameOrEmail,
+    verifySignUp.checkRolesExist,
+  ]);
 };

@@ -10,7 +10,10 @@ export class CarteProfesseurComponent implements OnInit {
   Route:String;
   constructor() {}
 
-  ngOnInit(): void {
+  
+
+  ngOnInit():void{
+    console.log(this.professeur)
     this.Route=`/departement/profs/${this.professeur.id}`;
   }
 }

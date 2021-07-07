@@ -1,9 +1,10 @@
 <div class="ui container  create-module-container">
-    <div class="ui attached message">
-      <div class="ui huge header">
-        Ajouter un nouveau sous-module
-      </div>
-      <br>
+  <div class="ui attached message" style="background-color:#013243;border-radius: 3px;">
+    <h2 class="ui huge header" style="color:#fff;">
+      Ajouter une nouvelle matiere
+      <div class="sub header" style="color: #02e079;margin: 20px 0;">Veuillez entrer les informations de la matiere.</div>
+    </h2>
+    <br>
     </div>
     <form [formGroup]="matiereForm" class="ui form" (ngSubmit)="onSubmit()">
       <app-input [control]="matiereForm.get('nom')" label="Nom" type="text"></app-input>

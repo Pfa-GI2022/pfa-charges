@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  userID:number;
+  userID: number;
   roles: string[] = [];
 
   constructor(
@@ -58,13 +58,14 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        if(this.tokenStorage.getUser().accountOwner)
-        this.userID = this.tokenStorage.getUser().accountOwner.id;
+        if (this.tokenStorage.getUser().accountOwner)
+          this.userID = this.tokenStorage.getUser().accountOwner.id;
+        console.log(this.userID, 'user ID ------------');
         this.authenticateUser(this.roles);
       },
       (err) => {
         this.errorMessage = err.error.message;
-        console.log(this.errorMessage)
+        console.log(this.errorMessage);
         this.isLoginFailed = true;
       }
     );
@@ -88,6 +89,7 @@ export class LoginComponent implements OnInit {
     s.src = '../../../assets/js/login.js';
     this.elementRef.nativeElement.appendChild(s);
   }
+
   reloadPage(): void {
     window.location.reload();
   }
