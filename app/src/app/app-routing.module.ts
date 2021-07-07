@@ -45,7 +45,7 @@ const routes: Routes = [
     canActivate: [RolesGuard],
     resolve: {
       Departement: DepartementResolverService,
-   },
+    },
     data: {
       expectedRole: role.chefDeDepartement,
     },
@@ -114,8 +114,8 @@ const routes: Routes = [
     data: {
       expectedRole: role.chefDeFiliere,
     },
-    resolve : {
-      Filiere : FiliereResolverService
+    resolve: {
+      Filiere: FiliereResolverService,
     },
     component: FiliereComponent,
     children: [
@@ -134,19 +134,17 @@ const routes: Routes = [
         ],
       },
       { path: 'profs/:id', component: ProfDetailsComponent },
-
     ],
   },
   {
-    path : 'professeur/:id',
+    path: 'professeur/:id',
     canActivate: [RolesGuard],
     data: {
       expectedRole: role.professeur,
     },
-    component : ProfesseursComponent
-
+    component: ProfesseursComponent,
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', component: LoginComponent },
 ];
 
 @NgModule({

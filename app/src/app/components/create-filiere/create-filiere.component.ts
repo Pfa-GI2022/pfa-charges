@@ -77,12 +77,10 @@ export class CreateFiliereComponent implements OnInit {
     this.professeurService.getAllProfesseurs().subscribe((data) => {
       this.allProfesseurs = data;
       this.professeurs = [];
-      console.log(this.allProfesseurs);
       this.allProfesseurs.forEach((p) => {
         if (p.filiere == null && p.departement == null)
           this.professeurs.push(p);
       });
-      console.log(this.professeurs);
     });
   }
 

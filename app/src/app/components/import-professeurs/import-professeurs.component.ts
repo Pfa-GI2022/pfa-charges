@@ -53,13 +53,10 @@ export class ImportProfesseursComponent implements OnInit {
         let csvData = <string>reader.result;
         let csvRecordsArray = csvData.split(/\r\n|\n/);
         let headersRow = this.getHeaderArray(csvRecordsArray);
-        console.log(this.records);
         this.records = this.getDataRecordsArrayFromCSVFile(
           csvRecordsArray,
           headersRow.length
         );
-        console.log(this.DepID);
-        console.log(this.records, 'after');
         this.records.forEach((r, index, arr) => {
           this.Prof = {
             nom: r.nom,
