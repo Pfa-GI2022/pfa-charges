@@ -94,11 +94,13 @@ export class CreateMatiereComponent implements OnInit {
       matiereID : this.matiere.id,
       nature : 'cours',
       groupe : {
-        nom : this.groupe[0]
+       nom : this.groupe[0]
       },
       professeurID : null
     }
-    this.activiteService.createActivity(activite).subscribe(data => console.log(data))    
+    this.activiteService.createActivity(activite).subscribe(data => console.log(data))
+      this.matiereForm.reset({});
+      this.alert = true;
     }
     )
 

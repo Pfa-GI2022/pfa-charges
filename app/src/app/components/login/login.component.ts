@@ -58,8 +58,8 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.userID = this.tokenStorage.getUser().accountOwner.id;
-        console.log(this.userID,"user ID ------------")
+        if (this.tokenStorage.getUser().accountOwner)
+          this.userID = this.tokenStorage.getUser().accountOwner.id;
         this.authenticateUser(this.roles);
       },
       (err) => {

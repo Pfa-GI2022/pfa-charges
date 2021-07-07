@@ -60,22 +60,22 @@ export class CreateFiliereComponent implements OnInit {
       nom: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
-        Validators.pattern('[a-zA-Z s]*'),
+        Validators.pattern('[a-zA-Z \s]*'),
       ]),
       chefFiliereID: new FormControl(),
-      nbreGroupesTd: new FormControl('', [
+      nbreGroupesTd: new FormControl('2', [
         Validators.required,
         Validators.pattern('^[0-9]$'),
         Validators.minLength(1),
         Validators.maxLength(2),
       ]),
-      nbreGroupeTp: new FormControl('', [
+      nbreGroupeTp: new FormControl('2', [
         Validators.required,
         Validators.pattern('^[0-9]$'),
         Validators.minLength(1),
         Validators.maxLength(2),
       ]),
-      nbreGroupePFA: new FormControl('', [
+      nbreGroupePFA: new FormControl('8', [
         Validators.required,
         Validators.pattern('^[0-9]$'),
         Validators.minLength(1),

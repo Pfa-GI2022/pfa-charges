@@ -45,7 +45,7 @@ const routes: Routes = [
     canActivate: [RolesGuard],
     resolve: {
       Departement: DepartementResolverService,
-    },
+   },
     data: {
       expectedRole: role.chefDeDepartement,
     },
