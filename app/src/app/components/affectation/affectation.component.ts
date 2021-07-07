@@ -26,33 +26,29 @@ export class AffectationComponent implements OnInit {
   ];
   selectedOption = this.options[0];
   open = false;
-  
+
   constructor(
     private route: ActivatedRoute,
     private activiteService: ActiviteService,
     private professeurService: ProfesseurService,
     private calculeChargeService: CalculeChargeService,
-    private sharedService:SharedService,
-    private router:Router
+    private sharedService: SharedService,
+    private router: Router
   ) {
     this.route.params.subscribe((params) => {
       this.activiteID = params.id3;
     });
-
-    
-
   }
 
   ngOnInit(): void {
     this.getDepProfs();
-    this.professeurs.forEach(prof => this.profsID.push(prof.id))
+    this.professeurs.forEach((prof) => this.profsID.push(prof.id));
   }
 
-
-  getDepProfs(){
-    this.sharedService.currentDeparetement.subscribe(dep => {
-        this.professeurs = dep.Professeurs;
-    })
+  getDepProfs() {
+    this.sharedService.currentDeparetement.subscribe((dep) => {
+      this.professeurs = dep.Professeurs;
+    });
   }
   onGetAllProfs(): void {
     this.professeurService.getAllProfesseurs().subscribe((data) => {
@@ -61,16 +57,15 @@ export class AffectationComponent implements OnInit {
   }
 
   onClick(prof: Professeur) {
-    console.log("selected prof",prof)
+    console.log('selected prof', prof);
     this.activiteService
       .updateActivity({ professeurID: prof.id }, this.activiteID)
       .subscribe((response) => {
-        this.profsID.forEach(id => {
-          this.professeurService.getProfesseurByID(id).subscribe(prof => {
-            this.calculeChargeService.SetChargeProf(prof)
-          })
-        })
-        window.location.href = this.router.url.split('/',7).join('/')
+        this.profsID.forEach((id) => {
+          this.professeurService.getProfesseurByID(id).subscribe((prof) => {
+            this.calculeChargeService.SetChargeProf(prof);
+          });
+        });
       });
   }
 

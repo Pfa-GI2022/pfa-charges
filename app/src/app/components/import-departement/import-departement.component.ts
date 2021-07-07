@@ -11,6 +11,7 @@ export class CsvData {
   public prenomChefDep: any;
   public emailChefDep: any;
   public grade: any;
+  public dateNaissance: any;
   public username: any;
 }
 
@@ -65,7 +66,13 @@ export class ImportDepartementComponent implements OnInit {
             roles: ['chefDeDepartement'],
           }).subscribe(
             () => {
-              this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep, email:r.emailChefDep,grade:r.grade };
+              this.Prof = {
+                nom: r.nomChefDep,
+                prenom: r.prenomChefDep,
+                email: r.emailChefDep,
+                grade: r.grade,
+                dateNaissance: r.dateNaissance,
+              };
               this.Dep = { nom: r.nomDep, professeur: this.Prof };
               console.log(this.Dep, 'Create User Subscribe');
               this.DepService.createDepartement(this.Dep).subscribe(
@@ -82,8 +89,10 @@ export class ImportDepartementComponent implements OnInit {
                   ).subscribe();
                 }
               );
-              if (index == arr.length - 1)
+              if (index == arr.length - 1) {
                 alert('Données Importées avec succés');
+                window.location.reload();
+              }
             },
             () => {
               if (index == arr.length - 1)
@@ -107,15 +116,16 @@ export class ImportDepartementComponent implements OnInit {
     let csvArr = [];
 
     for (let i = 1; i < csvRecordsArray.length; i++) {
-      let curruntRecord = csvRecordsArray[i].split(',');
-      if (curruntRecord.length == headerLength) {
+      let currentRecord = csvRecordsArray[i].split(',');
+      if (currentRecord.length == headerLength) {
         let csvRecord: CsvData = new CsvData();
-        csvRecord.nomDep = curruntRecord[0].trim();
-        csvRecord.nomChefDep = curruntRecord[1].trim();
-        csvRecord.prenomChefDep = curruntRecord[2].trim();
-        csvRecord.emailChefDep = curruntRecord[3].trim();
-        csvRecord.grade = curruntRecord[4].trim();
-        csvRecord.username = curruntRecord[5].trim();
+        csvRecord.nomDep = currentRecord[0].trim();
+        csvRecord.nomChefDep = currentRecord[1].trim();
+        csvRecord.prenomChefDep = currentRecord[2].trim();
+        csvRecord.emailChefDep = currentRecord[3].trim();
+        csvRecord.grade = currentRecord[4].trim();
+        csvRecord.dateNaissance = currentRecord[5].trim();
+        csvRecord.username = currentRecord[6].trim();
         csvArr.push(csvRecord);
       }
     }
