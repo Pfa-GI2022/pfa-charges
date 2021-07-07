@@ -1,10 +1,5 @@
 <div class="container">
-
   <label class="ui button secondary" for="profFileUpload">Importer</label>
-
-  <input type="file" #csvReader name="Upload CSV" style='visibility: hidden;' id="profFileUpload"
+  <input type="file" #csvReader name="Upload CSV" style='display: none;' id="profFileUpload"
     (change)="uploadListener($event)" accept=".csv" />
-
-
-
 </div>
