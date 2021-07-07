@@ -26,7 +26,7 @@ export class AffectationComponent implements OnInit {
   ];
   selectedOption = this.options[0];
   open = false;
-  
+  Route:string;
   constructor(
     private route: ActivatedRoute,
     private activiteService: ActiviteService,
@@ -69,9 +69,11 @@ export class AffectationComponent implements OnInit {
           this.professeurService.getProfesseurByID(id).subscribe(prof => {
             this.calculeChargeService.SetChargeProf(prof)
           })
-        })
-        window.location.href = this.router.url.split('/',7).join('/')
-      });
+        }
+        )
+        this.router.navigate([this.router.url.split('/',7).join('/')])
+      }
+      );
   }
 
   onSearch(term: string): void {
