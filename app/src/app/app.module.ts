@@ -58,6 +58,7 @@ import { ImportInterfaceComponent } from './components/import-interface/import-i
 import { ImportDepComponent } from './components/import-dep/import-dep.component';
 import { ImportProfsComponent } from './components/import-profs/import-profs.component';
 import { ImportProfesseursComponent } from './components/import-professeurs/import-professeurs.component';
+import { ProfesseursComponent } from './components/professeurs/professeurs.component';
 //just for test
 
 @NgModule({
@@ -113,6 +114,7 @@ import { ImportProfesseursComponent } from './components/import-professeurs/impo
     ImportProfsComponent,
 
     ImportProfesseursComponent,
+    ProfesseursComponent,
   ],
   imports: [
     BrowserModule,

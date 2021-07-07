@@ -10,7 +10,7 @@
     <div class="content">
       <a class="header">{{ professeur.nom | uppercase }} {{ professeur.prenom | titlecase }}</a>
       <div class="meta">
-        <span>Professeur <span *ngIf="professeur.grade"> Grade : {{ professeur.grade }} </span></span>
+         <span *ngIf="professeur.grade"> Grade : {{ professeur.grade }} </span>
       </div>
       <div class="description" >
         <i class="icon hourglass half"></i>

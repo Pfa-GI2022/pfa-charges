@@ -69,6 +69,7 @@ export class ImportProfesseursComponent implements OnInit {
             dateNaissance: r.dateNaissance,
             grade: r.grade,
             depID: r.depID,
+            charge:{}
           };
           this.UserService.verifyUser({
             username: r.username,

@@ -12,7 +12,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ListeSousModulesComponent } from './components/liste-sous-modules/liste-sous-modules.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RolesGuard } from './guards/roles.guard';
-
+import { ProfesseursComponent } from './components/professeurs/professeurs.component';
 import { CreateMatiereComponent } from './components/create-matiere/create-matiere.component';
 import { role } from './models/role.model';
 import { CreateFiliereComponent } from './components/create-filiere/create-filiere.component';
@@ -143,11 +143,9 @@ const routes: Routes = [
     data: {
       expectedRole: role.professeur,
     },
-    component : ProfDetailsComponent
+    component : ProfesseursComponent
 
   },
-  {path : 'import',component : ImportComponent},
-  {path : 'importdepartement',component : ImportDepartementComponent},
   { path: '**', redirectTo: '' }
 ];
 

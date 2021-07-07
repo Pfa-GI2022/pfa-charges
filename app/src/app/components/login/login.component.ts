@@ -89,6 +89,7 @@ export class LoginComponent implements OnInit {
     s.src = '../../../assets/js/login.js';
     this.elementRef.nativeElement.appendChild(s);
   }
+
   reloadPage(): void {
     window.location.reload();
   }
