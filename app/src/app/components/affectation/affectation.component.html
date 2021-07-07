@@ -1,31 +1,31 @@
 <ng-container *ngIf="professeurs">
-    <div class="liste-profs">
-      <div class="search-bar">
-        <div class="ui fluid category search">
-          <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="rechercher un prof" (input)="onSearch($event.target.value)">
-            <i class="search icon"></i>
-          </div>
+  <div class="liste-profs">
+    <div class="search-bar">
+      <div class="ui fluid category search">
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="rechercher un prof" (input)="onSearch($event.target.value)">
+          <i class="search icon"></i>
         </div>
-        <div class="ui selection dropdown " [ngClass]="{'active' : open}" (click)="toggleOpen()">
-  
-          <input type="hidden" name="gender">
-          <i class="dropdown icon"></i>
-          <div class="default text">{{selectedOption.label}}</div>
-          <div class="menu" [ngClass]="{'transition visible' : open}">
-  
-            <div *ngFor="let option of options" class="item" (click)="onSelection(option)">{{option.value}}</div>
-          </div>
+      </div>
+      <div class="ui selection dropdown " [ngClass]="{'active' : open}" (click)="toggleOpen()">
+
+        <input type="hidden" name="gender">
+        <i class="dropdown icon"></i>
+        <div class="default text">{{selectedOption.label}}</div>
+        <div class="menu" [ngClass]="{'transition visible' : open}">
+
+          <div *ngFor="let option of options" class="item" (click)="onSelection(option)">{{option.value}}</div>
         </div>
-  
       </div>
-  
-      <div class="cards-wrapper">
-        <app-affectation-carte *ngFor="let p of professeurs | searchFilter : term | chargeFilter : selectedOption.value " [professeur]="p" (click)="onClick(p)">
-        
-        </app-affectation-carte>
-      </div>
-  
+
     </div>
-  </ng-container>
-  
+
+    <div class="cards-wrapper">
+      <app-affectation-carte *ngFor="let p of professeurs | searchFilter : term | chargeFilter : selectedOption.value "
+        [professeur]="p" (click)="onClick(p)">
+
+      </app-affectation-carte>
+    </div>
+
+  </div>
+</ng-container>
