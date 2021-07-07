@@ -1,0 +1,7 @@
+.affectee{
+    border-bottom : 2px solid green;
+}
+
+.non-affectee{
+    border-bottom : 2px solid red;
+}

@@ -2,6 +2,7 @@ const models = require("../models/index.js");
 const professeur = models.professeur;
 const departement = models.departement;
 const charge = models.charge;
+const apd = models.activitePedagogique;
 
 const createDepartement = async (req, res) => {
   const { nom, professeur, charge } = req.body;
@@ -35,6 +36,14 @@ const getAllDepartements = async (req, res) => {
         {
           model: professeur,
           as: "Professeurs",
+          include: [
+            {
+              model: charge,
+            },
+            {
+              model: apd
+            }
+          ],
         },
         {
           model: models.module,
@@ -67,6 +76,9 @@ const getOneDepartementByID = async (req, res) => {
             {
               model: charge,
             },
+            {
+              model: apd
+            }
           ],
         },
         {

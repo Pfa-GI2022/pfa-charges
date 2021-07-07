@@ -22,7 +22,7 @@ export class ListeProfesseursComponent implements OnInit {
   open = false;
 
   constructor(private professeurService: ProfesseurService,private sharedService:SharedService) {}
-
+  
   ngOnInit(): void {
     this.getDepProfs();
   }
@@ -36,7 +36,6 @@ export class ListeProfesseursComponent implements OnInit {
   getDepProfs(){
     this.sharedService.currentDeparetement.subscribe(dep => {
         this.professeurs = dep.Professeurs;
-        console.log(this.professeurs)
     })
   }
 

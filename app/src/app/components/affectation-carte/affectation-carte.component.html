@@ -1,5 +1,8 @@
 <a 
     class="ui card"
+    [ngClass]="{'charge-atteinte': professeur.charge.chargeTotal >= 240,
+    'charge-presque': professeur.charge.chargeTotal < 240 && professeur.charge.chargeTotal >= 200,
+    'charge-non-atteinte': professeur.charge.chargeTotal < 200}"
 >
     <div class="image">
       <img src="" alt="" srcset="">

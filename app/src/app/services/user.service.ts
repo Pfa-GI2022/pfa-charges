@@ -39,7 +39,7 @@ export class UserService {
   }
   verifyUser(body: any) {
     const host = environment.host;
-    return this.http.put(`${host}/api/users/verify`, body, {
+    return this.http.post(`${host}/api/users/verify`, body, {
       observe: 'response',
     });
   }

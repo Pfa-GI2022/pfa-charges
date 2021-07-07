@@ -1,13 +1,14 @@
 <div class="ui container  filForm" style="width:50%;margin:35px 0;">
   <div class="ui attached message" style="background-color:#013243;border-radius: 3px;">
     <h2 class="ui huge header" style="color:#fff;">
-      Ajouter une nouvelle Filiere
-      <div class="sub header" style="color: #02e079;margin: 20px 0;">Veuillez entrer les informations de la filière.</div>
+      Ajouter une nouvelle Filière
+      <div class="sub header" style="color: #02e079;margin: 20px 0;">Veuillez entrer les informations de la filière.
+      </div>
     </h2>
     <br>
   </div>
   <form [formGroup]="filiereForm" class="ui form formContent" (ngSubmit)="onSubmit()">
-    <app-input [control]="filiereForm.get('nom')" label="Nom" type="text"></app-input>
+    <app-input required [control]="filiereForm.get('nom')" label="Nom" type="text"></app-input>
     <div class="field">
       <label class="label">Chef de département</label>
       <input class="prompt" type="text" class="combobox-input" [(ngModel)]="inputItem "
@@ -21,14 +22,14 @@
     </div>
     <div class="three fields">
       <div class="field">
-        <app-input [control]="filiereForm.get('nbreGroupesTd')" label="Nombre de groupes des TD" type="text">
+        <app-input [control]="filiereForm.get('nbreGroupesTd')" label="Nombre de groupes des TD" type="number">
         </app-input>
       </div>
       <div class="field">
-        <app-input [control]="filiereForm.get('nbreGroupeTp')" label="Nombre de groupes des TP" type="text"></app-input>
+        <app-input [control]="filiereForm.get('nbreGroupeTp')" label="Nombre de groupes des TP" type="number"></app-input>
       </div>
       <div class="field">
-        <app-input [control]="filiereForm.get('nbreGroupePFA')" label="Nombre de groupes des PFA" type="text">
+        <app-input [control]="filiereForm.get('nbreGroupePFA')" label="Nombre de groupes des PFA" type="number">
         </app-input>
       </div>
     </div>
@@ -46,8 +47,8 @@
   <div class="ui success message" *ngIf="alert">
     <i class="close icon" (click)="closeAlert()"></i>
     <div class="header">
-      Nouvelle filiere ajoutee
+      Nouvelle filière ajoutée.
     </div>
-    <p>Vous pouvez maintenant la visualiser en consultant les filieres/p>
+    <p>Vous pouvez maintenant la visualiser en consultant les filières</p>
   </div>
 </div>

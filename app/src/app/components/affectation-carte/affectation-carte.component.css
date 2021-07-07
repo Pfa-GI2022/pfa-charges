@@ -1,0 +1,16 @@
+.charge-atteinte {
+    border-bottom : 2px solid green;
+    
+}
+
+.charge-presque{
+    border-bottom : 2px solid orange;
+}
+
+.charge-non-atteinte{
+    border-bottom : 2px solid red;
+}
+
+.card{
+    width: 100%;
+}

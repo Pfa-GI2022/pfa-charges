@@ -1,33 +1,17 @@
-import {
-  Component,
-  VERSION,
-  ViewChild,
-  OnInit
-} from '@angular/core';
-import {
-  DepartementService
-} from 'src/app/services/departement.service';
-import {
-  ProfesseurService
-} from 'src/app/services/professeur.service';
-import {
-  UserService
-} from 'src/app/services/user.service';
-import {
-  Departement
-} from 'src/app/models/departement.model';
-import {
-  Professeur
-} from 'src/app/models/professeur.model';
-import {
-  ChargeService
-} from 'src/app/services/charge.service';
+import { Component, VERSION, ViewChild, OnInit } from '@angular/core';
+import { DepartementService } from 'src/app/services/departement.service';
+import { ProfesseurService } from 'src/app/services/professeur.service';
+import { UserService } from 'src/app/services/user.service';
+import { Departement } from 'src/app/models/departement.model';
+import { Professeur } from 'src/app/models/professeur.model';
+import { ChargeService } from 'src/app/services/charge.service';
 export class CsvData {
   public nomDep: any;
   public nomChefDep: any;
   public prenomChefDep: any;
-  public emailChefDep: string;
+  public emailChefDep: any;
   public grade: any;
+  public dateNaissance: any;
   public username: any;
 }
 
@@ -71,24 +55,50 @@ export class ImportDepartementComponent implements OnInit {
           csvRecordsArray,
           headersRow.length
         );
-        this.records.forEach((r) => {
-          this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep,email : r.emailChefDep,grade : r.grade };
-          this.Dep = { nom: r.nomDep, professeur: this.Prof };
-          this.DepService.createDepartement(this.Dep).subscribe((response) => {
-            this.CurrentDep = response;
-            this.ChefDep = this.CurrentDep.professeur;
-            this.ProfService.updateProfesseur(
-              { depID: this.CurrentDep.id },
-              this.ChefDep.id
-            ).subscribe();
-            this.ChargeService.createCharge({}, this.ChefDep.id).subscribe();
-          });
+
+        console.log(this.records);
+        this.records.forEach((r, index, arr) => {
+          console.log(this.Dep);
           this.UserService.createUser({
             username: r.username,
             password: 'pass',
             email: r.emailChefDep,
-            roles : ["chefDeDepartement"]
-          }).subscribe();
+            roles: ['chefDeDepartement'],
+          }).subscribe(
+            () => {
+              this.Prof = {
+                nom: r.nomChefDep,
+                prenom: r.prenomChefDep,
+                email: r.emailChefDep,
+                grade: r.grade,
+                dateNaissance: r.dateNaissance,
+              };
+              this.Dep = { nom: r.nomDep, professeur: this.Prof };
+              console.log(this.Dep, 'Create User Subscribe');
+              this.DepService.createDepartement(this.Dep).subscribe(
+                (response) => {
+                  this.CurrentDep = response;
+                  this.ChefDep = this.CurrentDep.professeur;
+                  this.ProfService.updateProfesseur(
+                    { depID: this.CurrentDep.id },
+                    this.ChefDep.id
+                  ).subscribe();
+                  this.ChargeService.createCharge(
+                    {},
+                    this.ChefDep.id
+                  ).subscribe();
+                }
+              );
+              if (index == arr.length - 1) {
+                alert('Données Importées avec succés');
+                window.location.reload();
+              }
+            },
+            () => {
+              if (index == arr.length - 1)
+                alert("Import échoué. Nom d'utilisateur ou Email Dupliqué.");
+            }
+          );
         });
         console.log(this.records, 'after');
       };
@@ -106,15 +116,16 @@ export class ImportDepartementComponent implements OnInit {
     let csvArr = [];
 
     for (let i = 1; i < csvRecordsArray.length; i++) {
-      let curruntRecord = csvRecordsArray[i].split(',');
-      if (curruntRecord.length == headerLength) {
+      let currentRecord = csvRecordsArray[i].split(',');
+      if (currentRecord.length == headerLength) {
         let csvRecord: CsvData = new CsvData();
-        csvRecord.nomDep = curruntRecord[0].trim();
-        csvRecord.nomChefDep = curruntRecord[1].trim();
-        csvRecord.prenomChefDep = curruntRecord[2].trim();
-        csvRecord.emailChefDep = curruntRecord[3].trim();
-        csvRecord.grade = curruntRecord[4].trim();
-        csvRecord.username = curruntRecord[5].trim();
+        csvRecord.nomDep = currentRecord[0].trim();
+        csvRecord.nomChefDep = currentRecord[1].trim();
+        csvRecord.prenomChefDep = currentRecord[2].trim();
+        csvRecord.emailChefDep = currentRecord[3].trim();
+        csvRecord.grade = currentRecord[4].trim();
+        csvRecord.dateNaissance = currentRecord[5].trim();
+        csvRecord.username = currentRecord[6].trim();
         csvArr.push(csvRecord);
       }
     }

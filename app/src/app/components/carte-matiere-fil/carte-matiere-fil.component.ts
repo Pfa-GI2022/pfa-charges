@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Matiere } from 'src/app/models/matiere.model';
 import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
 
 @Component({
@@ -9,12 +10,34 @@ import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
 export class CarteMatiereFilComponent implements OnInit {
   Route: String;
   @Input() module;
-  @Input() matieres;
+  @Input() matieres: Matiere;
   @Input() VH;
   Volume: any;
+  TotalVH: number;
+  VHCours: number;
+  VHTd: number;
+  VHTp: number;
+  matiereAffecte = false;
+
+  calculTotalCharge() {
+    this.TotalVH = this.CalculeChargeService.getVHMatiere(this.matieres).total;
+    this.VHCours = this.CalculeChargeService.getVHMatiere(this.matieres).cours;
+    this.VHTd = this.CalculeChargeService.getVHMatiere(this.matieres).td;
+    this.VHTp = this.CalculeChargeService.getVHMatiere(this.matieres).tp;
+  }
   constructor(private CalculeChargeService: CalculeChargeService) {}
   ngOnInit(): void {
+    this.estAffectee()
     this.Route = `/filiere/modules/${this.module.id}/sousModules/${this.matieres.id}`;
-    this.Volume = this.CalculeChargeService.getVHMatiere(this.matieres);
+    this.calculTotalCharge();
+  }
+
+  estAffectee() {
+    this.matiereAffecte = true;
+    this.matieres.activitePedagogiques.forEach((a) => {
+      if (a.professeurID == null) {
+        this.matiereAffecte = false;
+      }
+    });
   }
 }

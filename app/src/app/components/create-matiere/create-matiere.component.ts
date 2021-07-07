@@ -21,7 +21,7 @@ export class CreateMatiereComponent implements OnInit {
   module:Module;
   nbreGroupeTd: number;
   nbreGroupeTp: number;
-  groupe = ['A','B','C','D'];
+  groupe = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T'];
   constructor(private formBuilder:FormBuilder,private route: ActivatedRoute,private matiereService:MatiereService,private moduleService:ModuleService,private activiteService:ActiviteService) { 
     this.routeSub = this.route.parent.params.subscribe(params => {
       this.moduleID = params['id'];
@@ -94,12 +94,13 @@ export class CreateMatiereComponent implements OnInit {
       matiereID : this.matiere.id,
       nature : 'cours',
       groupe : {
-        nom : this.groupe[0]
+       nom : this.groupe[0]
       },
       professeurID : null
     }
-    this.activiteService.createActivity(activite).subscribe(data => console.log(data))    
-    
+    this.activiteService.createActivity(activite).subscribe(data => console.log(data))
+      this.matiereForm.reset({});
+      this.alert = true;
     }
     )
 

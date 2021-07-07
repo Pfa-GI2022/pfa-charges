@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input
-} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {
   FormControl,
   FormBuilder,
@@ -10,18 +6,10 @@ import {
   Validator,
   Validators,
 } from '@angular/forms';
-import {
-  FiliereService
-} from '../../services/filiere.service';
-import {
-  ProfesseurService
-} from '../../services/professeur.service';
-import {
-  Professeur
-} from 'src/app/models/professeur.model';
-import {
-  UserService
-} from 'src/app/services/user.service';
+import { FiliereService } from '../../services/filiere.service';
+import { ProfesseurService } from '../../services/professeur.service';
+import { Professeur } from 'src/app/models/professeur.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create-filiere',
@@ -32,6 +20,7 @@ export class CreateFiliereComponent implements OnInit {
   alert = false;
   open = false;
   professeurs: Professeur[];
+  allProfesseurs: Professeur[];
   selectedProfesseur: Professeur;
   filterdOptions = [];
   list = [{}];
@@ -63,19 +52,19 @@ export class CreateFiliereComponent implements OnInit {
         Validators.pattern('[a-zA-Z s]*'),
       ]),
       chefFiliereID: new FormControl(),
-      nbreGroupesTd: new FormControl('', [
+      nbreGroupesTd: new FormControl('2', [
         Validators.required,
         Validators.pattern('^[0-9]$'),
         Validators.minLength(1),
         Validators.maxLength(2),
       ]),
-      nbreGroupeTp: new FormControl('', [
+      nbreGroupeTp: new FormControl('2', [
         Validators.required,
         Validators.pattern('^[0-9]$'),
         Validators.minLength(1),
         Validators.maxLength(2),
       ]),
-      nbreGroupePFA: new FormControl('', [
+      nbreGroupePFA: new FormControl('8', [
         Validators.required,
         Validators.pattern('^[0-9]$'),
         Validators.minLength(1),
@@ -86,7 +75,12 @@ export class CreateFiliereComponent implements OnInit {
 
   onGetAllProfesseurs(): void {
     this.professeurService.getAllProfesseurs().subscribe((data) => {
-      this.professeurs = data;
+      this.allProfesseurs = data;
+      this.professeurs = [];
+      this.allProfesseurs.forEach((p) => {
+        if (p.filiere == null && p.departement == null)
+          this.professeurs.push(p);
+      });
     });
   }
 
@@ -98,10 +92,13 @@ export class CreateFiliereComponent implements OnInit {
     });
     this.professeurService.getProfesseurByID(this.fildID).subscribe((prof) => {
       let userID = prof.account.id;
-      this.UserService.updateUser({
-        roleId: 3
-      }, userID).subscribe()
-    })
+      this.UserService.updateUser(
+        {
+          roleId: 3,
+        },
+        userID
+      ).subscribe();
+    });
   }
 
   closeAlert() {

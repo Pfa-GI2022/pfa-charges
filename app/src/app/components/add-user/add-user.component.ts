@@ -42,12 +42,12 @@ export class AddUserComponent implements OnInit {
     this.AccountData = this.formBuilder.group({
       username: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(5),
         Validators.pattern('[a-zA-Zs]*'),
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(7),
         Validators.pattern('[a-zA-Z0-9._%+-s]*'),
       ]),
       email: new FormControl('', [
@@ -62,12 +62,12 @@ export class AddUserComponent implements OnInit {
       nom: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-        Validators.pattern('[a-zA-Zs]*'),
+        Validators.pattern('[a-zA-Z \s]*'),
       ]),
       prenom: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-        Validators.pattern('[a-zA-Zs]*'),
+        Validators.pattern('[a-zA-Z \s]*'),
       ]),
       email: new FormControl(''),
       dateNaissance: new FormControl('', [Validators.required]),
@@ -76,6 +76,7 @@ export class AddUserComponent implements OnInit {
         Validators.pattern('[a-zA-Z]*'),
       ]),
       depID: new FormControl(),
+      charge:new FormControl(),
     });
 
     //Form Builder
@@ -94,6 +95,7 @@ export class AddUserComponent implements OnInit {
       }
     );
     this.PersonalData.value.email = this.AccountData.value.email;
+    this.PersonalData.value.charge={};
     console.log(this.PersonalData.value);
     this.ProfService.createProfesseur(
       this.UserForm.value.personalData

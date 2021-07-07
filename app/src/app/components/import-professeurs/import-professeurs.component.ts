@@ -53,40 +53,37 @@ export class ImportProfesseursComponent implements OnInit {
         let csvData = <string>reader.result;
         let csvRecordsArray = csvData.split(/\r\n|\n/);
         let headersRow = this.getHeaderArray(csvRecordsArray);
-        console.log(this.records);
         this.records = this.getDataRecordsArrayFromCSVFile(
           csvRecordsArray,
           headersRow.length
         );
-        console.log(this.DepID);
-        console.log(this.records, 'after');
+        this.records.forEach((r, index, arr) => {
+          
 
-        this.records.forEach((r) => {
-          this.Prof = {
-            nom: r.nom,
-            prenom: r.prenom,
-            email: r.email,
-            dateNaissance: r.dateNaissance,
-            grade: r.grade,
-            depID: r.depID,
-            charge:{}
-          };
-          this.UserService.verifyUser({
+          this.UserService.createUser({
             username: r.username,
+            password: 'pass',
             email: r.email,
+            roles: ['professeur'],
           }).subscribe(
             () => {
-              this.ProfService.createProfesseur(this.Prof).subscribe();
-              this.UserService.createUser({
-                username: r.username,
-                password: 'pass',
+              this.Prof = {
+                nom: r.nom,
+                prenom: r.prenom,
                 email: r.email,
-                roles: ['professeur'],
-              }).subscribe();
+                dateNaissance: new Date(r.dateNaissance),
+                depID: r.depID,
+                grade: r.grade,
+                charge: {},
+              };
+              this.ProfService.createProfesseur(this.Prof).subscribe();
+              if (index == arr.length - 1)
+                alert('Données Importées avec succés');
             },
-            (error) => {
-              alert('WA MA KHEDAMSH');
-              return;
+            () => {
+              if (index == arr.length - 1)
+              console.log("TNAKET")
+                alert("Import échoué. Nom d'utilisateur ou Email Dupliqué.");
             }
           );
         });
