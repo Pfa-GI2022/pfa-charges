@@ -60,33 +60,29 @@ export class ImportProfesseursComponent implements OnInit {
         );
         console.log(this.DepID);
         console.log(this.records, 'after');
-
         this.records.forEach((r) => {
           this.Prof = {
             nom: r.nom,
             prenom: r.prenom,
             email: r.email,
             dateNaissance: r.dateNaissance,
-            grade: r.grade,
             depID: r.depID,
-            charge:{}
+            grade: r.grade,
+            charge: {},
           };
-          this.UserService.verifyUser({
+
+          this.UserService.createUser({
             username: r.username,
+            password: 'pass',
             email: r.email,
+            roles: ['professeur'],
           }).subscribe(
             () => {
               this.ProfService.createProfesseur(this.Prof).subscribe();
-              this.UserService.createUser({
-                username: r.username,
-                password: 'pass',
-                email: r.email,
-                roles: ['professeur'],
-              }).subscribe();
+              alert('Données Importées avec succés');
             },
-            (error) => {
-              alert('WA MA KHEDAMSH');
-              return;
+            () => {
+              alert("Nom d'Utilisateur ou Adresse Mail déjà utilisé");
             }
           );
         });

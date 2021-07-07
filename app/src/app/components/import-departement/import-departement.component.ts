@@ -1,32 +1,15 @@
-import {
-  Component,
-  VERSION,
-  ViewChild,
-  OnInit
-} from '@angular/core';
-import {
-  DepartementService
-} from 'src/app/services/departement.service';
-import {
-  ProfesseurService
-} from 'src/app/services/professeur.service';
-import {
-  UserService
-} from 'src/app/services/user.service';
-import {
-  Departement
-} from 'src/app/models/departement.model';
-import {
-  Professeur
-} from 'src/app/models/professeur.model';
-import {
-  ChargeService
-} from 'src/app/services/charge.service';
+import { Component, VERSION, ViewChild, OnInit } from '@angular/core';
+import { DepartementService } from 'src/app/services/departement.service';
+import { ProfesseurService } from 'src/app/services/professeur.service';
+import { UserService } from 'src/app/services/user.service';
+import { Departement } from 'src/app/models/departement.model';
+import { Professeur } from 'src/app/models/professeur.model';
+import { ChargeService } from 'src/app/services/charge.service';
 export class CsvData {
   public nomDep: any;
   public nomChefDep: any;
   public prenomChefDep: any;
-  public emailChefDep: string;
+  public emailChefDep: any;
   public grade: any;
   public username: any;
 }
@@ -72,7 +55,7 @@ export class ImportDepartementComponent implements OnInit {
           headersRow.length
         );
         this.records.forEach((r) => {
-          this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep,email : r.emailChefDep,grade : r.grade };
+          this.Prof = { nom: r.nomChefDep, prenom: r.prenomChefDep };
           this.Dep = { nom: r.nomDep, professeur: this.Prof };
           this.DepService.createDepartement(this.Dep).subscribe((response) => {
             this.CurrentDep = response;
@@ -87,7 +70,6 @@ export class ImportDepartementComponent implements OnInit {
             username: r.username,
             password: 'pass',
             email: r.emailChefDep,
-            roles : ["chefDeDepartement"]
           }).subscribe();
         });
         console.log(this.records, 'after');
