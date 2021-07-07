@@ -35,7 +35,7 @@ export class ListeSousModFilComponent implements OnInit {
         });
       });
     });
-    
+
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         this.currentUrl =

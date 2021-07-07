@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Matiere } from 'src/app/models/matiere.model';
 import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { CalculeChargeService } from 'src/app/services/calcule-charge.service';
 export class CarteMatiereFilComponent implements OnInit {
   Route: String;
   @Input() module;
-  @Input() matieres;
+  @Input() matieres: Matiere;
   @Input() VH;
   Volume: any;
   TotalVH: number;
@@ -27,6 +28,6 @@ export class CarteMatiereFilComponent implements OnInit {
   constructor(private CalculeChargeService: CalculeChargeService) {}
   ngOnInit(): void {
     this.Route = `/filiere/modules/${this.module.id}/sousModules/${this.matieres.id}`;
-    this.Volume = this.CalculeChargeService.getVHMatiere(this.matieres);
+    this.calculTotalCharge();
   }
 }
