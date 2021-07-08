@@ -3,7 +3,7 @@
 
     <p *ngIf="activite.professeur; else elseBlock">Professeur de cours : {{activite.professeur.nom | uppercase}} {{activite.professeur.prenom | titlecase}} </p>
     <ng-template #elseBlock>
-     Prof non affecte   
+     Professeur non affecte   
     </ng-template>
       <br>
     <p>Volume Horaire : {{activite.volumeHoraire}}h</p>

@@ -10,7 +10,7 @@
   <form [formGroup]="filiereForm" class="ui form formContent" (ngSubmit)="onSubmit()">
     <app-input required [control]="filiereForm.get('nom')" label="Nom" type="text"></app-input>
     <div class="field">
-      <label class="label">Chef de département</label>
+      <label class="label">Chef de filière</label>
       <input class="prompt" type="text" class="combobox-input" [(ngModel)]="inputItem "
         [ngModelOptions]="{standalone: true}" placeholder="rechercher un prof" (input)="onSearch($event.target.value)"
         (click)="hide=!hide">

@@ -15,7 +15,7 @@ export class ProfesseursComponent implements OnInit {
     this.userID = this.tokenStorage.getUser().accountOwner.id;
     console.log(`/professeur/${this.userID}`)
     this.links = [
-      {key : 'information personnel',value : `/professeur/${this.userID}`},
+      {key : 'Informations Personnelles',value : `/professeur/${this.userID}`},
     ] 
   }
 
