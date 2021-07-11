@@ -1,8 +1,5 @@
 # dependencies
 /node_modules
 
-# DB Config
-/api/config/config.json
-
 #env
 .env
