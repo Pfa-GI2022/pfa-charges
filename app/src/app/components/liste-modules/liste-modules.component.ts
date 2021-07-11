@@ -37,6 +37,18 @@ export class ListeModulesComponent implements OnInit {
     });
   }
 
+  estAffecte(module : Module){
+    let affecte = true;
+    console.log("-----------------------")
+    for(let i=0;i<module.matieres.length;i++){
+      for(let j=0;j<module.matieres[i].activitePedagogiques.length;j++){
+        if(module.matieres[i].activitePedagogiques[j].professeurID == null)
+          affecte = false
+      }
+    }
+    return affecte;
+  }
+
   getDepModules(){
     this.sharedService.currentDeparetement.subscribe(dep => {
       this.modules = dep.modules

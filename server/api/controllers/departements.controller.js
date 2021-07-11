@@ -83,9 +83,15 @@ const getOneDepartementByID = async (req, res) => {
         },
         {
           model: models.module,
-          include:{
-            model:models.filiere
-          }
+          include:[
+            {
+            model:models.filiere}
+            ,{
+            model : models.matiere,
+           include : {
+             model : models.activitePedagogique
+           }
+          }]
         },
       ],
     })

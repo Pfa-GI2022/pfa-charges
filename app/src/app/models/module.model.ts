@@ -1,9 +1,10 @@
+import { Matiere } from "./matiere.model";
 export interface Module {
   nom: string;
   semestre: string;
-  matieres?: any;
   filiere?: any;
   departement?: any;
+  matieres?: Matiere[]
   filID?: number;
   depID?: number;
 }

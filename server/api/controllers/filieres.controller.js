@@ -26,6 +26,9 @@ const getAllFilieres = async (req, res, next) => {
           model: mod,
           include: {
             model: models.matiere,
+            include : {
+              model : models.activitePedagogique
+            }
           },
         },
         {
@@ -51,6 +54,9 @@ const getFiliereByID = async (req, res) => {
           model: mod,
           include: {
             model: models.matiere,
+            include : {
+              model : models.activitePedagogique
+            }
           },
         },
         {

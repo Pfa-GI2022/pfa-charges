@@ -1,9 +1,7 @@
-/* .ui.cards { 
-    margin:20px;
-     display:grid;
-     grid-template-columns: repeat(4 , 1fr);
-} */
-/* .card{
-    margin: 0;
-    width: 100%;
-} */
+.affectee{
+    background-color :  green !important;
+}
+
+.non-affectee{
+    background-color : red !important;
+}
