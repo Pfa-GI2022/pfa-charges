@@ -1,0 +1,5 @@
+<div class="container">
+  <label class="ui button secondary" for="modsFileUpload">Importer</label>
+  <input type="file" #csvReader name="Upload CSV" style='display: none;' id="modsFileUpload"
+    (change)="uploadListener($event)" accept=".csv" />
+</div>
