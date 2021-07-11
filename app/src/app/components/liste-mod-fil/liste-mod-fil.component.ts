@@ -9,8 +9,11 @@ import { SharedService } from 'src/app/services/shared.service';
   styleUrls: ['./liste-mod-fil.component.css'],
 })
 export class ListeModFilComponent implements OnInit {
+
   modules: Module[];
+  
   term: string;
+
   constructor(
     private sharedService:SharedService
   ) {}
@@ -24,6 +27,17 @@ export class ListeModFilComponent implements OnInit {
     })
   }
 
+  estAffecte(module : Module){
+    let affecte = true;
+    console.log("-----------------------")
+    for(let i=0;i<module.matieres.length;i++){
+      for(let j=0;j<module.matieres[i].activitePedagogiques.length;j++){
+        if(module.matieres[i].activitePedagogiques[j].professeurID == null)
+          affecte = false
+      }
+    }
+    return affecte;
+  }
 
   onSearch(term: string): void {
     this.term = term;

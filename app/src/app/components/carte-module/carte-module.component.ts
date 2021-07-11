@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CarteModuleComponent implements OnInit {
 
  @Input() module;
+ @Input() affecte = false;
  Route:String;
 
 constructor() {

@@ -2,16 +2,19 @@
 
   <div class="ui card">
     <div class="content">
-
       <a class="header">{{ module.nom | uppercase }} </a>
-
       <div class="description">
         Filiere : {{module.filiere.nom}}
       </div>
     </div>
     <div class="extra content">
       <div class="ui two buttons">
-        <a class="ui primary button" [routerLink]="Route" style="background-color: #02e079">Visualiser Le Module </a>
+        <a class="ui primary button" [routerLink]="Route" 
+        [ngClass]="{
+          'affectee': affecte == true,
+          'non-affectee': affecte == false
+              }"
+        >Visualiser Le Module </a>
 
       </div>
     </div>

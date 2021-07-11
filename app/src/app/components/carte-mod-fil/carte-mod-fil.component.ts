@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CarteModFilComponent implements OnInit {
   @Input() module;
+  @Input() affecte = false;
   Route: String;
 
   constructor() {}

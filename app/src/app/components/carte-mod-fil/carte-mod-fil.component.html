@@ -2,12 +2,17 @@
 
   <div class="card">
     <div class="content">
-
       <a class="header">{{ module.nom | uppercase }} </a>
+      <span *ngFor="let matiere of module.matieres">{{matiere.nom}} &nbsp;</span>
     </div>
     <div class="extra content">
       <div class="ui two buttons">
-        <a class="ui primary button" [routerLink]="Route" style="background-color: #02e079">View course </a>
+        <a class="ui primary button" [routerLink]="Route" 
+        [ngClass]="{
+          'affectee': affecte == true,
+          'non-affectee': affecte == false
+              }"
+        >View course </a>
 
       </div>
     </div>
