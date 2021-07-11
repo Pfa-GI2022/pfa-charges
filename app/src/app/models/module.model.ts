@@ -5,4 +5,6 @@ export interface Module {
   filiere?: any;
   departement?: any;
   matieres?: Matiere[]
+  filID?: number;
+  depID?: number;
 }

@@ -2,51 +2,46 @@
   <div class="ui attached message" style="background-color:#013243;border-radius: 3px;">
     <h2 class="ui huge header" style="color:#fff;">
       Ajouter un nouveau module
-            <div class="sub header" style="color: #02e079;margin: 20px 0;">Veuillez entrer les informations du module.</div>
+      <div class="sub header" style="color: #02e079;margin: 20px 0;">Veuillez entrer les informations du module.</div>
     </h2>
-    </div>
-      <br>
-    <form [formGroup]="moduleForm" class="ui form" (ngSubmit)="onSubmit()">
-      <app-input [control]="moduleForm.get('nom')" label="Nom" type="text"></app-input>
-      <app-input [control]="moduleForm.get('semestre')" label="Semestre" type="text"></app-input>
-      <div class="field" >
+  </div>
+  <br>
+  <form [formGroup]="moduleForm" class="ui form" (ngSubmit)="onSubmit()">
+    <app-input [control]="moduleForm.get('nom')" label="Nom" type="text"></app-input>
+    <app-input [control]="moduleForm.get('semestre')" label="Semestre" type="text"></app-input>
+    <div class="field">
       <label class="label">Filiere</label>
-      <div
-    class="ui selection dropdown "
-    [ngClass]="{'active' : open}"    
-    (click)="toggleOpen()"
->
-    
-    <input type="hidden" label="Filiere" name="gender">
-    <i class="dropdown icon"></i>
-    <div class="default text">{{selected}}</div>
-    <div 
-        class="menu"
-        [ngClass]="{'transition visible' : open}"    
-    >
-      <div 
-        *ngFor="let f of filiere"
-        class="item"
-        (click)="onSelection(f)" >{{f.nom}}
+      <div class="ui selection dropdown " [ngClass]="{'active' : open}" (click)="toggleOpen()">
 
+        <input type="hidden" label="Filiere" name="gender">
+        <i class="dropdown icon"></i>
+        <div class="default text">{{selected}}</div>
+        <div class="menu" [ngClass]="{'transition visible' : open}">
+          <div *ngFor="let f of filiere" class="item" (click)="onSelection(f)">{{f.nom}}
+
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
-      <br>
-      <button [disabled]="moduleForm.invalid" type="submit" class="ui submit primary right floated animated button">
-        <div class="visible content">Submit</div>
-        <div class="hidden content">
-          <i class="right arrow icon"></i>
-        </div>     </button><br/>
-    </form>
-    <div class="ui success message" *ngIf="alert"> 
-      <i class="close icon" (click)="closeAlert()"></i>
-      <div class="header">
-        Vous avez ajoute un nouveau module
+    <br>
+    <button [disabled]="moduleForm.invalid" type="submit" class="ui submit primary right floated animated button">
+      <div class="visible content">Submit</div>
+      <div class="hidden content">
+        <i class="right arrow icon"></i>
       </div>
-      <p>Vous pouvez le visualiser maintenant.</p>
+    </button><br />
+  </form>
+  <div class="ui success message" *ngIf="alert">
+    <i class="close icon" (click)="closeAlert()"></i>
+    <div class="header">
+      Vous avez ajoute un nouveau module
     </div>
-    </div>
-    
-    
+    <p>Vous pouvez le visualiser maintenant.</p>
+  </div>
+  <br>
+  <div class="ui horizontal divider">
+    Ou
+  </div>
+  <h4 class="ui dividing large header" style="margin-bottom: 25px;">Importer des modules à partir d'un fichier CSV</h4>
+  <app-import-mods></app-import-mods>
+</div>
